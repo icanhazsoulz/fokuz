@@ -14,13 +14,13 @@ return [
     */
 
     'menu' => [
-        'about' => 'Über mich',
-        'contacts' => 'Kontakt',
         'home' => 'Home',
+        'about' => 'Über mich',
         'portfolio' => 'Portfolio',
-        'prices' => 'Preise',
+        'photoshooting' => 'Photoshooting',
         'shelters' => 'Tierheime',
         'blog' => 'Blog',
+        'contact' => 'Kontakt',
     ],
     'categories' => [
         'cats' => 'Katzen',
@@ -29,14 +29,17 @@ return [
     ],
     'slogan' => 'Mit jeder Photobestellung spenden Sie für Tiere in Not',
     'contact_form' => [
-        'first_name' => 'Vorname*',
-        'last_name' => 'Nachname*',
-        'email' => 'E-Mail-Adresse*',
-        'phone' => 'Telefonnummer*',
+        'first_name' => 'Vorname',
+        'last_name' => 'Nachname',
+        'email' => 'E-Mail-Adresse',
+        'phone' => 'Telefonnummer',
         'theme' => 'Worum geht es?',
         'description' => 'Erzähle mich kurz etwas über dich und dein Anliegen',
         'client_source' => 'Woher kennst du mich?',
         'shelters' => 'Tierheime',
+        'empty_option' => 'Auswählen',
+        'message' => 'Nachricht',
+        'privacy_note' => 'We\'ll never share your email and phone number with anyone else.',
         'privacy_policy' => 'Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage gemäß der Datenschutzerklärung erhoben und verarbeitet werden.*',
         'submit' => 'Senden',
     ],

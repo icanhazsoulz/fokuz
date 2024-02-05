@@ -23,7 +23,22 @@ class ShelterResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('address')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('email')
+                    ->email()
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('phone')
+                    ->tel()
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('notes')
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -31,17 +46,39 @@ class ShelterResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('address')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('deleted_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }
@@ -58,7 +95,16 @@ class ShelterResource extends Resource
         return [
             'index' => Pages\ListShelters::route('/'),
             'create' => Pages\CreateShelter::route('/create'),
+            'view' => Pages\ViewShelter::route('/{record}'),
             'edit' => Pages\EditShelter::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
     }
 }

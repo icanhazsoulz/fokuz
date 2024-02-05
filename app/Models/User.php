@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasName;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -20,7 +23,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'first_name',
+        'last_name',
         'email',
+        'phone',
         'password',
     ];
 
@@ -44,8 +50,29 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public static function findOrCreate($properties)
+    {
+        $client = User::where('email', $properties['email'])->first();
+
+        if ($client === null) {
+            $client = User::create([
+                'first_name' => $properties['first_name'],
+                'last_name' => $properties['last_name'],
+                'email' => $properties['email'],
+                'phone' => $properties['phone'],
+            ]);
+        }
+
+        return $client;
+    }
+
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
     }
 }
