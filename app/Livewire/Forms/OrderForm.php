@@ -9,26 +9,28 @@ use Livewire\Form;
 
 class OrderForm extends Form
 {
-    #[Validate('required')]
+    #[Validate('required|string')]
     public string $first_name = '';
 
-    #[Validate('required')]
+    #[Validate('required|string')]
     public string $last_name = '';
 
-    #[Validate('required|email')]
+    #[Validate('required|email|unique:users')]
     public string $email = '';
 
-    #[Validate('required')]
+    #[Validate('required|string')]
     public string $phone = '';
 
-    #[Validate('required')]
+    #[Validate('required|string')]
     public string $theme = '';
 
+    #[Validate('nullable|string')]
     public string $description = '';
 
-    #[Validate('required')]
+    #[Validate('required|string')]
     public string $client_source = '';
 
+    #[Validate('nullable|string')]
     public string $shelter = '';
 
     /**
