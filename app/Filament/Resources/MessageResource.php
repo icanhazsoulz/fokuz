@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ShelterResource\Pages;
-use App\Filament\Resources\ShelterResource\RelationManagers;
-use App\Models\Shelter;
+use App\Filament\Resources\MessageResource\Pages;
+use App\Filament\Resources\MessageResource\RelationManagers;
+use App\Models\Message;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ShelterResource extends Resource
+class MessageResource extends Resource
 {
-    protected static ?string $model = Shelter::class;
+    protected static ?string $model = Message::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,20 +23,10 @@ class ShelterResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(125),
-                Forms\Components\TextInput::make('address')
-                    ->required()
-                    ->maxLength(125),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(125),
-                Forms\Components\TextInput::make('phone')
-                    ->tel()
-                    ->maxLength(125),
-                Forms\Components\Textarea::make('notes')
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->required(),
+                Forms\Components\Textarea::make('message')
                     ->maxLength(65535)
                     ->columnSpanFull(),
             ]);
@@ -46,18 +36,9 @@ class ShelterResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('address')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('phone')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -84,7 +65,7 @@ class ShelterResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageShelters::route('/'),
+            'index' => Pages\ManageMessages::route('/'),
         ];
     }
 }

@@ -111,9 +111,11 @@
                 class="form-control"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                <option value="01">Shelter 1</option>
-                <option value="02">Shelter 2</option>
-                <option value="03">Shelter 3</option>
+                @foreach($shelters as $shelter)
+                    <option value="{{ $shelter->id }}">{{ $shelter->name }}</option>
+{{--                    <option value="02">Shelter 2</option>--}}
+{{--                    <option value="03">Shelter 3</option>--}}
+                @endforeach
             </select>
         </div>
     </div>

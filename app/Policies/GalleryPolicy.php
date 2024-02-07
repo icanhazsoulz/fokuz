@@ -2,16 +2,13 @@
 
 namespace App\Policies;
 
-use App\Models\Shelter;
+use App\Models\Gallery;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Auth;
 
-class ShelterPolicy
+class GalleryPolicy
 {
-    /**
-     * Perform pre-authorization checks.
-     */
     public function before(): bool
     {
         return Auth::user()->hasRole('admin');
@@ -28,7 +25,7 @@ class ShelterPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Shelter $shelter): bool
+    public function view(User $user, Gallery $gallery): bool
     {
         //
     }
@@ -44,7 +41,7 @@ class ShelterPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Shelter $shelter): bool
+    public function update(User $user, Gallery $gallery): bool
     {
         //
     }
@@ -52,7 +49,7 @@ class ShelterPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Shelter $shelter): bool
+    public function delete(User $user, Gallery $gallery): bool
     {
         //
     }
@@ -60,7 +57,7 @@ class ShelterPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Shelter $shelter): bool
+    public function restore(User $user, Gallery $gallery): bool
     {
         //
     }
@@ -68,7 +65,7 @@ class ShelterPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Shelter $shelter): bool
+    public function forceDelete(User $user, Gallery $gallery): bool
     {
         //
     }

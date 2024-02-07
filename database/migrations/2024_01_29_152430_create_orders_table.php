@@ -16,11 +16,12 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('theme');
             $table->text('description')->nullable();
-            $table->string('client_source');
-            $table->string('shelter')->nullable();
+            $table->string('client_source')->nullable();
+            $table->unsignedBigInteger('shelter_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('shelter_id')->references('id')->on('shelters')->nullOnDelete();
         });
     }
 

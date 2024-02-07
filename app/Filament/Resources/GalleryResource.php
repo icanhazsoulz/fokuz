@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ShelterResource\Pages;
-use App\Filament\Resources\ShelterResource\RelationManagers;
-use App\Models\Shelter;
+use App\Filament\Resources\GalleryResource\Pages;
+use App\Filament\Resources\GalleryResource\RelationManagers;
+use App\Models\Gallery;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ShelterResource extends Resource
+class GalleryResource extends Resource
 {
-    protected static ?string $model = Shelter::class;
+    protected static ?string $model = Gallery::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,22 +23,14 @@ class ShelterResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(125),
-                Forms\Components\TextInput::make('address')
+                Forms\Components\TextInput::make('description')
+                    ->maxLength(125),
+                Forms\Components\TextInput::make('photos')
                     ->required()
                     ->maxLength(125),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(125),
-                Forms\Components\TextInput::make('phone')
-                    ->tel()
-                    ->maxLength(125),
-                Forms\Components\Textarea::make('notes')
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
             ]);
     }
 
@@ -46,18 +38,12 @@ class ShelterResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('address')
+                Tables\Columns\TextColumn::make('description')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
+                Tables\Columns\TextColumn::make('photos')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('phone')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -84,7 +70,7 @@ class ShelterResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageShelters::route('/'),
+            'index' => Pages\ManageGalleries::route('/'),
         ];
     }
 }

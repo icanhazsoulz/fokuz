@@ -4,9 +4,9 @@ namespace App\Filament\Resources\ShelterResource\Pages;
 
 use App\Filament\Resources\ShelterResource;
 use Filament\Actions;
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ManageRecords;
 
-class ListShelters extends ListRecords
+class ManageShelters extends ManageRecords
 {
     protected static string $resource = ShelterResource::class;
 
