@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\Hash;
 
 class Order extends Model
 {
@@ -22,12 +23,17 @@ class Order extends Model
     public static function create(array $all)
     {
 //        dd($all);
-        $client = User::findOrCreate([
-            'first_name' => $all['first_name'],
-            'last_name' => $all['last_name'],
-            'email' => $all['email'],
-            'phone' => $all['phone'],
-        ]);
+        $client = User::where('email', $all['email'])->first();
+
+        if (is_null($client)) {
+            $client = User::create([
+                'first_name' => $all['first_name'],
+                'last_name' => $all['last_name'],
+                'email' => $all['email'],
+                'phone' => $all['phone'],
+                'password' => Hash::make('client-secret'),
+            ]);
+        }
 
         $client->orders()->create([
             'theme' => $all['theme'],

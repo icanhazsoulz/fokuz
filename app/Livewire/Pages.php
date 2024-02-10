@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\View;
 use Livewire\Component;
 
 class Pages extends Component
@@ -17,6 +18,12 @@ class Pages extends Component
     {
         $page = $this->page ?: 'home';
 
-        return view('livewire.pages.'.$page);
+        $view = 'livewire.pages.'.$page;
+
+        $view = View::exists($view) ? $view : 'livewire.404';
+
+//        abort_unless(View::exists($view), 404);
+
+        return view($view);
     }
 }

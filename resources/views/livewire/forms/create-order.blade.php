@@ -5,6 +5,7 @@
 {{--    autocomplete="off"--}}
     class="mt-5"
 >
+    {{ \App\Models\User::where('email', 'a.stark@winterfell.com')->first() }}
 {{--    @csrf--}}
     <div class="row mb-3">
         <div class="col">
