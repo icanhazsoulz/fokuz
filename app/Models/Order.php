@@ -17,29 +17,23 @@ class Order extends Model
         'theme',
         'description',
         'client_source',
-        'shelter',
+        'shelter_id',
     ];
 
     public static function create(array $all)
     {
-//        dd($all);
-        $client = User::where('email', $all['email'])->first();
-
-        if (is_null($client)) {
-            $client = User::create([
-                'first_name' => $all['first_name'],
-                'last_name' => $all['last_name'],
-                'email' => $all['email'],
-                'phone' => $all['phone'],
-                'password' => Hash::make('client-secret'),
-            ]);
-        }
+        $client = User::findOrCreate([
+            'first_name' => $all['first_name'],
+            'last_name' => $all['last_name'],
+            'email' => $all['email'],
+            'phone' => $all['phone'],
+        ]);
 
         $client->orders()->create([
             'theme' => $all['theme'],
             'description' => $all['description'],
             'client_source' => $all['client_source'],
-            'shelter' => $all['shelter'],
+            'shelter_id' => $all['shelter_id'],
         ]);
     }
 

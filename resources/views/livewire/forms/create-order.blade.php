@@ -5,7 +5,7 @@
 {{--    autocomplete="off"--}}
     class="mt-5"
 >
-    {{ \App\Models\User::where('email', 'a.stark@winterfell.com')->first() }}
+{{--    {{ \App\Models\User::where('email', 'a.stark@winterfell.com')->first() }}--}}
 {{--    @csrf--}}
     <div class="row mb-3">
         <div class="col">
@@ -107,15 +107,13 @@
         <div class="col">
             <label for="shelter" class="form-label">{{ __('ui.contact_form.shelters') }}</label>
             <select
-                wire:model="form.shelter"
+                wire:model="form.shelter_id"
                 id="shelter"
                 class="form-control"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
                 @foreach($shelters as $shelter)
                     <option value="{{ $shelter->id }}">{{ $shelter->name }}</option>
-{{--                    <option value="02">Shelter 2</option>--}}
-{{--                    <option value="03">Shelter 3</option>--}}
                 @endforeach
             </select>
         </div>

@@ -56,7 +56,7 @@ class User extends Authenticatable
     {
         $client = User::where('email', $properties['email'])->first();
 
-        if ($client === null) {
+        if (is_null($client)) {
             $client = User::create([
                 'first_name' => $properties['first_name'],
                 'last_name' => $properties['last_name'],

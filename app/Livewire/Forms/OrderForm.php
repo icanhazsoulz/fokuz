@@ -15,7 +15,7 @@ class OrderForm extends Form
     #[Validate('required|string')]
     public string $last_name = '';
 
-    #[Validate('required|email|unique:users')]
+    #[Validate('required|email')]
     public string $email = '';
 
     #[Validate('required|string')]
@@ -31,7 +31,7 @@ class OrderForm extends Form
     public string $client_source = '';
 
     #[Validate('nullable|string')]
-    public string $shelter = '';
+    public ?string $shelter_id = null;
 
     /**
      * @throws ValidationException
