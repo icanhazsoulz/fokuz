@@ -30,8 +30,8 @@ class OrderForm extends Form
     #[Validate('required|string')]
     public string $client_source = '';
 
-    #[Validate('nullable|string')]
-    public ?string $shelter_id = null;
+    #[Validate('nullable|integer')]
+    public ?int $shelter_id = null;
 
     /**
      * @throws ValidationException

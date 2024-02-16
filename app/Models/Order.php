@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
@@ -22,19 +22,21 @@ class Order extends Model
 
     public static function create(array $all)
     {
-        $client = User::findOrCreate([
-            'first_name' => $all['first_name'],
-            'last_name' => $all['last_name'],
-            'email' => $all['email'],
-            'phone' => $all['phone'],
-        ]);
+        DB::transaction(function() use ($all) {
+            $client = User::findOrCreate([
+                'first_name' => $all['first_name'],
+                'last_name' => $all['last_name'],
+                'email' => $all['email'],
+                'phone' => $all['phone'],
+            ]);
 
-        $client->orders()->create([
-            'theme' => $all['theme'],
-            'description' => $all['description'],
-            'client_source' => $all['client_source'],
-            'shelter_id' => $all['shelter_id'],
-        ]);
+            $client->orders()->create([
+                'theme' => $all['theme'],
+                'description' => $all['description'],
+                'client_source' => $all['client_source'],
+                'shelter_id' => $all['shelter_id'],
+            ]);
+        });
     }
 
     public function user(): BelongsTo
@@ -42,8 +44,8 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function shelter(): HasOne
+    public function shelter(): BelongsTo
     {
-        return $this->hasOne(Shelter::class);
+        return $this->belongsTo(Shelter::class);
     }
 }

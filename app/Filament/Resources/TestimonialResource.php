@@ -23,8 +23,6 @@ class TestimonialResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->numeric(),
                 Forms\Components\TextInput::make('author')
                     ->maxLength(125),
                 Forms\Components\Textarea::make('text')
