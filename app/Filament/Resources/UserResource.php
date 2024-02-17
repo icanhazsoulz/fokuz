@@ -35,7 +35,7 @@ class UserResource extends Resource
                     ->tel()
                     ->maxLength(125),
                 Forms\Components\TextInput::make('name')
-                    ->name('Nickname')
+                    ->label('Nickname')
                     ->maxLength(125),
             ]);
     }
