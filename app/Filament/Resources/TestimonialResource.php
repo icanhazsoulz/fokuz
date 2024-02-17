@@ -6,6 +6,10 @@ use App\Filament\Resources\TestimonialResource\Pages;
 use App\Filament\Resources\TestimonialResource\RelationManagers;
 use App\Models\Testimonial;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -17,20 +21,38 @@ class TestimonialResource extends Resource
 {
     protected static ?string $model = Testimonial::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-trophy';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('author')
-                    ->maxLength(125),
-                Forms\Components\Textarea::make('text')
+                Select::make('user_id')
+                    ->label('Client')
+                    ->relationship('user', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->createOptionForm([
+                        TextInput::make('first_name')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('last_name')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('email')
+                            ->required()
+                            ->email()
+
+                    ])
+                    ->columnSpanFull()
+                    ->required(),
+                Textarea::make('text')
                     ->required()
                     ->maxLength(65535)
+                    ->rows(5)
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('avatar')
-                    ->maxLength(125),
+                FileUpload::make('avatar')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -38,13 +60,11 @@ class TestimonialResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('author')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('avatar')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('text')
+                    ->words(10)
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -58,7 +78,8 @@ class TestimonialResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->modalWidth('xl'),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
