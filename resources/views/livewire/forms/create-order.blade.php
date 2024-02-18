@@ -61,18 +61,18 @@
     </div>
     <div class="row">
         <div class="col-12 mb-3">
-            <label class="required form-label" for="theme" class="form-label">{{ __('ui.contact_form.theme') }}</label>
+            <label class="required form-label" for="category" class="form-label">{{ __('ui.contact_form.category') }}</label>
             <select
-                wire:model="form.theme"
-                id="theme"
+                wire:model="form.category"
+                id="category"
                 class="form-control"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                <option value="{{ __('ui.categories.cats') }}">{{ __('ui.categories.cats') }}</option>
-                <option value="{{ __('ui.categories.dogs') }}">{{ __('ui.categories.dogs') }}</option>
-                <option value="{{ __('ui.categories.small_animals') }}">{{ __('ui.categories.small_animals') }}</option>
+                <option value="{{ __('ui.category.cats') }}">{{ __('ui.category.cats') }}</option>
+                <option value="{{ __('ui.category.dogs') }}">{{ __('ui.category.dogs') }}</option>
+                <option value="{{ __('ui.category.small_animals') }}">{{ __('ui.category.small_animals') }}</option>
             </select>
-            @error('form.theme')
+            @error('form.category')
                 <span class="error text-danger">{{ $message }}</span>
             @enderror
         </div>
@@ -96,9 +96,10 @@
                 class="form-control"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                <option value="google">Google</option>
-                <option value="ads">Ads</option>
-                <option value="recommendation">Friends recommendation</option>
+                <option value="Internet search">Internet search</option>
+                <option value="Friend recommendation">Friend recommendation</option>
+                <option value="Facebook ads">Facebook ads</option>
+                <option value="Other ads">Other ads</option>
             </select>
             @error('form.client_source')
             <span class="error text-danger">{{ $message }}</span>

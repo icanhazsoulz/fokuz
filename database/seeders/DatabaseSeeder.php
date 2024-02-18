@@ -10,6 +10,7 @@ use App\Models\Testimonial;
 use App\Models\User;
 use Database\Factories\TestimonialFactory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -38,15 +39,15 @@ class DatabaseSeeder extends Seeder
 
         $this->call([ShelterSeeder::class]);
 
-        $clients = User::factory(5)->create();
+        $clients = User::factory(15)->create();
         foreach ($clients as $client) {
             $client->assignRole('client');
 
             $order = new Order([
                 'user_id' => $client->id,
-                'theme' => 'Katzen',
+                'category' => Arr::random(['cats', 'dogs', 'small_animals']),
                 'description' => fake()->text(100),
-                'client_source' => 'google',
+                'client_source' => Arr::random(['web_search', 'recommendation', 'facebook_ads', 'other_ads']),
                 'shelter_id' => 1
             ]);
             $order->save();
@@ -66,7 +67,7 @@ class DatabaseSeeder extends Seeder
             $testimonial->save();
         }
 
-        Testimonial::factory(5)->create();
+        Testimonial::factory(7)->create();
         Faq::factory(10)->create();
 
         // \App\Models\User::factory(10)->create();

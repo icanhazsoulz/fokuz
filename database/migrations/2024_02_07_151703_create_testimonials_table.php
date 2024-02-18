@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('author')->nullable();
             $table->text('text');
             $table->string('avatar')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();

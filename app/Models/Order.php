@@ -14,7 +14,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'theme',
+        'category',
         'description',
         'client_source',
         'shelter_id',
@@ -31,7 +31,7 @@ class Order extends Model
             ]);
 
             $client->orders()->create([
-                'theme' => $all['theme'],
+                'category' => $all['category'],
                 'description' => $all['description'],
                 'client_source' => $all['client_source'],
                 'shelter_id' => $all['shelter_id'],

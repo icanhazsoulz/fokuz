@@ -9,6 +9,8 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -28,7 +30,7 @@ class OrderResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('shelter_id')
                     ->numeric(),
-                Forms\Components\TextInput::make('theme')
+                Forms\Components\TextInput::make('category')
                     ->required()
                     ->maxLength(125),
                 Forms\Components\Textarea::make('description')
@@ -43,25 +45,35 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.first_name')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('shelter.name')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('theme')
+                TextColumn::make('user.first_name')
+                    ->label('First name'),
+                TextColumn::make('user.last_name')
+                    ->label('Last name'),
+                TextColumn::make('category')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('client_source')
+                TextColumn::make('shelter.name')
+                    ->sortable(),
+                TextColumn::make('client_source')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('category')
+                    ->options([
+                        'cats' => 'Katzen',
+                        'dogs' => 'Hunde',
+                        'small_animals' => 'Kleintiere'
+                    ]),
+                SelectFilter::make('client_source')
+                    ->options([
+                        'web_search' => 'Internet search',
+                        'recommendation' => 'Friend recommendation',
+                        'facebook_ads' => 'Facebook ads',
+                        'other_ads' => 'Other ads',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

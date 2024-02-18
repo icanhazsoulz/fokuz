@@ -26,7 +26,7 @@ class StoreOrderRequest extends FormRequest
             'last_name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'theme' => 'nullable',
+            'category' => 'nullable',
             'description' => 'nullable',
             'client_source' => 'required',
             'shelter' => 'nullable',

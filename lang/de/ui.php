@@ -22,7 +22,7 @@ return [
         'blog' => 'Blog',
         'contact' => 'Kontakt',
     ],
-    'categories' => [
+    'category' => [
         'cats' => 'Katzen',
         'dogs' => 'Hunde',
         'small_animals' => 'Kleintiere',
@@ -33,7 +33,7 @@ return [
         'last_name' => 'Nachname',
         'email' => 'E-Mail-Adresse',
         'phone' => 'Telefonnummer',
-        'theme' => 'Worum geht es?',
+        'category' => 'Worum geht es?',
         'description' => 'Erzähle mich kurz etwas über dich und dein Anliegen',
         'client_source' => 'Woher kennst du mich?',
         'shelters' => 'Tierheime',
