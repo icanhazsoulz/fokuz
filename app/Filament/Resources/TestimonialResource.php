@@ -6,6 +6,7 @@ use App\Filament\Resources\TestimonialResource\Pages;
 use App\Filament\Resources\TestimonialResource\RelationManagers;
 use App\Models\Testimonial;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -14,6 +15,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\CheckboxColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -54,7 +56,7 @@ class TestimonialResource extends Resource
                     ->columnSpanFull(),
                 FileUpload::make('avatar')
                     ->columnSpanFull(),
-                Forms\Components\Checkbox::make('status')
+                Checkbox::make('status')
                     ->label('Published')
             ]);
     }
@@ -63,6 +65,7 @@ class TestimonialResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('avatar'),
                 TextColumn::make('author')
                     ->searchable(),
                 TextColumn::make('text')
