@@ -6,9 +6,16 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\CheckboxColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -23,7 +30,15 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('title')
+                    ->columnSpanFull(),
+                Textarea::make('content')
+                    ->rows(10)
+                    ->columnSpanFull(),
+                FileUpload::make('image')
+                    ->columnSpanFull(),
+                Checkbox::make('status')
+                    ->label('Published'),
             ]);
     }
 
@@ -31,7 +46,20 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make('image'),
+                TextColumn::make('title')
+                    ->wrap()
+                    ->searchable(),
+                TextColumn::make('content')
+                    ->words(50)
+                    ->wrap()
+                    ->searchable(),
+                CheckboxColumn::make('status')
+                    ->label('Published'),
+                TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

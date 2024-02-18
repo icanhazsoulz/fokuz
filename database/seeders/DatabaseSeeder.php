@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Order;
+use App\Models\Post;
 use App\Models\Testimonial;
 use App\Models\User;
 use Database\Factories\TestimonialFactory;
@@ -69,6 +70,7 @@ class DatabaseSeeder extends Seeder
 
         Testimonial::factory(7)->create();
         Faq::factory(10)->create();
+        Post::factory(25)->create();
 
         // \App\Models\User::factory(10)->create();
 
