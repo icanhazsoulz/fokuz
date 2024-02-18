@@ -33,7 +33,7 @@ class TestimonialResource extends Resource
             ->schema([
                 Select::make('user_id')
                     ->label('Client')
-                    ->relationship('user', 'first_name')
+                    ->relationship('user', 'email')
                     ->searchable()
                     ->preload()
                     ->createOptionForm([
@@ -78,6 +78,7 @@ class TestimonialResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])
