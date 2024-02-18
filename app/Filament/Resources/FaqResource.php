@@ -6,6 +6,7 @@ use App\Filament\Resources\FaqResource\Pages;
 use App\Filament\Resources\FaqResource\RelationManagers;
 use App\Models\Faq;
 use Filament\Forms;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -17,18 +18,25 @@ class FaqResource extends Resource
 {
     protected static ?string $model = Faq::class;
 
+    protected static ?string $navigationLabel = 'FAQs';
+
     protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
+
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('question')
+                Textarea::make('question')
                     ->required()
-                    ->maxLength(125),
-                Forms\Components\TextInput::make('answer')
+                    ->maxLength(125)
+                    ->columnSpanFull(),
+                Textarea::make('answer')
                     ->required()
-                    ->maxLength(125),
+                    ->rows(5)
+                    ->maxLength(125)
+                    ->columnSpanFull(),
             ]);
     }
 

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Order;
 use App\Models\Testimonial;
@@ -66,7 +67,7 @@ class DatabaseSeeder extends Seeder
         }
 
         Testimonial::factory(5)->create();
-
+        Faq::factory(10)->create();
 
         // \App\Models\User::factory(10)->create();
 

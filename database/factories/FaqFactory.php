@@ -17,7 +17,8 @@ class FaqFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'question' => fake()->text(50),
+            'answer' => fake() ->text(200),
         ];
     }
 }
