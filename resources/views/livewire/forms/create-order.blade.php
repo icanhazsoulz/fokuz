@@ -68,9 +68,9 @@
                 class="form-control"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                <option value="{{ __('ui.category.cats') }}">{{ __('ui.category.cats') }}</option>
-                <option value="{{ __('ui.category.dogs') }}">{{ __('ui.category.dogs') }}</option>
-                <option value="{{ __('ui.category.small_animals') }}">{{ __('ui.category.small_animals') }}</option>
+                <option value="cats">{{ __('ui.category.cats') }}</option>
+                <option value="dogs">{{ __('ui.category.dogs') }}</option>
+                <option value="small_animals">{{ __('ui.category.small_animals') }}</option>
             </select>
             @error('form.category')
                 <span class="error text-danger">{{ $message }}</span>
@@ -96,10 +96,10 @@
                 class="form-control"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                <option value="Internet search">Internet search</option>
-                <option value="Friend recommendation">Friend recommendation</option>
-                <option value="Facebook ads">Facebook ads</option>
-                <option value="Other ads">Other ads</option>
+                <option value="web_search">Internet search</option>
+                <option value="recommendation">Friend recommendation</option>
+                <option value="facebook_ads">Facebook ads</option>
+                <option value="other_ads">Other ads</option>
             </select>
             @error('form.client_source')
             <span class="error text-danger">{{ $message }}</span>

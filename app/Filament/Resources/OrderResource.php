@@ -6,9 +6,11 @@ use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -26,10 +28,8 @@ class OrderResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('shelter_id')
-                    ->numeric(),
+                    ->relationship('user', 'email')
+                    ->label('Client'),
                 Forms\Components\TextInput::make('category')
                     ->required()
                     ->maxLength(125),
@@ -38,6 +38,10 @@ class OrderResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('client_source')
                     ->maxLength(125),
+                Forms\Components\Select::make('shelter_id')
+                    ->relationship('shelter', 'name'),
+                Checkbox::make('status')
+                    ->label('Completed'),
             ]);
     }
 
@@ -59,7 +63,10 @@ class OrderResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                CheckboxColumn::make('status')
+                    ->label('Completed'),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 SelectFilter::make('category')
                     ->options([
@@ -77,7 +84,7 @@ class OrderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-//                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -96,10 +103,7 @@ class OrderResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListOrders::route('/'),
-            'create' => Pages\CreateOrder::route('/create'),
-            'view' => Pages\ViewOrder::route('/{record}'),
-            'edit' => Pages\EditOrder::route('/{record}/edit'),
+            'index' => Pages\ManageOrders::route('/'),
         ];
     }
 }

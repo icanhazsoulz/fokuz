@@ -33,7 +33,7 @@ class TestimonialResource extends Resource
             ->schema([
                 Select::make('user_id')
                     ->label('Client')
-                    ->relationship('user', 'name')
+                    ->relationship('user', 'first_name')
                     ->searchable()
                     ->preload()
                     ->createOptionForm([

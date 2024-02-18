@@ -22,7 +22,7 @@ class OrderForm extends Form
     public string $phone = '';
 
     #[Validate('required|string')]
-    public string $theme = '';
+    public string $category = '';
 
     #[Validate('nullable|string')]
     public string $description = '';
