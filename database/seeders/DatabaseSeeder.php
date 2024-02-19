@@ -7,6 +7,7 @@ use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Order;
 use App\Models\Post;
+use App\Models\Shelter;
 use App\Models\Testimonial;
 use App\Models\User;
 use Database\Factories\TestimonialFactory;
@@ -38,7 +39,8 @@ class DatabaseSeeder extends Seeder
         $admin->save();
         $admin->assignRole('admin');
 
-        $this->call([ShelterSeeder::class]);
+//        $this->call([ShelterSeeder::class]);
+        Shelter::factory(8)->create();
 
         $clients = User::factory(15)->create();
         foreach ($clients as $client) {
@@ -49,7 +51,7 @@ class DatabaseSeeder extends Seeder
                 'category' => Arr::random(['cats', 'dogs', 'small_animals']),
                 'description' => fake()->text(100),
                 'client_source' => Arr::random(['web_search', 'recommendation', 'facebook_ads', 'other_ads']),
-                'shelter_id' => 1
+                'shelter_id' => rand(1, 7),
             ]);
             $order->save();
 

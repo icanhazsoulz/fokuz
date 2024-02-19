@@ -17,7 +17,12 @@ class ShelterFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->company,
+            'address' => fake()->address,
+            'email' => fake()->email,
+            'website' => fake()->url,
+            'phone' => fake()->phoneNumber,
+            'notes' => fake()->text(50),
         ];
     }
 }
