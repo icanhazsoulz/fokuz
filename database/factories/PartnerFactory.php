@@ -17,7 +17,12 @@ class PartnerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => fake()->company,
+            'subtitle' => fake()->text(100),
+            'description' => fake()->text(250),
+            'logo' => fake()->imageUrl,
+            'website' => fake()->url,
+            'status' => rand(0, 1),
         ];
     }
 }
