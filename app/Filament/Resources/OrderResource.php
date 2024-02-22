@@ -50,21 +50,24 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('user.first_name')
-                    ->label('First name'),
+                    ->label('First name')
+                    ->searchable(),
                 TextColumn::make('user.last_name')
-                    ->label('Last name'),
+                    ->label('Last name')
+                    ->searchable(),
                 TextColumn::make('category')
-                    ->searchable(),
-                TextColumn::make('shelter.name')
                     ->sortable(),
-                TextColumn::make('client_source')
+                TextColumn::make('shelter.name')
                     ->searchable(),
+                TextColumn::make('client_source')
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 CheckboxColumn::make('status')
-                    ->label('Completed'),
+                    ->label('Completed')
+                    ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
