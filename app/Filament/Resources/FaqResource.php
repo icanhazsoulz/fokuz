@@ -12,6 +12,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\CheckboxColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -48,11 +49,11 @@ class FaqResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('question')
+                TextColumn::make('question')
                     ->words(20)
                     ->wrap()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('answer')
+                TextColumn::make('answer')
                     ->words(40)
                     ->wrap()
                     ->searchable(),
@@ -64,7 +65,8 @@ class FaqResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->modalHeading('Delete record'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
