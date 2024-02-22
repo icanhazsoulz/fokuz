@@ -32,6 +32,7 @@ class PartnerResource extends Resource
                     ->maxLength(65535)
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('logo')
+                    ->label('Image')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('website'),
                 Forms\Components\Checkbox::make('status')
@@ -46,9 +47,11 @@ class PartnerResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('logo')
+                    ->label('Image')
                     ->searchable(),
                 Tables\Columns\CheckboxColumn::make('status')
-                    ->label('Published'),
+                    ->label('Published')
+                    ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
