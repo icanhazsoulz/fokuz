@@ -60,6 +60,7 @@ class FaqResource extends Resource
                 CheckboxColumn::make('status')
                     ->label('Published'),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])
