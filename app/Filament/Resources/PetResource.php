@@ -5,10 +5,15 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PetResource\Pages;
 use App\Filament\Resources\PetResource\RelationManagers;
 use App\Models\Pet;
+use App\Models\Type;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -23,22 +28,41 @@ class PetResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\DatePicker::make('date_of_birth')
-                    ->required(),
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->required()
                     ->maxLength(125),
+                DatePicker::make('date_of_birth')
+                    ->required(),
+                Select::make('type')
+                    ->options(Type::all()->pluck('name', 'key'))
+                    ->required(),
+                Select::make('user_id')
+                    ->label('Owner')
+                    ->relationship(
+                        name: 'user',
+                        titleAttribute: 'full_name',
+                        modifyQueryUsing: fn (Builder $query) => $query->whereNotNull('first_name')->whereNotNull('last_name'),
+                    )
+                    ->searchable()
+                    ->preload()
+                    ->createOptionForm([
+                        TextInput::make('first_name')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('last_name')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('email')
+                            ->email()
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('phone')
+                            ->tel()
+                            ->required(),
+                    ]),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
-                Forms\Components\TextInput::make('type')
-                    ->required()
-                    ->maxLength(125),
-                Forms\Components\TextInput::make('category')
-                    ->required()
-                    ->maxLength(125),
+
             ]);
     }
 
@@ -46,33 +70,30 @@ class PetResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('date_of_birth')
-                    ->date()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('type')
+                Tables\Columns\TextColumn::make('type.name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('category')
+                Tables\Columns\TextColumn::make('date_of_birth')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('user.full_name')
+                    ->label('Owner')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('type_id')
+                    ->label('Type')
+                    ->options(Type::all()->pluck('name', 'id')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

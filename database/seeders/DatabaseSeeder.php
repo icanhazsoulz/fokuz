@@ -3,13 +3,16 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Order;
 use App\Models\Partner;
+use App\Models\Pet;
 use App\Models\Post;
 use App\Models\Shelter;
 use App\Models\Testimonial;
+use App\Models\Type;
 use App\Models\User;
 use Database\Factories\TestimonialFactory;
 use Illuminate\Database\Seeder;
@@ -40,18 +43,32 @@ class DatabaseSeeder extends Seeder
         $admin->save();
         $admin->assignRole('admin');
 
-//        $this->call([ShelterSeeder::class]);
+        $this->call([CategorySeeder::class, ClientSourceSeeder::class, TypeSeeder::class]);
+
         Shelter::factory(8)->create();
 
         $clients = User::factory(15)->create();
         foreach ($clients as $client) {
             $client->assignRole('client');
 
+            $type = Type::find(rand(1, 4));
+            $category_id = match ($type->key) {
+                'cat' => 1,
+                'dog' => 2,
+                default => 3,
+            };
+
+            Pet::factory()->create([
+                'user_id' => $client->id,
+                'type_id' => $type->id,
+                'category_id' => $category_id,
+            ]);
+
             $order = new Order([
                 'user_id' => $client->id,
-                'category' => Arr::random(['cats', 'dogs', 'small_animals']),
+                'category' => $category_id,
                 'description' => fake()->text(100),
-                'client_source' => Arr::random(['web_search', 'recommendation', 'facebook_ads', 'other_ads']),
+                'client_source' => rand(1, 5),
                 'shelter_id' => rand(1, 7),
             ]);
             $order->save();

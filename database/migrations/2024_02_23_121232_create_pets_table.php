@@ -17,9 +17,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('type_id')->constrained('types')->nullOnDelete();
-            $table->foreignId('category_id')->constrained('categories')->nullOnDelete();
+            $table->unsignedBigInteger('type_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('type_id')->references('id')->on('types')->nullOnDelete();
+            $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();
         });
     }
 
