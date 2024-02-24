@@ -11,11 +11,26 @@ class CreateOrder extends Component
 {
     public OrderForm $form;
 
+    public array $categories = [];
     public array $shelters = [];
+    public array $client_sources = [];
 
     public function mount()
     {
-        $this->shelters = DB::table('shelters')->get()->toArray();
+        $this->categories = DB::table('categories')
+            ->orderBy('id', 'asc')
+            ->pluck('key', 'id')
+            ->toArray();
+
+        $this->shelters = DB::table('shelters')
+            ->orderBy('id', 'asc')
+            ->pluck('name', 'id')
+            ->toArray();
+
+        $this->client_sources = DB::table('client_sources')
+            ->orderBy('id', 'asc')
+            ->pluck('key', 'id')
+            ->toArray();
     }
 
     /**

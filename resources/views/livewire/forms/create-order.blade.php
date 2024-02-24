@@ -68,9 +68,9 @@
                 class="form-control"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                <option value="cats">{{ __('ui.category.cats') }}</option>
-                <option value="dogs">{{ __('ui.category.dogs') }}</option>
-                <option value="small_animals">{{ __('ui.category.small_animals') }}</option>
+                @foreach($categories as $id => $key)
+                    <option value="{{ $id }}">{{ __('ui.category.'.$key) }}</option>
+                @endforeach
             </select>
             @error('form.category')
                 <span class="error text-danger">{{ $message }}</span>
@@ -96,13 +96,12 @@
                 class="form-control"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                <option value="web_search">Internet search</option>
-                <option value="recommendation">Friend recommendation</option>
-                <option value="facebook_ads">Facebook ads</option>
-                <option value="other_ads">Other ads</option>
+                @foreach($client_sources as $id => $key)
+                    <option value="{{ $id }}">{{ __('ui.client_source.'.$key) }}</option>
+                @endforeach
             </select>
             @error('form.client_source')
-            <span class="error text-danger">{{ $message }}</span>
+{{--            <span class="error text-danger">{{ $message }}</span>--}}
             @enderror
         </div>
         <div class="col">
@@ -113,8 +112,8 @@
                 class="form-control"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                @foreach($shelters as $shelter)
-                    <option value="{{ $shelter->id }}">{{ $shelter->name }}</option>
+                @foreach($shelters as $id => $name)
+                    <option value="{{ $id }}">{{ $name }}</option>
                 @endforeach
             </select>
         </div>

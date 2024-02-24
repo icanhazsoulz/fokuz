@@ -23,9 +23,9 @@ return [
         'contact' => 'Kontakt',
     ],
     'category' => [
-        'cats' => 'Katzen',
-        'dogs' => 'Hunde',
-        'small_animals' => 'Kleintiere',
+        'cat' => 'Katze',
+        'dog' => 'Hund',
+        'small_animal' => 'Kleintier',
     ],
     'slogan' => 'Mit jeder Photobestellung spenden Sie für Tiere in Not',
     'contact_form' => [
@@ -43,4 +43,11 @@ return [
         'privacy_policy' => 'Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage gemäß der Datenschutzerklärung erhoben und verarbeitet werden.*',
         'submit' => 'Senden',
     ],
+    'client_source' => [
+        'ads' => 'Advertisement',
+        'instagram' => 'Instagram',
+        'other' => 'Other',
+        'recommendation' => 'Recommendation',
+        'web_search' => 'Web search',
+    ]
 ];
