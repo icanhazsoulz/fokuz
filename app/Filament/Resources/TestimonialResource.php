@@ -33,7 +33,11 @@ class TestimonialResource extends Resource
             ->schema([
                 Select::make('user_id')
                     ->label('Client')
-                    ->relationship('user', 'email')
+                    ->relationship(
+                        name: 'user',
+                        titleAttribute: 'full_name',
+                        modifyQueryUsing: fn (Builder $query) => $query->whereNotNull('first_name')->whereNotNull('last_name'),
+                    )
                     ->searchable()
                     ->preload()
                     ->createOptionForm([
