@@ -41,14 +41,11 @@ class MessageResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('user.name')
-                    ->label('Nickname'),
-                TextColumn::make('user.first_name')
-                    ->label('First name'),
-                TextColumn::make('user.last_name')
-                    ->label('Last name'),
+                TextColumn::make('user.full_name')
+                    ->label('Client')
+                    ->searchable(),
                 TextColumn::make('message')
-                    ->words(10)
+                    ->words(20)
                     ->wrap(),
                 TextColumn::make('status')
                     ->badge(),
