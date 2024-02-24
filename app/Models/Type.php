@@ -10,8 +10,8 @@ class Type extends Model
 {
     use HasFactory;
 
-    public function pets(): HasMany
-    {
-        return $this->hasMany(Pet::class);
-    }
+//    public function pets(): HasMany
+//    {
+//        return $this->hasMany(Pet::class);
+//    }
 }

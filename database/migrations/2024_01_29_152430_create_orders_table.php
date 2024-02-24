@@ -14,15 +14,17 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('category');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->text('description')->nullable();
-            $table->string('client_source')->nullable();
             $table->unsignedBigInteger('shelter_id')->nullable();
+            $table->unsignedBigInteger('client_source_id')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();
             $table->foreign('shelter_id')->references('id')->on('shelters')->nullOnDelete();
+            $table->foreign('client_source_id')->references('id')->on('client_sources')->nullOnDelete();
         });
     }
 

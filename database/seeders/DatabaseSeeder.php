@@ -52,24 +52,23 @@ class DatabaseSeeder extends Seeder
             $client->assignRole('client');
 
             $type = Type::find(rand(1, 4));
+            Pet::factory()->create([
+                'user_id' => $client->id,
+                'type_id' => $type->id,
+            ]);
+
             $category_id = match ($type->key) {
                 'cat' => 1,
                 'dog' => 2,
                 default => 3,
             };
 
-            Pet::factory()->create([
-                'user_id' => $client->id,
-                'type_id' => $type->id,
-                'category_id' => $category_id,
-            ]);
-
             $order = new Order([
                 'user_id' => $client->id,
-                'category' => $category_id,
+                'category_id' => $category_id,
                 'description' => fake()->text(100),
-                'client_source' => rand(1, 5),
                 'shelter_id' => rand(1, 7),
+                'client_source_id' => rand(1, 5),
             ]);
             $order->save();
 

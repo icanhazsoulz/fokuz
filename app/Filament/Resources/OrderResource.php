@@ -4,6 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
+use App\Models\Category;
+use App\Models\ClientSource;
 use App\Models\Order;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
@@ -49,17 +51,14 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('user.first_name')
-                    ->label('First name')
+                TextColumn::make('user.full_name')
+                    ->label('Client')
                     ->searchable(),
-                TextColumn::make('user.last_name')
-                    ->label('Last name')
-                    ->searchable(),
-                TextColumn::make('category')
+                TextColumn::make('category.name')
                     ->sortable(),
                 TextColumn::make('shelter.name')
                     ->searchable(),
-                TextColumn::make('client_source')
+                TextColumn::make('client_source.name')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -71,19 +70,12 @@ class OrderResource extends Resource
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
-                SelectFilter::make('category')
-                    ->options([
-                        'cats' => 'Katzen',
-                        'dogs' => 'Hunde',
-                        'small_animals' => 'Kleintiere'
-                    ]),
-                SelectFilter::make('client_source')
-                    ->options([
-                        'web_search' => 'Internet search',
-                        'recommendation' => 'Friend recommendation',
-                        'facebook_ads' => 'Facebook ads',
-                        'other_ads' => 'Other ads',
-                    ]),
+                SelectFilter::make('category_id')
+                    ->label('Category')
+                    ->options(Category::all()->pluck('name', 'id')),
+                SelectFilter::make('client_source_id')
+                    ->label('Client Source')
+                    ->options(ClientSource::all()->pluck('name', 'id')),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
