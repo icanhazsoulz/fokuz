@@ -28,7 +28,11 @@ class MessageResource extends Resource
         return $form
             ->schema([
                 Select::make('user_id')
-                    ->relationship('user', 'email')
+                    ->relationship(
+                        name: 'user',
+                        titleAttribute: 'full_name',
+                        modifyQueryUsing: fn (Builder $query) => $query->whereNotNull('first_name')->whereNotNull('last_name'),
+                    )
                     ->columnSpanFull(),
                 Textarea::make('message')
                     ->rows(10)
