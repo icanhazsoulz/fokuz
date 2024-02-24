@@ -27,6 +27,8 @@ class FaqResource extends Resource
 
     protected static ?string $modelLabel = 'FAQ';
 
+    protected static ?string $pluralModelLabel = 'FAQs';
+
     public static function form(Form $form): Form
     {
         return $form
