@@ -46,23 +46,18 @@ class MessageResource extends Resource
                     ->searchable(),
                 TextColumn::make('message')
                     ->words(20)
-                    ->wrap(),
+                    ->wrap()
+                    ->searchable(),
                 TextColumn::make('status')
                     ->badge(),
                 TextColumn::make('created_at')
                     ->dateTime('d-m-Y h:i:A')
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable(),
+//                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
-                Tables\Filters\SelectFilter::make('user')
-//                    ->relationship('user', 'last_name')
-                    ->options([
-                        '01' => 'User 1',
-                        '02' => 'User 2',
-                        '03' => 'User 3',
-                    ]),
+                //
             ])
             ->actions([
                 Tables\Actions\ViewAction::make()
