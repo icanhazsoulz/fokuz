@@ -21,6 +21,9 @@ return [
         'shelters' => 'Tierheime',
         'blog' => 'Blog',
         'contact' => 'Kontakt',
+        'cats' => 'Katzen',
+        'dogs' => 'Hunde',
+        'small_animals' => 'Kleintiere'
     ],
     'category' => [
         'cat' => 'Katze',
