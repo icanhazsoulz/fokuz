@@ -20,11 +20,9 @@ return new class extends Migration
             $table->string('breed')->nullable();
             $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-//            $table->unsignedBigInteger('category_id')->nullable();
             $table->timestamps();
 
             $table->foreign('type_id')->references('id')->on('types')->nullOnDelete();
-//            $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();
         });
     }
 
