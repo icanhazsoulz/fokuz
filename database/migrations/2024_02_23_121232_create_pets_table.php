@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('type_id')->nullable();
             $table->enum('sex', ['male', 'female'])->nullable();
             $table->string('breed')->nullable();
-            $table->string('image')->nullable();
+            $table->string('photo')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
 
