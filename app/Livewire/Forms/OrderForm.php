@@ -33,6 +33,24 @@ class OrderForm extends Form
     #[Validate('nullable|integer')]
     public ?int $shelter_id = null;
 
+    #[Validate('nullable|string')]
+    public string $pet_name = '';
+
+    #[Validate('nullable|date')]
+    public string $pet_dob = '';
+
+    #[Validate('nullable|integer')]
+    public ?int $pet_type_id = null;
+
+    #[Validate('nullable|string')]
+    public string $pet_sex = '';
+
+    #[Validate('nullable|string')]
+    public string $pet_breed = '';
+
+    #[Validate('nullable|string')]
+    public string $pet_photo = '';
+
     /**
      * @throws ValidationException
      */

@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->date('date_of_birth');
+            $table->string('name')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->unsignedBigInteger('type_id')->nullable();
+            $table->enum('sex', ['male', 'female'])->nullable();
+            $table->string('breed')->nullable();
             $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
 //            $table->unsignedBigInteger('category_id')->nullable();

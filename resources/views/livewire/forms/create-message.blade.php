@@ -4,7 +4,7 @@
 >
     <div class="row mb-3">
         <div class="col">
-            <label class="required form-label" for="first-name">{{ __('ui.contact_form.first_name') }}</label>
+            <label class="required form-label" for="first-name">{{ __('ui.contact_form.client.first_name') }}</label>
             <input
                 wire:model="form.first_name"
                 id="first-name"
@@ -16,7 +16,7 @@
             @enderror
         </div>
         <div class="col">
-            <label class="required form-label" for="last-name">{{ __('ui.contact_form.last_name') }}</label>
+            <label class="required form-label" for="last-name">{{ __('ui.contact_form.client.last_name') }}</label>
             <input
                 wire:model="form.last_name"
                 id="last-name"
@@ -30,7 +30,7 @@
     </div>
     <div class="row mb-3">
         <div class="col">
-            <label class="required form-label" for="email" class="form-label">{{ __('ui.contact_form.email') }}</label>
+            <label class="required form-label" for="email" class="form-label">{{ __('ui.contact_form.client.email') }}</label>
             <input
                 wire:model="form.email"
                 type="email"
@@ -42,7 +42,7 @@
             @enderror
         </div>
         <div class="col">
-            <label class="required form-label" for="phone" class="form-label">{{ __('ui.contact_form.phone') }}</label>
+            <label class="required form-label" for="phone" class="form-label">{{ __('ui.contact_form.client.phone') }}</label>
             <input
                 wire:model="form.phone"
                 type="tel"

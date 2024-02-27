@@ -7,9 +7,10 @@
 >
 {{--    {{ \App\Models\User::where('email', 'a.stark@winterfell.com')->first() }}--}}
 {{--    @csrf--}}
+    <!-- START Client -->
     <div class="row mb-3">
         <div class="col">
-            <label class="required form-label" for="first-name">{{ __('ui.contact_form.first_name') }}</label>
+            <label class="required form-label" for="first-name">{{ __('ui.contact_form.client.first_name') }}</label>
             <input
                 wire:model="form.first_name"
                 id="first-name"
@@ -21,7 +22,7 @@
             @enderror
         </div>
         <div class="col">
-            <label class="required form-label" for="last-name">{{ __('ui.contact_form.last_name') }}</label>
+            <label class="required form-label" for="last-name">{{ __('ui.contact_form.client.last_name') }}</label>
             <input
                 wire:model="form.last_name"
                 id="last-name"
@@ -35,7 +36,7 @@
     </div>
     <div class="row mb-3">
         <div class="col">
-            <label class="required form-label" for="email" class="form-label">{{ __('ui.contact_form.email') }}</label>
+            <label class="required form-label" for="email" class="form-label">{{ __('ui.contact_form.client.email') }}</label>
             <input
                 wire:model="form.email"
                 type="email"
@@ -47,7 +48,7 @@
             @enderror
         </div>
         <div class="col">
-            <label class="required form-label" for="phone" class="form-label">{{ __('ui.contact_form.phone') }}</label>
+            <label class="required form-label" for="phone">{{ __('ui.contact_form.client.phone') }}</label>
             <input
                 wire:model="form.phone"
                 type="tel"
@@ -59,9 +60,91 @@
             @enderror
         </div>
     </div>
+    <!-- END Client -->
+    <!-- START Pet -->
+    <div class="row">
+        <div class="col-6 mb-3">
+            <label for="pet_name" class="form-label">{{ __('ui.contact_form.pet.name') }}</label>
+            <input
+                wire:model="form.pet_name"
+                type="text"
+                class="form-control"
+                id="pet_name"
+            >
+            @error('form.pet_name')
+                <span class="error text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="col-6 mb-3">
+            <label for="pet_dob" class="form-label">{{ __('ui.contact_form.pet.dob') }}</label>
+            <input
+                wire:model="form.pet_dob"
+                type="date"
+                class="form-control"
+                id="pet_dob"
+            >
+            @error('form.pet_dob')
+                <span class="error text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="col-6 mb-3">
+            <label for="pet_type" class="form-label">{{ __('ui.contact_form.pet.type.label') }}</label>
+            <select
+                wire:model="form.pet_type"
+                class="form-control"
+                id="pet_type"
+            >
+                <option value="">{{ __('ui.contact_form.empty_option') }}</option>
+                @foreach($pet_types as $id => $key)
+                    <option value="{{ $id }}">{{ __('ui.contact_form.pet.type.'.$key) }}</option>
+                @endforeach
+            </select>
+            @error('form.pet_type')
+            <span class="error text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="col-6 mb-3">
+            <label for="pet_sex" class="form-label">{{ __('ui.contact_form.pet.sex.label') }}</label>
+            <select
+                wire:model="form.pet_sex"
+                class="form-control"
+                id="pet_sex"
+            >
+                <option value="">{{ __('ui.contact_form.empty_option') }}</option>
+                <option value="male">{{ __('ui.contact_form.pet.sex.male') }}</option>
+                <option value="female">{{ __('ui.contact_form.pet.sex.female') }}</option>
+            </select>
+        </div>
+        <div class="col-6 mb-3">
+            <label for="pet_breed" class="form-label">{{ __('ui.contact_form.pet.breed') }}</label>
+            <input
+                wire:model="form.pet_breed"
+                type="text"
+                class="form-control"
+                id="pet_breed"
+            >
+            @error('form.pet_breed')
+                <span class="error text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="col-6 mb-3">
+            <label for="pet_photo" class="form-label">{{ __('ui.contact_form.pet.photo') }}</label>
+            <input
+                wire:model="pet_photo"
+                type="file"
+                class="form-control"
+                id="pet_photo"
+            >
+            @error('form.pet_photo')
+                <span class="error text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
+    <!-- END Pet -->
+    <!-- START Order -->
     <div class="row">
         <div class="col-12 mb-3">
-            <label class="required form-label" for="category" class="form-label">{{ __('ui.contact_form.category') }}</label>
+            <label class="required form-label" for="category" class="form-label">{{ __('ui.contact_form.order.category') }}</label>
             <select
                 wire:model="form.category"
                 id="category"
@@ -77,7 +160,7 @@
             @enderror
         </div>
         <div class="col-12 mb-3">
-            <label for="description" class="form-label">{{ __('ui.contact_form.description') }}</label>
+            <label for="description" class="form-label">{{ __('ui.contact_form.order.description') }}</label>
             <textarea
                 wire:model="form.description"
                 id="description"
@@ -89,7 +172,7 @@
     </div>
     <div class="row mb-3">
         <div class="col">
-            <label class="required form-label" for="client-source">{{ __('ui.contact_form.client_source') }}</label>
+            <label class="required form-label" for="client-source">{{ __('ui.contact_form.order.client_source') }}</label>
             <select
                 wire:model="form.client_source"
                 id="client-source"
@@ -105,7 +188,7 @@
             @enderror
         </div>
         <div class="col">
-            <label for="shelter" class="form-label">{{ __('ui.contact_form.shelters') }}</label>
+            <label for="shelter" class="form-label">{{ __('ui.contact_form.order.shelters') }}</label>
             <select
                 wire:model="form.shelter_id"
                 id="shelter"
@@ -118,6 +201,8 @@
             </select>
         </div>
     </div>
+    <!-- END Order -->
+
     {{--                <div class="mb-3">--}}
     {{--                    <label for="exampleInputPassword1" class="form-label">Password</label>--}}
     {{--                    <input type="password" class="form-control" id="exampleInputPassword1">--}}
@@ -127,5 +212,6 @@
 {{--        <input type="checkbox" class="form-check-input" id="exampleCheck1">--}}
 {{--        <label class="form-check-label" for="exampleCheck1">Check me out</label>--}}
 {{--    </div>--}}
+
     <button type="submit" class="btn btn-primary">{{ __('ui.contact_form.submit') }}</button>
 </form>

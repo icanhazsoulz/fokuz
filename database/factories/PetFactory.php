@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Pet>
@@ -17,8 +18,10 @@ class PetFactory extends Factory
     public function definition(): array
     {
         return [
-            'date_of_birth' => fake()->date,
             'name' => ucfirst(fake()->userName),
+            'date_of_birth' => fake()->date,
+            'sex' => Arr::random(['male', 'female']),
+            'breed' => Arr::random([fake()->word, '']),
             'image' => fake()->imageUrl,
         ];
     }

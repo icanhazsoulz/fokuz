@@ -13,6 +13,7 @@ class CreateOrder extends Component
 
     public array $categories = [];
     public array $shelters = [];
+    public array $pet_types = [];
     public array $client_sources = [];
 
     public function mount()
@@ -28,6 +29,11 @@ class CreateOrder extends Component
             ->toArray();
 
         $this->client_sources = DB::table('client_sources')
+            ->orderBy('id', 'asc')
+            ->pluck('key', 'id')
+            ->toArray();
+
+        $this->pet_types = DB::table('types')
             ->orderBy('id', 'asc')
             ->pluck('key', 'id')
             ->toArray();
