@@ -8,6 +8,7 @@ use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -32,8 +33,9 @@ class PostResource extends Resource
             ->schema([
                 TextInput::make('title')
                     ->columnSpanFull(),
-                Textarea::make('content')
-                    ->rows(10)
+                Textarea::make('excerpt')
+                    ->columnSpanFull(),
+                RichEditor::make('content')
                     ->columnSpanFull(),
                 FileUpload::make('image')
                     ->columnSpanFull(),
@@ -50,6 +52,9 @@ class PostResource extends Resource
                 TextColumn::make('title')
                     ->wrap()
                     ->searchable(),
+                TextColumn::make('excerpt')
+                    ->words(20)
+                    ->wrap(),
                 TextColumn::make('content')
                     ->words(50)
                     ->wrap()
