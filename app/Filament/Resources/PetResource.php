@@ -8,6 +8,7 @@ use App\Models\Pet;
 use App\Models\Type;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -36,6 +37,15 @@ class PetResource extends Resource
                 Select::make('type')
                     ->options(Type::all()->pluck('name', 'key'))
                     ->required(),
+                Select::make('sex')
+                    ->options([
+                        'male' => 'Male',
+                        'female' => 'Female',
+                    ])
+                    ->required(),
+                TextInput::make('breed')
+                    ->maxLength(125),
+                FileUpload::make('photo'),
                 Select::make('user_id')
                     ->label('Owner')
                     ->relationship(
@@ -60,8 +70,6 @@ class PetResource extends Resource
                             ->tel()
                             ->required(),
                     ]),
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
 
             ]);
     }
@@ -72,12 +80,15 @@ class PetResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('type.name')
-                    ->searchable(),
+                Tables\Columns\ImageColumn::make('photo'),
+                Tables\Columns\TextColumn::make('sex'),
                 Tables\Columns\TextColumn::make('date_of_birth')
                     ->date()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('type.name')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('breed')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('user.full_name')
                     ->label('Owner')
                     ->searchable(),
@@ -86,6 +97,7 @@ class PetResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 SelectFilter::make('type_id')
                     ->label('Type')

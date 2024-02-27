@@ -22,7 +22,7 @@ class PetFactory extends Factory
             'date_of_birth' => fake()->date,
             'sex' => Arr::random(['male', 'female']),
             'breed' => Arr::random([fake()->word, '']),
-            'image' => fake()->imageUrl,
+            'photo' => fake()->imageUrl,
         ];
     }
 }
