@@ -9,6 +9,9 @@ use App\Models\ClientSource;
 use App\Models\Order;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -29,18 +32,21 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'email')
-                    ->label('Client'),
-                Forms\Components\TextInput::make('category')
-                    ->required()
-                    ->maxLength(125),
-                Forms\Components\Textarea::make('description')
+                Select::make('user_id')
+                    ->label('Client')
+                    ->relationship(
+                        name: 'user',
+                        titleAttribute: 'full_name',
+                        modifyQueryUsing: fn (Builder $query) => $query->role('client'),
+                    ),
+                Select::make('category_id')
+                    ->relationship('category', 'name'),
+                Textarea::make('description')
                     ->maxLength(65535)
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('client_source')
-                    ->maxLength(125),
-                Forms\Components\Select::make('shelter_id')
+                Select::make('client_source_id')
+                    ->relationship('client_source', 'name'),
+                Select::make('shelter_id')
                     ->relationship('shelter', 'name'),
                 Checkbox::make('status')
                     ->label('Completed'),
