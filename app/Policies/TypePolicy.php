@@ -5,9 +5,15 @@ namespace App\Policies;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class TypePolicy
 {
+    public function before(): bool
+    {
+        return Auth::user()->hasRole('admin');
+    }
+
     /**
      * Determine whether the user can view any models.
      */
