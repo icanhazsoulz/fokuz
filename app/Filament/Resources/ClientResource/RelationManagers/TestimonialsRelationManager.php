@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\UserResource\RelationManagers;
+namespace App\Filament\Resources\ClientResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,19 +10,15 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MessagesRelationManager extends RelationManager
+class TestimonialsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'messages';
+    protected static string $relationship = 'testimonials';
 
-    public function isReadOnly(): bool
-    {
-        return false;
-    }
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('message')
+                Forms\Components\TextInput::make('text')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -31,9 +27,9 @@ class MessagesRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('message')
+            ->recordTitleAttribute('text')
             ->columns([
-                Tables\Columns\TextColumn::make('message'),
+                Tables\Columns\TextColumn::make('text'),
             ])
             ->filters([
                 //
