@@ -1,5 +1,5 @@
 <x-filament-panels::page>
-    @livewire(App\Filament\Widgets\Categories::class)
-    @livewire(App\Filament\Widgets\Types::class)
-    @livewire(App\Filament\Widgets\ClientSources::class)
+    @livewire('list-categories')
+    @livewire('list-types')
+    @livewire('list-client-sources')
 </x-filament-panels::page>

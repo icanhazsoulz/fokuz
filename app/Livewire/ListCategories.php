@@ -1,37 +1,44 @@
 <?php
 
-namespace App\Filament\Widgets;
+namespace App\Livewire;
 
 use App\Models\Category;
 use Filament\Forms\Components\TextInput;
-use Filament\Tables;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Actions\CreateAction;
-use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Concerns\InteractsWithTable;
+use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
-use Filament\Widgets\TableWidget as BaseWidget;
+use Livewire\Component;
 
-class Categories extends BaseWidget
+class ListCategories extends Component implements HasForms, HasTable
 {
-    protected static ?string $heading = 'Photoshooting categories';
+    use InteractsWithForms;
+    use InteractsWithTable;
 
     public function table(Table $table): Table
     {
         return $table
-            ->query(
-                Category::query()
-            )
+            ->heading('Photoshooting categories')
+            ->query(Category::query())
             ->columns([
-                Split::make([
+                Stack::make([
                     TextColumn::make('name'),
                 ])
             ])
             ->contentGrid([
-                'md' => 4,
-                'xl' => 6,
+                'md' => 2,
+                'xl' => 4,
+            ])
+            ->filters([
+                // ...
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
+                EditAction::make()
                     ->form([
                         TextInput::make('key')
                             ->required()
@@ -51,6 +58,14 @@ class Categories extends BaseWidget
                             ->required()
                             ->maxLength(125),
                     ]),
+            ])
+            ->bulkActions([
+                // ...
             ]);
+    }
+
+    public function render()
+    {
+        return view('livewire.list-categories');
     }
 }
