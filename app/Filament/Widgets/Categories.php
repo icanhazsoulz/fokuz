@@ -3,7 +3,9 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Category;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables;
+use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -29,10 +31,26 @@ class Categories extends BaseWidget
                 'xl' => 6,
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->form([
+                        TextInput::make('key')
+                            ->required()
+                            ->maxLength(125),
+                        TextInput::make('name')
+                            ->required()
+                            ->maxLength(125),
+                    ]),
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                CreateAction::make()
+                    ->form([
+                        TextInput::make('key')
+                            ->required()
+                            ->maxLength(125),
+                        TextInput::make('name')
+                            ->required()
+                            ->maxLength(125),
+                    ]),
             ]);
     }
 }
