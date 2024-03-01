@@ -56,6 +56,7 @@ class PostResource extends Resource
                     ->words(20)
                     ->wrap(),
                 TextColumn::make('content')
+                    ->html()
                     ->words(50)
                     ->wrap()
                     ->searchable(),
