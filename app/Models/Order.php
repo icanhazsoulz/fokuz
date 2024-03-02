@@ -23,6 +23,10 @@ class Order extends Model
         'shelter_id',
     ];
 
+    /**
+     * @param array $all Order form fields
+     * @return void
+     */
     public static function create(array $all)
     {
         DB::transaction(function() use ($all) {

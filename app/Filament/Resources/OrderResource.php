@@ -48,7 +48,13 @@ class OrderResource extends Resource
                     ->relationship('client_source', 'name'),
                 Select::make('shelter_id')
                     ->relationship('shelter', 'name'),
-                TextInput::make('status'),
+                Select::make('status')
+                    ->options([
+                        'new' => 'New',
+                        'processing' => 'Processing',
+                        'completed' => 'Completed',
+                        'cancelled' => 'Cancelled'
+                    ]),
             ]);
     }
 
@@ -56,6 +62,19 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('order_uid')
+                    ->label('ID')
+                    ->limit(10)
+                    ->tooltip(function (TextColumn $column): ?string {
+                        $state = $column->getState();
+
+                        if (strlen($state) <= $column->getCharacterLimit()) {
+                            return null;
+                        }
+
+                        // Only render the tooltip if the column content exceeds the length limit.
+                        return $state;
+                    }),
                 TextColumn::make('user.full_name')
                     ->label('Client')
                     ->searchable(),
@@ -70,6 +89,19 @@ class OrderResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'new' => 'info',
+                        'processing' => 'warning',
+                        'completed' => 'success',
+                        'cancelled' => 'danger'
+                    })
+                    ->icon(fn (string $state): string => match ($state) {
+                        'new' => 'heroicon-o-bell-alert',
+                        'processing' => 'heroicon-o-camera',
+                        'completed' => 'heroicon-o-check-badge',
+                        'cancelled' => 'heroicon-o-x-circle'
+                    })
                     ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
