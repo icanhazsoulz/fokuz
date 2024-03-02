@@ -33,6 +33,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigationGroups([
                 NavigationGroup::make()
+                    ->label('Content')
+                    ->collapsed(),
+                NavigationGroup::make()
                     ->label('Users'),
                 NavigationGroup::make()
                     ->label('Settings')
