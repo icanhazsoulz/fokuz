@@ -19,8 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->unsignedBigInteger('shelter_id')->nullable();
             $table->unsignedBigInteger('client_source_id')->nullable();
-            $table->boolean('status')->default(0);
-            // new, processing, completed
+            $table->enum('status', ['new', 'processing', 'completed', 'cancelled'])->default('new');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();

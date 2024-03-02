@@ -9,6 +9,7 @@ use App\Models\Message;
 use App\Models\Order;
 use App\Models\Partner;
 use App\Models\Pet;
+use App\Models\Photoshooting;
 use App\Models\Post;
 use App\Models\Shelter;
 use App\Models\Testimonial;
@@ -52,7 +53,7 @@ class DatabaseSeeder extends Seeder
             $client->assignRole('client');
 
             $type = Type::find(rand(1, 4));
-            Pet::factory()->create([
+            $pet = Pet::factory()->create([
                 'user_id' => $client->id,
                 'type_id' => $type->id,
             ]);
@@ -63,8 +64,10 @@ class DatabaseSeeder extends Seeder
                 default => 3,
             };
 
-            $order = new Order([
-                'user_id' => $client->id,
+            $order = new Order();
+            $order->order_uid = $order->generateUID();
+            $order->user_id = $client->id;
+            $order->fill([
                 'category_id' => $category_id,
                 'description' => fake()->text(100),
                 'shelter_id' => rand(1, 7),
@@ -72,6 +75,12 @@ class DatabaseSeeder extends Seeder
             ]);
             $order->save();
 
+            $photoshooting = new Photoshooting();
+            $photoshooting->photoshooting_uid = $photoshooting->generateUID();
+            $photoshooting->pet_id = $pet->id;
+            $photoshooting->order_id = $order->id;
+
+            // Client's content
             $message = new Message([
                 'user_id' => $client->id,
                 'message' => fake()->text(200),

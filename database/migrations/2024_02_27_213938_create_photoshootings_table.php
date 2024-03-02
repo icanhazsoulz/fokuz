@@ -16,13 +16,16 @@ return new class extends Migration
             $table->string('photoshooting_uid')->unique();
             $table->unsignedBigInteger('pet_id')->nullable();
             // date, gallery, ...
-            $table->foreignId('order_id')->constrained('orders')->nullOnDelete();
+            $table->unsignedBigInteger('order_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('pet_id')->references('id')->on('pets')->nullOnDelete();
+            $table->foreign('order_id')->references('id')->on('orders')->nullOnDelete();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reerse the migrations.
      */
     public function down(): void
     {

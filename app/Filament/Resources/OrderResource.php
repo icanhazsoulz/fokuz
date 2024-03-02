@@ -48,8 +48,7 @@ class OrderResource extends Resource
                     ->relationship('client_source', 'name'),
                 Select::make('shelter_id')
                     ->relationship('shelter', 'name'),
-                Checkbox::make('status')
-                    ->label('Completed'),
+                TextInput::make('status'),
             ]);
     }
 
@@ -70,8 +69,7 @@ class OrderResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                CheckboxColumn::make('status')
-                    ->label('Completed')
+                TextColumn::make('status')
                     ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')

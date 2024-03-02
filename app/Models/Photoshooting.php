@@ -15,7 +15,15 @@ class Photoshooting extends Model
     public function generateUID(): string
     {
         $year = date('Y');
-        return 'KUZ-' . $year . '-' . time();
+
+        return 'KUZ-' . $this->getNextSequentialNumber() . '-' . $year . '-' . time();
+    }
+
+    function getNextSequentialNumber()
+    {
+        $maxSequentialNumber = Photoshooting::query()->max('id');
+
+        return $maxSequentialNumber ? $maxSequentialNumber + 1 : 1;
     }
 
     // Relationships

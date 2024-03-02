@@ -14,6 +14,8 @@ class Order extends Model
 {
     use HasFactory;
 
+//    public string $order_uid;
+
     protected $fillable = [
         'category_id',
         'description',
@@ -51,8 +53,9 @@ class Order extends Model
 //            } else {
 //                $photoshooting->save();
 //            }
-
+            $order = new Order();
             $client->orders()->create([
+                'order_uid' => $order->generateUID(),
                 'category_id' => $all['categoryId'],
                 'description' => $all['description'],
                 'client_source_id' => $all['clientSourceId'],
@@ -64,7 +67,15 @@ class Order extends Model
     public function generateUID(): string
     {
         $year = date('Y');
-        return 'ORD-' . $year . '-' . time();
+
+        return 'ORD-' . $this->getNextSequentialNumber() . '-' . $year . '-' . time();
+    }
+
+    function getNextSequentialNumber()
+    {
+        $maxSequentialNumber = Order::query()->max('id');
+
+        return $maxSequentialNumber ? $maxSequentialNumber + 1 : 1;
     }
 
     // Relationships
@@ -83,7 +94,7 @@ class Order extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function clientSource(): BelongsTo
+    public function client_source(): BelongsTo
     {
         return $this->belongsTo(ClientSource::class);
     }
