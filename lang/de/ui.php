@@ -40,6 +40,7 @@ return [
             'phone' => 'Telefonnummer',
         ],
         'pet' => [
+            'info' => 'You can add this data later in your dashboard',
             'name' => 'Name',
             'dob' => 'Geburtsdatum',
             'type' => [

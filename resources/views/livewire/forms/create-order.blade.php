@@ -80,6 +80,7 @@
         <!-- START Pet -->
         <fieldset class="border border-solid border-gray-400 p-3">
             <legend>Pet block</legend>
+            <p class="text-green-600 font-bold">{{ __('ui.contact_form.pet.info') }}</p>
             <div class="columns-2">
                 <div class="sm:flex flex-col">
                     <label for="pet-name" class="form-label">{{ __('ui.contact_form.pet.name') }}</label>
