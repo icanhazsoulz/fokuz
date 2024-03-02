@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="row justify-content-center align-items-center mt-5">
-        <div class="col text-center">
-            <p class="h4 mb-5 text-danger">Not found</p>
-            <p class="h2 text-warning">404</p>
+    <div class="mt-5">
+        <div class="flex flex-col items-center">
+            <h4 class="mb-5 text-red-600">Not found</h4>
+            <h2 class="text-orange-600">404</h2>
         </div>
     </div>
 </div>

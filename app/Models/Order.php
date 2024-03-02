@@ -8,37 +8,66 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class Order extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'category',
+        'category_id',
         'description',
-        'client_source',
+        'client_source_id',
         'shelter_id',
     ];
 
     public static function create(array $all)
     {
         DB::transaction(function() use ($all) {
-            $client = User::findOrCreate([
-                'first_name' => $all['first_name'],
-                'last_name' => $all['last_name'],
+            $client = User::create([
+                'first_name' => $all['firstName'],
+                'last_name' => $all['lastName'],
                 'email' => $all['email'],
                 'phone' => $all['phone'],
+                'password' => Hash::make('client-secret'),
+            ]);
+            $client->assignRole('client');
+
+            // Pet: might be created or not
+            $client->pets()->create([
+                'name' => $all['petName'],
+                'date_of_birth' => $all['petDob'],
+                'type_id' => $all['petTypeId'],
+                'sex' => $all['petSex'],
+                'breed' => $all['petBreed'],
+                'photo' => $all['petPhoto'],
             ]);
 
+            // Has pet_id or null
+//            $photoshooting = new Photoshooting();
+//            $photoshooting->photoshooting_uid = $photoshooting->generateUID();
+//            if ($pet) {
+//                $pet->photoshootings()->save($photoshooting);
+//            } else {
+//                $photoshooting->save();
+//            }
+
             $client->orders()->create([
-                'category' => $all['category'],
+                'category_id' => $all['categoryId'],
                 'description' => $all['description'],
-                'client_source' => $all['client_source'],
-                'shelter_id' => $all['shelter_id'],
+                'client_source_id' => $all['clientSourceId'],
+                'shelter_id' => $all['shelterId'],
             ]);
         });
     }
 
+    public function generateUID(): string
+    {
+        $year = date('Y');
+        return 'ORD-' . $year . '-' . time();
+    }
+
+    // Relationships
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -54,8 +83,13 @@ class Order extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function client_source(): BelongsTo
+    public function clientSource(): BelongsTo
     {
         return $this->belongsTo(ClientSource::class);
+    }
+
+    public function photoshooting(): HasOne
+    {
+        return $this->hasOne(Photoshooting::class);
     }
 }

@@ -10,46 +10,46 @@ use Livewire\Form;
 class OrderForm extends Form
 {
     #[Validate('required|string')]
-    public string $first_name = '';
+    public string $firstName = '';
 
     #[Validate('required|string')]
-    public string $last_name = '';
+    public string $lastName = '';
 
-    #[Validate('required|email')]
+    #[Validate('required|email|unique:users')]
     public string $email = '';
 
     #[Validate('required|string')]
     public string $phone = '';
 
     #[Validate('required|string')]
-    public string $category = '';
+    public string $categoryId = '';
 
     #[Validate('nullable|string')]
     public string $description = '';
 
     #[Validate('required|string')]
-    public string $client_source = '';
+    public string $clientSourceId = '';
 
     #[Validate('nullable|integer')]
-    public ?int $shelter_id = null;
+    public ?int $shelterId = null;
 
     #[Validate('nullable|string')]
-    public string $pet_name = '';
+    public string $petName = '';
 
     #[Validate('nullable|date')]
-    public string $pet_dob = '';
+    public string $petDob = '';
 
     #[Validate('nullable|integer')]
-    public ?int $pet_type_id = null;
+    public ?int $petTypeId = null;
 
     #[Validate('nullable|string')]
-    public string $pet_sex = '';
+    public string $petSex = '';
 
     #[Validate('nullable|string')]
-    public string $pet_breed = '';
+    public string $petBreed = '';
 
     #[Validate('nullable|string')]
-    public string $pet_photo = '';
+    public string $petPhoto = '';
 
     /**
      * @throws ValidationException
@@ -58,7 +58,7 @@ class OrderForm extends Form
     {
 //        dd($this->validate());
         $this->validate();
-
+//        dd($this->all());
         Order::create($this->all());
     }
 }

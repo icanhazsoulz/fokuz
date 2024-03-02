@@ -33,6 +33,7 @@ return [
     'slogan' => 'Mit jeder Photobestellung spenden Sie für Tiere in Not',
     'contact_form' => [
         'client' => [
+            'new_client' => 'Want to order photoshooting for a new client?',
             'first_name' => 'Vorname',
             'last_name' => 'Nachname',
             'email' => 'E-Mail-Adresse',

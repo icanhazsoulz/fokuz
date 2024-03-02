@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('photoshootings', function (Blueprint $table) {
             $table->id();
+            $table->string('photoshooting_uid')->unique();
+            $table->unsignedBigInteger('pet_id')->nullable();
+            // date, gallery, ...
+            $table->foreignId('order_id')->constrained('orders')->nullOnDelete();
             $table->timestamps();
         });
     }

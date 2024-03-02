@@ -52,23 +52,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public static function findOrCreate($properties)
-    {
-        $client = User::where('email', $properties['email'])->first();
-
-        if (is_null($client)) {
-            $client = User::create([
-                'first_name' => $properties['first_name'],
-                'last_name' => $properties['last_name'],
-                'email' => $properties['email'],
-                'phone' => $properties['phone'],
-                'password' => Hash::make('client-secret'),
-            ]);
-        }
-
-        return $client;
-    }
-
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);

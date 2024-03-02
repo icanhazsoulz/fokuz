@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/welcome', 'welcome');
-Route::get('/', \App\Livewire\Pages::class)->name('home');
-//Route::get('/order', [\App\Http\Controllers\OrderController::class, 'index']);
-Route::post('/order', [\App\Http\Controllers\OrderController::class, 'store'])->name('create-order');
-
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -26,6 +22,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+Route::get('/', \App\Livewire\Pages::class)->name('home');
 Route::get('{page}', \App\Livewire\Pages::class)->name('page');
 
 //Route::
