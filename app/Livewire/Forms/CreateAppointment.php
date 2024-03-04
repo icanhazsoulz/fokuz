@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
-class CreateOrder extends Component
+class CreateAppointment extends Component
 {
-    public OrderForm $form;
+    public AppointmentForm $form;
 
     // Authorized user wants to create an order for another - new client
     public bool $newClient = false;
@@ -65,6 +65,6 @@ class CreateOrder extends Component
 
     public function render()
     {
-        return view('livewire.forms.create-order');
+        return view('livewire.forms.create-appointment');
     }
 }

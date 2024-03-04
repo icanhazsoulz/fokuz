@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Appointment;
 use App\Models\Category;
 use App\Models\Faq;
 use App\Models\Message;
@@ -64,23 +65,32 @@ class DatabaseSeeder extends Seeder
                 default => 3,
             };
 
-            $order = new Order();
-            $order->order_uid = $order->generateUID();
-            $order->user_id = $client->id;
-            $order->fill([
+            $appointment = Appointment::create([
+                'user_id' => $client->id,
                 'category_id' => $category_id,
                 'description' => fake()->text(100),
                 'shelter_id' => rand(1, 7),
                 'client_source_id' => rand(1, 5),
-                'status' => Arr::random(['new', 'processing', 'completed', 'cancelled']),
+                'status' => Arr::random(['new', 'confirmed', 'completed', 'cancelled']),
             ]);
-            $order->save();
 
-            // TODO: photoshooting existence and status corresponds to the order status
-            $photoshooting = new Photoshooting();
-            $photoshooting->photoshooting_uid = $photoshooting->generateUID();
-            $photoshooting->pet_id = $pet->id;
-            $photoshooting->order_id = $order->id;
+//            $order = new Order();
+//            $order->order_uid = $order->generateUID();
+//            $order->user_id = $client->id;
+//            $order->fill([
+//                'category_id' => $category_id,
+//                'description' => fake()->text(100),
+//                'shelter_id' => rand(1, 7),
+//                'client_source_id' => rand(1, 5),
+//                'status' => Arr::random(['new', 'confirmed', 'completed', 'cancelled']),
+//            ]);
+//            $order->save();
+
+            // TODO: photoshooting existence and status corresponds to the appointment status?
+            $photoshooting = Photoshooting::create([
+                'user_id' => $client->id,
+                'appointment_id' => $appointment->id,
+            ]);
 
             // Client's content
             $message = new Message([

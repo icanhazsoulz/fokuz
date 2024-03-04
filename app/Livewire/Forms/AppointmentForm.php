@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Appointment;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
-use App\Models\Order;
 use Livewire\Form;
 
-class OrderForm extends Form
+class AppointmentForm extends Form
 {
     #[Validate('required|string')]
     public string $firstName = '';
@@ -59,6 +59,6 @@ class OrderForm extends Form
 //        dd($this->validate());
         $this->validate();
 //        dd($this->all());
-        Order::create($this->all());
+        Appointment::create($this->all());
     }
 }

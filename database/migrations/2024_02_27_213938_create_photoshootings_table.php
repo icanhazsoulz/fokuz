@@ -13,19 +13,18 @@ return new class extends Migration
     {
         Schema::create('photoshootings', function (Blueprint $table) {
             $table->id();
-            $table->string('photoshooting_uid')->unique();
-            $table->unsignedBigInteger('pet_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             // date, gallery, ...
-            $table->unsignedBigInteger('order_id')->nullable();
+            $table->unsignedBigInteger('appointment_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('pet_id')->references('id')->on('pets')->nullOnDelete();
-            $table->foreign('order_id')->references('id')->on('orders')->nullOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
+            $table->foreign('appointment_id')->references('id')->on('appointments')->nullOnDelete();
         });
     }
 
     /**
-     * Reerse the migrations.
+     * Reverse the migrations.
      */
     public function down(): void
     {

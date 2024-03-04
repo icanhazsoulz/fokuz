@@ -88,23 +88,8 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function shelter(): BelongsTo
-    {
-        return $this->belongsTo(Shelter::class);
-    }
-
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function client_source(): BelongsTo
-    {
-        return $this->belongsTo(ClientSource::class);
-    }
-
-    public function photoshooting(): HasOne
-    {
-        return $this->hasOne(Photoshooting::class);
-    }
+//    public function photoshooting(): HasOne
+//    {
+//        return $this->hasOne(Photoshooting::class);
+//    }
 }

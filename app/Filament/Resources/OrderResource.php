@@ -32,29 +32,29 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('user_id')
-                    ->label('Client')
-                    ->relationship(
-                        name: 'user',
-                        titleAttribute: 'full_name',
-                        modifyQueryUsing: fn (Builder $query) => $query->role('client'),
-                    ),
-                Select::make('category_id')
-                    ->relationship('category', 'name'),
-                Textarea::make('description')
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
-                Select::make('client_source_id')
-                    ->relationship('client_source', 'name'),
-                Select::make('shelter_id')
-                    ->relationship('shelter', 'name'),
-                Select::make('status')
-                    ->options([
-                        'new' => 'New',
-                        'processing' => 'Processing',
-                        'completed' => 'Completed',
-                        'cancelled' => 'Cancelled'
-                    ]),
+//                Select::make('user_id')
+//                    ->label('Client')
+//                    ->relationship(
+//                        name: 'user',
+//                        titleAttribute: 'full_name',
+//                        modifyQueryUsing: fn (Builder $query) => $query->role('client'),
+//                    ),
+//                Select::make('category_id')
+//                    ->relationship('category', 'name'),
+//                Textarea::make('description')
+//                    ->maxLength(65535)
+//                    ->columnSpanFull(),
+//                Select::make('client_source_id')
+//                    ->relationship('client_source', 'name'),
+//                Select::make('shelter_id')
+//                    ->relationship('shelter', 'name'),
+//                Select::make('status')
+//                    ->options([
+//                        'new' => 'New',
+//                        'processing' => 'Processing',
+//                        'completed' => 'Completed',
+//                        'cancelled' => 'Cancelled'
+//                    ]),
             ]);
     }
 
@@ -62,47 +62,47 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('order_uid')
-                    ->label('ID')
-                    ->limit(10)
-                    ->tooltip(function (TextColumn $column): ?string {
-                        $state = $column->getState();
-
-                        if (strlen($state) <= $column->getCharacterLimit()) {
-                            return null;
-                        }
-
-                        // Only render the tooltip if the column content exceeds the length limit.
-                        return $state;
-                    }),
-                TextColumn::make('user.full_name')
-                    ->label('Client')
-                    ->searchable(),
-                TextColumn::make('category.name')
-                    ->sortable(),
-                TextColumn::make('shelter.name')
-                    ->searchable(),
-                TextColumn::make('client_source.name')
-                    ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('status')
-                    ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'new' => 'info',
-                        'processing' => 'warning',
-                        'completed' => 'success',
-                        'cancelled' => 'danger'
-                    })
-                    ->icon(fn (string $state): string => match ($state) {
-                        'new' => 'heroicon-o-bell-alert',
-                        'processing' => 'heroicon-o-camera',
-                        'completed' => 'heroicon-o-check-badge',
-                        'cancelled' => 'heroicon-o-x-circle'
-                    })
-                    ->sortable(),
+//                TextColumn::make('photoshooting.photoshooting_uid')
+//                    ->label('Shoot ID')
+//                    ->limit(10)
+//                    ->tooltip(function (TextColumn $column): ?string {
+//                        $state = $column->getState();
+//
+//                        if (strlen($state) <= $column->getCharacterLimit()) {
+//                            return null;
+//                        }
+//
+//                        // Only render the tooltip if the column content exceeds the length limit.
+//                        return $state;
+//                    }),
+//                TextColumn::make('user.full_name')
+//                    ->label('Client')
+//                    ->searchable(),
+//                TextColumn::make('category.name')
+//                    ->sortable(),
+//                TextColumn::make('shelter.name')
+//                    ->searchable(),
+//                TextColumn::make('client_source.name')
+//                    ->sortable(),
+//                TextColumn::make('created_at')
+//                    ->dateTime()
+//                    ->sortable()
+//                    ->toggleable(isToggledHiddenByDefault: true),
+//                TextColumn::make('status')
+//                    ->badge()
+//                    ->color(fn (string $state): string => match ($state) {
+//                        'new' => 'info',
+//                        'processing' => 'warning',
+//                        'completed' => 'success',
+//                        'cancelled' => 'danger'
+//                    })
+//                    ->icon(fn (string $state): string => match ($state) {
+//                        'new' => 'heroicon-o-bell-alert',
+//                        'processing' => 'heroicon-o-camera',
+//                        'completed' => 'heroicon-o-check-badge',
+//                        'cancelled' => 'heroicon-o-x-circle'
+//                    })
+//                    ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([

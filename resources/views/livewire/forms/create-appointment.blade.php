@@ -1,7 +1,7 @@
 <form
     wire:submit="save"
 {{--    method="post"--}}
-{{--    action="{{ route('create-order') }}"--}}
+{{--    action="{{ route('create-appointment') }}"--}}
 {{--    autocomplete="off"--}}
 >
 {{--    {{ \App\Models\User::where('email', 'a.stark@winterfell.com')->first() }}--}}
@@ -168,9 +168,9 @@
             </div>
         </fieldset>
         <!-- END Pet -->
-        <!-- START Order -->
+        <!-- START Appointment -->
         <fieldset class="border border-solid border-gray-400 p-3">
-            <legend>Order block</legend>
+            <legend>Appointment block</legend>
             <div class="columns-1">
                 <div class="sm:flex flex-col">
                     <label class="required form-label" for="category" class="form-label">{{ __('ui.contact_form.order.category') }}</label>
@@ -237,7 +237,7 @@
                 </div>
             </div>
         </fieldset>
-        <!-- END Order -->
+        <!-- END Appointment -->
 {{--    </div>--}}
 
     {{--                <div class="mb-3">--}}

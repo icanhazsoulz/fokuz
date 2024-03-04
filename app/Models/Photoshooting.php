@@ -5,35 +5,39 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Photoshooting extends Model
 {
     use HasFactory;
 
-    public string $photoshooting_uid;
+//    public string $photoshooting_uid;
 
-    public function generateUID(): string
-    {
-        $year = date('Y');
-
-        return 'KUZ-' . $this->getNextSequentialNumber() . '-' . $year . '-' . time();
-    }
-
-    function getNextSequentialNumber()
-    {
-        $maxSequentialNumber = Photoshooting::query()->max('id');
-
-        return $maxSequentialNumber ? $maxSequentialNumber + 1 : 1;
-    }
+    /**
+     * To figure out:
+     * If the above property not commented out:  General error: 1364 Field 'photoshooting_uid' doesn't have a default value (Connection: mysql, SQL: insert into `photoshootings` (`pet_id`, `order_id`, `updated_at`, `created_at`) values (1, 1, 2024-03-02 15:01:54, 2024-03-02 15:01:54))
+     */
 
     // Relationships
-    public function pet(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Pet::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function order(): BelongsTo
+    public function pets(): BelongsToMany
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsToMany(Pet::class);
+    }
+
+    public function appointment(): BelongsTo
+    {
+        return $this->belongsTo(Appointment::class);
+    }
+
+    public function galleries(): MorphMany
+    {
+        return $this->morphMany(Gallery::class, 'parent');
     }
 }

@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('parent_id');
+            $table->string('parent_type');
+            $table->index(['parent_id', 'parent_type']);
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('photos');
+            $table->enum('category', ['all', 'selected', 'slider']);
             $table->timestamps();
         });
     }
