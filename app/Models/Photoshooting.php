@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Photoshooting extends Model
+class Photoshooting extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
 //    public string $photoshooting_uid;
 
@@ -34,10 +34,5 @@ class Photoshooting extends Model
     public function appointment(): BelongsTo
     {
         return $this->belongsTo(Appointment::class);
-    }
-
-    public function galleries(): MorphMany
-    {
-        return $this->morphMany(Gallery::class, 'parent');
     }
 }

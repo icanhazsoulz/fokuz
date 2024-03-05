@@ -4,22 +4,18 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PhotoshootingResource\Pages;
 use App\Filament\Resources\PhotoshootingResource\RelationManagers;
-use App\Models\Pet;
 use App\Models\Photoshooting;
-use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Collection;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class PhotoshootingResource extends Resource
 {
@@ -52,6 +48,28 @@ class PhotoshootingResource extends Resource
                             ->required()
                             ->email()
                     ]),
+                Tabs::make('Tabs')
+                    ->tabs([
+                        Tabs\Tab::make('All photos')
+                            ->schema([
+                                SpatieMediaLibraryFileUpload::make('all')
+                                    ->collection('default')
+                                    ->multiple(),
+                            ]),
+                        Tabs\Tab::make('Client downloads')
+                            ->schema([
+                                SpatieMediaLibraryFileUpload::make('downloads')
+                                    ->collection('downloads')
+                                    ->multiple(),
+                            ]),
+                        Tabs\Tab::make('Tab 3')
+                            ->schema([
+                                // ...
+                            ]),
+                    ])
+                    ->columnSpanFull()
+
+//
 //                Select::make('pet_id')
 //                    ->label('Pet')
 //                    ->relationship('pet', 'name')
@@ -100,7 +118,7 @@ class PhotoshootingResource extends Resource
     {
         return [
             RelationManagers\PetsRelationManager::class,
-            RelationManagers\GalleriesRelationManager::class
+//            RelationManagers\GalleriesRelationManager::class,
         ];
     }
 

@@ -4,22 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use \Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Shelter extends Model
+class Shelter extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes;
-
-//    public function order(): HasMany
-//    {
-//        return $this->hasMany(Order::class);
-//    }
+    use HasFactory, SoftDeletes, InteractsWithMedia;
 
     public function galleries(): MorphMany
     {
-        return $this->morphMany(Gallery::class, 'parent');
+        return $this->morphMany(Gallery::class, 'model');
     }
 }
