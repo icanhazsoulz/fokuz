@@ -2,11 +2,12 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AdminResource\Pages;
-use App\Filament\Resources\AdminResource\RelationManagers;
-use App\Models\Admin;
+use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -14,44 +15,44 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AdminResource extends Resource
+class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?int $navigationSort = 1;
-    protected static ?string $navigationLabel = 'Admins';
-
-    protected static ?string $modelLabel = 'Admin';
-
-    protected static ?string $navigationIcon = 'heroicon-o-key';
-
-    protected static ?string $navigationGroup = 'Users';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('first_name')
+                TextInput::make('first_name')
                     ->maxLength(125),
-                Forms\Components\TextInput::make('last_name')
+                TextInput::make('last_name')
                     ->maxLength(125),
-                Forms\Components\TextInput::make('email')
+                TextInput::make('email')
                     ->email()
                     ->required()
                     ->maxLength(125),
-                Forms\Components\TextInput::make('phone')
+                TextInput::make('phone')
                     ->tel()
                     ->maxLength(125),
-                Forms\Components\TextInput::make('name')
+                Select::make('role')
+                    ->options([
+                        'client' => 'Client',
+                        'admin' => 'Admin',
+                    ])
+                    ->default('client')
+                    ->required(),
+                TextInput::make('name')
                     ->label('Nickname')
                     ->maxLength(125),
+                // TODO: password + confirm
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->query(User::role('admin')->get()->toQuery())
             ->columns([
                 Tables\Columns\TextColumn::make('first_name')
                     ->searchable(),
@@ -89,16 +90,18 @@ class AdminResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\MessagesRelationManager::class,
+            RelationManagers\TestimonialsRelationManager::class,
+            RelationManagers\PetsRelationManager::class,
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAdmins::route('/'),
-            'create' => Pages\CreateAdmin::route('/create'),
-            'edit' => Pages\EditAdmin::route('/{record}/edit'),
+            'index' => Pages\ListUsers::route('/'),
+            'create' => Pages\CreateUser::route('/create'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }
