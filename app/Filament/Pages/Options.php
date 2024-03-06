@@ -12,6 +12,11 @@ class Options extends Page
 
     protected static ?string $navigationGroup = 'Settings';
 
+    public static function canAccess(): bool
+    {
+        return auth()->user()->hasRole('admin');
+    }
+
 //    protected function getHeaderWidgets(): array
 //    {
 //        return [

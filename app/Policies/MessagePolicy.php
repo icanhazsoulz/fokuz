@@ -2,19 +2,16 @@
 
 namespace App\Policies;
 
-use App\Models\Appointment;
+use App\Models\Message;
 use App\Models\User;
-use Filament\Facades\Filament;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Auth;
 
-class AppointmentPolicy
+class MessagePolicy
 {
     public function before(): bool
     {
-        // TODO: correct for production
-        return (Filament::getCurrentPanel()->getId() === 'app' && Auth::user()->hasRole(['client', 'admin']))
-            || Auth::user()->hasRole('admin');
+        return Auth::user()->hasRole('admin');
     }
 
     /**
@@ -28,7 +25,7 @@ class AppointmentPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Appointment $appointment): bool
+    public function view(User $user, Message $message): bool
     {
         //
     }
@@ -44,7 +41,7 @@ class AppointmentPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Appointment $appointment): bool
+    public function update(User $user, Message $message): bool
     {
         //
     }
@@ -52,7 +49,7 @@ class AppointmentPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Appointment $appointment): bool
+    public function delete(User $user, Message $message): bool
     {
         //
     }
@@ -60,7 +57,7 @@ class AppointmentPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Appointment $appointment): bool
+    public function restore(User $user, Message $message): bool
     {
         //
     }
@@ -68,7 +65,7 @@ class AppointmentPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Appointment $appointment): bool
+    public function forceDelete(User $user, Message $message): bool
     {
         //
     }
