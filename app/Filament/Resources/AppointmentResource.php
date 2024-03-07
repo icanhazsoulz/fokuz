@@ -3,11 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AppointmentResource\Pages;
-use App\Filament\Resources\AppointmentResource\RelationManagers;
 use App\Models\Appointment;
 use App\Models\Category;
 use App\Models\ClientSource;
+use App\Models\Shelter;
+use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\MorphToSelect;
+use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
@@ -17,6 +20,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AppointmentResource extends Resource
@@ -33,15 +37,21 @@ class AppointmentResource extends Resource
 //                Select::make('photoshooting_id')
 //                    ->label('Photoshooting ID')
 //                    ->relationship('photoshooting', 'photoshooting_uid'),
-                Select::make('user_id')
-                    ->label('Client')
-                    ->relationship(
-                        name: 'user',
-                        titleAttribute: 'full_name',
-                        modifyQueryUsing: fn (Builder $query) => $query->role('client'),
-                    ),
+                MorphToSelect::make('appointmentable')
+                    ->label('Customer')
+                    ->types([
+                        MorphToSelect\Type::make(User::class)
+                            ->titleAttribute('name')
+                            ->modifyOptionsQueryUsing(fn (Builder $query) => $query->role('client')),
+                        MorphToSelect\Type::make(Shelter::class)
+                            ->titleAttribute('name'),
+                    ])
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 Select::make('category_id')
-                    ->relationship('category', 'name'),
+                    ->relationship('category', 'name')
+                    ->required(),
                 Textarea::make('description')
                     ->maxLength(65535)
                     ->columnSpanFull(),
@@ -49,13 +59,16 @@ class AppointmentResource extends Resource
                     ->relationship('client_source', 'name'),
                 Select::make('shelter_id')
                     ->relationship('shelter', 'name'),
-                Select::make('status')
+                Radio::make('status')
                     ->options([
                         'new' => 'New',
                         'confirmed' => 'Confirmed',
                         'completed' => 'Completed',
                         'cancelled' => 'Cancelled'
-                    ]),
+                    ])
+                    ->inline()
+                    ->inlineLabel(false)
+                    ->default('new'),
             ]);
     }
 
@@ -65,8 +78,8 @@ class AppointmentResource extends Resource
             ->columns([
                 TextColumn::make('photoshooting.id')
                     ->label('Shoot ID'),
-                TextColumn::make('user.full_name')
-                    ->label('Client')
+                TextColumn::make('appointmentable.name')
+                    ->label('Customer')
                     ->searchable(),
                 TextColumn::make('category.name')
                     ->sortable(),

@@ -37,7 +37,7 @@ class TestimonialResource extends Resource
                     ->label('Client')
                     ->relationship(
                         name: 'user',
-                        titleAttribute: 'full_name',
+                        titleAttribute: 'name',
                         modifyQueryUsing: fn (Builder $query) => $query->role('client'),
                     )
                     ->searchable()

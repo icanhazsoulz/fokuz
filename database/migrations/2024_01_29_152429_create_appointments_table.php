@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->morphs('appointmentable');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->text('description')->nullable();
             $table->unsignedBigInteger('shelter_id')->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
             // Column(s): Date, Time
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+//            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();
             $table->foreign('shelter_id')->references('id')->on('shelters')->nullOnDelete();
             $table->foreign('client_source_id')->references('id')->on('client_sources')->nullOnDelete();

@@ -50,7 +50,7 @@ class PetResource extends Resource
                     ->label('Owner')
                     ->relationship(
                         name: 'user',
-                        titleAttribute: 'full_name',
+                        titleAttribute: 'name',
 //                        modifyQueryUsing: fn (Builder $query) => $query->whereNotNull('first_name')->whereNotNull('last_name'),
                         modifyQueryUsing: fn (Builder $query) => $query->role('client'),
                     )
@@ -90,7 +90,7 @@ class PetResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('breed')
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('user.full_name')
+                Tables\Columns\TextColumn::make('user.name')
                     ->label('Owner')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')

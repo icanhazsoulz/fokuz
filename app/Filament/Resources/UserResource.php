@@ -14,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Hash;
 
 class UserResource extends Resource
 {
@@ -26,16 +27,24 @@ class UserResource extends Resource
         return $form
             ->schema([
                 TextInput::make('first_name')
-                    ->maxLength(125),
+                    ->maxLength(255)
+                    ->required(),
                 TextInput::make('last_name')
-                    ->maxLength(125),
+                    ->maxLength(255)
+                    ->required(),
                 TextInput::make('email')
                     ->email()
-                    ->required()
-                    ->maxLength(125),
+                    ->maxLength(255)
+                    ->required(),
                 TextInput::make('phone')
                     ->tel()
                     ->maxLength(125),
+                // TODO: strong password + confirm
+                TextInput::make('password')
+                    ->password()
+                    ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
+                    ->dehydrated(fn (?string $state): bool => filled($state))
+                    ->required(fn (string $operation): bool => $operation === 'create'),
                 Select::make('role')
                     ->options([
                         'client' => 'Client',
@@ -46,7 +55,6 @@ class UserResource extends Resource
                 TextInput::make('name')
                     ->label('Nickname')
                     ->maxLength(125),
-                // TODO: password + confirm
             ]);
     }
 

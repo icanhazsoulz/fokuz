@@ -36,7 +36,7 @@ class OrderResource extends Resource
 //                    ->label('Client')
 //                    ->relationship(
 //                        name: 'user',
-//                        titleAttribute: 'full_name',
+//                        titleAttribute: 'name',
 //                        modifyQueryUsing: fn (Builder $query) => $query->role('client'),
 //                    ),
 //                Select::make('category_id')
@@ -75,7 +75,7 @@ class OrderResource extends Resource
 //                        // Only render the tooltip if the column content exceeds the length limit.
 //                        return $state;
 //                    }),
-//                TextColumn::make('user.full_name')
+//                TextColumn::make('user.name')
 //                    ->label('Client')
 //                    ->searchable(),
 //                TextColumn::make('category.name')

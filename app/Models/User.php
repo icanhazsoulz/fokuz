@@ -8,6 +8,7 @@ use Filament\Models\Contracts\HasName;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -65,9 +66,14 @@ class User extends Authenticatable implements FilamentUser
     }
 
     // Relationships
-    public function appointments(): HasMany
+//    public function appointments(): HasMany
+//    {
+//        return $this->hasMany(Appointment::class);
+//    }
+
+    public function appointments(): MorphMany
     {
-        return $this->hasMany(Appointment::class);
+        return $this->morphMany(Appointment::class, 'appointmentable');
     }
 
     public function orders(): HasMany

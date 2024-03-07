@@ -31,7 +31,7 @@ class MessageResource extends Resource
                     ->label('Client')
                     ->relationship(
                         name: 'user',
-                        titleAttribute: 'full_name',
+                        titleAttribute: 'name',
                         modifyQueryUsing: fn (Builder $query) => $query->role('client'),
                     )
                     ->columnSpanFull(),
@@ -46,7 +46,7 @@ class MessageResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('user.full_name')
+                TextColumn::make('user.name')
                     ->label('Client')
                     ->searchable(),
                 TextColumn::make('message')

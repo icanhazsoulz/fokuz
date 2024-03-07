@@ -36,7 +36,7 @@ class AppointmentResource extends Resource
             ->columns([
                 TextColumn::make('photoshooting.id')
                     ->label('Shoot ID'),
-                TextColumn::make('user.full_name')
+                TextColumn::make('user.name')
                     ->label('Client')
                     ->searchable(),
                 TextColumn::make('category.name')

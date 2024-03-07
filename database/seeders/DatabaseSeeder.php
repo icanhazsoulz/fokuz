@@ -38,7 +38,8 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'client']);
 
         $admin = new User([
-            'name' => 'admin',
+            'first_name' => 'Iuliia',
+            'last_name' => 'Kuznetsova',
             'email' => 'admin@fokuz.com',
             'password' => Hash::make('admin'),
         ]);
@@ -66,7 +67,8 @@ class DatabaseSeeder extends Seeder
             };
 
             $appointment = Appointment::create([
-                'user_id' => $client->id,
+                'appointmentable_id' => $client->id,
+                'appointmentable_type' => User::class,
                 'category_id' => $category_id,
                 'description' => fake()->text(100),
                 'shelter_id' => rand(1, 7),

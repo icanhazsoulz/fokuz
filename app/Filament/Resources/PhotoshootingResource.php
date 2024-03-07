@@ -31,23 +31,13 @@ class PhotoshootingResource extends Resource
                     ->label('Client')
                     ->relationship(
                         name: 'user',
-                        titleAttribute: 'full_name',
+                        titleAttribute: 'name',
                         modifyQueryUsing: fn (Builder $query) => $query->role('client'),
                     )
                     ->searchable()
                     ->preload()
 //                    ->live()
-                    ->createOptionForm([
-                        TextInput::make('first_name')
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('last_name')
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('email')
-                            ->required()
-                            ->email()
-                    ]),
+                    ->createOptionForm(fn (Form $form) => UserResource::form($form)),
                 Tabs::make('Tabs')
                     ->tabs([
                         Tabs\Tab::make('All photos')
@@ -91,7 +81,7 @@ class PhotoshootingResource extends Resource
             ->columns([
                 TextColumn::make('appointment.id')
                     ->label('Appointment ID'),
-                TextColumn::make('user.full_name')
+                TextColumn::make('user.name')
                     ->label('Client')
                     ->searchable(),
                 TextColumn::make('pet.name')

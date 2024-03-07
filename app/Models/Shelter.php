@@ -13,8 +13,8 @@ class Shelter extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
 
-    public function galleries(): MorphMany
+    public function appointments(): MorphMany
     {
-        return $this->morphMany(Gallery::class, 'model');
+        return $this->morphMany(Appointment::class, 'appointmentable');
     }
 }
