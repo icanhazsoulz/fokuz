@@ -37,13 +37,13 @@ class AppointmentForm extends Form
     public string $petName = '';
 
     #[Validate('nullable|date')]
-    public string $petDob = '';
+    public ?string $petDob = null;
 
     #[Validate('nullable|integer')]
     public ?int $petTypeId = null;
 
     #[Validate('nullable|string')]
-    public string $petSex = '';
+    public ?string $petSex = null;
 
     #[Validate('nullable|string')]
     public string $petBreed = '';

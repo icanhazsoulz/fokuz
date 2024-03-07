@@ -16,57 +16,7 @@ class Order extends Model
 
 //    public string $order_uid;
 
-    protected $fillable = [
-        'category_id',
-        'description',
-        'client_source_id',
-        'shelter_id',
-    ];
-
-    /**
-     * @param array $all Order form fields
-     * @return void
-     */
-    public static function create(array $all)
-    {
-        DB::transaction(function() use ($all) {
-            $client = User::create([
-                'first_name' => $all['firstName'],
-                'last_name' => $all['lastName'],
-                'email' => $all['email'],
-                'phone' => $all['phone'],
-                'password' => Hash::make('client-secret'),
-            ]);
-            $client->assignRole('client');
-
-            // Pet: might be created or not
-            $client->pets()->create([
-                'name' => $all['petName'],
-                'date_of_birth' => $all['petDob'],
-                'type_id' => $all['petTypeId'],
-                'sex' => $all['petSex'],
-                'breed' => $all['petBreed'],
-                'photo' => $all['petPhoto'],
-            ]);
-
-            // Has pet_id or null
-//            $photoshooting = new Photoshooting();
-//            $photoshooting->photoshooting_uid = $photoshooting->generateUID();
-//            if ($pet) {
-//                $pet->photoshootings()->save($photoshooting);
-//            } else {
-//                $photoshooting->save();
-//            }
-            $order = new Order();
-            $client->orders()->create([
-                'order_uid' => $order->generateUID(),
-                'category_id' => $all['categoryId'],
-                'description' => $all['description'],
-                'client_source_id' => $all['clientSourceId'],
-                'shelter_id' => $all['shelterId'],
-            ]);
-        });
-    }
+//    protected $fillable = [];
 
     public function generateUID(): string
     {

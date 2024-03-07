@@ -76,8 +76,11 @@ class AppointmentResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('photoshooting.id')
-                    ->label('Shoot ID'),
+//                TextColumn::make('photoshooting.id')
+//                    ->label('Shoot ID'),
+                TextColumn::make('appointmentable.email')
+                    ->label('Email')
+                    ->searchable(),
                 TextColumn::make('appointmentable.name')
                     ->label('Customer')
                     ->searchable(),
