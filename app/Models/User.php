@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -63,6 +64,12 @@ class User extends Authenticatable implements FilamentUser
         if ($panel->getId() === 'app') {
             return Auth::user()->hasRole(['client', 'admin']);
         }
+    }
+
+    public static function findExistingClient($email)
+    {
+        // TODO: update data if user exists and changed smth?
+        return Auth::check() ? Auth::user() : DB::table('users')->where('email', $email)->first();
     }
 
     // Relationships

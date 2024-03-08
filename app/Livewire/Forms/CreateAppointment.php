@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Forms;
 
-use App\Models\Shelter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
@@ -12,12 +11,6 @@ class CreateAppointment extends Component
 {
     public AppointmentForm $form;
 
-    // Authorized user wants to create an order for another - new client
-    public bool $newClient = false;
-
-    // If display the client data block
-    public string $displayClientBlock = '';
-
     public array $categories = [];
     public array $shelters = [];
     public array $petTypes = [];
@@ -25,7 +18,13 @@ class CreateAppointment extends Component
 
     public function mount()
     {
-        $this->displayClientBlock = Auth::check() ? 'hidden' : '';
+        if (Auth::check()) {
+            $currentUser = Auth::user();
+            $this->form->email = $currentUser->email;
+            $this->form->phone = $currentUser->phone;
+            $this->form->firstName = $currentUser->first_name;
+            $this->form->lastName = $currentUser->last_name;
+        }
 
         $this->categories = DB::table('categories')
             ->orderBy('id', 'asc')
@@ -46,11 +45,6 @@ class CreateAppointment extends Component
             ->orderBy('id', 'asc')
             ->pluck('key', 'id')
             ->toArray();
-    }
-
-    public function showClientBlock()
-    {
-        $this->displayClientBlock = $this->newClient ? '' : 'hidden';
     }
 
     /**

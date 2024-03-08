@@ -28,17 +28,22 @@ class Appointment extends Model
      * @param array $all Appointment form fields
      * @return void
      */
-    public static function create(array $all)
+    public static function createAppointment(array $all): void
     {
         DB::transaction(function() use ($all) {
-            $client = User::create([
-                'first_name' => $all['firstName'],
-                'last_name' => $all['lastName'],
-                'email' => $all['email'],
-                'phone' => $all['phone'],
-                'password' => Hash::make('client'),
-            ]);
-            $client->assignRole('client');
+
+            $client = User::findExistingClient($all['email']);
+
+            if (!$client) {
+                $client = User::create([
+                    'first_name' => $all['firstName'],
+                    'last_name' => $all['lastName'],
+                    'email' => $all['email'],
+                    'phone' => $all['phone'],
+                    'password' => Hash::make('client'),
+                ]);
+                $client->assignRole('client');
+            }
 
             // Pet: might be created or not
             $pet_data = [

@@ -31,31 +31,31 @@
         <div class="sm:flex flex-col">
             <label class="required form-label" for="first-name">{{ __('ui.contact_form.client.first_name') }}</label>
             <input
-                wire:model="form.first_name"
+                wire:model="form.firstName"
                 id="first-name"
                 type="text"
                 class="form-control"
             >
-            @error('form.first_name')
+            @error('form.firstName')
                 <span class="error text-red-600">{{ $message }}</span>
             @enderror
         </div>
         <div class="sm:flex flex-col">
             <label class="required form-label" for="last-name">{{ __('ui.contact_form.client.last_name') }}</label>
             <input
-                wire:model="form.last_name"
+                wire:model="form.lastName"
                 id="last-name"
                 type="text"
                 class="form-control"
             >
-            @error('form.last_name')
+            @error('form.lastName')
                 <span class="error text-red-600">{{ $message }}</span>
             @enderror
         </div>
     </div>
     <div class="columns-1">
         <div class="sm:flex flex-col">
-            <label for="message" class="form-label">{{ __('ui.contact_form.message') }}</label>
+            <label for="message" class="required form-label">{{ __('ui.contact_form.message') }}</label>
             <textarea
                 wire:model="form.message"
                 id="message"
@@ -63,6 +63,9 @@
                 cols="30"
                 rows="10"
             ></textarea>
+            @error('form.message')
+            <span class="error text-red-600">{{ $message }}</span>
+            @enderror
         </div>
     </div>
     <button type="submit" class="bg-sky-500 p-3">{{ __('ui.contact_form.submit') }}</button>

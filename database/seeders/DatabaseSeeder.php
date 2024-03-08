@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'Iuliia',
             'last_name' => 'Kuznetsova',
             'email' => 'admin@fokuz.com',
+            'phone' => fake()->phoneNumber,
             'password' => Hash::make('admin'),
         ]);
         $admin->save();

@@ -15,7 +15,7 @@ class AppointmentForm extends Form
     #[Validate('required|string')]
     public string $lastName = '';
 
-    #[Validate('required|email|unique:users')]
+    #[Validate('required|email')]
     public string $email = '';
 
     #[Validate('required|string')]
@@ -59,6 +59,6 @@ class AppointmentForm extends Form
 //        dd($this->validate());
         $this->validate();
 //        dd($this->all());
-        Appointment::create($this->all());
+        Appointment::createAppointment($this->all());
     }
 }

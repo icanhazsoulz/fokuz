@@ -8,20 +8,7 @@
 {{--    @csrf--}}
 {{--    <div class="container">--}}
         <!-- START Client -->
-        @auth
-            <div class="columns-1">
-                <label for="new_client">
-                    <input
-                        type="checkbox"
-                        wire:model="newClient"
-                        wire:change="showClientBlock()"
-                        id="new_client"
-                    >
-                    &nbsp;{{ __('ui.contact_form.client.new_client') }}
-                </label>
-            </div>
-        @endauth
-        <fieldset class="border border-solid border-gray-400 p-3 {{ $displayClientBlock }}">
+        <fieldset class="border border-solid border-gray-400 p-3">
             <legend>Client block</legend>
             <div class="columns-2">
                 <div class="sm:flex flex-col">

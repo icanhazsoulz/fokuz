@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class Message extends Model
 {
@@ -15,18 +16,26 @@ class Message extends Model
         'message',
     ];
 
-    public static function create(array $all)
+    public static function createMessage(array $all)
     {
-        $client = User::findOrCreate([
-            'first_name' => $all['first_name'],
-            'last_name' => $all['last_name'],
-            'email' => $all['email'],
-            'phone' => $all['phone'],
-        ]);
+        DB::transaction(function() use ($all) {
+            $client = User::findExistingClient($all['email']);
 
-        $client->messages()->create([
-            'message' => $all['message'],
-        ]);
+            if (!$client) {
+                $client = User::create([
+                    'first_name' => $all['firstName'],
+                    'last_name' => $all['lastName'],
+                    'email' => $all['email'],
+                    'phone' => $all['phone'],
+                    'password' => Hash::make('client'),
+                ]);
+                $client->assignRole('client');
+            }
+
+            $client->messages()->create([
+                'message' => $all['message'],
+            ]);
+        });
     }
 
     public function user(): BelongsTo

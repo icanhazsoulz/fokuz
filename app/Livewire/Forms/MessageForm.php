@@ -9,18 +9,19 @@ use Livewire\Form;
 
 class MessageForm extends Form
 {
-    #[Validate('required')]
-    public string $first_name = '';
+    #[Validate('required|string')]
+    public string $firstName = '';
 
-    #[Validate('required')]
-    public string $last_name = '';
+    #[Validate('required|string')]
+    public string $lastName = '';
 
     #[Validate('required|email')]
     public string $email = '';
 
-    #[Validate('required')]
+    #[Validate('required|string')]
     public string $phone = '';
 
+    #[Validate('required|string|max:1000')]
     public string $message = '';
 
     /**
@@ -31,6 +32,6 @@ class MessageForm extends Form
 //        dd($this->validate());
         $this->validate();
 
-        Message::create($this->all());
+        Message::createMessage($this->all());
     }
 }
