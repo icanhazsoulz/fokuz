@@ -24,9 +24,9 @@ class PagesTest extends TestCase
             }
         }
     }
-
-    public function test_renders_404_page_if_view_does_not_exist()
-    {
-
-    }
+//
+//    public function test_renders_404_page_if_view_does_not_exist()
+//    {
+//
+//    }
 }
