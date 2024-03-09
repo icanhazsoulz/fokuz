@@ -12,6 +12,7 @@ class PagesTest extends TestCase
         $this->get('/')->assertSeeLivewire(Pages::class);
     }
 
+    // Assert there is a correct static page at each of corresponding urls
     public function test_renders_correct_set_of_static_pages()
     {
         $dir = new \DirectoryIterator(resource_path('views/livewire/pages'));
