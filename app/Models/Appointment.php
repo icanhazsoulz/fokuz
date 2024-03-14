@@ -44,7 +44,13 @@ class Appointment extends Model
                 ]);
                 $client->assignRole('client');
                 // TODO: generate actual JWT
-                
+                DB::table('auth_tokens')->insert([
+                    'token' => 'abc' . now(),
+                    'user_id' => $client->id,
+                    'expires_at' => time() + 3600,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
             }
 
             // Pet: might be created or not

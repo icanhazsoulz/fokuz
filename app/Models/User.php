@@ -7,8 +7,10 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +18,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, JWTSubject
 {
     use HasApiTokens, HasFactory, HasRoles, Notifiable;
 
@@ -64,6 +67,8 @@ class User extends Authenticatable implements FilamentUser
         if ($panel->getId() === 'app') {
             return Auth::user()->hasRole(['client', 'admin']);
         }
+
+        return false;
     }
 
     public static function findExistingClient($email)
@@ -71,6 +76,27 @@ class User extends Authenticatable implements FilamentUser
         // TODO: update data if user exists and changed smth?
         return Auth::check() ? Auth::user() : DB::table('users')->where('email', $email)->first();
     }
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier(): mixed
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return an associative array containing any custom claims to be added to the JWT
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims(): array
+    {
+        return [];
+    }
+
 
     // Relationships
 //    public function appointments(): HasMany
