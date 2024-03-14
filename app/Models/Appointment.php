@@ -43,6 +43,8 @@ class Appointment extends Model
                     'password' => Hash::make('client'),
                 ]);
                 $client->assignRole('client');
+                // TODO: generate actual JWT
+                
             }
 
             // Pet: might be created or not
