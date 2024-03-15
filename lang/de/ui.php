@@ -26,9 +26,10 @@ return [
         'small_animals' => 'Kleintiere'
     ],
     'category' => [
-        'cat' => 'Katze',
-        'dog' => 'Hund',
-        'small_animal' => 'Kleintier',
+        'my_studio' => 'Meine Studio',
+        'mobile_studio' => 'Mobiles Studio',
+        'moment' => 'Momente',
+        'reportage' => 'Reportage',
     ],
     'slogan' => 'Mit jeder Photobestellung spenden Sie für Tiere in Not',
     'contact_form' => [
@@ -58,8 +59,9 @@ return [
             'breed' => 'Rasse',
             'photo' => 'Bild hochladen',
         ],
-        'order' => [
+        'appointment' => [
             'category' => 'Worum geht es?',
+            'address' => 'Adresse',
             'description' => 'Erzähle mich kurz etwas über dich und dein Anliegen',
             'client_source' => 'Woher kennst du mich?',
             'shelters' => 'Tierheime',

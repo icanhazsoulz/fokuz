@@ -11,6 +11,7 @@ class CreateAppointment extends Component
 {
     public AppointmentForm $form;
 
+    public string $placeholder = '';
     public array $categories = [];
     public array $shelters = [];
     public array $petTypes = [];
@@ -45,6 +46,16 @@ class CreateAppointment extends Component
             ->orderBy('id', 'asc')
             ->pluck('key', 'id')
             ->toArray();
+    }
+
+    public function selectAddress()
+    {
+        $this->form->address = '';
+        if ($this->form->categoryId == 1) {
+            $this->form->address =  'Werdohl, Ruppenhahn 40';
+        } else {
+            $this->placeholder = 'Please enter your address';
+        }
     }
 
     /**

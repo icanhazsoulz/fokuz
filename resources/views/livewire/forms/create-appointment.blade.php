@@ -158,11 +158,12 @@
         <!-- START Appointment -->
         <fieldset class="border border-solid border-gray-400 p-3">
             <legend>Appointment block</legend>
-            <div class="columns-1">
+            <div class="columns-2">
                 <div class="sm:flex flex-col">
-                    <label class="required form-label" for="category" class="form-label">{{ __('ui.contact_form.order.category') }}</label>
+                    <label class="required form-label" for="category" class="form-label">{{ __('ui.contact_form.appointment.category') }}</label>
                     <select
                         wire:model="form.categoryId"
+                        wire:change="selectAddress()"
                         id="category"
                         class="form-control"
                     >
@@ -176,7 +177,22 @@
                     @enderror
                 </div>
                 <div class="sm:flex flex-col">
-                    <label for="description" class="form-label">{{ __('ui.contact_form.order.description') }}</label>
+                    <label for="address" class="required form-label">{{ __('ui.contact_form.appointment.address') }}</label>
+                    <input
+                        wire:model="form.address"
+                        type="text"
+                        class="form-control"
+                        placeholder="{{ $placeholder }}"
+                        id="address"
+                    >
+                    @error('form.address')
+                    <span class="error text-red-600">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="columns-1">
+                <div class="sm:flex flex-col">
+                    <label for="description" class="form-label">{{ __('ui.contact_form.appointment.description') }}</label>
                     <textarea
                         wire:model="form.description"
                         id="description"
@@ -191,7 +207,7 @@
             </div>
                 <div class="columns-2">
                 <div class="sm:flex flex-col">
-                    <label class="required form-label" for="client-source">{{ __('ui.contact_form.order.client_source') }}</label>
+                    <label class="required form-label" for="client-source">{{ __('ui.contact_form.appointment.client_source') }}</label>
                     <select
                         wire:model="form.clientSourceId"
                         id="client-source"
@@ -207,7 +223,7 @@
                     @enderror
                 </div>
                 <div class="sm:flex flex-col">
-                    <label for="shelter" class="form-label">{{ __('ui.contact_form.order.shelters') }}</label>
+                    <label for="shelter" class="form-label">{{ __('ui.contact_form.appointment.shelters') }}</label>
                     <select
                         wire:model="form.shelterId"
                         id="shelter"

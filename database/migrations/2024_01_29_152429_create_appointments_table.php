@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->morphs('appointmentable');
             $table->unsignedBigInteger('category_id')->nullable();
+            $table->string('address');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('shelter_id')->nullable();
             $table->unsignedBigInteger('client_source_id')->nullable();

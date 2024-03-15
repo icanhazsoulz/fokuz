@@ -13,7 +13,10 @@ use Filament\Forms\Components\MorphToSelect;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -22,6 +25,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class AppointmentResource extends Resource
 {
@@ -49,12 +53,20 @@ class AppointmentResource extends Resource
                     ->searchable()
                     ->preload()
                     ->required(),
+                Textarea::make('description')
+                    ->maxLength(65535),
                 Select::make('category_id')
                     ->relationship('category', 'name')
+                    ->live()
+                    ->afterStateUpdated(function (Set $set, ?string $state) {
+                        $set('address','');
+                        if ($state == 1) {
+                            $set('address', 'Werdohl, Ruppenhahn 40');
+                        }
+                    })
                     ->required(),
-                Textarea::make('description')
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
+                TextInput::make('address')
+                    ->required(),
                 Select::make('client_source_id')
                     ->relationship('client_source', 'name'),
                 Select::make('shelter_id')
@@ -86,10 +98,12 @@ class AppointmentResource extends Resource
                     ->searchable(),
                 TextColumn::make('category.name')
                     ->sortable(),
-                TextColumn::make('shelter.name')
+                TextColumn::make('address')
                     ->searchable(),
-                TextColumn::make('client_source.name')
-                    ->sortable(),
+//                TextColumn::make('shelter.name')
+//                    ->searchable(),
+//                TextColumn::make('client_source.name')
+//                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

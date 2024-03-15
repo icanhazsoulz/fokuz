@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,6 +19,7 @@ class Appointment extends Model
         'appointmentable_type',
         'appointmentable_id',
         'category_id',
+        'address',
         'description',
         'client_source_id',
         'shelter_id',
@@ -47,7 +49,7 @@ class Appointment extends Model
                 DB::table('auth_tokens')->insert([
                     'token' => 'abc' . now(),
                     'user_id' => $client->id,
-                    'expires_at' => time() + 3600,
+                    'expires_at' => Carbon::now()->addHour(),
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
@@ -69,6 +71,7 @@ class Appointment extends Model
 
             $client->appointments()->create([
                 'category_id' => $all['categoryId'],
+                'address' => $all['address'],
                 'description' => $all['description'],
                 'client_source_id' => $all['clientSourceId'],
                 'shelter_id' => $all['shelterId'],

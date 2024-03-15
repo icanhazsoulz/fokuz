@@ -61,16 +61,13 @@ class DatabaseSeeder extends Seeder
                 'type_id' => $type->id,
             ]);
 
-            $category_id = match ($type->key) {
-                'cat' => 1,
-                'dog' => 2,
-                default => 3,
-            };
+            $category = Category::find(rand(1, 4));
 
             $appointment = Appointment::create([
                 'appointmentable_id' => $client->id,
                 'appointmentable_type' => User::class,
-                'category_id' => $category_id,
+                'category_id' => $category->id,
+                'address' => fake()->address,
                 'description' => fake()->text(100),
                 'shelter_id' => rand(1, 7),
                 'client_source_id' => rand(1, 5),

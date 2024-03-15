@@ -24,6 +24,9 @@ class AppointmentForm extends Form
     #[Validate('required|string')]
     public string $categoryId = '';
 
+    #[Validate('required|string')]
+    public string $address = '';
+
     #[Validate('nullable|string')]
     public string $description = '';
 

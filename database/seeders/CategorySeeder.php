@@ -15,20 +15,26 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             'id' => 1,
-            'key' => 'cat',
-            'name' => 'Cat',
+            'key' => 'my_studio',
+            'name' => 'My Studio',
         ]);
 
         DB::table('categories')->insert([
             'id' => 2,
-            'key' => 'dog',
-            'name' => 'Dog',
+            'key' => 'mobile_studio',
+            'name' => 'Mobile Studio',
         ]);
 
         DB::table('categories')->insert([
             'id' => 3,
-            'key' => 'small_animal',
-            'name' => 'Small animal',
+            'key' => 'moment',
+            'name' => 'Moment',
+        ]);
+
+        DB::table('categories')->insert([
+            'id' => 4,
+            'key' => 'reportage',
+            'name' => 'Reportage',
         ]);
     }
 }
