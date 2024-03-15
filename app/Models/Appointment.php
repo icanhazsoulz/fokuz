@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Firebase\JWT\JWT;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class Appointment extends Model
 {
@@ -45,11 +47,13 @@ class Appointment extends Model
                     'password' => Hash::make('client'),
                 ]);
                 $client->assignRole('client');
-                // TODO: generate actual JWT
+
+                // TODO: try-catch random string if not unique? What is the probability?
                 DB::table('auth_tokens')->insert([
-                    'token' => 'abc' . now(),
+                    'token' => Str::random(64),
                     'user_id' => $client->id,
-                    'expires_at' => Carbon::now()->addHour(),
+                    // TODO: addHour() for production
+                    'expires_at' => Carbon::now()->addYear(),
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);

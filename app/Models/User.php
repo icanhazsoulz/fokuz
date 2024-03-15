@@ -18,9 +18,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements FilamentUser, JWTSubject
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, HasRoles, Notifiable;
 
@@ -75,26 +74,6 @@ class User extends Authenticatable implements FilamentUser, JWTSubject
     {
         // TODO: update data if user exists and changed smth?
         return Auth::check() ? Auth::user() : DB::table('users')->where('email', $email)->first();
-    }
-
-    /**
-     * Get the identifier that will be stored in the subject claim of the JWT
-     *
-     * @return mixed
-     */
-    public function getJWTIdentifier(): mixed
-    {
-        return $this->getKey();
-    }
-
-    /**
-     * Return an associative array containing any custom claims to be added to the JWT
-     *
-     * @return array
-     */
-    public function getJWTCustomClaims(): array
-    {
-        return [];
     }
 
 
