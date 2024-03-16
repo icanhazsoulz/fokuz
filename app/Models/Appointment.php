@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\AppointmentCreated;
 use Carbon\Carbon;
 use Firebase\JWT\JWT;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -73,13 +75,15 @@ class Appointment extends Model
                 $client->pets()->create($pet_data);
             }
 
-            $client->appointments()->create([
+            $appointment = $client->appointments()->create([
                 'category_id' => $all['categoryId'],
                 'address' => $all['address'],
                 'description' => $all['description'],
                 'client_source_id' => $all['clientSourceId'],
                 'shelter_id' => $all['shelterId'],
             ]);
+
+            Event::dispatch(new AppointmentCreated($appointment));
         });
     }
 
@@ -101,10 +105,10 @@ class Appointment extends Model
         return $this->hasOne(Photoshooting::class);
     }
 
-//    public function user(): BelongsTo
-//    {
-//        return $this->belongsTo(User::class);
-//    }
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function shelter(): BelongsTo
     {
