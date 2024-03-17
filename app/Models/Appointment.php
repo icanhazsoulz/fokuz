@@ -40,7 +40,7 @@ class Appointment extends Model
 
             $client = User::findExistingClient($all['email']);
 
-            if (!$client) {
+            if (is_null($client)) {
                 $client = User::create([
                     'first_name' => $all['firstName'],
                     'last_name' => $all['lastName'],

@@ -33,9 +33,7 @@ class DatabaseSeeder extends Seeder
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // create roles
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'client']);
+        $this->call([RoleSeeder::class, CategorySeeder::class, ClientSourceSeeder::class, TypeSeeder::class]);
 
         $admin = new User([
             'first_name' => 'Iuliia',
@@ -46,8 +44,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $admin->save();
         $admin->assignRole('admin');
-
-        $this->call([CategorySeeder::class, ClientSourceSeeder::class, TypeSeeder::class]);
 
         Shelter::factory(8)->create();
 

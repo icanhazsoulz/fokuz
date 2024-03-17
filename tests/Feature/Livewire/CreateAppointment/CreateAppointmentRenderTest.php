@@ -79,4 +79,22 @@ class CreateAppointmentRenderTest extends TestCase
             ->call('save')
             ->assertHasErrors(['form.clientSourceId' => ['required']]);
     }
+
+    public function test_can_set_categories()
+    {
+        // TODO: mock or actual categories
+        $categories = [];
+        Livewire::test(CreateAppointment::class)
+            ->set('categories', $categories)
+            ->assertSet('categories', $categories);
+    }
+
+    public function test_can_set_client_sources()
+    {
+        // TODO: mock or actual
+        $clientSources = [];
+        Livewire::test(CreateAppointment::class)
+            ->set('clientSources', $clientSources)
+            ->assertSet('clientSources', $clientSources);
+    }
 }

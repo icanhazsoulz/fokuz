@@ -73,7 +73,7 @@ class User extends Authenticatable implements FilamentUser
     public static function findExistingClient($email)
     {
         // TODO: update data if user exists and changed smth?
-        return Auth::check() ? Auth::user() : DB::table('users')->where('email', $email)->first();
+        return Auth::check() ? Auth::user() : User::query()->where('email', $email)->first();
     }
 
 
