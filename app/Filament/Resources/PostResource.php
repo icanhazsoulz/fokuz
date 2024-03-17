@@ -37,9 +37,11 @@ class PostResource extends Resource
                 TextInput::make('title')
                     ->live()
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->required(),
                 TextInput::make('slug')
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->required(),
                 Textarea::make('excerpt')
                     ->columnSpanFull(),
                 RichEditor::make('content')
