@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 use function Laravel\Prompts\text;
 
 /**
@@ -17,8 +18,10 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        $title = fake()->text(50);
         return [
-            'title' => fake()->text(100),
+            'title' => $title,
+            'slug' => Str::slug($title),
             'excerpt' => fake()->text(300),
             'content' => fake()->text(2000),
             'image' => fake()->imageUrl,

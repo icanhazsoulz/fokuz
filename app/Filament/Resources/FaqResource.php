@@ -3,11 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\FaqResource\Pages;
-use App\Filament\Resources\FaqResource\RelationManagers;
 use App\Models\Faq;
+use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -34,13 +37,23 @@ class FaqResource extends Resource
                     ->required()
                     ->maxLength(65535)
                     ->columnSpanFull(),
-                Textarea::make('answer')
+                RichEditor::make('answer')
                     ->required()
-                    ->rows(5)
                     ->maxLength(65535)
+                    ->columnSpanFull(),
+                Select::make('post_id')
+                    ->label('Post link')
+                    ->relationship('post', 'title')
+                    ->options(Post::all()->pluck('title', 'id'))
+                    ->suffixIcon('heroicon-m-globe-alt')
+                    ->suffixIconColor('success')
+                    ->preload()
+                    ->searchable()
                     ->columnSpanFull(),
                 Checkbox::make('status')
                     ->label('Published'),
+                TextInput::make('link_label')
+                    ->default(__('filament_ui.faq.default_label')),
             ]);
     }
 
@@ -55,7 +68,12 @@ class FaqResource extends Resource
                 TextColumn::make('answer')
                     ->words(40)
                     ->wrap()
+                    ->html()
                     ->searchable(),
+                TextColumn::make('post.title')
+                    ->icon('heroicon-m-link')
+                    ->iconColor('success')
+                    ->wrap(),
                 CheckboxColumn::make('status')
                     ->label('Published'),
             ])

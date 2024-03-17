@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->text('question');
             $table->text('answer');
+            $table->foreignId('post_id')->nullable()->constrained('posts')->nullOnDelete();
+            $table->string('link_label')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

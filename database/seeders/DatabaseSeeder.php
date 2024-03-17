@@ -105,8 +105,8 @@ class DatabaseSeeder extends Seeder
         }
 
         Testimonial::factory(7)->create();
-        Faq::factory(10)->create();
         Post::factory(25)->create();
+        Faq::factory(10)->create();
         Partner::factory(15)->create();
 
         // \App\Models\User::factory(10)->create();
