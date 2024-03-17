@@ -33,19 +33,10 @@ class CreateAppointmentTest extends TestCase
     {
         parent::setUp();
 
-        $this->seed('RoleSeeder');
         $this->seed('CategorySeeder');
         $this->seed('ClientSourceSeeder');
 
-        $admin = new User([
-            'first_name' => 'Iuliia',
-            'last_name' => 'Kuznetsova',
-            'email' => 'admin@fokuz.com',
-            'phone' => fake()->phoneNumber,
-            'password' => Hash::make('admin'),
-        ]);
-        $admin->save();
-        $admin->assignRole('admin');
+        $this->seed_admin();
     }
 
     public function test_can_create_appointment()

@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 class CreateAppointmentRenderTest extends TestCase
 {
+    // What does this test do?
     public function test_renders_successfully()
     {
         Livewire::test(CreateAppointment::class)

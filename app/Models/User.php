@@ -29,6 +29,7 @@ class User extends Authenticatable implements FilamentUser
      * @var array<int, string>
      */
     protected $fillable = [
+        // TODO: remove name?
         'name',
         'first_name',
         'last_name',
