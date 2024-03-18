@@ -10,7 +10,12 @@ class Faq extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['question', 'answer', 'link_label', 'status'];
+    protected $fillable = [
+        'question',
+        'answer',
+        'link_label',
+        'status'
+    ];
 
     // Relationships
     public function post(): BelongsTo

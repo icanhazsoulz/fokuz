@@ -5,6 +5,7 @@ namespace Tests;
 use App\Models\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -12,16 +13,25 @@ abstract class TestCase extends BaseTestCase
 
     public function seed_admin()
     {
-        $this->seed('RoleSeeder');
+        Role::create(['name'=> 'admin']);
+        $this->seed('AdminSeeder');
+    }
 
-        $admin = new User([
-            'first_name' => 'Iuliia',
-            'last_name' => 'Kuznetsova',
-            'email' => 'admin@fokuz.com',
-            'phone' => fake()->phoneNumber,
-            'password' => Hash::make('admin'),
-        ]);
-        $admin->save();
+    protected function create_admin(): User
+    {
+        Role::create(['name'=> 'admin']);
+        $admin = User::factory()->create();
         $admin->assignRole('admin');
+
+        return $admin;
+    }
+
+    protected function create_client(): User
+    {
+        Role::create(['name'=> 'client']);
+        $client = User::factory()->create();
+        $client->assignRole('client');
+
+        return $client;
     }
 }

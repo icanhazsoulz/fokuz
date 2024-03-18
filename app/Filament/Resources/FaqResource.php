@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\FaqResource\Pages;
 use App\Models\Faq;
 use App\Models\Post;
+use Filament\Tables\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\RichEditor;
@@ -12,6 +13,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\CheckboxColumn;
@@ -31,6 +33,7 @@ class FaqResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $default_link_label = __('filament_ui.faq.default_label');
         return $form
             ->schema([
                 Textarea::make('question')
@@ -45,6 +48,8 @@ class FaqResource extends Resource
                     ->label('Post link')
                     ->relationship('post', 'title')
                     ->options(Post::all()->pluck('title', 'id'))
+                    ->live()
+                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('link_label', $default_link_label))
                     ->suffixIcon('heroicon-m-globe-alt')
                     ->suffixIconColor('success')
                     ->preload()
@@ -53,7 +58,7 @@ class FaqResource extends Resource
                 Checkbox::make('status')
                     ->label('Published'),
                 TextInput::make('link_label')
-                    ->default(__('filament_ui.faq.default_label')),
+                    ->default($default_link_label),
             ]);
     }
 

@@ -35,15 +35,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([RoleSeeder::class, CategorySeeder::class, ClientSourceSeeder::class, TypeSeeder::class]);
 
-        $admin = new User([
-            'first_name' => 'Iuliia',
-            'last_name' => 'Kuznetsova',
-            'email' => 'admin@fokuz.com',
-            'phone' => fake()->phoneNumber,
-            'password' => Hash::make('admin'),
-        ]);
-        $admin->save();
-        $admin->assignRole('admin');
+        $this->call([AdminSeeder::class]);
 
         Shelter::factory(8)->create();
 
@@ -106,8 +98,18 @@ class DatabaseSeeder extends Seeder
 
         Testimonial::factory(7)->create();
         Post::factory(25)->create();
-        Faq::factory(10)->create();
         Partner::factory(15)->create();
+
+        // Seed FAQs with posts linked only to some faq records
+        for ($i = 0; $i < 10; $i++) {
+            $postId = Arr::random(Post::all()->pluck('id')->toArray());
+            $post = Arr::random([$postId, null]);
+            $link_label = is_null($post) ? null : 'Mehr lesen';
+            Faq::factory()->create([
+                'post_id' => $post,
+                'link_label' => $link_label,
+            ]);
+        }
 
         // \App\Models\User::factory(10)->create();
 
