@@ -29,7 +29,7 @@ class FaqTableTest extends TestCase
 //    }
 
 
-    public function test_admin_can_view_admin_faq_page()
+    public function test_admin_can_view_admin_faqs_page()
     {
         $this->actingAs($this->create_admin())
             ->get('/admin/faqs')
@@ -58,7 +58,7 @@ class FaqTableTest extends TestCase
     {
         Livewire::actingAs($this->create_admin())
             ->test(ManageFaqs::class)
-            ->assertTableColumnExists('question')
+            ->assertCanRenderTableColumn('question')
             ->assertCanRenderTableColumn('answer')
             ->assertCanRenderTableColumn('post.title')
             ->assertCanRenderTableColumn('status')
@@ -221,7 +221,7 @@ class FaqTableTest extends TestCase
         $this->assertEquals($faqUpdated->link_label, $link_label);
     }
 
-    public function test_verified_client_cannot_view_admin_faq_page()
+    public function test_verified_client_cannot_view_admin_faqs_page()
     {
         $this->actingAs($this->create_client())
             ->get('/admin/faqs')

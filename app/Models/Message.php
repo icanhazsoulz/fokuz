@@ -14,6 +14,7 @@ class Message extends Model
 
     protected $fillable = [
         'message',
+        'status',
     ];
 
     public static function createMessage(array $all)

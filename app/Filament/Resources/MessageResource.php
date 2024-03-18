@@ -12,6 +12,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -49,16 +50,24 @@ class MessageResource extends Resource
                 TextColumn::make('user.name')
                     ->label('Client')
                     ->searchable(),
+                TextColumn::make('user.email')
+                    ->searchable(),
+                TextColumn::make('user.phone'),
                 TextColumn::make('message')
                     ->words(20)
                     ->wrap()
                     ->searchable(),
-                TextColumn::make('status')
-                    ->badge(),
+                IconColumn::make('status')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-envelope-open')
+                    ->falseIcon('heroicon-m-envelope')
+                    ->trueColor('gray')
+                    ->falseColor('info')
+                    ,
                 TextColumn::make('created_at')
                     ->dateTime('d-m-Y h:i:A')
-                    ->sortable(),
-//                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
@@ -66,8 +75,11 @@ class MessageResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make()
-                    ->modalWidth('xl'),
-//                Tables\Actions\EditAction::make(),
+                    ->modalWidth('xl')
+//                    ->requiresConfirmation()
+//                    ->action(fn (Message $record) => $record->update(['status' => 1]))
+//                    ->action(fn (Message $record) => $record->delete())
+                ,
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
