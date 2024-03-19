@@ -129,9 +129,11 @@ class MessageTest extends TestCase
         }
     }
 
-    public function test_edit_action_does_not_exist_on_messages(){
+    public function test_actions_exist_on_messages(){
         Livewire::actingAs($this->create_admin())
             ->test(ManageMessages::class)
+            ->assertTableActionExists(ReadAction::class)
+            ->assertTableBulkActionExists(MarkAsReadAction::class)
             ->assertTableActionDoesNotExist(EditAction::class)
             ->assertTableBulkActionDoesNotExist(EditAction::class);
     }

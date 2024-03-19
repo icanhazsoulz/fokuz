@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\MessageResource\Pages;
 //use App\Filament\Resources\MessageResource\RelationManagers;
 use App\Models\Message;
+use App\Models\User;
+use Filament\Tables\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -24,22 +26,13 @@ class MessageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
+    protected static ?string $navigationBadgeTooltip = 'New messages';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Select::make('user_id')
-                    ->label('Client')
-                    ->relationship(
-                        name: 'user',
-                        titleAttribute: 'name',
-                        modifyQueryUsing: fn (Builder $query) => $query->role('client'),
-                    )
-                    ->columnSpanFull(),
-                Textarea::make('message')
-                    ->rows(10)
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
+                //
             ]);
     }
 
@@ -48,21 +41,25 @@ class MessageResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('user.name')
-                    ->label('Client')
+                    ->label(__('filament_ui.messages.sender'))
                     ->searchable(),
                 TextColumn::make('user.email')
+                    ->label(__('filament_ui.general.email'))
                     ->searchable(),
-                TextColumn::make('user.phone'),
+                TextColumn::make('user.phone')
+                    ->label(__('filament_ui.general.phone')),
                 TextColumn::make('message')
+                    ->label(__('filament_ui.messages.message'))
                     ->words(20)
                     ->wrap()
                     ->searchable(),
                 IconColumn::make('status')
+                    ->label(__('filament_ui.general.status'))
                     ->boolean()
                     ->trueIcon('heroicon-o-envelope-open')
-                    ->falseIcon('heroicon-m-envelope')
+                    ->falseIcon('heroicon-s-envelope')
                     ->trueColor('gray')
-                    ->falseColor('info')
+                    ->falseColor('success')
                     ,
                 TextColumn::make('created_at')
                     ->dateTime('d-m-Y h:i:A')
@@ -74,8 +71,40 @@ class MessageResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make()
-                    ->modalWidth('xl')
+                Action::make('read')
+                    ->label(__('filament_ui.messages.read'))
+                    ->modalHeading(__('filament_ui.messages.message'))
+                    ->modalSubmitActionLabel(__('filament_ui.messages.mark'))
+                    ->link()
+                    ->icon('heroicon-s-newspaper')
+                    ->color('primary')
+                    ->fillForm(fn (Message $record): array => [
+                        'name' => $record->user->name,
+                        'email' => $record->user->email,
+                        'phone' => $record->user->phone,
+                        'message' => $record->message,
+                    ])
+                    ->form([
+                        TextInput::make('name')
+                            ->label(__('filament_ui.messages.sender'))
+                        ,
+                        TextInput::make('email')
+                            ->label(__('filament_ui.general.email'))
+                            ->columnSpan('sm')
+                        ,
+                        TextInput::make('phone')
+                            ->label(__('filament_ui.general.phone'))
+                        ,
+                        Textarea::make('message')
+                            ->label(__('filament_ui.messages.message'))
+                            ->rows(10)
+                            ->maxLength(65535)
+                        ,
+                    ])
+                    ->disabledForm()
+                    ->action(function (array $data, Message $record): void {
+                        $record->update(['status' => 1]);
+                    })
 //                    ->requiresConfirmation()
 //                    ->action(fn (Message $record) => $record->update(['status' => 1]))
 //                    ->action(fn (Message $record) => $record->delete())
@@ -85,6 +114,7 @@ class MessageResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+//                    MarkAsReadAction::make(),
                 ]),
             ]);
     }
@@ -94,5 +124,10 @@ class MessageResource extends Resource
         return [
             'index' => Pages\ManageMessages::route('/'),
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('status', 0)->count();
     }
 }
