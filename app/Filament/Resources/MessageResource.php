@@ -6,6 +6,7 @@ use App\Filament\Resources\MessageResource\Pages;
 //use App\Filament\Resources\MessageResource\RelationManagers;
 use App\Models\Message;
 use App\Models\User;
+use Filament\Actions\StaticAction;
 use Filament\Tables\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
@@ -74,9 +75,8 @@ class MessageResource extends Resource
                 Action::make('read')
                     ->label(__('filament_ui.messages.read'))
                     ->modalHeading(__('filament_ui.messages.message'))
-                    ->modalSubmitActionLabel(__('filament_ui.messages.mark'))
-                    ->link()
-                    ->icon('heroicon-s-newspaper')
+                    ->modalSubmitActionLabel(__('filament_ui.messages.mark_read'))
+                    ->icon('heroicon-s-eye')
                     ->color('primary')
                     ->fillForm(fn (Message $record): array => [
                         'name' => $record->user->name,
@@ -105,9 +105,6 @@ class MessageResource extends Resource
                     ->action(function (array $data, Message $record): void {
                         $record->update(['status' => 1]);
                     })
-//                    ->requiresConfirmation()
-//                    ->action(fn (Message $record) => $record->update(['status' => 1]))
-//                    ->action(fn (Message $record) => $record->delete())
                 ,
                 Tables\Actions\DeleteAction::make(),
             ])

@@ -13,7 +13,8 @@ return [
     'messages' => [
         'sender' => 'Sender',
         'message' => 'Nachricht',
-        'mark' => 'Mark as read',
+        'mark_read' => 'Mark as read',
+        'mark_unread' => 'Mark as unread',
         'read' => 'Lesen',
     ]
 ];
