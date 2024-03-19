@@ -37,10 +37,10 @@ class PostResource extends Resource
                 TextInput::make('title')
                     ->live()
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                    ->columnSpanFull()
+//                    ->columnSpanFull()
                     ->required(),
                 TextInput::make('slug')
-                    ->columnSpanFull()
+//                    ->columnSpanFull()
                     ->required(),
                 Textarea::make('excerpt')
                     ->columnSpanFull(),
@@ -81,7 +81,8 @@ class PostResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                ->slideOver(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
