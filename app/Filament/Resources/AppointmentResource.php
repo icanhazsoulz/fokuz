@@ -33,6 +33,8 @@ class AppointmentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
+    protected static ?string $navigationBadgeTooltip = 'New appointments';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -149,5 +151,10 @@ class AppointmentResource extends Resource
         return [
             'index' => Pages\ManageAppointments::route('/'),
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('status', 'new')->count();
     }
 }
