@@ -1,23 +1,14 @@
 <?php
 
-namespace Tests\Feature\Filament\Admin\Faq;
+namespace Tests\Feature\Filament\Admin;
 
-use App\Filament\Resources\FaqResource;
-use App\Filament\Resources\FaqResource\Pages\ManageFaqs;
+
 use App\Filament\Resources\MessageResource\Pages\ManageMessages;
-use App\Filament\Resources\UserResource\Pages\ListUsers;
-use App\Models\Faq;
 use App\Models\Message;
-use App\Models\Post;
-use App\Models\User;
-use Database\Factories\UserFactory;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Session;
 use Livewire\Livewire;
-use PHPUnit\Event\Code\Throwable;
 use Tests\TestCase;
 
 class MessageTest extends TestCase
@@ -47,16 +38,6 @@ class MessageTest extends TestCase
             ->assertSuccessful();
     }
 
-//    public function test_messages_are_listed()
-//    {
-//        $messages = Message::factory(5)->create();
-//
-//        Livewire::actingAs($this->create_admin())
-//            ->test(ManageMessages::class)
-//            ->assertCanSeeTableRecords($messages)
-//            ->assertCountTableRecords(5);
-//    }
-
     public function test_set_of_columns_is_rendered()
     {
         Livewire::actingAs($this->create_admin())
@@ -67,5 +48,100 @@ class MessageTest extends TestCase
             ->assertCanRenderTableColumn('user.phone')
             ->assertCanRenderTableColumn('status')
         ;
+    }
+
+    public function test_messages_are_listed()
+    {
+        $user = $this->create_client();
+        $messages = Message::factory(2)->create([
+            'user_id' => $user->id,
+        ]);
+
+        Livewire::actingAs($this->create_admin())
+            ->test(ManageMessages::class)
+            ->assertCanSeeTableRecords($messages)
+            ->assertCountTableRecords(2);
+    }
+
+    public function test_columns_are_sorted_by_date_desc()
+    {
+        $user = $this->create_client();
+        for ($i = 0; $i < 5; $i++) {
+            Message::factory()->create([
+                'user_id' => $user->id,
+                'created_at' => fake()->dateTime
+            ]);
+        }
+
+        $messages = Message::all();
+
+        Livewire::actingAs($this->create_admin())
+            ->test(ManageMessages::class)
+            ->assertCanSeeTableRecords($messages->sortByDesc('created_at'), inOrder: true);
+    }
+
+    public function test_can_get_authors_contact_data()
+    {
+        $user = $this->create_client();
+        $message = Message::factory()->create(['user_id' => $user->id,]);
+
+        Livewire::actingAs($this->create_admin())
+            ->test(ManageMessages::class)
+            ->assertTableColumnStateSet('user.name', $message->user->name, record: $message)
+            ->assertTableColumnStateNotSet('user.name', 'Rumpelstilzchen', record: $message)
+            ->assertTableColumnStateSet('user.email', $message->user->email, record: $message)
+            ->assertTableColumnStateNotSet('user.email', 'my.email@some.domain', record: $message)
+            ->assertTableColumnStateSet('user.phone', $message->user->phone, record: $message)
+            ->assertTableColumnStateNotSet('user.phone', '000.00.00', record: $message)
+            ;
+    }
+
+    public function test_can_delete_single_message()
+    {
+        $user = $this->create_client();
+        $message = Message::factory()->create(['user_id' => $user->id]);
+
+        Livewire::actingAs($this->create_admin())
+            ->test(ManageMessages::class)
+            ->callTableAction(DeleteAction::class, $message)
+        ;
+
+        $this->assertModelMissing($message);
+    }
+
+    public function test_message_is_cascade_deleted_with_author()
+    {
+
+    }
+
+    public function test_can_bulk_delete_messages()
+    {
+        $user = $this->create_client();
+        $messages = Message::factory(2)->create(['user_id' => $user->id]);
+
+        Livewire::actingAs($this->create_admin())
+            ->test(ManageMessages::class)
+            ->callTableBulkAction(DeleteAction::class, $messages)
+        ;
+
+        foreach ($messages as $message) {
+            $this->assertModelMissing($message);
+        }
+    }
+
+    public function test_edit_action_does_not_exist_on_messages(){
+        Livewire::actingAs($this->create_admin())
+            ->test(ManageMessages::class)
+            ->assertTableActionDoesNotExist(EditAction::class)
+            ->assertTableBulkActionDoesNotExist(EditAction::class);
+    }
+
+    /**
+     * can open modal to read
+     * can mark as read/unread
+     * assert new messages status
+     */
+    public function test_can_read_a_message() {
+
     }
 }
