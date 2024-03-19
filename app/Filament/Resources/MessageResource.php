@@ -3,13 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\MessageResource\Pages;
-//use App\Filament\Resources\MessageResource\RelationManagers;
-use App\Models\Message;
-use App\Models\User;
 use Filament\Actions\StaticAction;
+use Filament\Support\Colors\Color;
+use App\Models\Message;
 use Filament\Tables\Actions\Action;
-use Filament\Forms;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
@@ -18,8 +15,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class MessageResource extends Resource
 {
@@ -102,8 +97,24 @@ class MessageResource extends Resource
                         ,
                     ])
                     ->disabledForm()
-                    ->action(function (array $data, Message $record): void {
-                        $record->update(['status' => 1]);
+                    ->modalSubmitAction(false)
+                    ->modalCancelAction(fn (StaticAction $action) => $action->label('Close'))
+                    ->extraModalFooterActions(fn (Action $action, Message $record): array => [
+                        $action
+                            ->makeModalSubmitAction('markAsRead', arguments: ['read' => true])
+                            ->label(__('filament_ui.messages.mark_read'))
+                            ->icon('heroicon-o-eye')
+                            ->color('primary')
+                            ->hidden(fn (): bool  => $record->status == true),
+                        $action
+                            ->makeModalSubmitAction('markAsUnread', arguments: ['read' => false])
+                            ->label(__('filament_ui.messages.mark_unread'))
+                            ->icon('heroicon-s-eye-slash')
+                            ->color(Color::Indigo)
+                            ->hidden(fn (): bool  => $record->status == false),
+                    ])
+                    ->action(function (array $data, Message $record, array $arguments): void {
+                        $record->update(['status' => $arguments['read']]);
                     })
                 ,
                 Tables\Actions\DeleteAction::make(),
