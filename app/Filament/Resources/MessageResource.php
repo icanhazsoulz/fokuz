@@ -55,7 +55,7 @@ class MessageResource extends Resource
                     ->trueIcon('heroicon-o-envelope-open')
                     ->falseIcon('heroicon-s-envelope')
                     ->trueColor('gray')
-                    ->falseColor('success')
+                    ->falseColor(Color::Indigo)
                     ,
                 TextColumn::make('created_at')
                     ->dateTime('d-m-Y h:i:A')
