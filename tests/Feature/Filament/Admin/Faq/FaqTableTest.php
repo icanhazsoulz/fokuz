@@ -2,20 +2,14 @@
 
 namespace Tests\Feature\Filament\Admin\Faq;
 
-use App\Filament\Resources\FaqResource;
 use App\Filament\Resources\FaqResource\Pages\ManageFaqs;
-use App\Filament\Resources\UserResource\Pages\ListUsers;
 use App\Models\Faq;
 use App\Models\Post;
-use App\Models\User;
-use Database\Factories\UserFactory;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Session;
 use Livewire\Livewire;
-use PHPUnit\Event\Code\Throwable;
 use Tests\TestCase;
 
 class FaqTableTest extends TestCase
@@ -37,6 +31,13 @@ class FaqTableTest extends TestCase
 
     }
 
+    public function test_verified_client_cannot_view_admin_faqs_page()
+    {
+        $this->actingAs($this->create_client())
+            ->get('/admin/faqs')
+            ->assertStatus(403);
+    }
+
     public function test_faqs_table_is_rendered()
     {
         Livewire::actingAs($this->create_admin())
@@ -54,7 +55,7 @@ class FaqTableTest extends TestCase
             ->assertCountTableRecords(5);
     }
 
-    public function test_set_of_columns_is_rendered()
+    public function test_set_of_faq_columns_is_rendered()
     {
         Livewire::actingAs($this->create_admin())
             ->test(ManageFaqs::class)
@@ -65,7 +66,7 @@ class FaqTableTest extends TestCase
         ;
     }
 
-    public function test_columns_are_sorted_by_date_desc()
+    public function test_faq_columns_are_sorted_by_date_desc()
     {
         for ($i = 0; $i < 5; $i++) {
             Faq::factory()->create(['created_at' => fake()->dateTime]);
@@ -89,7 +90,7 @@ class FaqTableTest extends TestCase
             ->assertTableColumnStateNotSet('post.title', 'Non-existing Title', record: $faq);
     }
 
-    public function test_can_delete_single_faq()
+    public function test_admin_can_delete_single_faq()
     {
         $faq = Faq::factory()->create();
 
@@ -101,7 +102,7 @@ class FaqTableTest extends TestCase
         $this->assertModelMissing($faq);
     }
 
-    public function test_can_bulk_delete_faqs()
+    public function test_admin_can_bulk_delete_faqs()
     {
         $faqs = Faq::factory(2)->create();
 
@@ -115,7 +116,7 @@ class FaqTableTest extends TestCase
         }
     }
 
-    public function test_can_edit_faq_question()
+    public function test_admin_can_edit_faq_question()
     {
         $faq = Faq::factory()->create();
 
@@ -130,7 +131,7 @@ class FaqTableTest extends TestCase
         $this->assertEquals(Faq::find($faq->id)->question, $question);
     }
 
-    public function test_can_edit_faq_answer()
+    public function test_admin_can_edit_faq_answer()
     {
         $faq = Faq::factory()->create();
 
@@ -145,7 +146,7 @@ class FaqTableTest extends TestCase
         $this->assertEquals(Faq::find($faq->id)->answer, $answer);
     }
 
-    public function test_can_switch_faq_status()
+    public function test_admin_can_switch_faq_status()
     {
         $status = Arr::random([false, true]);
         $faq = Faq::factory()->create(['status' => $status]);
@@ -163,7 +164,7 @@ class FaqTableTest extends TestCase
 
     // TODO: test_can_select_linked_post
 
-    public function test_can_edit_faq_link_label()
+    public function test_admin_can_edit_faq_link_label()
     {
         $faq = Faq::factory()->create();
 
@@ -219,12 +220,5 @@ class FaqTableTest extends TestCase
         $this->assertEquals($faqUpdated->answer, $answer);
         $this->assertEquals($faqUpdated->post_id, $post_id);
         $this->assertEquals($faqUpdated->link_label, $link_label);
-    }
-
-    public function test_verified_client_cannot_view_admin_faqs_page()
-    {
-        $this->actingAs($this->create_client())
-            ->get('/admin/faqs')
-            ->assertStatus(403);
     }
 }

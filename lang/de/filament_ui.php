@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'appointments' => [
+        'address' => 'Adresse',
+        'status' => [
+            'new' => 'Neu',
+            'confirmed' => 'Confirmed',
+            'completed' => 'Completed',
+            'cancelled' => 'Cancelled'
+        ],
+    ],
     'general' => [
         'name' => 'Name',
         'email' => 'Email',

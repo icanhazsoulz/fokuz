@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Photoshooting;
 use App\Models\User;
+use Filament\Facades\Filament;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +12,8 @@ class PhotoshootingPolicy
 {
     public function before(): bool
     {
-        return Auth::user()->hasRole('admin');
+        return (Filament::getCurrentPanel()->getId() === 'app' && Auth::user()->hasRole(['admin', 'client']))
+            || Auth::user()->hasRole('admin');
     }
 
     /**

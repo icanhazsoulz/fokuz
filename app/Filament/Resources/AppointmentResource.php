@@ -70,10 +70,10 @@ class AppointmentResource extends Resource
                     ->relationship('shelter', 'name'),
                 Radio::make('status')
                     ->options([
-                        'new' => 'New',
-                        'confirmed' => 'Confirmed',
-                        'completed' => 'Completed',
-                        'cancelled' => 'Cancelled'
+                        'new' => __('filament_ui.appointments.status.new'),
+                        'confirmed' => __('filament_ui.appointments.status.confirmed'),
+                        'completed' => __('filament_ui.appointments.status.completed'),
+                        'cancelled' => __('filament_ui.appointments.status.cancelled')
                     ])
                     ->inline()
                     ->inlineLabel(false)
