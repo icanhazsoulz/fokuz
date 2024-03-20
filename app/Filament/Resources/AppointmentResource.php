@@ -8,14 +8,12 @@ use App\Models\Category;
 use App\Models\ClientSource;
 use App\Models\Shelter;
 use App\Models\User;
-use Filament\Forms;
 use Filament\Forms\Components\MorphToSelect;
 use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,9 +21,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
 
 class AppointmentResource extends Resource
 {
@@ -136,8 +131,22 @@ class AppointmentResource extends Resource
                     ->options(ClientSource::all()->pluck('name', 'id')),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\Action::make('createPhotoshooting')
+                        ->url(fn (Appointment $record): string => route('filament.admin.resources.photoshootings.create', [
+                            'appointment' => $record,
+                        ]))
+                        ->openUrlInNewTab()
+                        ->hidden(fn (Appointment $record): bool => $record->status !== 'new')
+                        ->icon('heroicon-o-camera')
+                        ->color('success')
+                        ->action(function (array $args) {
+
+                    })
+                    ,
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
