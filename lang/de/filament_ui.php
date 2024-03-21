@@ -12,7 +12,8 @@ return [
     ],
     'general' => [
         'name' => 'Name',
-        'email' => 'Email',
+        'email' => 'E-Mail-Adresse',
+        'password' => 'Passwort',
         'phone' => 'Phone',
         'status' => 'Status',
     ],

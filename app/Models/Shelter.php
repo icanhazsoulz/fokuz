@@ -17,4 +17,9 @@ class Shelter extends Model implements HasMedia
     {
         return $this->morphMany(Appointment::class, 'appointmentable');
     }
+
+    public function photoshootings(): MorphMany
+    {
+        return $this->morphMany(Photoshooting::class, 'photoshootingable');
+    }
 }

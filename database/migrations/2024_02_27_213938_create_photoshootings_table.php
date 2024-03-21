@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('photoshootings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->morphs('photoshootingable');
             // date, gallery, ...
-            $table->unsignedBigInteger('appointment_id')->nullable();
+            $table->foreignId('appointment_id')->nullable()->constrained('appointments')->nullOnDelete();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
-            $table->foreign('appointment_id')->references('id')->on('appointments')->nullOnDelete();
         });
     }
 

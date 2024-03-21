@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -13,7 +14,11 @@ class Photoshooting extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-//    public string $photoshooting_uid;
+    protected $fillable = [
+        'photoshootingable_type',
+        'photoshootingable_id',
+        'appointment_id',
+    ];
 
     /**
      * To figure out:
@@ -21,10 +26,15 @@ class Photoshooting extends Model implements HasMedia
      */
 
     // Relationships
-    public function user(): BelongsTo
+    public function photoshootingable(): MorphTo
     {
-        return $this->belongsTo(User::class);
+        return $this->morphTo();
     }
+
+//    public function user(): BelongsTo
+//    {
+//        return $this->belongsTo(User::class);
+//    }
 
     public function pets(): BelongsToMany
     {

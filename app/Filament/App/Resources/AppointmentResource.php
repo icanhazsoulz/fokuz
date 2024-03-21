@@ -54,7 +54,12 @@ class AppointmentResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->query(Appointment::query()->where('appointmentable_id', Auth::user()->getAuthIdentifier()))
+            ->query(
+                // TODO: make based on role when add shelters as customers
+                Appointment::query()
+                    ->where('appointmentable_id', Auth::user()->getAuthIdentifier())
+                    ->where('appointmentable_type', User::class)
+            )
             ->columns([
 //                TextColumn::make('appointmentable.email')
 //                    ->label(__('filament_ui.general.email'))

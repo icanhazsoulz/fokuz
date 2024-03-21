@@ -5,6 +5,7 @@ namespace App\Filament\App\Resources;
 use App\Filament\App\Resources\PhotoshootingResource\Pages;
 use App\Filament\App\Resources\PhotoshootingResource\RelationManagers;
 use App\Models\Photoshooting;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -20,7 +21,7 @@ class PhotoshootingResource extends Resource
 {
     protected static ?string $model = Photoshooting::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-camera';
 
     public static function form(Form $form): Form
     {
@@ -33,7 +34,11 @@ class PhotoshootingResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->query(Photoshooting::query()->where('user_id', Auth::user()->getAuthIdentifier()))
+            ->query(
+                // TODO: make based on role when add shelters as customers
+                Photoshooting::query()
+                    ->where('photoshootingable_id', Auth::user()->getAuthIdentifier())
+                    ->where('photoshootingable_type', User::class))
             ->columns([
                 TextColumn::make('pet.name')
                     ->label('Pet name')

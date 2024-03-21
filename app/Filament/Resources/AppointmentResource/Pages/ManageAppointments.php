@@ -27,7 +27,7 @@ class ManageAppointments extends ManageRecords
             'clients' => Tab::make('Clients')
                 ->icon('heroicon-m-user-group')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('appointmentable_type', User::class)),
-            'admins' => Tab::make('Shelters')
+            'shelters' => Tab::make('Shelters')
                 ->icon('heroicon-m-home-modern')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('appointmentable_type', Shelter::class)),
         ];

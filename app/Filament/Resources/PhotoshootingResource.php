@@ -4,11 +4,18 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PhotoshootingResource\Pages;
 use App\Filament\Resources\PhotoshootingResource\RelationManagers;
+use App\Models\Appointment;
+use App\Models\Pet;
 use App\Models\Photoshooting;
+use App\Models\Shelter;
+use App\Models\User;
+use Filament\Forms\Components\MorphToSelect;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
@@ -16,6 +23,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
 
 class PhotoshootingResource extends Resource
 {
@@ -27,17 +37,40 @@ class PhotoshootingResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('user_id')
-                    ->label('Client')
-                    ->relationship(
-                        name: 'user',
-                        titleAttribute: 'name',
-                        modifyQueryUsing: fn (Builder $query) => $query->role('client'),
-                    )
+                MorphToSelect::make('photoshootingable')
+                    ->label('Customer')
+                    ->types([
+                        MorphToSelect\Type::make(User::class)
+                            ->titleAttribute('name')
+                            ->modifyOptionsQueryUsing(fn (Builder $query) => $query->role('client'))
+                            ,
+                        MorphToSelect\Type::make(Shelter::class)
+                            ->titleAttribute('name'),
+                    ])
                     ->searchable()
                     ->preload()
-//                    ->live()
-                    ->createOptionForm(fn (Form $form) => UserResource::form($form)),
+                    ->required(),
+                Select::make('pets')
+                    ->label('Pets')
+                    ->multiple()
+                    ->relationship(titleAttribute: 'name')
+                    ->options(fn (Get $get): Collection => Pet::where('user_id', $get('photoshootingable_id'))->pluck('name', 'id'))
+                    ->searchable()
+                    ->preload()
+                    ,
+                // TODO: populate automatically when create photoshooting from appointment
+                Select::make('appointment_id')
+                    ->relationship(
+                        name: 'appointment',
+                        titleAttribute: 'appointmentable.name',
+                        modifyQueryUsing: fn (Get $get, Builder $query) => $query->where('appointmentable_id', $get('photoshootingable_id'))
+                            ->where('appointmentable_type', $get('photoshootingable_type'))
+                            ->where('status', 'new')
+                    )
+                    ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->appointmentable->name} {$record->created_at}")
+                    ->searchable()
+                    ->preload()
+                    ,
                 Tabs::make('Tabs')
                     ->tabs([
                         Tabs\Tab::make('All photos')
@@ -58,20 +91,6 @@ class PhotoshootingResource extends Resource
                             ]),
                     ])
                     ->columnSpanFull()
-
-//
-//                Select::make('pet_id')
-//                    ->label('Pet')
-//                    ->relationship('pet', 'name')
-                // Add View and Create Pet buttons here?
-//                    ->searchable()
-//                    ->preload()
-//                    ->options(fn (Get $get): Collection => Pet::query()
-//                        ->where('user_id', $get('user_id'))
-//                        ->pluck('name', 'id'))
-//                    ->createOptionForm([
-//
-//                    ]),
             ]);
     }
 
@@ -81,8 +100,8 @@ class PhotoshootingResource extends Resource
             ->columns([
                 TextColumn::make('appointment.id')
                     ->label('Appointment ID'),
-                TextColumn::make('user.name')
-                    ->label('Client')
+                TextColumn::make('photoshootingable.name')
+                    ->label('Customer')
                     ->searchable(),
                 TextColumn::make('pet.name')
                     ->label('Pet name')
@@ -90,6 +109,7 @@ class PhotoshootingResource extends Resource
                 ImageColumn::make('pet.photo')
                     ->label('Pet photo'),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])

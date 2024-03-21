@@ -48,6 +48,7 @@ class PetResource extends Resource
                 FileUpload::make('photo'),
                 Select::make('user_id')
                     ->label('Owner')
+                    ->required()
                     ->relationship(
                         name: 'user',
                         titleAttribute: 'name',
@@ -56,21 +57,7 @@ class PetResource extends Resource
                     )
                     ->searchable()
                     ->preload()
-                    ->createOptionForm([
-                        TextInput::make('first_name')
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('last_name')
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('email')
-                            ->email()
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('phone')
-                            ->tel()
-                            ->required(),
-                    ]),
+                    ->createOptionForm(fn (Form $form) => UserResource::form($form)),
 
             ]);
     }

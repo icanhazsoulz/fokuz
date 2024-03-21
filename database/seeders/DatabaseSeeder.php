@@ -76,7 +76,8 @@ class DatabaseSeeder extends Seeder
 
             // TODO: photoshooting existence and status corresponds to the appointment status?
             $photoshooting = Photoshooting::create([
-                'user_id' => $client->id,
+                'photoshootingable_id' => $client->id,
+                'photoshootingable_type' => User::class,
                 'appointment_id' => $appointment->id,
             ]);
 

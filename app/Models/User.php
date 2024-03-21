@@ -85,14 +85,14 @@ class User extends Authenticatable implements FilamentUser, HasName
 
 
     // Relationships
-//    public function appointments(): HasMany
-//    {
-//        return $this->hasMany(Appointment::class);
-//    }
-
     public function appointments(): MorphMany
     {
         return $this->morphMany(Appointment::class, 'appointmentable');
+    }
+
+    public function photoshootings(): MorphMany
+    {
+        return $this->morphMany(Photoshooting::class, 'photoshootingable');
     }
 
     public function orders(): HasMany
