@@ -7,6 +7,8 @@ use App\Filament\App\Resources\PhotoshootingResource\RelationManagers;
 use App\Models\Photoshooting;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -40,6 +42,13 @@ class PhotoshootingResource extends Resource
                     ->where('photoshootingable_id', Auth::user()->getAuthIdentifier())
                     ->where('photoshootingable_type', User::class))
             ->columns([
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('all')
+                    ->circular()
+                    ->stacked()
+//                    ->collection('default')
+//                    ->limit(2)
+                ,
+                TextColumn::make('id'),
                 TextColumn::make('pet.name')
                     ->label('Pet name')
                     ->searchable(),
@@ -50,6 +59,7 @@ class PhotoshootingResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -62,7 +72,7 @@ class PhotoshootingResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\MediaRelationManager::class,
         ];
     }
 
@@ -71,6 +81,7 @@ class PhotoshootingResource extends Resource
         return [
             'index' => Pages\ListPhotoshootings::route('/'),
             'create' => Pages\CreatePhotoshooting::route('/create'),
+            'view' => Pages\ViewPhotoshooting::route('/{record}'),
             'edit' => Pages\EditPhotoshooting::route('/{record}/edit'),
         ];
     }

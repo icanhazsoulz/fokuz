@@ -114,8 +114,10 @@ class PhotoshootingResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->button(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -137,6 +139,7 @@ class PhotoshootingResource extends Resource
         return [
             'index' => Pages\ListPhotoshootings::route('/'),
             'create' => Pages\CreatePhotoshooting::route('/create'),
+            'view' => Pages\ViewPhotoshooting::route('/{record}'),
             'edit' => Pages\EditPhotoshooting::route('/{record}/edit'),
         ];
     }

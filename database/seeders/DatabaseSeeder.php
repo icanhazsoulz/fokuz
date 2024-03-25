@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $postId = Arr::random(Post::all()->pluck('id')->toArray());
             $post = Arr::random([$postId, null]);
-            $link_label = is_null($post) ? null : 'Mehr lesen';
+            $link_label = is_null($post) ? null : 'Mehr sehen';
             Faq::factory()->create([
                 'post_id' => $post,
                 'link_label' => $link_label,

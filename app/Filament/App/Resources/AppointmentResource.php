@@ -116,6 +116,7 @@ class AppointmentResource extends Resource
     {
         return [
             'index' => Pages\ManageAppointments::route('/'),
+            'test' => Pages\ManageAppointments::route('/test')
         ];
     }
 }

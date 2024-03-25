@@ -20,11 +20,6 @@ class Photoshooting extends Model implements HasMedia
         'appointment_id',
     ];
 
-    /**
-     * To figure out:
-     * If the above property not commented out:  General error: 1364 Field 'photoshooting_uid' doesn't have a default value (Connection: mysql, SQL: insert into `photoshootings` (`pet_id`, `order_id`, `updated_at`, `created_at`) values (1, 1, 2024-03-02 15:01:54, 2024-03-02 15:01:54))
-     */
-
     // Relationships
     public function photoshootingable(): MorphTo
     {

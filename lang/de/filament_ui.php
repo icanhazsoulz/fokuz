@@ -16,15 +16,16 @@ return [
         'password' => 'Passwort',
         'phone' => 'Phone',
         'status' => 'Status',
+        'cart' => 'Warenkorb'
     ],
     'faq' => [
-        'default_label' => 'Mehr lesen',
+        'default_label' => 'Mehr sehen',
     ],
     'messages' => [
         'sender' => 'Sender',
         'message' => 'Nachricht',
         'mark_read' => 'Mark as read',
         'mark_unread' => 'Mark as unread',
-        'read' => 'Lesen',
+        'read' => 'Sehen',
     ]
 ];
