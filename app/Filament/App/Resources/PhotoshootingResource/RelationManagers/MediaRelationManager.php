@@ -51,10 +51,7 @@ class MediaRelationManager extends RelationManager
             ->actions([
                 Action::make('addToCart')
                     ->action(
-                        fn (Media $record) => $record->cart_item()->create([
-                            'user_id' => Auth::user()->getAuthIdentifier(),
-                            'media_id' => $record->id,
-                        ])
+                        fn (Media $record) => $this->createCartItem($record)
                     )
                     ->hidden(fn (Media $record) => $record->cart_item()->exists())
                 ,
@@ -66,15 +63,13 @@ class MediaRelationManager extends RelationManager
             ->bulkActions([
                 Tables\Actions\BulkAction::make('addToCart')
                     ->action(
-                        fn (Collection $records) => $records->each(
-                            function (Media $record) {
-//                                if ($record->cart_item()->exists()) continue
-                                $record->cart_item()->create([
-                                    'user_id' => Auth::user()->getAuthIdentifier(),
-                                    'media_id' => $record->id,
-                                ]);
+                        function (Collection $records) {
+                            foreach ($records as $record) {
+                                if ($record->cart_item()->exists()) continue;
+                                $this->createCartItem($record);
                             }
-                        ))
+                        }
+                    )
                 ,
 //                Tables\Actions\BulkAction::make('removeFromCart')
 //                    ->action(fn (Collection $records) => $records->each(fn (Media $record, int $key) => $record->cart_item()->delete()))
@@ -82,5 +77,13 @@ class MediaRelationManager extends RelationManager
 //                    Tables\Actions\DeleteBulkAction::make(),
 //                ]),
             ]);
+    }
+
+    private function createCartItem($record)
+    {
+        $record->cart_item()->create([
+            'user_id' => Auth::user()->getAuthIdentifier(),
+            'media_id' => $record->id,
+        ]);
     }
 }
