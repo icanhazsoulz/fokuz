@@ -81,8 +81,9 @@ class PhotoshootingResource extends Resource
         return [
             'index' => Pages\ListPhotoshootings::route('/'),
             'create' => Pages\CreatePhotoshooting::route('/create'),
-            'view' => Pages\ViewPhotoshooting::route('/{record}'),
+            'view' => Pages\ViewMedia::route('/{record}/temp'),
             'edit' => Pages\EditPhotoshooting::route('/{record}/edit'),
+            'temp' => Pages\ViewPhotoshooting::route('/{record}'),
         ];
     }
 }
