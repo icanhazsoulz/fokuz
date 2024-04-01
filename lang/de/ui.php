@@ -15,12 +15,12 @@ return [
 
     'menu' => [
         'home' => 'Home',
-        'about' => 'Über mich',
-        'portfolio' => 'Portfolio',
-        'photoshooting' => 'Photoshooting',
-        'shelters' => 'Tierheime',
-        'blog' => 'Blog',
-        'contact' => 'Kontakt',
+        'about' => 'Da bin ich',
+        'photoshooting' => 'Can sein',
+        'portfolio' => 'Erfolg',
+        'shelters' => 'Tierheimhilfe',
+        'blog' => 'Memoiren',
+        'contact' => 'Kontakte',
         'cats' => 'Katzen',
         'dogs' => 'Hunde',
         'small_animals' => 'Kleintiere'
