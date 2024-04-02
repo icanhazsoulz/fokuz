@@ -9,14 +9,14 @@
         ['route' => route('page', 'contact'), 'label' => __('ui.menu.contact')],
     ];
 @endphp
-<nav class="sm:flex sm:justify-between w-full">
+<div class="container mx-auto sm:flex">
     <div class="logo p-6">
         <a class="navbar-brand" href="{{ route('home') }}">FoKuZ</a>
     </div>
-    <div class="navigation p-6">
-        <ul class="md:flex">
+    <nav class="sm:flex sm:justify-between w-full">
+        <ul class="sm:flex mx-auto">
             @foreach($menu as $item)
-                <li class="px-2">
+                <li class="px-2 py-5">
                     <x-nav-link
                         href="{{ $item['route'] }}"
                         active="{{ \Illuminate\Support\Facades\Request::url() === $item['route'] }}"
@@ -24,9 +24,8 @@
                     </x-nav-link>
                 </li>
             @endforeach
-
         </ul>
-    </div>
+    </nav>
     <div class="auth p-6 text-end z-10">
         @auth
             <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Dashboard</a>
@@ -38,7 +37,8 @@
             @endif
         @endauth
     </div>
-</nav>
+</div>
+
 
 {{--        <li class="px-2 dropdown">--}}
 {{--            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"--}}
