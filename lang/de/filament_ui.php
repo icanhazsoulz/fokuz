@@ -10,6 +10,12 @@ return [
             'cancelled' => 'Cancelled'
         ],
     ],
+    'cart' => [
+        'checkout' => 'Zur Kasse',
+        'price' => 'Preis',
+        'qty' => 'Anzahl',
+        'total' => 'Gesamt'
+    ],
     'general' => [
         'name' => 'Name',
         'email' => 'E-Mail-Adresse',
@@ -27,5 +33,10 @@ return [
         'mark_read' => 'Mark as read',
         'mark_unread' => 'Mark as unread',
         'read' => 'Sehen',
+    ],
+    'order' => [
+        'summary' => [
+            'order_summary' => 'Order summary'
+        ]
     ]
 ];

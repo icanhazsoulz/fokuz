@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('media_id')->constrained()->cascadeOnDelete();
+            $table->integer('price')->nullable();
+            $table->integer('qty')->default(1);
+            $table->integer('total')->virtualAs('price * qty');
             $table->timestamps();
         });
     }

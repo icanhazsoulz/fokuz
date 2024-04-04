@@ -3,18 +3,15 @@
 namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\CartResource\Pages;
-use App\Filament\App\Resources\CartResource\RelationManagers;
-use App\Models\Cart;
 use App\Models\CartItem;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\Summarizers\Sum;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class CartResource extends Resource
 {
@@ -37,21 +34,27 @@ class CartResource extends Resource
 //                SpatieMediaLibraryImageColumn::make('media_id')
 //                    ->collection('default')
 //                ,
-                Tables\Columns\TextColumn::make('media.uuid'),
+                TextColumn::make('media.uuid'),
+                TextColumn::make('qty')
+                    ->label(__('filament_ui.cart.qty')),
+                TextColumn::make('price')
+                    ->label(__('filament_ui.cart.price'))
+                    ->money('EUR', divideBy: 100)
+                ,
+                TextColumn::make('total')
+                    ->label(__('filament_ui.cart.total'))
+                    ->money('EUR', divideBy: 100)
+                    ->summarize(Sum::make()->money('EUR', divideBy: 100))
+                ,
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Action::make('removeFromCart')
-                    ->action(fn (CartItem $record) => $record->delete())
-//                Tables\Actions\EditAction::make(),
-//                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
@@ -65,5 +68,10 @@ class CartResource extends Resource
     public static function getNavigationLabel(): string
     {
         return __('filament_ui.general.cart');
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('user_id', Auth::user()->getAuthIdentifier())->count();
     }
 }

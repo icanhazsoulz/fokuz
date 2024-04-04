@@ -84,6 +84,8 @@ class MediaRelationManager extends RelationManager
         $record->cart_item()->create([
             'user_id' => Auth::user()->getAuthIdentifier(),
             'media_id' => $record->id,
+            'price' => 999,
+            'qty' => 1,
         ]);
     }
 }
