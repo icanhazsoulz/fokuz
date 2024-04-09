@@ -10,12 +10,13 @@ window.paypal
                     // use the "body" param to optionally pass additional order information
                     // like product ids and quantities
                     body: JSON.stringify({
-                        cart: [
-                            {
-                                id: "YOUR_PRODUCT_ID",
-                                quantity: "YOUR_PRODUCT_QUANTITY",
-                            },
-                        ],
+                        cart: document.getElementById('cart').innerHTML
+                        // cart: [
+                        //     {
+                        //         id: "YOUR_PRODUCT_ID",
+                        //         quantity: "YOUR_PRODUCT_QUANTITY",
+                        //     },
+                        // ],
                     }),
                 });
 
