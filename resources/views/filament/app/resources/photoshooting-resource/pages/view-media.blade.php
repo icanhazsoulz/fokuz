@@ -22,7 +22,6 @@
             </div>
         </div>
     </div>
-    {{$record}}
 {{--    <x-filament::tabs label="Content tabs">--}}
 {{--        <x-filament::tabs.item>--}}
 {{--            All photos--}}

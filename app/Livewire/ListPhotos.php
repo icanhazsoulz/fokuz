@@ -2,19 +2,22 @@
 
 namespace App\Livewire;
 
-use App\Filament\App\Resources\PhotoshootingResource\Pages\ViewMedia;
+use App\Filament\Columns\SpatieMediaLibrarySingleImageColumn;
 use App\Models\Media;
 use App\Models\Photoshooting;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Support\Contracts\TranslatableContentDriver;
+use Filament\Forms\Form;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\BulkAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ListPhotos extends Component implements HasForms, HasTable
@@ -28,6 +31,14 @@ class ListPhotos extends Component implements HasForms, HasTable
 //        $this->photoshooting = $photoshooting;
 //    }
 
+    public function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                // Lightbox
+            ]);
+    }
+
     public function table(Table $table): Table
     {
         return $table
@@ -35,13 +46,32 @@ class ListPhotos extends Component implements HasForms, HasTable
 //            ->relationship(fn (): MorphMany => $this->photoshooting->media())
 //            ->inverseRelationship('photoshooting')
             ->columns([
-                TextColumn::make('name')
+                SpatieMediaLibrarySingleImageColumn::make('model.default')
+                    ->collection('default')
+                ,
+                TextColumn::make('name'),
+                TextColumn::make('uuid'),
             ])
             ->actions([
-
+                Action::make('addToCart')
+                    ->action(
+                        fn (Media $record) => $this->createCartItem($record)
+                    )
+                    ->hidden(fn (Media $record) => $record->cart_item()->exists())
+                ,
+                ViewAction::make(),
             ])
             ->bulkActions([
-
+                BulkAction::make('addToCart')
+                    ->action(
+                        function (Collection $records) {
+                            foreach ($records as $record) {
+                                if ($record->cart_item()->exists()) continue;
+                                $this->createCartItem($record);
+                            }
+                        }
+                    )
+                ,
             ]);
 
     }
@@ -49,5 +79,15 @@ class ListPhotos extends Component implements HasForms, HasTable
     public function render(): View
     {
         return view('livewire.list-photos');
+    }
+
+    private function createCartItem($record)
+    {
+        $record->cart_item()->create([
+            'user_id' => Auth::user()->getAuthIdentifier(),
+            'media_id' => $record->id,
+            'price' => 999,
+            'qty' => 1,
+        ]);
     }
 }

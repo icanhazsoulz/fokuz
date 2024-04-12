@@ -3,11 +3,11 @@
 namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\CartResource\Pages;
+use App\Filament\Columns\SpatieMediaLibrarySingleImageColumn;
 use App\Models\CartItem;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -31,9 +31,9 @@ class CartResource extends Resource
     {
         return $table
             ->columns([
-//                SpatieMediaLibraryImageColumn::make('media_id')
-//                    ->collection('default')
-//                ,
+                SpatieMediaLibrarySingleImageColumn::make('media_id')
+                    ->collection('default')
+                ,
                 TextColumn::make('media.uuid'),
                 TextColumn::make('qty')
                     ->label(__('filament_ui.cart.qty')),

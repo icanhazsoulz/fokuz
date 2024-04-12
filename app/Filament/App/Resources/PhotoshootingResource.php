@@ -3,7 +3,6 @@
 namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\PhotoshootingResource\Pages;
-use App\Filament\App\Resources\PhotoshootingResource\RelationManagers;
 use App\Models\Photoshooting;
 use App\Models\User;
 use Filament\Forms;
@@ -72,7 +71,7 @@ class PhotoshootingResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\MediaRelationManager::class,
+            //
         ];
     }
 
@@ -81,9 +80,8 @@ class PhotoshootingResource extends Resource
         return [
             'index' => Pages\ListPhotoshootings::route('/'),
             'create' => Pages\CreatePhotoshooting::route('/create'),
-            'view' => Pages\ViewMedia::route('/{record}/temp'),
+            'view' => Pages\ViewMedia::route('/{record}'),
             'edit' => Pages\EditPhotoshooting::route('/{record}/edit'),
-            'temp' => Pages\ViewPhotoshooting::route('/{record}'),
         ];
     }
 }
