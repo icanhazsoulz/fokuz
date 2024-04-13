@@ -44,10 +44,20 @@ class PostResource extends Resource
                     ->required(),
                 Textarea::make('excerpt')
                     ->columnSpanFull(),
-                RichEditor::make('content')
-                    ->columnSpanFull(),
-                FileUpload::make('image')
-                    ->columnSpanFull(),
+                Forms\Components\Builder::make('content')
+                    ->blocks([
+                        Forms\Components\Builder\Block::make('paragraph')
+                            ->schema([
+                                Forms\Components\Toggle::make('image_right'),
+                                Forms\Components\ColorPicker::make('bg_color')
+                                    ->label('Background color'),
+                                FileUpload::make('image'),
+                                RichEditor::make('content')
+                                    ->required(),
+                            ])
+                        ->columns(2)
+                    ])->columnSpanFull()
+                ,
                 Checkbox::make('status')
                     ->label('Published'),
             ]);
@@ -64,11 +74,11 @@ class PostResource extends Resource
                 TextColumn::make('excerpt')
                     ->words(20)
                     ->wrap(),
-                TextColumn::make('content')
-                    ->html()
-                    ->words(50)
-                    ->wrap()
-                    ->searchable(),
+//                TextColumn::make('content')
+//                    ->html()
+//                    ->words(50)
+//                    ->wrap()
+//                    ->searchable(),
                 CheckboxColumn::make('status')
                     ->label('Published'),
                 TextColumn::make('created_at')

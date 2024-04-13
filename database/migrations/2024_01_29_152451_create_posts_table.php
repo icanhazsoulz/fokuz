@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('excerpt')->nullable();
-            $table->text('content')->nullable();
+            $table->json('content')->nullable();
             $table->string('image')->nullable();
             $table->boolean('status')->default(0);
             $table->boolean('featured')->default(0);

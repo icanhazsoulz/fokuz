@@ -13,4 +13,8 @@ class Post extends Model
     protected $fillable = [
         'title', 'slug', 'excerpt', 'content', 'image', 'status', 'featured'
     ];
+
+    protected $casts = [
+        'content' => 'array',
+    ];
 }

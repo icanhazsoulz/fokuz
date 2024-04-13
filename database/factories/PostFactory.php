@@ -23,7 +23,7 @@ class PostFactory extends Factory
             'title' => $title,
             'slug' => Str::slug($title),
             'excerpt' => fake()->text(300),
-            'content' => fake()->text(2000),
+//            'content' => fake()->text(2000),
             'image' => fake()->imageUrl,
             'status' => rand(0, 1),
         ];
