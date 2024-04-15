@@ -7,14 +7,16 @@ return [
             'new' => 'Neu',
             'confirmed' => 'Confirmed',
             'completed' => 'Completed',
-            'cancelled' => 'Cancelled'
+            'cancelled' => 'Cancelled',
         ],
     ],
     'cart' => [
         'checkout' => 'Zur Kasse',
         'price' => 'Preis',
         'qty' => 'Anzahl',
-        'total' => 'Gesamt'
+        'total' => 'Gesamt',
+        'cart' => 'Warenkorb',
+        'add_to_cart' => 'In den Warenkorb',
     ],
     'general' => [
         'name' => 'Name',
@@ -22,7 +24,7 @@ return [
         'password' => 'Passwort',
         'phone' => 'Phone',
         'status' => 'Status',
-        'cart' => 'Warenkorb'
+        'download' => 'Herunterladen'
     ],
     'faq' => [
         'default_label' => 'Mehr sehen',
@@ -36,7 +38,7 @@ return [
     ],
     'order' => [
         'summary' => [
-            'order_summary' => 'Order summary'
+            'order_summary' => 'Order summary',
         ]
     ]
 ];

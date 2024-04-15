@@ -103,6 +103,8 @@ class PhotoshootingResource extends Resource
                 TextColumn::make('photoshootingable.name')
                     ->label('Customer')
                     ->searchable(),
+                TextColumn::make('photoshootingable.email')
+                    ->searchable(),
                 TextColumn::make('pet.name')
                     ->label('Pet name')
                     ->searchable(),

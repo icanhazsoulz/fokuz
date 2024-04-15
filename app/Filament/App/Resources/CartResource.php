@@ -67,7 +67,7 @@ class CartResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('filament_ui.general.cart');
+        return __('filament_ui.cart.cart');
     }
 
     public static function getNavigationBadge(): ?string
