@@ -11,6 +11,8 @@ use Filament\Forms\Form;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
@@ -24,12 +26,12 @@ class ListPhotos extends Component implements HasForms, HasTable
 {
     use InteractsWithForms, InteractsWithTable;
 
-    public Photoshooting $variableFromFilamentPage;
-//
-//    public function mount(Photoshooting $photoshooting)
-//    {
-//        $this->photoshooting = $photoshooting;
-//    }
+    public Photoshooting $photoshooting;
+
+    public function mount()
+    {
+        $this->photoshooting = Photoshooting::find(request()->route()->parameter('record'));
+    }
 
     public function form(Form $form): Form
     {
@@ -42,18 +44,25 @@ class ListPhotos extends Component implements HasForms, HasTable
     public function table(Table $table): Table
     {
         return $table
-            ->query(Media::query())
-//            ->relationship(fn (): MorphMany => $this->photoshooting->media())
-//            ->inverseRelationship('photoshooting')
+            ->query($this->photoshooting->getMedia('default')->toQuery())
             ->columns([
-                SpatieMediaLibrarySingleImageColumn::make('model.default')
-                    ->collection('default')
-                ,
-                TextColumn::make('name'),
-                TextColumn::make('uuid'),
+                ImageColumn::make('path')
+                    ,
+                Stack::make([
+                    SpatieMediaLibrarySingleImageColumn::make('model.default')
+                        ->collection('default')
+                    ,
+                    TextColumn::make('name'),
+                    TextColumn::make('uuid'),
+                ])
+            ])
+            ->contentGrid([
+                'md' => 2,
+                'xl' => 3,
             ])
             ->actions([
                 Action::make('addToCart')
+                    ->label(__('filament_ui.cart.add_to_cart'))
                     ->action(
                         fn (Media $record) => $this->createCartItem($record)
                     )
@@ -63,6 +72,7 @@ class ListPhotos extends Component implements HasForms, HasTable
             ])
             ->bulkActions([
                 BulkAction::make('addToCart')
+                    ->label(__('filament_ui.cart.add_to_cart'))
                     ->action(
                         function (Collection $records) {
                             foreach ($records as $record) {
@@ -73,7 +83,6 @@ class ListPhotos extends Component implements HasForms, HasTable
                     )
                 ,
             ]);
-
     }
 
     public function render(): View

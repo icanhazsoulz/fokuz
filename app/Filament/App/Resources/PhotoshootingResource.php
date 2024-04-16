@@ -5,17 +5,13 @@ namespace App\Filament\App\Resources;
 use App\Filament\App\Resources\PhotoshootingResource\Pages;
 use App\Models\Photoshooting;
 use App\Models\User;
-use Filament\Forms;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class PhotoshootingResource extends Resource
@@ -41,11 +37,12 @@ class PhotoshootingResource extends Resource
                     ->where('photoshootingable_id', Auth::user()->getAuthIdentifier())
                     ->where('photoshootingable_type', User::class))
             ->columns([
-                Tables\Columns\SpatieMediaLibraryImageColumn::make('all')
+                SpatieMediaLibraryImageColumn::make('photos')
                     ->circular()
                     ->stacked()
-//                    ->collection('default')
-//                    ->limit(2)
+                    ->collection('default')
+                    ->limit(5)
+                    ->limitedRemainingText()
                 ,
                 TextColumn::make('id'),
                 TextColumn::make('pet.name')
