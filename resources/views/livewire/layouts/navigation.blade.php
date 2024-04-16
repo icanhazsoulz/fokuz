@@ -13,7 +13,7 @@
     <div class="logo p-6">
         <a class="navbar-brand" href="{{ route('home') }}">FoKuZ</a>
     </div>
-    <nav class="sm:flex sm:justify-between w-full">
+    <nav class="sm:flex sm:justify-between w-full h-24">
         <ul class="sm:flex mx-auto">
             @foreach($menu as $item)
                 <li class="px-2 py-5">

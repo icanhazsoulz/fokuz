@@ -1,6 +1,6 @@
 <div>
     <x-layouts.hero-wrapper>
-        Hero content
+        <livewire:components.slider />
     </x-layouts.hero-wrapper>
 {{--    <livewire:forms.create-appointment />--}}
 </div>
