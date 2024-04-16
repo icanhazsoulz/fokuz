@@ -21,6 +21,9 @@
                 <livewire:layouts.navigation />
             @endif
         </header>
+        <main>
+            {{ $slot }}
+        </main>
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
 
     {{--            <p>Users: {{ \App\Models\User::all() }}</p>--}}
@@ -43,9 +46,9 @@
                 </div>
 
                 <!-- Page Content -->
-                <main class="w-full sm:max-w-xl md:max-w-4xl mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                    {{ $slot }}
-                </main>
+{{--                <main class="w-full sm:max-w-xl md:max-w-4xl mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">--}}
+{{--                    {{ $slot }}--}}
+{{--                </main>--}}
 {{--            </div>--}}
         </div>
         @livewireScripts

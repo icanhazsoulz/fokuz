@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        $this->call([RoleSeeder::class, CategorySeeder::class, ClientSourceSeeder::class, TypeSeeder::class]);
+        $this->call([RoleSeeder::class, CategorySeeder::class, ClientSourceSeeder::class, TypeSeeder::class, SocialSeeder::class]);
 
         $this->call([AdminSeeder::class]);
 
