@@ -16,7 +16,7 @@ return [
     'menu' => [
         'home' => 'Home',
         'about' => 'Da bin ich',
-        'photoshooting' => 'Can sein',
+        'photoshooting' => 'Kann sein',
         'portfolio' => 'Erfolg',
         'shelters' => 'Tierheimhilfe',
         'blog' => 'Memoiren',
