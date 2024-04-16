@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
 
-            $table->morphs('model');
             $table->string('title');
             $table->string('description')->nullable();
-            $table->string('photos');
-            $table->enum('category', ['all', 'selected', 'slider']);
+            $table->enum('category', ['portfolio', 'slider']);
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

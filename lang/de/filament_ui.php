@@ -24,7 +24,10 @@ return [
         'password' => 'Passwort',
         'phone' => 'Phone',
         'status' => 'Status',
-        'download' => 'Herunterladen'
+        'published' => 'Published',
+        'download' => 'Herunterladen',
+        'download_all' => 'Alles herunterladen',
+        'downloads' => 'Downloads',
     ],
     'faq' => [
         'default_label' => 'Mehr sehen',
