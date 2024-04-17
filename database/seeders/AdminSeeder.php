@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
             'last_name' => 'Kuznetcova',
             'email' => 'admin@fokuz.com',
             'phone' => fake()->phoneNumber,
-            'password' => Hash::make('admin'),
+            'password' => Hash::make('0fodKz6sDIQRh8P'),
         ]);
         $admin->save();
         $admin->assignRole('admin');
