@@ -15,16 +15,19 @@ class PageSeeder extends Seeder
     {
         DB::table('pages')->insert([
             'title' => 'Home',
+            'gallery_id' => 1,
         ]);
 
         DB::table('pages')->insert([
             'title' => 'Da bin ich',
             'subtitle' => 'Ich verwandle Ihre Tiere in echte Superstars!',
+            'gallery_id' => 2,
         ]);
 
         DB::table('pages')->insert([
             'title' => 'Ich über mich',
             'subtitle' => 'Ich liebe meine Arbeit',
+            'gallery_id' => 3,
         ]);
 
         DB::table('pages')->insert([
