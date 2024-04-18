@@ -10,7 +10,7 @@ class Page extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'subtitle', 'layout'];
+    protected $fillable = ['slug', 'title', 'subtitle', 'gallery_id', 'layout'];
 
     public function gallery(): BelongsTo
     {

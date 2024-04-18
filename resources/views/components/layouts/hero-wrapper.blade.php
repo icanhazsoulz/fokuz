@@ -1,5 +1,5 @@
 @php
-    $classes = 'h-dvh bg-brand-green -mt-24 pt-24';
+    $classes = 'h-dvh -mt-24 pt-24';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
@@ -7,17 +7,21 @@
         <livewire:socials-widget />
         <x-widgets.call />
         {{ $slot }}
-        <x-primary-button class="absolute bottom-24 left-12">
-            Frag mich mal
-        </x-primary-button>
+        @if(request()->is('/'))
+            <x-primary-button class="absolute bottom-24 left-12">
+                Frag mich mal
+            </x-primary-button>
+        @endif
     </div>
-    <div class="container mx-auto">
-        <h1>
-            Mit jeder Photobestellung spenden Sie <br />
-            <span
-                class="inline-block bg-font-color-2 font-bold rounded mt-2 px-2 -ml-2"
-            >für Tiere in Not</span
-            >
-        </h1>
-    </div>
+    @if(request()->is('/'))
+        <div class="container mx-auto">
+            <h1>
+                Mit jeder Photobestellung spenden Sie <br />
+                <span
+                    class="inline-block bg-font-color-2 font-bold rounded mt-2 px-2 -ml-2"
+                >für Tiere in Not</span
+                >
+            </h1>
+        </div>
+    @endif
 </section>

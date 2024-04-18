@@ -12,7 +12,7 @@ class Slider extends Component
 
     public function mount()
     {
-        $this->slider = Gallery::where('category', 'slider')->first();
+        //
     }
 
     public function render(): View

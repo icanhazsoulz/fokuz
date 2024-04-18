@@ -14,11 +14,13 @@ class PageSeeder extends Seeder
     public function run(): void
     {
         DB::table('pages')->insert([
+            'slug' => 'home',
             'title' => 'Home',
             'gallery_id' => 1,
         ]);
 
         DB::table('pages')->insert([
+            'slug' => 'about',
             'title' => 'Da bin ich',
             'subtitle' => 'Ich verwandle Ihre Tiere in echte Superstars!',
             'gallery_id' => 2,
@@ -27,7 +29,6 @@ class PageSeeder extends Seeder
         DB::table('pages')->insert([
             'title' => 'Ich über mich',
             'subtitle' => 'Ich liebe meine Arbeit',
-            'gallery_id' => 3,
         ]);
 
         DB::table('pages')->insert([
@@ -41,8 +42,10 @@ class PageSeeder extends Seeder
         ]);
 
         DB::table('pages')->insert([
+            'slug' => 'photoshooting',
             'title' => 'Kann sein',
             'subtitle' => 'Bilderwelten: Lebendig, Echt, Einzigartig',
+            'gallery_id' => 3,
         ]);
 
         DB::table('pages')->insert([
@@ -61,6 +64,7 @@ class PageSeeder extends Seeder
         ]);
 
         DB::table('pages')->insert([
+            'slug' => 'portfolio',
             'title' => 'Erfolg',
             'subtitle' => 'Spielerisch, lebendig, unerwartet',
         ]);

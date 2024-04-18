@@ -27,6 +27,9 @@ class PageResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('slug')
+                    ->label('ID')
+                    ->disabled(),
                 Forms\Components\TextInput::make('title'),
                 Forms\Components\TextInput::make('subtitle'),
                 Forms\Components\Select::make('gallery_id')
@@ -64,6 +67,8 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('slug')
+                    ->label('ID'),
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('subtitle'),
                 Tables\Columns\TextColumn::make('gallery.title'),
