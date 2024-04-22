@@ -1,9 +1,9 @@
 @php
-    $classes = 'h-dvh -mt-24 pt-24';
+    $classes = 'h-dvh pt-24';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container mx-auto relative h-3/5 flex justify-center items-center">
+    <div class="container mx-auto relative h-4/6 flex justify-center items-center">
         <livewire:socials-widget />
         <x-widgets.call />
         {{ $slot }}
