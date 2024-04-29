@@ -45,7 +45,12 @@ class ListDownloads extends Component implements HasForms, HasTable
     public function table(Table $table): Table
     {
         return $table
-            ->query($this->photoshooting->getMedia('downloads')->toQuery())
+            ->query(
+                Media::query()
+                    ->where('model_type', Photoshooting::class)
+                    ->where('model_id', $this->photoshooting->id)
+                    ->where('collection_name', 'downloads')
+                )
             ->columns([
                 Stack::make([
                     SpatieMediaLibrarySingleImageColumn::make('model.downloads')

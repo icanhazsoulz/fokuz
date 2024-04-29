@@ -44,7 +44,12 @@ class ListPhotos extends Component implements HasForms, HasTable
     public function table(Table $table): Table
     {
         return $table
-            ->query($this->photoshooting->getMedia('default')->toQuery())
+            ->query(
+                Media::query()
+                    ->where('model_type', Photoshooting::class)
+                    ->where('model_id', $this->photoshooting->id)
+                    ->where('collection_name', 'default')
+                )
             ->columns([
                 ImageColumn::make('path')
                     ,
