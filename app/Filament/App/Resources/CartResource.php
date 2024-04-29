@@ -31,9 +31,9 @@ class CartResource extends Resource
     {
         return $table
             ->columns([
-                SpatieMediaLibrarySingleImageColumn::make('media_id')
-                    ->collection('default')
-                ,
+//                SpatieMediaLibrarySingleImageColumn::make('media_id')
+//                    ->collection('default')
+//                ,
                 TextColumn::make('media.uuid'),
                 TextColumn::make('qty')
                     ->label(__('filament_ui.cart.qty')),

@@ -36,6 +36,17 @@ class FaqResource extends Resource
         $default_link_label = __('filament_ui.faq.default_label');
         return $form
             ->schema([
+                Select::make('category')
+                    ->label('Category')
+                    ->relationship(
+                        name: 'faq_category',
+                        titleAttribute: 'category',
+                    )
+                    ->searchable()
+                    ->preload()
+                ,
+                TextInput::make('faq_category.slug')
+                    ->disabled(),
                 Textarea::make('question')
                     ->required()
                     ->maxLength(65535)
@@ -66,6 +77,8 @@ class FaqResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('faq_category.category')
+                    ->label('Category'),
                 TextColumn::make('question')
                     ->words(20)
                     ->wrap()

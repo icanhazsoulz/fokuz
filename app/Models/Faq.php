@@ -22,4 +22,9 @@ class Faq extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+    public function faq_category(): BelongsTo
+    {
+        return $this->belongsTo(FaqCategory::class);
+    }
 }

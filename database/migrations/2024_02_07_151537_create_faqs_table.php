@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('question');
             $table->text('answer');
+            $table->foreignId('faq_category_id')->nullable()->constrained('faq_categories')->nullOnDelete();
             $table->foreignId('post_id')->nullable()->constrained('posts')->nullOnDelete();
             $table->string('link_label')->nullable();
             $table->boolean('status')->default(1);

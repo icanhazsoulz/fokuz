@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Appointment;
 use App\Models\Category;
 use App\Models\Faq;
+use App\Models\FaqCategory;
 use App\Models\Message;
 use App\Models\Order;
 use App\Models\Partner;
@@ -108,13 +109,16 @@ class DatabaseSeeder extends Seeder
         Testimonial::factory(7)->create();
         Post::factory(25)->create();
         Partner::factory(15)->create();
+        FaqCategory::factory(5)->create();
 
         // Seed FAQs with posts linked only to some faq records
         for ($i = 0; $i < 10; $i++) {
+            $categoryId = Arr::random(FaqCategory::all()->pluck('id')->toArray());
             $postId = Arr::random(Post::all()->pluck('id')->toArray());
             $post = Arr::random([$postId, null]);
             $link_label = is_null($post) ? null : 'Mehr sehen';
             Faq::factory()->create([
+                'faq_category_id' => $categoryId,
                 'post_id' => $post,
                 'link_label' => $link_label,
             ]);
