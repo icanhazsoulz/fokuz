@@ -68,6 +68,7 @@ return [
         ],
         'empty_option' => 'Auswählen',
         'message' => 'Nachricht',
+        'message_placeholder' => 'Guten Tag! Ich möchte eine Fotosession buchen! ...',
         'privacy_note' => 'We\'ll never share your email and phone number with anyone else.',
         'privacy_policy' => 'Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage gemäß der Datenschutzerklärung erhoben und verarbeitet werden.*',
         'submit' => 'Senden',

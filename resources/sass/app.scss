@@ -3,7 +3,17 @@
 @tailwind utilities;
 
 label.required:after {
-    content:" *";
+    content:"*";
+}
+
+.tab {
+    &-active {
+        @apply text-white border-primary bg-primary hover:bg-primary-hover focus:bg-primary-hover active:bg-primary-pressed shadow-md;
+    }
+
+    &-inactive {
+        @apply text-primary-focused border-gray-light hover:bg-violet-100 focus:bg-violet-100;
+    }
 }
 
 .hero-rectangles-bg {

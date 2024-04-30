@@ -10,23 +10,29 @@ export default {
     ],
 
     theme: {
+        container: {
+            screens: {
+                xl: '1160px',
+            },
+        },
         extend: {
             fontFamily: {
                 sans: ["Roboto, sans-serif"],
                 serif: ["IBM Plex Mono, monospace"],
             },
             colors: {
-                "primary": "#782aac",
+                "primary": "#782AAC",
                 "primary-hover": "#6B2699",
                 "primary-pressed": "#62228D",
                 // "": "",
                 // "": "",
                 // "": "",
                 "primary-focused": "#300E47",
-                "green": "#71d154",
-                "red": "#e1392c",
-                "yellow": "#fdde42",
-                "neutral": "#C4C0C7",
+                "green": "#71D154",
+                "red": "#E1392C",
+                "yellow": "#FDDE42",
+                "gray-light": "#C4C0C7",
+                "gray-dark": "#645C6A",
             },
         },
     },

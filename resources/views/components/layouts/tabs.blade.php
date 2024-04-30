@@ -2,8 +2,8 @@
     <div class="container mx-auto">
         <x-header class="text-primary-focused">Kontaktformular</x-header>
         <x-subheader class="text-primary-focused">Fotoshooting oder Gutschein anfragen</x-subheader>
-        <div class="grid grid-cols-3 grid-rows-2 gap-10">
-            <div class="col-span-2 w-8/12">
+        <div class="grid grid-cols-3 gap-10">
+            <div class="col-span-2 w-11/12 flex flex-col justify-center">
                 <x-paragraph class="text-primary-focused">
                     Möchten Sie ein besonderes Fotoshooting organisieren oder einfach mehr erfahren? Erzählen Sie mir, wen Sie auf den Fotos sehen möchten — Ihre süßen Haustiere und welche genau, alleine oder mit ihren Lieblingsmenschen. Vergessen Sie nicht anzugeben, wo Sie leben und welche Zeit Ihnen am besten passt. Haben Sie besondere Wünsche oder Ideen für das Thema des Shootings?
                 </x-paragraph>
@@ -12,22 +12,30 @@
                 </x-paragraph>
             </div>
             <div class="col-span-1">
-                <img src="assets/images/contacts.jpg" alt="">
+                <img src="assets/images/contacts.jpg" alt="" width="360">
             </div>
             <div class="col-span-2">
-                <div x-data="{ tab: 'tab1' }" class="flex justify-between">
-                    <x-button-tab @click="tab = 'tab1'" :alpine-active="'tab === \'tab1\''">Bilden<br> schnelle Anfrage</x-button-tab>
-                    <x-button-tab @click="tab = 'tab1'" :alpine-active="'tab === \'tab2\''">Anwendung<br> für ein Fotoshooting</x-button-tab>
-
-                    <div>
-                        <div id="tab1">Tab 1</div>
-                        <div id="tab2">Tab 2</div>
+                <div x-data="{ tab: 'appointment' }">
+                    <div class="flex justify-between">
+                        <x-button-tab
+                            @click="tab = 'appointment'"
+                            ::class="tab === 'appointment' ? 'tab-active' : 'tab-inactive'"
+                        >Bilden<br> schnelle Anfrage</x-button-tab>
+                        <x-button-tab
+                            @click="tab = 'contact'"
+                            ::class="tab === 'contact' ? 'tab-active' : 'tab-inactive'"
+                        >Anwendung<br> für ein Fotoshooting</x-button-tab>
+                    </div>
+                    <div class="pt-8">
+                        <div x-show="tab === 'appointment'">
+                            <livewire:forms.create-appointment />
+                        </div>
+                        <div x-show="tab === 'contact'">
+                            <livewire:forms.create-message />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </div>
 </section>
