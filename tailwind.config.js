@@ -12,13 +12,21 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ["Roboto, sans-serif"],
+                serif: ["IBM Plex Mono, monospace"],
             },
             colors: {
-                "brand-primary": "#782aac",
-                "brand-green": "#71d154",
-                "brand-red": "#e1392c",
-                "brand-yellow": "#fdde42",
+                "primary": "#782aac",
+                "primary-hover": "#6B2699",
+                "primary-pressed": "#62228D",
+                // "": "",
+                // "": "",
+                // "": "",
+                "primary-focused": "#300E47",
+                "green": "#71d154",
+                "red": "#e1392c",
+                "yellow": "#fdde42",
+                "neutral": "#C4C0C7",
             },
         },
     },

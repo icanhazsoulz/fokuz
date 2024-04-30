@@ -8,9 +8,9 @@
         <x-widgets.call />
         {{ $slot }}
         @if(request()->is('/'))
-            <x-primary-button class="absolute bottom-24 left-12">
+            <x-button-primary class="absolute bottom-24 left-12">
                 Frag mich mal
-            </x-primary-button>
+            </x-button-primary>
         @endif
     </div>
     @if(request()->is('/'))
