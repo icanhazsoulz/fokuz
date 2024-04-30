@@ -83,5 +83,8 @@
             @enderror
         </div>
     </div>
+    <div class="columns-1">
+        <x-input-checkbox>Ich habe die<a href="#" class="font-bold">&nbsp;Datenschutzerklärung&nbsp;</a>gelesen und erkläre mich damit einverstanden.</x-input-checkbox>
+    </div>
     <x-button-primary>{{ __('ui.contact_form.submit') }}</x-button-primary>
 </form>
