@@ -24,33 +24,43 @@
         <main>
             {{ $slot }}
         </main>
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
+{{--        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">--}}
 
     {{--            <p>Users: {{ \App\Models\User::all() }}</p>--}}
     {{--            <p>Messages: {{ \App\Models\Message::all() }}</p>--}}
     {{--            <p>Orders: {{ \App\Models\Order::all() }}</p>--}}
 {{--            <div class="min-h-screen bg-gray-100 dark:bg-gray-900">--}}
                 <!-- Page Heading -->
-                @if (isset($header))
-                    <header class="bg-white dark:bg-gray-800 shadow">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                            {{ $header }}
-                        </div>
-                    </header>
-                @endif
+{{--                @if (isset($header))--}}
+{{--                    <header class="bg-white dark:bg-gray-800 shadow">--}}
+{{--                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">--}}
+{{--                            {{ $header }}--}}
+{{--                        </div>--}}
+{{--                    </header>--}}
+{{--                @endif--}}
 
-                <div>
-                    <a href="{{ route('home') }}" wire:navigate>
-                        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                    </a>
-                </div>
+{{--                <div>--}}
+{{--                    <a href="{{ route('home') }}" wire:navigate>--}}
+{{--                        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />--}}
+{{--                    </a>--}}
+{{--                </div>--}}
 
                 <!-- Page Content -->
 {{--                <main class="w-full sm:max-w-xl md:max-w-4xl mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">--}}
 {{--                    {{ $slot }}--}}
 {{--                </main>--}}
 {{--            </div>--}}
-        </div>
+{{--        </div>--}}
+        <footer>
+            <div class="container mx-auto px-12 pt-12">
+                <div class="columns-4 bg-red rounded-t-3xl text-white">
+                    <div class="text-center p-3">Contacts</div>
+                    <div class="text-center p-3">Menu</div>
+                    <div class="text-center p-3">Information</div>
+                    <div class="text-center p-3">Conditions</div>
+                </div>
+            </div>
+        </footer>
         @livewireScripts
     </body>
 </html>
