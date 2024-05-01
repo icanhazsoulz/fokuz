@@ -1,5 +1,5 @@
 <div>
-    <x-layouts.hero-wrapper class="bg-brand-green">
+    <x-layouts.hero-wrapper class="bg-green">
 {{--        <livewire:components.slider :slider="$slider" />--}}
     </x-layouts.hero-wrapper>
     <x-layouts.tabs />
