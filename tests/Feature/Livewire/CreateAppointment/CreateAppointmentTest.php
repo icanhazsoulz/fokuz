@@ -33,13 +33,13 @@ class CreateAppointmentTest extends TestCase
     {
         parent::setUp();
 
+        Role::create(['name'=> 'client']);
+
         $this->seed('CategorySeeder');
         $this->seed('ClientSourceSeeder');
-
-        $this->seed_admin();
     }
 
-    public function test_can_create_appointment()
+    public function test_client_can_create_an_appointment()
     {
         $this->assertEquals(0, Appointment::count());
 
@@ -48,7 +48,7 @@ class CreateAppointmentTest extends TestCase
         $this->assertEquals(1, Appointment::count());
     }
 
-    public function test_can_add_new_appointment_to_a_client()
+    public function test_new_appointments_can_be_added_to_a_client()
     {
         $this->assertEquals(0, Appointment::count());
 
@@ -70,6 +70,12 @@ class CreateAppointmentTest extends TestCase
         return Arr::random(DB::table($table)->pluck('id')->toArray());
     }
 
+
+    /**
+     * Create array containing appointment data
+     *
+     * @return array
+     */
     protected static function fill_appointment(): array
     {
         return [
