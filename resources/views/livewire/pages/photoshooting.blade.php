@@ -1,5 +1,7 @@
 <div>
     <x-layouts.hero-wrapper class="bg-yellow">
-        <livewire:components.slider :slider="$slider" />
+        @if($slider)
+            <livewire:components.slider :slider="$slider" />
+        @endif
     </x-layouts.hero-wrapper>
 </div>
