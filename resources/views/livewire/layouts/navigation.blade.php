@@ -1,13 +1,30 @@
 @php
     $menu = [
         ['route' => route('home'), 'label' => __('ui.menu.home')],
-        ['route' => route('page', 'about'), 'label' => __('ui.menu.about')],
-        ['route' => route('page', 'photoshooting'), 'label' => __('ui.menu.photoshooting')],
+        [
+            'route' => route('page', 'about'),
+            'label' => __('ui.menu.about'),
+            'nested' => [
+                ['route' => route('page', 'story'), 'label' => __('ui.menu.story')],
+                ['route' => route('page', 'testimonials'), 'label' => __('ui.menu.testimonials')],
+                ['route' => route('page', 'partners'), 'label' => __('ui.menu.partners')]
+            ],
+        ],
+        [
+            'route' => route('page', 'photoshooting'),
+             'label' => __('ui.menu.photoshooting'),
+             'nested' => [
+                ['route' => route('page', 'prices'), 'label' => __('ui.menu.prices')],
+                ['route' => route('page', 'faq'), 'label' => __('ui.menu.faq')],
+                ['route' => route('page', 'events'), 'label' => __('ui.menu.events')]
+            ],
+        ],
         ['route' => route('page', 'portfolio'), 'label' => __('ui.menu.portfolio')],
         ['route' => route('page', 'shelters'), 'label' => __('ui.menu.shelters')],
         ['route' => route('page', 'blog'), 'label' => __('ui.menu.blog')],
         ['route' => route('page', 'contact'), 'label' => __('ui.menu.contact')],
     ];
+//    dd($menu[1]['nested']);
 @endphp
 <div class="fixed top-0 left-0 right-0 z-10">
     <div class="container mx-auto sm:flex">
@@ -17,12 +34,30 @@
         <nav class="sm:flex sm:justify-between w-full h-24">
             <ul class="sm:flex mx-auto">
                 @foreach($menu as $item)
-                    <li class="px-2 py-5">
+                    <li
+                        class="px-2 py-5"
+                        x-data="{ open: false }"
+                        @mouseover.away="open = false"
+                    >
                         <x-nav-link
                             href="{{ $item['route'] }}"
                             active="{{ \Illuminate\Support\Facades\Request::url() === $item['route'] }}"
+                            @mouseover="open = true"
                         >{{ $item['label'] }}
                         </x-nav-link>
+                        @if(array_key_exists('nested', $item))
+                            <ul x-show="open">
+                                @foreach($item['nested'] as $nested)
+                                    <li>
+                                        <x-nav-link
+                                            href="{{ $nested['route'] }}"
+                                            active="{{ \Illuminate\Support\Facades\Request::url() === $nested['route'] }}"
+                                        >{{ $nested['label'] }}
+                                        </x-nav-link>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </li>
                 @endforeach
             </ul>
