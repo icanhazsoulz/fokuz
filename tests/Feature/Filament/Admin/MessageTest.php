@@ -7,6 +7,7 @@ use App\Filament\Resources\MessageResource\Pages\ManageMessages;
 use App\Models\Message;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -129,13 +130,16 @@ class MessageTest extends TestCase
         }
     }
 
-    public function test_actions_exist_on_messages(){
+    public function test_actions_exist_on_messages()
+    {
         Livewire::actingAs($this->create_admin())
             ->test(ManageMessages::class)
-            ->assertTableActionExists(ReadAction::class)
-            ->assertTableBulkActionExists(MarkAsReadAction::class)
+            ->assertTableActionExists('read')
             ->assertTableActionDoesNotExist(EditAction::class)
-            ->assertTableBulkActionDoesNotExist(EditAction::class);
+            ->assertTableBulkActionDoesNotExist(EditAction::class)
+            ->assertTableActionDoesNotExist(ViewAction::class)
+            ->assertTableBulkActionDoesNotExist(ViewAction::class)
+            ->assertTableActionExists(DeleteAction::class);
     }
 
     /**
