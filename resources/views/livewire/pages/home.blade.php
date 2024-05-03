@@ -5,7 +5,5 @@
         @endif
     </x-blocks.hero-wrapper>
 
-    <x-blocks.featured-posts :posts="$featuredPosts" class="mb-16" />
-
     <x-blocks.tabs />
 </div>

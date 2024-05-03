@@ -16,7 +16,13 @@ return [
     'menu' => [
         'home' => 'Home',
         'about' => 'Da bin ich',
+        'story' => 'Ich über mich',
+        'testimonials' => 'Man über mich',
+        'partners' => 'Partner',
         'photoshooting' => 'Kann sein',
+        'prices' => 'Was kostet',
+        'faq' => 'Was tun',
+        'events' => 'Mittun',
         'portfolio' => 'Erfolg',
         'shelters' => 'Tierheimhilfe',
         'blog' => 'Memoiren',
