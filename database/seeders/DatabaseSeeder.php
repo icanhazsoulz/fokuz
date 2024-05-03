@@ -13,6 +13,7 @@ use App\Models\Partner;
 use App\Models\Pet;
 use App\Models\Photoshooting;
 use App\Models\Post;
+use App\Models\PostCategory;
 use App\Models\Shelter;
 use App\Models\Testimonial;
 use App\Models\Type;
@@ -108,16 +109,25 @@ class DatabaseSeeder extends Seeder
 
         Testimonial::factory(7)->create();
 
-        // Create featured posts
-        for ($i = 1; $i <= 3; $i++) {
-            Post::factory()->create([
-                'image' => 'blogpost'.$i.'.png',
-                'featured' => 1,
-                'status' => 1,
-            ]);
-        }
+        PostCategory::factory(5)->create();
 
-        Post::factory(22)->create();
+        // Create featured posts
+        for ($i = 1; $i <= 25; $i++) {
+            $categoryId = Arr::random(FaqCategory::all()->pluck('id')->toArray());
+            if ($i <= 3) {
+                Post::factory()->create([
+                    'image' => 'blogpost'.$i.'.png',
+                    'featured' => 1,
+                    'status' => 1,
+                    'post_category_id' => $categoryId,
+                ]);
+            } else {
+                Post::factory()->create([
+                    'post_category_id' => $categoryId,
+                ]);
+            }
+        }
+        
         Partner::factory(15)->create();
         FaqCategory::factory(5)->create();
 

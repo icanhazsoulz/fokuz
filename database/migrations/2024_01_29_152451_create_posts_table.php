@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->boolean('status')->default(0);
             $table->boolean('featured')->default(0);
+            $table->foreignId('post_category_id')->nullable()->constrained('post_categories')->nullOnDelete();
             $table->softDeletes();
             $table->timestamps();
         });
