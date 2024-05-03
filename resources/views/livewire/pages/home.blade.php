@@ -1,8 +1,11 @@
 <div>
-    <x-layouts.hero-wrapper class="bg-green">
+    <x-blocks.hero-wrapper class="bg-green">
         @if($slider)
             <livewire:components.slider :slider="$slider" />
         @endif
-    </x-layouts.hero-wrapper>
-    <x-layouts.tabs />
+    </x-blocks.hero-wrapper>
+
+    <x-blocks.featured-posts :posts="$featuredPosts" class="mb-16" />
+
+    <x-blocks.tabs />
 </div>

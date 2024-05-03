@@ -107,7 +107,17 @@ class DatabaseSeeder extends Seeder
         }
 
         Testimonial::factory(7)->create();
-        Post::factory(25)->create();
+
+        // Create featured posts
+        for ($i = 1; $i <= 3; $i++) {
+            Post::factory()->create([
+                'image' => 'blogpost'.$i.'.png',
+                'featured' => 1,
+                'status' => 1,
+            ]);
+        }
+
+        Post::factory(22)->create();
         Partner::factory(15)->create();
         FaqCategory::factory(5)->create();
 

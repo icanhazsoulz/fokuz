@@ -81,6 +81,8 @@ class PostResource extends Resource
 //                    ->searchable(),
                 CheckboxColumn::make('status')
                     ->label('Published'),
+                CheckboxColumn::make('featured')
+                    ->label('Featured'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

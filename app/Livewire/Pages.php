@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Models\Gallery;
 use App\Models\Page;
+use App\Models\Post;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\View;
 use Livewire\Component;
 
@@ -12,12 +14,14 @@ class Pages extends Component
     public string $slug;
 
     public ?Gallery $slider;
+    public Collection $featuredPosts;
 
     public function mount($page = '')
     {
         $this->slug = $page ?: 'home';
 
         $this->slider = $this->setSlider();
+        $this->featuredPosts = Post::where('featured', 1)->get();
 //        dd($this->slider);
     }
 
