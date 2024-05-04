@@ -38,10 +38,7 @@ class FaqResource extends Resource
             ->schema([
                 Select::make('category')
                     ->label('Category')
-                    ->relationship(
-                        name: 'faq_category',
-                        titleAttribute: 'category',
-                    )
+                    ->relationship('faq_category', 'category')
                     ->searchable()
                     ->preload()
                 ,

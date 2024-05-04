@@ -113,7 +113,7 @@ class DatabaseSeeder extends Seeder
 
         // Create featured posts
         for ($i = 1; $i <= 25; $i++) {
-            $categoryId = Arr::random(FaqCategory::all()->pluck('id')->toArray());
+            $categoryId = Arr::random(PostCategory::all()->pluck('id')->toArray());
             if ($i <= 3) {
                 Post::factory()->create([
                     'image' => 'blogpost'.$i.'.png',
@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
-        
+
         Partner::factory(15)->create();
         FaqCategory::factory(5)->create();
 

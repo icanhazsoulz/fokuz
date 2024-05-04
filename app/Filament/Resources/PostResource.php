@@ -8,6 +8,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -42,6 +43,13 @@ class PostResource extends Resource
                 TextInput::make('slug')
 //                    ->columnSpanFull()
                     ->required(),
+                Select::make('category')
+                    ->label('Category')
+                    ->relationship('post_category', 'category')
+                    ->searchable()
+                    ->preload()
+                ,
+                TextInput::make('post_category.slug')->disabled(),
                 Textarea::make('excerpt')
                     ->columnSpanFull(),
                 Forms\Components\Builder::make('content')
@@ -67,6 +75,8 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('post_category.category')
+                    ->label('Category'),
                 ImageColumn::make('image'),
                 TextColumn::make('title')
                     ->wrap()

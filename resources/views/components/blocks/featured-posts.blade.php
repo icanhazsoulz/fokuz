@@ -17,7 +17,7 @@
                         <div class="flex flex-col justify-between">
                             <div>
                                 <div class="flex justify-between mb-4">
-                                    <span>Category</span>
+                                    <span>{{ $post->post_category->category }}</span>
                                     <span class="text-end">{{ date_format($post->created_at, 'd.m.Y') }}</span>
                                 </div>
                                 <div class="mb-4">{{ $post->title }}</div>
