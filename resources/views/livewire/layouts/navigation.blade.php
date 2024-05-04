@@ -26,16 +26,16 @@
     ];
 //    dd($menu[1]['nested']);
 @endphp
-<div class="fixed top-0 left-0 right-0 z-10">
-    <div class="container mx-auto sm:flex">
+<div class="fixed top-0 left-0 right-0 z-20">
+    <div class="container mx-auto px-4 max-w-7xl flex justify-between items-center">
         <div class="logo p-6">
             <a class="navbar-brand" href="{{ route('home') }}">FoKuZ</a>
         </div>
-        <nav class="sm:flex sm:justify-between w-full h-24">
-            <ul class="sm:flex mx-auto">
+        <nav class="">
+            <ul class="flex justify-between items-center gap-2">
                 @foreach($menu as $item)
                     <li
-                        class="px-2 py-5"
+                        class="relative group"
                         x-data="{ open: false }"
                         @mouseover.away="open = false"
                     >
@@ -46,14 +46,14 @@
                         >{{ $item['label'] }}
                         </x-nav-link>
                         @if(array_key_exists('nested', $item))
-                            <ul x-show="open">
+                            <ul class="bg-white absolute left-0 top-[100%] z-10 w-full rounded-b-md shadow-md opacity-0 scale-y-0 origin-top-left transition ease-in-out group-hover:opacity-100 group-hover:scale-y-100" x-show="open">
                                 @foreach($item['nested'] as $nested)
                                     <li>
-                                        <x-nav-link
+                                        <x-dropdown-link
                                             href="{{ $nested['route'] }}"
                                             active="{{ \Illuminate\Support\Facades\Request::url() === $nested['route'] }}"
                                         >{{ $nested['label'] }}
-                                        </x-nav-link>
+                                        </x-dropdown-link>
                                     </li>
                                 @endforeach
                             </ul>
