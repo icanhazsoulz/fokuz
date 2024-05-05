@@ -52,7 +52,9 @@
                             @mouseover="open = true"
                         >{{ $item['label'] }}
                         </x-nav-link>
-                        <button class="outline-none [&>svg]:h-4 [&>svg]:w-4" id="dropdownMenuButton2" data-twe-dropdown-toggle-ref
+                        <button class="outline-none [&>svg]:h-4 [&>svg]:w-4"
+                        @click = "open = !open"
+                        id="dropdownMenuButton2" data-twe-dropdown-toggle-ref
                         aria-expanded="false"
                         data-twe-ripple-init
                         data-twe-ripple-color="light">
@@ -67,7 +69,10 @@
                                 </svg>
                             </button>
                         @if(array_key_exists('nested', $item))
-                            <ul class="bg-white absolute left-0 top-[100%] z-10 w-full rounded-b-md shadow-md opacity-0 scale-y-0 origin-top-left transition ease-in-out group-hover:opacity-100 group-hover:scale-y-100" x-show="open">
+                            <ul class="bg-white absolute left-0 top-[100%] z-10 w-full rounded-b-md shadow-md opacity-0 scale-y-0 origin-top-left transition ease-in-out group-hover:opacity-100 group-hover:scale-y-100"
+                             x-show="open"
+                            aria-labelledby="dropdownMenuButton2"
+                            data-twe-dropdown-menu-ref>
                                 @foreach($item['nested'] as $nested)
                                     <li>
                                         <x-dropdown-link
