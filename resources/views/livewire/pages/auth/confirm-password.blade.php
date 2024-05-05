@@ -45,9 +45,9 @@ new #[Layout('layouts.guest')] class extends Component
     <form wire:submit="confirmPassword">
         <!-- Password -->
         <div>
-            <x-input-label for="password" :value="__('Password')" />
+            <x-label-input for="password" :value="__('Password')" />
 
-            <x-text-input wire:model="password"
+            <x-input-text wire:model="password"
                           id="password"
                           class="block mt-1 w-full"
                           type="password"
@@ -58,9 +58,9 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <div class="flex justify-end mt-4">
-            <x-primary-button>
+            <x-button-primary>
                 {{ __('Confirm') }}
-            </x-primary-button>
+            </x-button-primary>
         </div>
     </form>
 </div>
