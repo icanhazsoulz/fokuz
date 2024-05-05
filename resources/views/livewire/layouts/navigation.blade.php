@@ -79,16 +79,30 @@
                 @endforeach
             </ul>
         </nav>
-        <div class="auth  text-end z-10">
-            @auth
-                <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Dashboard</a>
-            @else
-                <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Log in</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Register</a>
-                @endif
-            @endauth
+        <div class="auth w-20 flex justify-center items-center  z-10 relative group ">
+            <div class="w-full flex justify-center items-center cursor-pointer">
+                <svg class="w-10 h-10 text-font-color-1 hover:text-btn-bg-hover">
+                <use
+                    class="transition-all duration-200"
+                    href="./assets/icons/icons-sprite.svg#user"
+                ></use>
+                </svg>
+            </div>
+            <div class="bg-white w-full p-3 text-sm absolute left-0 top-[100%] z-10 w-full rounded-b-md shadow-md opacity-0 scale-y-0 origin-top-left transition duration-500 ease-in-out group-hover:opacity-100 group-hover:scale-y-100"
+             >
+                <div class="mb-4">
+                    @auth
+                    <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Dashboard</a>
+                    @else
+                    <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Log in</a>
+                </div>
+                <div>
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class=" font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Register</a>
+                    @endif
+                </div>
+                    @endauth
+            </div>
         </div>
     </div>
 </div>
