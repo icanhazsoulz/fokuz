@@ -29,7 +29,14 @@
 <div class="fixed top-0 left-0 right-0 z-20">
     <div class="container mx-auto px-4 max-w-7xl flex justify-between items-center relative z-40">
         <div class="logo p-6">
-            <a class="navbar-brand" href="{{ route('home') }}">FoKuZ</a>
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <svg class="w-44 h-24 text-white hover:text-btn-bg-hover">
+                <use
+                    class="transition-all duration-200"
+                    href="./assets/icons/icons-sprite.svg#logo"
+                ></use>
+                </svg>
+            </a>
         </div>
         <nav class="">
             <ul class="flex justify-between items-center gap-2">
