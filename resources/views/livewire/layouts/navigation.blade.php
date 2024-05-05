@@ -44,7 +44,7 @@
                     <li
                         class="relative group"
                         x-data="{ open: false }"
-                        @mouseover.away="open = false"
+
                     >
                         <x-nav-link
                             href="{{ $item['route'] }}"
@@ -69,7 +69,7 @@
                                 </svg>
                             </button>
                         @if(array_key_exists('nested', $item))
-                            <ul class="bg-white absolute left-0 top-[100%] z-10 w-full rounded-b-md shadow-md opacity-0 scale-y-0 origin-top-left transition ease-in-out group-hover:opacity-100 group-hover:scale-y-100"
+                            <ul class="bg-white absolute left-0 top-[100%] z-10 w-full rounded-b-md shadow-md opacity-0 scale-y-0 origin-top-left transition duration-500 ease-in-out group-hover:opacity-100 group-hover:scale-y-100"
                              x-show="open"
                             aria-labelledby="dropdownMenuButton2"
                             data-twe-dropdown-menu-ref>
