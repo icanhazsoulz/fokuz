@@ -21,7 +21,7 @@ switch ($width) {
 }
 @endphp
 
-<div class="bg-white absolute left-0 top-[100%] z-10 w-full rounded-b-md shadow-md opacity-0 scale-y-0 origin-top-left transition ease-in-out group-hover:opacity-100 group-hover:scale-y-100"
+<div class="bg-white absolute left-0 top-[100%] z-10 w-full rounded-b-md shadow-md opacity-0  origin-top-left transition ease-in-out "
 x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
     <div @click="open = ! open">
         {{ $trigger }}
