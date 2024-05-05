@@ -29,7 +29,7 @@ class CreateAppointment extends Component
 
         $this->categories = DB::table('categories')
             ->orderBy('id', 'asc')
-            ->pluck('key', 'id')
+            ->pluck('slug', 'id')
             ->toArray();
 
         $this->shelters = DB::table('shelters')
@@ -39,12 +39,12 @@ class CreateAppointment extends Component
 
         $this->clientSources = DB::table('client_sources')
             ->orderBy('id', 'asc')
-            ->pluck('key', 'id')
+            ->pluck('slug', 'id')
             ->toArray();
 
         $this->petTypes = DB::table('types')
             ->orderBy('id', 'asc')
-            ->pluck('key', 'id')
+            ->pluck('slug', 'id')
             ->toArray();
     }
 

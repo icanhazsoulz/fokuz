@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->date('date_of_birth')->nullable();
+            $table->date('dob')->nullable();
             $table->unsignedBigInteger('type_id')->nullable();
             $table->enum('sex', ['male', 'female'])->nullable();
             $table->string('breed')->nullable();
-            $table->string('photo')->nullable();
+            $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
 

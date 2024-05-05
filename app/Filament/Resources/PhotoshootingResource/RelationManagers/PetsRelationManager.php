@@ -29,9 +29,9 @@ class PetsRelationManager extends RelationManager
             ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\ImageColumn::make('photo'),
+                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('sex'),
-                Tables\Columns\TextColumn::make('date_of_birth')
+                Tables\Columns\TextColumn::make('dob')
                     ->date(),
                 Tables\Columns\TextColumn::make('type.name'),
                 Tables\Columns\TextColumn::make('breed'),

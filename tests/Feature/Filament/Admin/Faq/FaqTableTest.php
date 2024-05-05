@@ -116,7 +116,7 @@ class FaqTableTest extends TestCase
         }
     }
 
-    public function test_admin_can_edit_faq_question()
+    public function test_admin_can_edit_faq_record()
     {
         $faq = Faq::factory()->create();
 
@@ -124,26 +124,16 @@ class FaqTableTest extends TestCase
             ->test(ManageFaqs::class)
             ->callTableAction(EditAction::class, $faq, data: [
                 'question' => $question = fake()->words(asText: true),
-            ])
-            ->assertHasNoTableActionErrors()
-        ;
-
-        $this->assertEquals(Faq::find($faq->id)->question, $question);
-    }
-
-    public function test_admin_can_edit_faq_answer()
-    {
-        $faq = Faq::factory()->create();
-
-        Livewire::actingAs($this->create_admin())
-            ->test(ManageFaqs::class)
-            ->callTableAction(EditAction::class, $faq, data: [
                 'answer' => $answer = fake()->words(asText: true),
+                'link_label' => $link_label = 'Sehr interessant',
             ])
             ->assertHasNoTableActionErrors()
         ;
 
-        $this->assertEquals(Faq::find($faq->id)->answer, $answer);
+        $faq->refresh();
+        $this->assertEquals($faq->question, $question);
+        $this->assertEquals($faq->answer, $answer);
+        $this->assertEquals($faq->link_label, $link_label);
     }
 
     public function test_admin_can_switch_faq_status()
@@ -162,22 +152,7 @@ class FaqTableTest extends TestCase
         $this->assertSame((bool)Faq::find($faq->id)->status, $newStatus);
     }
 
-    // TODO: test_can_select_linked_post
-
-    public function test_admin_can_edit_faq_link_label()
-    {
-        $faq = Faq::factory()->create();
-
-        Livewire::actingAs($this->create_admin())
-            ->test(ManageFaqs::class)
-            ->callTableAction(EditAction::class, $faq, data: [
-                'link_label' => $link_label = 'Sehr interessant',
-            ])
-            ->assertHasNoTableActionErrors()
-        ;
-
-        $this->assertEquals(Faq::find($faq->id)->link_label, $link_label);
-    }
+    // TODO: add test_can_select_linked_post
 
     public function test_can_validate_faq_data()
     {
@@ -189,8 +164,10 @@ class FaqTableTest extends TestCase
                 'question' => null,
                 'answer' => null,
             ])
-            ->assertHasTableActionErrors(['question' => ['required'], 'answer' => ['required']])
-        ;
+            ->assertHasTableActionErrors([
+                'question' => ['required'],
+                'answer' => ['required']
+            ]);
     }
 
     public function test_can_load_existing_faq_data_for_editing()

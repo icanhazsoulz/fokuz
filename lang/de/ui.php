@@ -63,7 +63,7 @@ return [
                 'female' => 'Weiblich',
             ],
             'breed' => 'Rasse',
-            'photo' => 'Bild hochladen',
+            'image' => 'Bild hochladen',
         ],
         'appointment' => [
             'category' => 'Worum geht es?',

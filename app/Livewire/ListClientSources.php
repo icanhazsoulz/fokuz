@@ -41,7 +41,7 @@ class ListClientSources extends Component implements HasForms, HasTable
             ->actions([
                 EditAction::make()
                     ->form([
-                        TextInput::make('key')
+                        TextInput::make('slug')
                             ->required()
                             ->maxLength(125),
                         TextInput::make('name')
@@ -52,7 +52,7 @@ class ListClientSources extends Component implements HasForms, HasTable
             ->headerActions([
                 CreateAction::make()
                     ->form([
-                        TextInput::make('key')
+                        TextInput::make('slug')
                             ->required()
                             ->maxLength(125),
                         TextInput::make('name')

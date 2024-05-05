@@ -52,7 +52,7 @@ class AppointmentForm extends Form
     public string $petBreed = '';
 
     #[Validate('nullable|string')]
-    public string $petPhoto = '';
+    public string $petImage = '';
 
     /**
      * @throws ValidationException

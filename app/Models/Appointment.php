@@ -64,11 +64,11 @@ class Appointment extends Model
             // Pet: might be created or not
             $pet_data = [
                 'name' => $all['petName'],
-                'date_of_birth' => $all['petDob'],
+                'dob' => $all['petDob'],
                 'type_id' => $all['petTypeId'],
                 'sex' => $all['petSex'],
                 'breed' => $all['petBreed'],
-                'photo' => $all['petPhoto'],
+                'image' => $all['petImage'],
             ];
 
             if ($pet_data['name'] && self::hasData($pet_data)) {

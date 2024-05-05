@@ -3,10 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PetResource\Pages;
-use App\Filament\Resources\PetResource\RelationManagers;
 use App\Models\Pet;
 use App\Models\Type;
-use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -17,7 +15,6 @@ use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PetResource extends Resource
 {
@@ -30,24 +27,30 @@ class PetResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
+                    ->label(__('filament_ui.general.name'))
                     ->required()
                     ->maxLength(125),
-                DatePicker::make('date_of_birth')
+                DatePicker::make('dob')
+                    ->label(__('filament_ui.general.dob'))
                     ->required(),
-                Select::make('type')
-                    ->options(Type::all()->pluck('name', 'key'))
+                Select::make('type_id')
+                    ->label(__('filament_ui.pet.type'))
+                    ->options(Type::all()->pluck('name', 'id'))
                     ->required(),
                 Select::make('sex')
+                    ->label(__('filament_ui.pet.sex'))
                     ->options([
                         'male' => 'Male',
                         'female' => 'Female',
                     ])
                     ->required(),
                 TextInput::make('breed')
+                    ->label(__('filament_ui.pet.breed'))
                     ->maxLength(125),
-                FileUpload::make('photo'),
+                FileUpload::make('image')
+                    ->label(__('filament_ui.general.image')),
                 Select::make('user_id')
-                    ->label('Owner')
+                    ->label(__('filament_ui.pet.owner'))
                     ->required()
                     ->relationship(
                         name: 'user',
@@ -67,17 +70,24 @@ class PetResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament_ui.general.name'))
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('photo'),
-                Tables\Columns\TextColumn::make('sex'),
-                Tables\Columns\TextColumn::make('date_of_birth')
+                Tables\Columns\ImageColumn::make('image')
+                    ->label(__('filament_ui.general.image')),
+                Tables\Columns\TextColumn::make('sex')
+                    ->label(__('filament_ui.pet.sex')),
+                Tables\Columns\TextColumn::make('dob')
+                    ->label(__('filament_ui.general.dob'))
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('type.name')
+                    ->label(__('filament_ui.pet.type'))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('breed')
+                    ->label(__('filament_ui.pet.breed'))
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('user.name')
+                    ->label(__('filament_ui.pet.owner'))
                     ->label('Owner')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')

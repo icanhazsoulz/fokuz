@@ -28,6 +28,8 @@ return [
         'download' => 'Herunterladen',
         'download_all' => 'Alles herunterladen',
         'downloads' => 'Downloads',
+        'image' => 'Bild',
+        'dob' => 'Geburtsdatum',
     ],
     'faq' => [
         'default_label' => 'Mehr sehen',
@@ -43,5 +45,11 @@ return [
         'summary' => [
             'order_summary' => 'Order summary',
         ]
+    ],
+    'pet' => [
+        'sex' => 'Geschlecht',
+        'owner' => 'Besitzer',
+        'type' => 'Typ',
+        'breed' => 'Rasse',
     ]
 ];

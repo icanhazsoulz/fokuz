@@ -19,10 +19,10 @@ class PetFactory extends Factory
     {
         return [
             'name' => ucfirst(fake()->userName),
-            'date_of_birth' => fake()->date,
+            'dob' => fake()->date,
             'sex' => Arr::random(['male', 'female']),
             'breed' => Arr::random([fake()->word, '']),
-            'photo' => fake()->imageUrl,
+            'image' => fake()->imageUrl,
         ];
     }
 }

@@ -10,6 +10,8 @@ class Type extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['slug', 'name'];
+
 //    public function pets(): HasMany
 //    {
 //        return $this->hasMany(Pet::class);

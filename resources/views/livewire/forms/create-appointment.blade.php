@@ -116,8 +116,8 @@
                                 id="pet-type"
                             >
                                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                                @foreach($petTypes as $id => $key)
-                                    <option value="{{ $id }}">{{ __('ui.contact_form.pet.type.'.$key) }}</option>
+                                @foreach($petTypes as $id => $slug)
+                                    <option value="{{ $id }}">{{ __('ui.contact_form.pet.type.'.$slug) }}</option>
                                 @endforeach
                             </select>
                             @error('form.petTypeId')
@@ -184,8 +184,8 @@
                                 class="form-control"
                             >
                                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                                @foreach($categories as $id => $key)
-                                    <option value="{{ $id }}">{{ __('ui.category.'.$key) }}</option>
+                                @foreach($categories as $id => $slug)
+                                    <option value="{{ $id }}">{{ __('ui.category.'.$slug) }}</option>
                                 @endforeach
                             </select>
                             @error('form.categoryId')
@@ -231,8 +231,8 @@
                                 class="form-control"
                             >
                                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                                @foreach($clientSources as $id => $key)
-                                    <option value="{{ $id }}">{{ __('ui.client_source.'.$key) }}</option>
+                                @foreach($clientSources as $id => $slug)
+                                    <option value="{{ $id }}">{{ __('ui.client_source.'.$slug) }}</option>
                                 @endforeach
                             </select>
                             @error('form.clientSourceId')

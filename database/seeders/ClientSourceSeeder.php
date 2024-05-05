@@ -14,27 +14,27 @@ class ClientSourceSeeder extends Seeder
     public function run(): void
     {
         DB::table('client_sources')->insert([
-            'key' => 'web_search',
+            'slug' => 'web_search',
             'name' => 'Web search',
         ]);
 
         DB::table('client_sources')->insert([
-            'key' => 'recommendation',
+            'slug' => 'recommendation',
             'name' => 'Recommendation',
         ]);
 
         DB::table('client_sources')->insert([
-            'key' => 'instagram',
+            'slug' => 'instagram',
             'name' => 'Instagram',
         ]);
 
         DB::table('client_sources')->insert([
-            'key' => 'ads',
+            'slug' => 'ads',
             'name' => 'Advertisement',
         ]);
 
         DB::table('client_sources')->insert([
-            'key' => 'other',
+            'slug' => 'other',
             'name' => 'Other',
         ]);
     }
