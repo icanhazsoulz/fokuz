@@ -62,7 +62,6 @@
                                 </svg>
                             </span>
                             <ul class="bg-white absolute left-0 top-[100%] z-10 w-full rounded-b-md shadow-md opacity-0 scale-y-0 origin-top-left transition duration-500 ease-in-out group-hover:opacity-100 group-hover:scale-y-100"
-                             x-show="open"
                             >
                                 @foreach($item['nested'] as $nested)
                                     <li>
