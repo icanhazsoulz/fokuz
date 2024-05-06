@@ -25,8 +25,7 @@ class CreateAppointmentTest extends TestCase
     protected array $client1 = [
         'email' => 'arya.stark@winterfell.org',
         'phone' => '999.888.777',
-        'name' => 'Arya',
-        'last_name' => 'Stark',
+        'name' => 'Arya Stark',
     ];
 
     public function setUp(): void
@@ -92,7 +91,6 @@ class CreateAppointmentTest extends TestCase
             ->set('form.email', $arr['email'])
             ->set('form.phone', $arr['phone'])
             ->set('form.name', $arr['name'])
-            ->set('form.lastName', $arr['last_name'])
             ->set('form.categoryId', $arr['category_id'])
             ->set('form.address', $arr['address'])
             ->set('form.description', $arr['description'])
