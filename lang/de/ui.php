@@ -39,13 +39,6 @@ return [
     ],
     'slogan' => 'Mit jeder Photobestellung spenden Sie für Tiere in Not',
     'contact_form' => [
-        'client' => [
-            'new_client' => 'Want to make a photoshooting appointment for a new client?',
-            'first_name' => 'Vorname',
-            'last_name' => 'Nachname',
-            'email' => 'E-Mail-Adresse',
-            'phone' => 'Telefonnummer',
-        ],
         'pet' => [
             'info' => 'You can add this data later in your dashboard',
             'name' => 'Name',
@@ -72,8 +65,11 @@ return [
             'client_source' => 'Woher kennst du mich?',
             'shelters' => 'Tierheime',
         ],
+        'name' => 'Ihr Name',
+        'email' => 'Ihre E-Mail-Adresse',
+        'phone' => 'Ihr Telefonnummer',
         'empty_option' => 'Auswählen',
-        'message' => 'Nachricht',
+        'message' => 'Ihre Nachricht',
         'message_placeholder' => 'Guten Tag! Ich möchte eine Fotosession buchen! ...',
         'privacy_note' => 'We\'ll never share your email and phone number with anyone else.',
         'privacy_policy' => 'Ich stimme zu, dass meine Angaben aus dem Kontaktformular zur Beantwortung meiner Anfrage gemäß der Datenschutzerklärung erhoben und verarbeitet werden.*',

@@ -15,23 +15,23 @@
                 <img src="assets/images/contacts.jpg" alt="" width="360">
             </div>
             <div class="col-span-2">
-                <div x-data="{ tab: 'appointment' }">
+                <div x-data="{ tab: 'contact' }">
                     <div class="flex justify-between">
                         <x-button-tab
-                            @click="tab = 'appointment'"
+                            @click="tab = 'contact'"
                             ::class="tab === 'appointment' ? 'tab-active' : 'tab-inactive'"
                         >Bilden<br> schnelle Anfrage</x-button-tab>
                         <x-button-tab
-                            @click="tab = 'contact'"
+                            @click="tab = 'appointment'"
                             ::class="tab === 'contact' ? 'tab-active' : 'tab-inactive'"
                         >Anwendung<br> für ein Fotoshooting</x-button-tab>
                     </div>
                     <div class="pt-8">
-                        <div x-show="tab === 'appointment'">
-                            <livewire:forms.create-appointment />
-                        </div>
                         <div x-show="tab === 'contact'">
                             <livewire:forms.create-message />
+                        </div>
+                        <div x-show="tab === 'appointment'">
+                            <livewire:forms.create-appointment />
                         </div>
                     </div>
                 </div>

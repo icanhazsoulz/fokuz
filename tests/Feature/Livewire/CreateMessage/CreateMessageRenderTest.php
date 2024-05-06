@@ -41,28 +41,12 @@ class CreateMessageRenderTest extends TestCase
             ->assertHasErrors(['form.email' => ['email']]);
     }
 
-    public function test_phone_field_is_required()
+    public function test_name_field_is_required()
     {
         Livewire::test(CreateMessage::class)
-            ->set('form.phone', '')
+            ->set('form.name', '')
             ->call('save')
-            ->assertHasErrors(['form.phone' => ['required']]);
-    }
-
-    public function test_first_name_field_is_required()
-    {
-        Livewire::test(CreateMessage::class)
-            ->set('form.firstName', '')
-            ->call('save')
-            ->assertHasErrors(['form.firstName' => ['required']]);
-    }
-
-    public function test_last_name_field_is_required()
-    {
-        Livewire::test(CreateMessage::class)
-            ->set('form.lastName', '')
-            ->call('save')
-            ->assertHasErrors(['form.lastName' => ['required']]);
+            ->assertHasErrors(['form.name' => ['required']]);
     }
 
     public function test_message_field_is_required()

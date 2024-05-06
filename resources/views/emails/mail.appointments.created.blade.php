@@ -1,5 +1,5 @@
 <div>
-    <p>Dear <strong>{{ $appointment->user->first_name . ' ' . $appointment->user->last_name }}</strong>!</p>
+    <p>Dear <strong>{{ $appointment->user->name }}</strong>!</p>
 
     <p>Appointment created with the following parameters:</p>
 

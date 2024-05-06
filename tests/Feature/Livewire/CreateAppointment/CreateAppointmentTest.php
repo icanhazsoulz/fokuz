@@ -25,7 +25,7 @@ class CreateAppointmentTest extends TestCase
     protected array $client1 = [
         'email' => 'arya.stark@winterfell.org',
         'phone' => '999.888.777',
-        'first_name' => 'Arya',
+        'name' => 'Arya',
         'last_name' => 'Stark',
     ];
 
@@ -91,7 +91,7 @@ class CreateAppointmentTest extends TestCase
         Livewire::test(CreateAppointment::class)
             ->set('form.email', $arr['email'])
             ->set('form.phone', $arr['phone'])
-            ->set('form.firstName', $arr['first_name'])
+            ->set('form.name', $arr['name'])
             ->set('form.lastName', $arr['last_name'])
             ->set('form.categoryId', $arr['category_id'])
             ->set('form.address', $arr['address'])

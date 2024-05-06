@@ -55,7 +55,7 @@ class PetResource extends Resource
                     ->relationship(
                         name: 'user',
                         titleAttribute: 'name',
-//                        modifyQueryUsing: fn (Builder $query) => $query->whereNotNull('first_name')->whereNotNull('last_name'),
+//                        modifyQueryUsing: fn (Builder $query) => $query->whereNotNull('name'),
                         modifyQueryUsing: fn (Builder $query) => $query->role('client'),
                     )
                     ->searchable()

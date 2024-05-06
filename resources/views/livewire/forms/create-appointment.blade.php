@@ -8,258 +8,236 @@
     {{--    @csrf--}}
     {{--    <div class="container">--}}
 
-    <div x-data="{ tab: 1 }">
-        <div class="flex justify-between">
-            <button @click="tab = 1" class="bg-green text-white p-4">Step 1: Client -></button>
-            <button @click="tab = 2" class="bg-green text-white p-4">Step 2: Pet -></button>
-            <button @click="tab = 3" class="bg-green text-white p-4">Step 3: Appointment -></button>
-        </div>
-        <div class="pt-4">
-            <div x-show="tab === 1">
-                <!-- START Client -->
-{{--                <fieldset class="border border-solid border-gray-400 p-3">--}}
-{{--                    <legend>Client block</legend>--}}
-                    <div class="columns-2">
-                        <div class="sm:flex flex-col">
-                            <label class="required form-label" for="email"
-                                   class="form-label">{{ __('ui.contact_form.client.email') }}</label>
-                            <input
-                                wire:model.blur="form.email"
-                                type="email"
-                                class="form-control"
-                                id="email"
-                            >
-                            @error('form.email')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="sm:flex flex-col">
-                            <label class="required form-label" for="phone">{{ __('ui.contact_form.client.phone') }}</label>
-                            <input
-                                wire:model="form.phone"
-                                type="tel"
-                                class="form-control"
-                                id="phone"
-                            >
-                            @error('form.phone')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="columns-2">
-                        <div class="sm:flex flex-col">
-                            <label class="required form-label"
-                                   for="first-name">{{ __('ui.contact_form.client.first_name') }}</label>
-                            <input
-                                wire:model="form.firstName"
-                                id="first-name"
-                                type="text"
-                                class="form-control"
-                            >
-                            @error('form.firstName')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="sm:flex flex-col">
-                            <label class="required form-label" for="last-name">{{ __('ui.contact_form.client.last_name') }}</label>
-                            <input
-                                wire:model="form.lastName"
-                                id="last-name"
-                                type="text"
-                                class="form-control"
-                            >
-                            @error('form.lastName')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-{{--                </fieldset>--}}
-                <!-- END Client -->
-            </div>
-            <div x-show="tab === 2">
-                <!-- START Pet -->
-{{--                <fieldset class="border border-solid border-gray-400 p-3">--}}
-{{--                    <legend>Pet block</legend>--}}
-                    <p class="text-green-600 font-bold">{{ __('ui.contact_form.pet.info') }}</p>
-                    <div class="columns-2">
-                        <div class="sm:flex flex-col">
-                            <label for="pet-name" class="form-label">{{ __('ui.contact_form.pet.name') }}</label>
-                            <input
-                                wire:model="form.petName"
-                                type="text"
-                                class="form-control"
-                                id="pet-name"
-                            >
-                            @error('form.petName')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="sm:flex flex-col">
-                            <label for="pet-dob" class="form-label">{{ __('ui.contact_form.pet.dob') }}</label>
-                            <input
-                                wire:model="form.petDob"
-                                type="date"
-                                class="form-control"
-                                id="pet-dob"
-                            >
-                            @error('form.petDob')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="columns-2">
-                        <div class="sm:flex flex-col">
-                            <label for="pet-type" class="form-label">{{ __('ui.contact_form.pet.type.label') }}</label>
-                            <select
-                                wire:model="form.petTypeId"
-                                class="form-control"
-                                id="pet-type"
-                            >
-                                <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                                @foreach($petTypes as $id => $slug)
-                                    <option value="{{ $id }}">{{ __('ui.contact_form.pet.type.'.$slug) }}</option>
-                                @endforeach
-                            </select>
-                            @error('form.petTypeId')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="sm:flex flex-col">
-                            <label for="pet-sex" class="form-label">{{ __('ui.contact_form.pet.sex.label') }}</label>
-                            <select
-                                wire:model="form.petSex"
-                                class="form-control"
-                                id="pet-sex"
-                            >
-                                <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                                <option value="male">{{ __('ui.contact_form.pet.sex.male') }}</option>
-                                <option value="female">{{ __('ui.contact_form.pet.sex.female') }}</option>
-                            </select>
-                            @error('form.petSex')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="columns-2">
-                        <div class="sm:flex flex-col">
-                            <label for="pet-breed" class="form-label">{{ __('ui.contact_form.pet.breed') }}</label>
-                            <input
-                                wire:model="form.petBreed"
-                                type="text"
-                                class="form-control"
-                                id="pet-breed"
-                            >
-                            @error('form.petBreed')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="sm:flex flex-col">
-                            <label for="pet-photo" class="form-label">{{ __('ui.contact_form.pet.photo') }}</label>
-                            <input
-                                wire:model="form.petPhoto"
-                                type="file"
-                                class="form-control"
-                                id="pet-photo"
-                            >
-                            @error('form.petPhoto')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-{{--                </fieldset>--}}
-                <!-- END Pet -->
-            </div>
-            <div x-show="tab === 3">
-                <!-- START Appointment -->
-{{--                <fieldset class="border border-solid border-gray-400 p-3">--}}
-{{--                    <legend>Appointment block</legend>--}}
-                    <div class="columns-2">
-                        <div class="sm:flex flex-col">
-                            <label class="required form-label" for="category"
-                                   class="form-label">{{ __('ui.contact_form.appointment.category') }}</label>
-                            <select
-                                wire:model="form.categoryId"
-                                wire:change="selectAddress()"
-                                id="category"
-                                class="form-control"
-                            >
-                                <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                                @foreach($categories as $id => $slug)
-                                    <option value="{{ $id }}">{{ __('ui.category.'.$slug) }}</option>
-                                @endforeach
-                            </select>
-                            @error('form.categoryId')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="sm:flex flex-col">
-                            <label for="address" class="required form-label">{{ __('ui.contact_form.appointment.address') }}</label>
-                            <input
-                                wire:model="form.address"
-                                type="text"
-                                class="form-control"
-                                placeholder="{{ $placeholder }}"
-                                id="address"
-                            >
-                            @error('form.address')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="columns-1">
-                        <div class="sm:flex flex-col">
-                            <label for="description" class="form-label">{{ __('ui.contact_form.appointment.description') }}</label>
-                            <textarea
-                                wire:model="form.description"
-                                id="description"
-                                class="form-control"
-                                cols="30"
-                                rows="10"
-                            ></textarea>
-                            @error('form.description')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="columns-2">
-                        <div class="sm:flex flex-col">
-                            <label class="required form-label"
-                                   for="client-source">{{ __('ui.contact_form.appointment.client_source') }}</label>
-                            <select
-                                wire:model="form.clientSourceId"
-                                id="client-source"
-                                class="form-control"
-                            >
-                                <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                                @foreach($clientSources as $id => $slug)
-                                    <option value="{{ $id }}">{{ __('ui.client_source.'.$slug) }}</option>
-                                @endforeach
-                            </select>
-                            @error('form.clientSourceId')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="sm:flex flex-col">
-                            <label for="shelter" class="form-label">{{ __('ui.contact_form.appointment.shelters') }}</label>
-                            <select
-                                wire:model="form.shelterId"
-                                id="shelter"
-                                class="form-control"
-                            >
-                                <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                                @foreach($shelters as $id => $name)
-                                    <option value="{{ $id }}">{{ $name }}</option>
-                                @endforeach
-                            </select>
-                            @error('form.shelterId')
-                            <span class="error text-red-600">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-{{--                </fieldset>--}}
-                <!-- END Appointment -->
+
+    <div class="pt-4">
+
+        <!-- START Client -->
+        <div class="columns-1">
+            <div class="sm:flex flex-col">
+                <label class="required form-label"
+                       for="name">{{ __('ui.contact_form.name') }}</label>
+                <input
+                    wire:model="form.name"
+                    id="name"
+                    type="text"
+                    class="form-control"
+                >
+                @error('form.name')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
             </div>
         </div>
+        <div class="columns-1">
+            <div class="sm:flex flex-col">
+                <label class="required form-label" for="email"
+                       class="form-label">{{ __('ui.contact_form.email') }}</label>
+                <input
+                    wire:model.blur="form.email"
+                    type="email"
+                    class="form-control"
+                    id="email"
+                >
+                @error('form.email')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+        <div class="columns-1">
+            <div class="sm:flex flex-col">
+                <label class="required form-label" for="phone">{{ __('ui.contact_form.phone') }}</label>
+                <input
+                    wire:model="form.phone"
+                    type="tel"
+                    class="form-control"
+                    id="phone"
+                >
+                @error('form.phone')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+        <!-- END Client -->
+
+        <!-- START Pet -->
+        <p class="text-green-600 font-bold">{{ __('ui.contact_form.pet.info') }}</p>
+        <div class="columns-1">
+            <div class="sm:flex flex-col">
+                <label for="pet-name" class="form-label">{{ __('ui.contact_form.pet.name') }}</label>
+                <input
+                    wire:model="form.petName"
+                    type="text"
+                    class="form-control"
+                    id="pet-name"
+                >
+                @error('form.petName')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="sm:flex flex-col">
+                <label for="pet-dob" class="form-label">{{ __('ui.contact_form.pet.dob') }}</label>
+                <input
+                    wire:model="form.petDob"
+                    type="date"
+                    class="form-control"
+                    id="pet-dob"
+                >
+                @error('form.petDob')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+        <div class="columns-1">
+            <div class="sm:flex flex-col">
+                <label for="pet-type" class="form-label">{{ __('ui.contact_form.pet.type.label') }}</label>
+                <select
+                    wire:model="form.petTypeId"
+                    class="form-control"
+                    id="pet-type"
+                >
+                    <option value="">{{ __('ui.contact_form.empty_option') }}</option>
+                    @foreach($petTypes as $id => $slug)
+                        <option value="{{ $id }}">{{ __('ui.contact_form.pet.type.'.$slug) }}</option>
+                    @endforeach
+                </select>
+                @error('form.petTypeId')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="sm:flex flex-col">
+                <label for="pet-sex" class="form-label">{{ __('ui.contact_form.pet.sex.label') }}</label>
+                <select
+                    wire:model="form.petSex"
+                    class="form-control"
+                    id="pet-sex"
+                >
+                    <option value="">{{ __('ui.contact_form.empty_option') }}</option>
+                    <option value="male">{{ __('ui.contact_form.pet.sex.male') }}</option>
+                    <option value="female">{{ __('ui.contact_form.pet.sex.female') }}</option>
+                </select>
+                @error('form.petSex')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+        <div class="columns-1">
+            <div class="sm:flex flex-col">
+                <label for="pet-breed" class="form-label">{{ __('ui.contact_form.pet.breed') }}</label>
+                <input
+                    wire:model="form.petBreed"
+                    type="text"
+                    class="form-control"
+                    id="pet-breed"
+                >
+                @error('form.petBreed')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="sm:flex flex-col">
+                <label for="pet-image" class="form-label">{{ __('ui.contact_form.pet.image') }}</label>
+                <input
+                    wire:model="form.petImage"
+                    type="file"
+                    class="form-control"
+                    id="pet-image"
+                >
+                @error('form.petImage')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+        {{--                </fieldset>--}}
+        <!-- END Pet -->
+
+
+        <!-- START Appointment -->
+        {{--                <fieldset class="border border-solid border-gray-400 p-3">--}}
+        {{--                    <legend>Appointment block</legend>--}}
+        <div class="columns-1">
+            <div class="sm:flex flex-col">
+                <label class="required form-label" for="category"
+                       class="form-label">{{ __('ui.contact_form.appointment.category') }}</label>
+                <select
+                    wire:model="form.categoryId"
+                    wire:change="selectAddress()"
+                    id="category"
+                    class="form-control"
+                >
+                    <option value="">{{ __('ui.contact_form.empty_option') }}</option>
+                    @foreach($categories as $id => $slug)
+                        <option value="{{ $id }}">{{ __('ui.category.'.$slug) }}</option>
+                    @endforeach
+                </select>
+                @error('form.categoryId')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="sm:flex flex-col">
+                <label for="address" class="required form-label">{{ __('ui.contact_form.appointment.address') }}</label>
+                <input
+                    wire:model="form.address"
+                    type="text"
+                    class="form-control"
+                    placeholder="{{ $placeholder }}"
+                    id="address"
+                >
+                @error('form.address')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+        <div class="columns-1">
+            <div class="sm:flex flex-col">
+                <label for="description" class="form-label">{{ __('ui.contact_form.appointment.description') }}</label>
+                <textarea
+                    wire:model="form.description"
+                    id="description"
+                    class="form-control"
+                    cols="30"
+                    rows="10"
+                ></textarea>
+                @error('form.description')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+        <div class="columns-1">
+            <div class="sm:flex flex-col">
+                <label class="required form-label"
+                       for="client-source">{{ __('ui.contact_form.appointment.client_source') }}</label>
+                <select
+                    wire:model="form.clientSourceId"
+                    id="client-source"
+                    class="form-control"
+                >
+                    <option value="">{{ __('ui.contact_form.empty_option') }}</option>
+                    @foreach($clientSources as $id => $slug)
+                        <option value="{{ $id }}">{{ __('ui.client_source.'.$slug) }}</option>
+                    @endforeach
+                </select>
+                @error('form.clientSourceId')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="sm:flex flex-col">
+                <label for="shelter" class="form-label">{{ __('ui.contact_form.appointment.shelters') }}</label>
+                <select
+                    wire:model="form.shelterId"
+                    id="shelter"
+                    class="form-control"
+                >
+                    <option value="">{{ __('ui.contact_form.empty_option') }}</option>
+                    @foreach($shelters as $id => $name)
+                        <option value="{{ $id }}">{{ $name }}</option>
+                    @endforeach
+                </select>
+                @error('form.shelterId')
+                <span class="error text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+        {{--                </fieldset>--}}
+        <!-- END Appointment -->
+
     </div>
 
     {{--    </div>--}}
@@ -273,6 +251,8 @@
     {{--        <input type="checkbox" class="form-check-input" id="exampleCheck1">--}}
     {{--        <label class="form-check-label" for="exampleCheck1">Check me out</label>--}}
     {{--    </div>--}}
-    <x-input-checkbox>Ich habe die<a href="#" class="font-bold">&nbsp;Datenschutzerklärung&nbsp;</a>gelesen und erkläre mich damit einverstanden.</x-input-checkbox>
+    <x-input-checkbox>Ich habe die<a href="#" class="font-bold">&nbsp;Datenschutzerklärung&nbsp;</a>gelesen und erkläre
+        mich damit einverstanden.
+    </x-input-checkbox>
     <x-button-primary>{{ __('ui.contact_form.submit') }}</x-button-primary>
 </form>

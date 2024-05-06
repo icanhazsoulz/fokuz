@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements FilamentUser, HasName
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, HasRoles, Notifiable;
 
@@ -29,10 +29,7 @@ class User extends Authenticatable implements FilamentUser, HasName
      * @var array<int, string>
      */
     protected $fillable = [
-        // TODO: remove name?
         'name',
-        'first_name',
-        'last_name',
         'email',
         'phone',
         'password',
@@ -72,10 +69,7 @@ class User extends Authenticatable implements FilamentUser, HasName
     }
 
     // TODO: study filament authentication flow
-    public function getFilamentName(): string
-    {
-        return "{$this->first_name} {$this->last_name}";
-    }
+
 
     public static function findExistingClient($email)
     {

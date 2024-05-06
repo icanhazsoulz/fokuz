@@ -49,20 +49,12 @@ class CreateAppointmentRenderTest extends TestCase
             ->assertHasErrors(['form.phone' => ['required']]);
     }
 
-    public function test_first_name_field_is_required()
+    public function test_name_field_is_required()
     {
         Livewire::test(CreateAppointment::class)
-            ->set('form.firstName', '')
+            ->set('form.name', '')
             ->call('save')
-            ->assertHasErrors(['form.firstName' => ['required']]);
-    }
-
-    public function test_last_name_field_is_required()
-    {
-        Livewire::test(CreateAppointment::class)
-            ->set('form.lastName', '')
-            ->call('save')
-            ->assertHasErrors(['form.lastName' => ['required']]);
+            ->assertHasErrors(['form.name' => ['required']]);
     }
 
     public function test_category_id_field_is_required()

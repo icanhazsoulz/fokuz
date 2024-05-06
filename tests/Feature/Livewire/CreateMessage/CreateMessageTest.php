@@ -25,7 +25,7 @@ class CreateMessageTest extends TestCase
         Livewire::test(CreateMessage::class)
             ->set('form.email', 'arya.stark@winterfell.org')
             ->set('form.phone', fake()->phoneNumber)
-            ->set('form.firstName', 'Arya')
+            ->set('form.name', 'Arya')
             ->set('form.lastName', 'Stark')
             ->set('form.message', fake()->text(200))
             ->call('save');

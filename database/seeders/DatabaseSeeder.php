@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
 
             $testimonial = new Testimonial([
                 'user_id' => $client->id,
-                'author' => $client->first_name . ' ' . $client->last_name,
+                'author' => $client->name,
                 'text' => fake()->text(200),
                 'avatar' => fake()->url,
             ]);
