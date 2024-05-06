@@ -1,17 +1,34 @@
 <form
     wire:submit="save"
 >
-    <div class="columns-2">
+    <div class="columns-1">
+        <div class="sm:flex flex-col">
+            <x-label-input
+                class="required"
+                for="first-name"
+            >{{ __('ui.contact_form.name') }}</x-label-input>
+            <x-input-text
+                wire:model="form.name"
+                id="first-name"
+                class="form-control"
+                placeholder="{{ __('ui.contact_form.name') }}"
+            />
+            @error('form.name')
+            <span class="error text-red-600">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
+    <div class="columns-1">
         <div class="sm:flex flex-col">
             <x-label-input
                 class="required"
                 for="email"
-            >{{ __('ui.contact_form.client.email') }}</x-label-input>
+            >{{ __('ui.contact_form.email') }}</x-label-input>
             <x-input-text
                 wire:model="form.email"
                 type="email"
                 id="email"
-                placeholder="{{ __('ui.contact_form.client.email') }}"
+                placeholder="{{ __('ui.contact_form.email') }}"
             />
             @error('form.email')
             <span class="error text-red-600">{{ $message }}</span>
@@ -21,47 +38,16 @@
             <x-label-input
                 class="required"
                 for="phone"
-            >{{ __('ui.contact_form.client.phone') }}</x-label-input>
+            >{{ __('ui.contact_form.phone') }}</x-label-input>
             <x-input-text
                 wire:model="form.phone"
                 type="tel"
                 class="form-control"
                 id="phone"
-                placeholder="{{ __('ui.contact_form.client.phone') }}"
+                placeholder="{{ __('ui.contact_form.phone') }}"
             />
             @error('form.phone')
             <span class="error text-red-600">{{ $message }}</span>
-            @enderror
-        </div>
-    </div>
-    <div class="columns-2">
-        <div class="sm:flex flex-col">
-            <x-label-input
-                class="required"
-                for="first-name"
-            >{{ __('ui.contact_form.client.first_name') }}</x-label-input>
-            <x-input-text
-                wire:model="form.firstName"
-                id="first-name"
-                class="form-control"
-                placeholder="{{ __('ui.contact_form.client.first_name') }}"
-            />
-            @error('form.firstName')
-                <span class="error text-red-600">{{ $message }}</span>
-            @enderror
-        </div>
-        <div class="sm:flex flex-col">
-            <x-label-input
-                class="required"
-                for="last-name"
-            >{{ __('ui.contact_form.client.last_name') }}</x-label-input>
-            <x-input-text
-                wire:model="form.lastName"
-                id="last-name"
-                placeholder="{{ __('ui.contact_form.client.last_name') }}"
-            />
-            @error('form.lastName')
-                <span class="error text-red-600">{{ $message }}</span>
             @enderror
         </div>
     </div>

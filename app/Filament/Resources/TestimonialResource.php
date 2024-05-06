@@ -43,10 +43,7 @@ class TestimonialResource extends Resource
                     ->searchable()
                     ->preload()
                     ->createOptionForm([
-                        TextInput::make('first_name')
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('last_name')
+                        TextInput::make('name')
                             ->required()
                             ->maxLength(255),
                         TextInput::make('email')

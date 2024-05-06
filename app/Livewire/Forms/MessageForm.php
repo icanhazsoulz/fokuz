@@ -10,16 +10,10 @@ use Livewire\Form;
 class MessageForm extends Form
 {
     #[Validate('required|string')]
-    public string $firstName = '';
-
-    #[Validate('required|string')]
-    public string $lastName = '';
+    public string $name = '';
 
     #[Validate('required|email')]
     public string $email = '';
-
-    #[Validate('required|string')]
-    public string $phone = '';
 
     #[Validate('required|string|max:1000')]
     public string $message = '';

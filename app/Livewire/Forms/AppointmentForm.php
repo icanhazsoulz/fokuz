@@ -10,10 +10,7 @@ use Livewire\Form;
 class AppointmentForm extends Form
 {
     #[Validate('required|string')]
-    public string $firstName = '';
-
-    #[Validate('required|string')]
-    public string $lastName = '';
+    public string $name = '';
 
     #[Validate('required|email')]
     public string $email = '';

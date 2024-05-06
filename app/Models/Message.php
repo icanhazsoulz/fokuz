@@ -24,10 +24,8 @@ class Message extends Model
 
             if (!$client) {
                 $client = User::create([
-                    'first_name' => $all['firstName'],
-                    'last_name' => $all['lastName'],
+                    'name' => $all['name'],
                     'email' => $all['email'],
-                    'phone' => $all['phone'],
                     'password' => Hash::make('client'),
                 ]);
                 $client->assignRole('client');

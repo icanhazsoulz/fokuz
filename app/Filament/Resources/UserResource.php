@@ -26,10 +26,7 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('first_name')
-                    ->maxLength(255)
-                    ->required(),
-                TextInput::make('last_name')
+                TextInput::make('name')
                     ->maxLength(255)
                     ->required(),
                 TextInput::make('email')
@@ -62,9 +59,7 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('first_name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('last_name')
+                Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),

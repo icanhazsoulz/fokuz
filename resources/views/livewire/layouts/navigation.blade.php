@@ -27,7 +27,7 @@
 //    dd($menu[1]['nested']);
 @endphp
 <div class="fixed top-0 left-0 right-0 z-20">
-    <div class="container mx-auto px-4 max-w-7xl flex justify-between items-center relative z-40">
+    <div class="container mx-auto px-4 max-w-7xl flex justify-between items-center">
         <div class="logo p-6">
             <a class="navbar-brand" href="{{ route('home') }}">
                 <svg class="w-44 h-24 text-white hover:text-btn-bg-hover">
@@ -43,33 +43,27 @@
                 @foreach($menu as $item)
                     <li
                         class="relative group flex justify-between items-center "
-                        x-data="{ open: false }"
-                        @mouseover.away="open = false"
                     >
                         <x-nav-link
                             href="{{ $item['route'] }}"
                             active="{{ \Illuminate\Support\Facades\Request::url() === $item['route'] }}"
-                            @mouseover="open = true"
                         >{{ $item['label'] }}
                         </x-nav-link>
-                        <button class="outline-none [&>svg]:h-4 [&>svg]:w-4" id="dropdownMenuButton2" data-twe-dropdown-toggle-ref
-                        aria-expanded="false"
-                        data-twe-ripple-init
-                        data-twe-ripple-color="light">
-                                <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path
-                                fill-rule="evenodd"
-                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                clip-rule="evenodd" />
-                                </svg>
-                            </button>
+
                         @if(array_key_exists('nested', $item))
-                            <ul class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-base shadow-lg data-[twe-dropdown-show]:block dark:bg-surface-dark" x-show="open"
-                            aria-labelledby="dropdownMenuButton2"
-                            data-twe-dropdown-menu-ref>
+                            <span class="flex justify-center items-center">
+                                <svg
+                                class="w-3 h-1.5 text-font-color-1 transition-all duration-300 origin-center group-hover:rotate-180 group-hover:origin-center group-hover:text-text-hover"
+                                >
+                                <use
+                                    class="transition-all duration-200"
+                                    href="./assets/icons/icons-sprite.svg#drop-down"
+                                ></use>
+                                </svg>
+                            </span>
+                            <ul class="bg-white absolute left-0 top-[100%] z-10 w-full rounded-b-md shadow-md opacity-0 scale-y-0 origin-top-left transition duration-500 ease-in-out group-hover:opacity-100 group-hover:scale-y-100"
+                             x-show="open"
+                            >
                                 @foreach($item['nested'] as $nested)
                                     <li>
                                         <x-dropdown-link
