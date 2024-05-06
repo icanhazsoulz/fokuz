@@ -251,8 +251,8 @@
     {{--        <input type="checkbox" class="form-check-input" id="exampleCheck1">--}}
     {{--        <label class="form-check-label" for="exampleCheck1">Check me out</label>--}}
     {{--    </div>--}}
-    <x-input-checkbox>Ich habe die<a href="#" class="font-bold">&nbsp;Datenschutzerklärung&nbsp;</a>gelesen und erkläre
-        mich damit einverstanden.
+    <x-input-checkbox>
+        {!! __('ui.contact_form.acceptance') !!}
     </x-input-checkbox>
     <x-button-primary>{{ __('ui.contact_form.submit') }}</x-button-primary>
 </form>
