@@ -13,7 +13,7 @@
 
         <!-- START Client -->
         <div class="columns-1">
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label class="required form-label"
                        for="name">{{ __('ui.contact_form.name') }}</label>
                 <input
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="columns-1">
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label class="required form-label" for="email"
                        class="form-label">{{ __('ui.contact_form.email') }}</label>
                 <input
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="columns-1">
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label class="required form-label" for="phone">{{ __('ui.contact_form.phone') }}</label>
                 <input
                     wire:model="form.phone"
@@ -61,7 +61,7 @@
         <!-- START Pet -->
         <p class="text-green-600 font-bold">{{ __('ui.contact_form.pet.info') }}</p>
         <div class="columns-1">
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label for="pet-name" class="form-label">{{ __('ui.contact_form.pet.name') }}</label>
                 <input
                     wire:model="form.petName"
@@ -73,7 +73,7 @@
                 <span class="error text-red-600">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label for="pet-dob" class="form-label">{{ __('ui.contact_form.pet.dob') }}</label>
                 <input
                     wire:model="form.petDob"
@@ -87,7 +87,7 @@
             </div>
         </div>
         <div class="columns-1">
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label for="pet-type" class="form-label">{{ __('ui.contact_form.pet.type.label') }}</label>
                 <select
                     wire:model="form.petTypeId"
@@ -103,7 +103,7 @@
                 <span class="error text-red-600">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label for="pet-sex" class="form-label">{{ __('ui.contact_form.pet.sex.label') }}</label>
                 <select
                     wire:model="form.petSex"
@@ -120,7 +120,7 @@
             </div>
         </div>
         <div class="columns-1">
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label for="pet-breed" class="form-label">{{ __('ui.contact_form.pet.breed') }}</label>
                 <input
                     wire:model="form.petBreed"
@@ -132,7 +132,7 @@
                 <span class="error text-red-600">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label for="pet-image" class="form-label">{{ __('ui.contact_form.pet.image') }}</label>
                 <input
                     wire:model="form.petImage"
@@ -153,7 +153,7 @@
         {{--                <fieldset class="border border-solid border-gray-400 p-3">--}}
         {{--                    <legend>Appointment block</legend>--}}
         <div class="columns-1">
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label class="required form-label" for="category"
                        class="form-label">{{ __('ui.contact_form.appointment.category') }}</label>
                 <select
@@ -171,7 +171,7 @@
                 <span class="error text-red-600">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label for="address" class="required form-label">{{ __('ui.contact_form.appointment.address') }}</label>
                 <input
                     wire:model="form.address"
@@ -186,7 +186,7 @@
             </div>
         </div>
         <div class="columns-1">
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label for="description" class="form-label">{{ __('ui.contact_form.appointment.description') }}</label>
                 <textarea
                     wire:model="form.description"
@@ -201,7 +201,7 @@
             </div>
         </div>
         <div class="columns-1">
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label class="required form-label"
                        for="client-source">{{ __('ui.contact_form.appointment.client_source') }}</label>
                 <select
@@ -218,7 +218,7 @@
                 <span class="error text-red-600">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="sm:flex flex-col">
+            <div class="flex flex-col mb-4">
                 <label for="shelter" class="form-label">{{ __('ui.contact_form.appointment.shelters') }}</label>
                 <select
                     wire:model="form.shelterId"
