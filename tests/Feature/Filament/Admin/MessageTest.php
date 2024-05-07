@@ -46,7 +46,6 @@ class MessageTest extends TestCase
             ->assertCanRenderTableColumn('user.name')
             ->assertCanRenderTableColumn('message')
             ->assertCanRenderTableColumn('user.email')
-            ->assertCanRenderTableColumn('user.phone')
             ->assertCanRenderTableColumn('status')
         ;
     }
@@ -92,8 +91,6 @@ class MessageTest extends TestCase
             ->assertTableColumnStateNotSet('user.name', 'Rumpelstilzchen', record: $message)
             ->assertTableColumnStateSet('user.email', $message->user->email, record: $message)
             ->assertTableColumnStateNotSet('user.email', 'my.email@some.domain', record: $message)
-            ->assertTableColumnStateSet('user.phone', $message->user->phone, record: $message)
-            ->assertTableColumnStateNotSet('user.phone', '000.00.00', record: $message)
             ;
     }
 
@@ -150,4 +147,10 @@ class MessageTest extends TestCase
     public function test_can_read_a_message() {
 
     }
+
+    public function test_message_fields_disabled() {
+        //
+    }
+
+    // TODO: can mark read/unread, can see form in modal filled in, etc.
 }

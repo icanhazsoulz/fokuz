@@ -42,8 +42,6 @@ class MessageResource extends Resource
                 TextColumn::make('user.email')
                     ->label(__('filament_ui.general.email'))
                     ->searchable(),
-                TextColumn::make('user.phone')
-                    ->label(__('filament_ui.general.phone')),
                 TextColumn::make('message')
                     ->label(__('filament_ui.messages.message'))
                     ->words(20)
@@ -76,7 +74,6 @@ class MessageResource extends Resource
                     ->fillForm(fn (Message $record): array => [
                         'name' => $record->user->name,
                         'email' => $record->user->email,
-                        'phone' => $record->user->phone,
                         'message' => $record->message,
                     ])
                     ->form([
@@ -85,10 +82,6 @@ class MessageResource extends Resource
                         ,
                         TextInput::make('email')
                             ->label(__('filament_ui.general.email'))
-                            ->columnSpan('sm')
-                        ,
-                        TextInput::make('phone')
-                            ->label(__('filament_ui.general.phone'))
                         ,
                         Textarea::make('message')
                             ->label(__('filament_ui.messages.message'))
@@ -122,7 +115,6 @@ class MessageResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-//                    MarkAsReadAction::make(),
                 ]),
             ]);
     }
