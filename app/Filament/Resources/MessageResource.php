@@ -22,8 +22,6 @@ class MessageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
-    protected static ?string $navigationBadgeTooltip = 'New messages';
-
     public static function form(Form $form): Form
     {
         return $form

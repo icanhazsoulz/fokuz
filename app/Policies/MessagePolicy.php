@@ -4,14 +4,15 @@ namespace App\Policies;
 
 use App\Models\Message;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Auth;
 
 class MessagePolicy
 {
     public function before(): bool
     {
-        return Auth::user()->hasRole('admin');
+        return (Filament::getCurrentPanel()->getId() === 'app' && Auth::user()->hasRole('client'))
+            || (Filament::getCurrentPanel()->getId() === 'admin' && Auth::user()->hasRole('admin'));
     }
 
     /**

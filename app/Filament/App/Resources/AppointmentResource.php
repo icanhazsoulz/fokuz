@@ -5,7 +5,6 @@ namespace App\Filament\App\Resources;
 use App\Filament\App\Resources\AppointmentResource\Pages;
 use App\Models\Appointment;
 use App\Models\User;
-use Filament\Tables\Actions\CreateAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -15,8 +14,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
 class AppointmentResource extends Resource
 {
@@ -57,7 +54,7 @@ class AppointmentResource extends Resource
             ->query(
                 // TODO: make based on role when add shelters as customers
                 Appointment::query()
-                    ->where('appointmentable_id', Auth::user()->getAuthIdentifier())
+                    ->where('appointmentable_id', \Auth::id())
                     ->where('appointmentable_type', User::class)
             )
             ->columns([

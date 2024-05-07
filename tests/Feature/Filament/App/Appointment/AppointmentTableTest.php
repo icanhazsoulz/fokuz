@@ -17,7 +17,6 @@ class AppointmentTableTest extends TestCase
         $this->actingAs($this->create_client())
             ->get('/app/appointments')
             ->assertStatus(200);
-
     }
 
     public function test_admin_cannot_view_client_appointments_page()
@@ -25,7 +24,6 @@ class AppointmentTableTest extends TestCase
         $this->actingAs($this->create_admin())
             ->get('/app/appointments')
             ->assertStatus(200);
-
     }
 
     public function test_appointments_table_is_rendered()

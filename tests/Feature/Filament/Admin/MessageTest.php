@@ -32,7 +32,7 @@ class MessageTest extends TestCase
 
     }
 
-    public function test_messages_table_is_rendered()
+    public function test_messages_page_is_rendered()
     {
         Livewire::actingAs($this->create_admin())
             ->test(ManageMessages::class)
@@ -41,6 +41,7 @@ class MessageTest extends TestCase
 
     public function test_set_of_columns_is_rendered()
     {
+        // TODO: discover why this works. This shouldn't work without message records!!
         Livewire::actingAs($this->create_admin())
             ->test(ManageMessages::class)
             ->assertCanRenderTableColumn('user.name')
@@ -133,10 +134,9 @@ class MessageTest extends TestCase
             ->test(ManageMessages::class)
             ->assertTableActionExists('read')
             ->assertTableActionDoesNotExist(EditAction::class)
-            ->assertTableBulkActionDoesNotExist(EditAction::class)
             ->assertTableActionDoesNotExist(ViewAction::class)
-            ->assertTableBulkActionDoesNotExist(ViewAction::class)
-            ->assertTableActionExists(DeleteAction::class);
+            ->assertTableActionExists(DeleteAction::class)
+            ->assertTableBulkActionExists(DeleteAction::class);
     }
 
     /**
@@ -145,12 +145,10 @@ class MessageTest extends TestCase
      * assert new messages status
      */
     public function test_can_read_a_message() {
-
+        //
     }
 
     public function test_message_fields_disabled() {
         //
     }
-
-    // TODO: can mark read/unread, can see form in modal filled in, etc.
 }
