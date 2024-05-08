@@ -40,16 +40,16 @@ class CreateAppointmentTest extends TestCase
 
     public function test_client_can_create_an_appointment()
     {
-        $this->assertEquals(0, Appointment::count());
+        $this->assertEquals(0, Appointment::query()->count());
 
         self::save_appointment(array_merge($this->client1, self::fill_appointment()));
 
-        $this->assertEquals(1, Appointment::count());
+        $this->assertEquals(1, Appointment::query()->count());
     }
 
     public function test_new_appointments_can_be_added_to_a_client()
     {
-        $this->assertEquals(0, Appointment::count());
+        $this->assertEquals(0, Appointment::query()->count());
 
         $n = 3;
         for ($i = 1; $i <= $n; $i++) {
@@ -60,7 +60,7 @@ class CreateAppointmentTest extends TestCase
         }
 
         $this->assertEquals(1, User::query()->role('client')->count());
-        $this->assertEquals($n, Appointment::count());
+        $this->assertEquals($n, Appointment::query()->count());
     }
 
     /** Helpers */

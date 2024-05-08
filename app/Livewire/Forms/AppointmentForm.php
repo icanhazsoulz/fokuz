@@ -33,13 +33,13 @@ class AppointmentForm extends Form
     #[Validate('nullable|integer')]
     public ?int $shelterId = null;
 
-    #[Validate('nullable|string')]
+    #[Validate('required|string')]
     public string $petName = '';
 
     #[Validate('nullable|date')]
     public ?string $petDob = null;
 
-    #[Validate('nullable|integer')]
+    #[Validate('required|integer')]
     public ?int $petTypeId = null;
 
     #[Validate('nullable|string')]
