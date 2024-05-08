@@ -53,55 +53,52 @@
 {{--        </div>--}}
         <footer>
             <div class="container mx-auto px-12 pt-12">
-                <div class="columns-4 bg-red rounded-t-3xl text-white">
-                    <div class="text-center p-3">Contacts</div>
-                    <div class="text-center p-3">Menu</div>
-                    <div class="text-center p-3">Information</div>
-                    <div class="text-center p-3">Conditions</div>
+                <div class="flex justify-between bg-red rounded-t-3xl text-white px-20 py-12">
+                    <div class="">
+                        <h4 class="font-bold">{{ __('ui.menu.contact') }}</h4>
+                        <ul>
+                            {{-- TODO: add icons to the place, mail, phone links --}}
+                            <li>Fotografin Iuliia Kuznetcova</li>
+                            <li>
+                                <a href="https://maps.app.goo.gl/ioiMN4GpXTrTkVmp7">
+                                    Ruppenhahn 40, 58791 Werdohl
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:ik@fokuz.photo&body={{ __('ui.contact_form.message_placeholder') }}?subject=Frage"
+                                >ik@fokuz.photo</a>
+                            </li>
+                            <li><a href="tel:4915773999273">+ 49 1577 3999 273</a></li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <ul class="font-bold">
+                            <li><a href="{{ route('page', 'about') }}">{{ __('ui.menu.about') }}</a></li>
+                            <li><a href="{{ route('page', 'photoshooting') }}">{{ __('ui.menu.photoshooting') }}</a></li>
+                            <li><a href="{{ route('page', 'portfolio') }}">{{ __('ui.menu.portfolio') }}</a></li>
+                            <li><a href="{{ route('page', 'shelters') }}">{{ __('ui.menu.shelters') }}</a></li>
+                            <li><a href="{{ route('page', 'blog') }}">{{ __('ui.menu.blog') }}</a></li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <ul class="font-bold">
+                            <li><a href="">Informationen</a></li>
+                            <li><a href="">AGB’s</a></li>
+                            <li><a href="">Datenschutzerklärung</a></li>
+                            <li><a href="">Impressum</a></li>
+                            <li><a href="">Cookie-Richtlinie (EU)</a></li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <ul>
+                            <li><a href="">Conditions</a></li>
+                            <li><a href="">All rights reserved</a></li>
+                            <li><a href="">{{ date('Y') }}</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </footer>
         @livewireScripts
-
-        <footer class="">
-            <div class="container max-w-[1160px]">
-                <div
-                class="footer__wrapper mx-auto py-11 px-20 flex justify-between bg-brand-3 text-font-color-2 rounded-tl-[30px] rounded-tr-[30px]"
-                >
-                <div class="footer__contacts">
-                    <h4 class="footer__title text-lg font-bold">Kontact</h4>
-                    <ul class="footer__contacts-list">
-                    <li><a href="">Fotografin Iuliia Kuznetcova</a></li>
-                    <li><a href="">Ruppenhahn 40, 58791 Werdohl</a></li>
-                    <li>
-                        <a href="mailto:ik@fokuz.photo&body=привет?subject=вопрос"
-                        >ik@fokuz.photo</a
-                        >
-                    </li>
-                    <li><a href="tel:4915773999273">+ 49 1577 3999 273</a></li>
-                    </ul>
-                </div>
-                <ul class="footer__links">
-                    <li><a href="about.html">Da bin ich</a></li>
-                    <li><a href="portfolio.html">Can sein</a></li>
-                    <li><a href="success.html">Erflog</a></li>
-                    <li><a href="">Tierheimhilife</a></li>
-                    <li><a href="">Memoiren</a></li>
-                </ul>
-                <ul class="footer__links">
-                    <li><a href="">Informationen</a></li>
-                    <li><a href="">AGB’s</a></li>
-                    <li><a href="">Datenschutzerklärung</a></li>
-                    <li><a href="">Impressum</a></li>
-                    <li><a href="">Cookie-Richtlinie (EU)</a></li>
-                </ul>
-                <ul class="footer__links">
-                    <li><a href="">Conditions</a></li>
-                    <li><a href="">All rights reserved</a></li>
-                    <li><a href="">2024</a></li>
-                </ul>
-                </div>
-            </div>
-        </footer>
     </body>
 </html>
