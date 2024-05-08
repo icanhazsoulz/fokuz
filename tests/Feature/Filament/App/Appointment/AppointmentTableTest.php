@@ -4,6 +4,7 @@ namespace Tests\Feature\Filament\App\Appointment;
 
 use App\Filament\App\Resources\AppointmentResource\Pages\ManageAppointments;
 use App\Models\Appointment;
+use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 use Tests\TestCase;
@@ -23,10 +24,10 @@ class AppointmentTableTest extends TestCase
     {
         $this->actingAs($this->create_admin())
             ->get('/app/appointments')
-            ->assertStatus(200);
+            ->assertStatus(403);
     }
 
-    public function test_appointments_table_is_rendered()
+    public function test_appointments_page_is_rendered()
     {
         Livewire::actingAs($this->create_client())
             ->test(ManageAppointments::class)
@@ -55,11 +56,11 @@ class AppointmentTableTest extends TestCase
             Appointment::factory()->create(['created_at' => fake()->dateTime]);
         }
 
-        $faqs = Appointment::all();
+        $records = Appointment::all();
 
         Livewire::actingAs($this->create_client())
             ->test(ManageAppointments::class)
-            ->assertCanSeeTableRecords($faqs->sortByDesc('created_at'), inOrder: true);
+            ->assertCanSeeTableRecords($records->sortByDesc('created_at'), inOrder: true);
     }
 
     public function test_client_can_delete_single_appointment()

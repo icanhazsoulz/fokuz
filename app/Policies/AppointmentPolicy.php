@@ -12,9 +12,8 @@ class AppointmentPolicy
 {
     public function before(): bool
     {
-        // TODO: correct for production
-        return (Filament::getCurrentPanel()->getId() === 'app' && Auth::user()->hasRole(['client', 'admin']))
-            || Auth::user()->hasRole('admin');
+        return (Filament::getCurrentPanel()->getId() === 'app' && Auth::user()->hasRole('client'))
+            || (Filament::getCurrentPanel()->getId() === 'admin' && Auth::user()->hasRole('admin'));
     }
 
     /**
