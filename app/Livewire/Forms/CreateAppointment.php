@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
+use function Symfony\Component\String\b;
 
 class CreateAppointment extends Component
 {
@@ -25,6 +26,8 @@ class CreateAppointment extends Component
             $this->form->phone = $currentUser->phone;
             $this->form->name = $currentUser->name;
         }
+
+        $this->placeholder = __('ui.contact_form.appointment.address_empty');
 
         $this->categories = DB::table('categories')
             ->orderBy('id', 'asc')
@@ -50,10 +53,16 @@ class CreateAppointment extends Component
     public function selectAddress()
     {
         $this->form->address = '';
-        if ($this->form->categoryId == 1) {
-            $this->form->address =  'Werdohl, Ruppenhahn 40';
-        } else {
-            $this->placeholder = 'Please enter your address';
+
+        switch ($this->form->categoryId) {
+            case null:
+                $this->placeholder = __('ui.contact_form.appointment.address_empty');
+                break;
+            case 1:
+                $this->form->address =  'Werdohl, Ruppenhahn 40';
+                break;
+            default:
+                $this->placeholder = __('ui.contact_form.appointment.address_prompt');
         }
     }
 

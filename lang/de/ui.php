@@ -45,6 +45,7 @@ return [
             'dob' => 'Geburtsdatum',
             'type' => [
                 'label' => 'Typ',
+                'prompt' => 'Select or type',
                 'cat' => 'Katze',
                 'dog' => 'Hund',
                 'rabbit' => 'Kaninchen',
@@ -61,6 +62,8 @@ return [
         'appointment' => [
             'category' => 'Worum geht es?',
             'address' => 'Adresse',
+            'address_empty' => 'Please select an option above',
+            'address_prompt' => 'Please enter your address',
             'description' => 'Erzähle mich kurz etwas über dich und dein Anliegen',
             'client_source' => 'Woher kennst du mich?',
             'shelters' => 'Tierheime',

@@ -8,8 +8,7 @@
                 wire:model="form.name"
                 id="name"
                 type="text"
-                class="form-control"
-                required
+                placeholder="{{ __('ui.contact_form.name') }}"
             />
             @error('form.name')
             <span class="error text-red-600">{{ $message }}</span>
@@ -20,9 +19,8 @@
             <x-input-text
                 wire:model.blur="form.email"
                 type="email"
-                class="form-control"
                 id="email"
-                required
+                placeholder="{{ __('ui.contact_form.email') }}"
             />
             @error('form.email')
             <span class="error text-red-600">{{ $message }}</span>
@@ -33,9 +31,8 @@
             <x-input-text
                 wire:model="form.phone"
                 type="tel"
-                class="form-control"
                 id="phone"
-                required
+                placeholder="{{ __('ui.contact_form.phone') }}"
             />
             @error('form.phone')
             <span class="error text-red-600">{{ $message }}</span>
@@ -50,9 +47,8 @@
             <x-input-text
                 wire:model="form.petName"
                 type="text"
-                class="form-control"
                 id="pet-name"
-                required
+                placeholder="{{ __('ui.contact_form.pet.name') }}"
             />
             @error('form.petName')
             <span class="error text-red-600">{{ $message }}</span>
@@ -63,7 +59,6 @@
             <x-input-text
                 wire:model="form.petDob"
                 type="date"
-                class="form-control"
                 id="pet-dob"
             />
             @error('form.petDob')
@@ -72,17 +67,29 @@
         </div>
         <div class="flex flex-col mb-4">
             <x-label-input for="pet-type" class="required">{{ __('ui.contact_form.pet.type.label') }}</x-label-input>
-            <select
+            <x-input-text
                 wire:model="form.petTypeId"
-                class="form-control"
+                type="text"
                 id="pet-type"
-                required
-            >
+                list="types"
+                placeholder="{{ __('ui.contact_form.pet.type.prompt') }}"
+            />
+            <datalist id="types">
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                @foreach($petTypes as $id => $slug)
-                    <option value="{{ $id }}">{{ __('ui.contact_form.pet.type.'.$slug) }}</option>
+                @foreach($petTypes as $slug)
+                    <option value="{{ __('ui.contact_form.pet.type.'.$slug) }}"></option>
                 @endforeach
-            </select>
+            </datalist>
+{{--            <select--}}
+{{--                wire:model="form.petTypeId"--}}
+{{--                id="pet-type"--}}
+{{--                required--}}
+{{--            >--}}
+{{--                <option value="">{{ __('ui.contact_form.empty_option') }}</option>--}}
+{{--                @foreach($petTypes as $id => $slug)--}}
+{{--                    <option value="{{ $id }}">{{ __('ui.contact_form.pet.type.'.$slug) }}</option>--}}
+{{--                @endforeach--}}
+{{--            </select>--}}
             @error('form.petTypeId')
             <span class="error text-red-600">{{ $message }}</span>
             @enderror
@@ -91,7 +98,6 @@
             <x-label-input for="pet-sex">{{ __('ui.contact_form.pet.sex.label') }}</x-label-input>
             <select
                 wire:model="form.petSex"
-                class="form-control"
                 id="pet-sex"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
@@ -107,8 +113,8 @@
             <x-input-text
                 wire:model="form.petBreed"
                 type="text"
-                class="form-control"
                 id="pet-breed"
+                placeholder="{{ __('ui.contact_form.pet.breed') }}"
             />
             @error('form.petBreed')
             <span class="error text-red-600">{{ $message }}</span>
@@ -119,7 +125,6 @@
             <input
                 wire:model="form.petImage"
                 type="file"
-                class="form-control"
                 id="pet-image"
             />
             @error('form.petImage')
@@ -135,7 +140,6 @@
                 wire:model="form.categoryId"
                 wire:change="selectAddress()"
                 id="category"
-                class="form-control"
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
                 @foreach($categories as $id => $slug)
@@ -151,7 +155,6 @@
             <x-input-text
                 wire:model="form.address"
                 type="text"
-                class="form-control"
                 placeholder="{{ $placeholder }}"
                 id="address"
             />
@@ -165,7 +168,7 @@
             <x-textarea
                 wire:model="form.description"
                 id="description"
-                class="form-control"
+
                 cols="30"
                 rows="10"
                 placeholder="{{ __('ui.contact_form.message_placeholder') }}"
@@ -180,7 +183,7 @@
             <select
                 wire:model="form.clientSourceId"
                 id="client-source"
-                class="form-control"
+
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
                 @foreach($clientSources as $id => $slug)
@@ -196,7 +199,7 @@
             <select
                 wire:model="form.shelterId"
                 id="shelter"
-                class="form-control"
+
             >
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
                 @foreach($shelters as $id => $name)
