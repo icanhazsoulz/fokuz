@@ -42,7 +42,7 @@ class PetTableTest extends \Tests\TestCase
 
     public function test_pets_are_listed()
     {
-        $pets = $this->create_pet(3);
+        $pets = $this->createPet(3);
         Livewire::actingAs($this->create_admin())
             ->test(ListPets::class)
             ->assertCanSeeTableRecords($pets)
@@ -65,7 +65,7 @@ class PetTableTest extends \Tests\TestCase
 
     public function test_admin_can_delete_single_pet()
     {
-        $pet = $this->create_pet()->first();
+        $pet = $this->createPet()->first();
 
         Livewire::actingAs($this->create_admin())
             ->test(ListPets::class)
@@ -77,7 +77,7 @@ class PetTableTest extends \Tests\TestCase
 
     public function test_admin_can_bulk_delete_pets()
     {
-        $pets = $this->create_pet(2);
+        $pets = $this->createPet(2);
 
         Livewire::actingAs($this->create_admin())
             ->test(ListPets::class)
@@ -92,7 +92,7 @@ class PetTableTest extends \Tests\TestCase
     // TODO: all fields
     public function test_admin_can_edit_pet_record()
     {
-        $pet = $this->create_pet()->first();
+        $pet = $this->createPet()->first();
         $sex = $pet->sex === 'female' ? 'male' : 'female';
 
         Livewire::actingAs($this->create_admin())
@@ -117,7 +117,7 @@ class PetTableTest extends \Tests\TestCase
 
     public function test_can_validate_pet_data()
     {
-        $pet = $this->create_pet()->first();
+        $pet = $this->createPet()->first();
 
         Livewire::actingAs($this->create_admin())
             ->test(ListPets::class)
@@ -144,7 +144,7 @@ class PetTableTest extends \Tests\TestCase
 
     // Helpers
 
-    private function create_pet($count = 1)
+    private function createPet($count = 1)
     {
         $type = Type::create(['slug' => 'cat', 'name' => 'Cat']);
         $owner = $this->create_client();
