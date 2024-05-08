@@ -15,7 +15,7 @@ use Tests\TestCase;
 class MessageTest extends TestCase
 {
     use RefreshDatabase;
-
+// TODO: tests fail because panel is set as admin
     public function test_client_can_view_client_messages_page()
     {
         $this->actingAs($this->create_client())
