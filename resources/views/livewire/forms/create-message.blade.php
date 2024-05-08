@@ -9,7 +9,6 @@
         <x-input-text
             wire:model="form.name"
             id="first-name"
-            class="form-control"
             placeholder="{{ __('ui.contact_form.name') }}"
         />
         @error('form.name')
