@@ -26,7 +26,7 @@ return [
         'portfolio' => 'Erfolg',
         'shelters' => 'Tierheimhilfe',
         'blog' => 'Memoiren',
-        'contact' => 'Kontakte',
+        'contact' => 'Kontakt',
         'cats' => 'Katzen',
         'dogs' => 'Hunde',
         'small_animals' => 'Kleintiere'
