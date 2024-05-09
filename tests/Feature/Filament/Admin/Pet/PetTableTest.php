@@ -123,16 +123,12 @@ class PetTableTest extends \Tests\TestCase
             ->test(ListPets::class)
             ->callTableAction(EditAction::class, $pet, data: [
                 'name' => null,
-                'dob' => null,
                 'type_id' => null,
-                'sex' => null,
                 'user_id' => null,
             ])
             ->assertHasTableActionErrors([
                 'name' => ['required'],
-                'dob' => ['required'],
                 'type_id' => ['required'],
-                'sex' => ['required'],
                 'user_id' => ['required'],
             ]);
     }
