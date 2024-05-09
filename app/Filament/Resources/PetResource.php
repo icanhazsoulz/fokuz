@@ -35,6 +35,15 @@ class PetResource extends Resource
                 Select::make('type_id')
                     ->label(__('filament_ui.pet.type'))
                     ->options(Type::all()->pluck('name', 'id'))
+                    ->relationship('type', 'name')
+                    ->editOptionForm([
+                        TextInput::make('name')
+                        ->required()
+                    ])
+                    ->createOptionForm([
+                        TextInput::make('name')
+                        ->required()
+                    ])
                     ->searchable()
                     ->preload()
                     ->required(),

@@ -27,7 +27,7 @@ class Pet extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function pet_type(): BelongsTo
+    public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
     }

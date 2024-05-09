@@ -138,6 +138,16 @@ class PetTableTest extends \Tests\TestCase
         //
     }
 
+    public function test_can_edit_pet_type_record()
+    {
+
+    }
+
+    public function test_can_add_pet_type_record()
+    {
+
+    }
+
     // Helpers
 
     private function createPet($count = 1)
