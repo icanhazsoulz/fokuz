@@ -10,6 +10,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
 //    public function orders(): HasMany
 //    {
 //        return $this->hasMany(Order::class);

@@ -12,6 +12,8 @@ class Type extends Model
 
     protected $fillable = ['name'];
 
+    public $timestamps = false;
+
 //    public function pets(): HasMany
 //    {
 //        return $this->hasMany(Pet::class);
