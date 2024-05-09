@@ -31,19 +31,19 @@ class PetResource extends Resource
                     ->required()
                     ->maxLength(125),
                 DatePicker::make('dob')
-                    ->label(__('filament_ui.general.dob'))
-                    ->required(),
+                    ->label(__('filament_ui.general.dob')),
                 Select::make('type_id')
                     ->label(__('filament_ui.pet.type'))
                     ->options(Type::all()->pluck('name', 'id'))
+                    ->searchable()
+                    ->preload()
                     ->required(),
                 Select::make('sex')
                     ->label(__('filament_ui.pet.sex'))
                     ->options([
                         'male' => 'Male',
                         'female' => 'Female',
-                    ])
-                    ->required(),
+                    ]),
                 TextInput::make('breed')
                     ->label(__('filament_ui.pet.breed'))
                     ->maxLength(125),

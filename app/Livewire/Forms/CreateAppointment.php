@@ -46,7 +46,7 @@ class CreateAppointment extends Component
 
         $this->petTypes = DB::table('types')
             ->orderBy('id', 'asc')
-            ->pluck('slug', 'id')
+            ->pluck('name')
             ->toArray();
     }
 

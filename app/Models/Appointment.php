@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Events\AppointmentCreated;
 use Carbon\Carbon;
-use Firebase\JWT\JWT;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -47,6 +46,7 @@ class Appointment extends Model
                     'phone' => $all['phone'],
                     'password' => Hash::make('client'),
                 ]);
+
                 $client->assignRole('client');
 
                 // TODO: try-catch random string if not unique? What is the probability?
@@ -60,14 +60,20 @@ class Appointment extends Model
                 ]);
             }
 
-            // Pet: might be created or not
+
+            $petType = DB::table('types')->where('name', $all['petType'])->first();
+
+            if (is_null($petType)) {
+                $petType = Type::create(['name' => $all['petType']]);
+            }
+
             $pet_data = [
-                'name' => $all['petName'],
-                'dob' => $all['petDob'],
-                'type_id' => $all['petTypeId'],
-                'sex' => $all['petSex'],
-                'breed' => $all['petBreed'],
-                'image' => $all['petImage'],
+                'name'    => $all['petName'],
+                'dob'     => $all['petDob'],
+                'type_id' => $petType->id,
+                'sex'     => $all['petSex'],
+                'breed'   => $all['petBreed'],
+                'image'   => $all['petImage'],
             ];
 
             if ($pet_data['name'] && self::hasData($pet_data)) {

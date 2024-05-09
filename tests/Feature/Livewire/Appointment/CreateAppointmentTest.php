@@ -1,11 +1,12 @@
 <?php
 
-namespace Tests\Feature\Livewire\CreateAppointment;
+namespace Tests\Feature\Livewire\Appointment;
 
 use App\Livewire\Forms\CreateAppointment;
 use App\Models\Appointment;
 use App\Models\Category;
 use App\Models\ClientSource;
+use App\Models\Type;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -47,7 +48,7 @@ class CreateAppointmentTest extends TestCase
         $this->assertEquals(1, Appointment::query()->count());
     }
 
-    public function test_new_appointments_can_be_added_to_a_client()
+    public function test_can_add_new_appointments_to_a_client()
     {
         $this->assertEquals(0, Appointment::query()->count());
 
@@ -63,6 +64,20 @@ class CreateAppointmentTest extends TestCase
         $this->assertEquals($n, Appointment::query()->count());
     }
 
+    public function test_can_select_existing_pet_type()
+    {
+        self::save_appointment(array_merge($this->client1, self::fill_appointment()));
+
+        $this->assertEquals(Type::query()->first()->name, 'Hund');
+    }
+
+    public function test_can_add_new_pet_type()
+    {
+        self::save_appointment(array_merge($this->client1, self::fill_appointment('Katze')));
+        $appointment = Appointment::query()->first();
+        $this->assertEquals(Type::query()->first()->name, 'Katze');
+    }
+
     /** Helpers */
     private static function getRecordId($table)
     {
@@ -75,14 +90,21 @@ class CreateAppointmentTest extends TestCase
      *
      * @return array
      */
-    protected static function fill_appointment(): array
+    protected static function fill_appointment($petType = null): array
     {
-        return [
+
+        $arr =  [
+            'pet_name' => ucfirst(fake()->userName),
+            'pet_type' => 'Hund',
             'category_id' => self::getRecordId('categories'),
             'address' => fake()->address,
             'description' => fake()->text(100),
             'client_source_id' => self::getRecordId('client_sources'),
         ];
+
+        if ($petType) $arr['pet_type'] = $petType;
+
+        return $arr;
     }
 
     private static function save_appointment($arr)
@@ -91,6 +113,8 @@ class CreateAppointmentTest extends TestCase
             ->set('form.email', $arr['email'])
             ->set('form.phone', $arr['phone'])
             ->set('form.name', $arr['name'])
+            ->set('form.petName', $arr['pet_name'])
+            ->set('form.petType', $arr['pet_type'])
             ->set('form.categoryId', $arr['category_id'])
             ->set('form.address', $arr['address'])
             ->set('form.description', $arr['description'])

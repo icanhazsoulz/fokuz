@@ -14,23 +14,19 @@ class TypeSeeder extends Seeder
     public function run(): void
     {
         DB::table('types')->insert([
-            'slug' => 'cat',
-            'name' => 'Cat',
+            'name' => 'Katze',
         ]);
 
         DB::table('types')->insert([
-            'slug' => 'dog',
-            'name' => 'Dog',
+            'name' => 'Hund',
         ]);
 
         DB::table('types')->insert([
-            'slug' => 'rabbit',
-            'name' => 'Rabbit',
+            'name' => 'Kanninchen',
         ]);
 
         DB::table('types')->insert([
-            'slug' => 'ferret',
-            'name' => 'Ferret',
+            'name' => 'Frettchen',
         ]);
     }
 }

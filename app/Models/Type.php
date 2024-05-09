@@ -10,7 +10,7 @@ class Type extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['slug', 'name'];
+    protected $fillable = ['name'];
 
 //    public function pets(): HasMany
 //    {

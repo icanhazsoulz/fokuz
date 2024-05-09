@@ -15,7 +15,7 @@ class Pet extends Model
     protected $fillable = [
         'name',
         'dob',
-        'type_id',
+        'pet_type_id',
         'sex',
         'breed',
         'image',
@@ -27,7 +27,7 @@ class Pet extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function type(): BelongsTo
+    public function pet_type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
     }

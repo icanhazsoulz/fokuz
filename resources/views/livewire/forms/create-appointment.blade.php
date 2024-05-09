@@ -68,7 +68,7 @@
         <div class="flex flex-col mb-4">
             <x-label-input for="pet-type" class="required">{{ __('ui.contact_form.pet.type.label') }}</x-label-input>
             <x-input-text
-                wire:model="form.petTypeId"
+                wire:model="form.petType"
                 type="text"
                 id="pet-type"
                 list="types"
@@ -76,12 +76,12 @@
             />
             <datalist id="types">
                 <option value="">{{ __('ui.contact_form.empty_option') }}</option>
-                @foreach($petTypes as $slug)
-                    <option value="{{ __('ui.contact_form.pet.type.'.$slug) }}"></option>
+                @foreach($petTypes as $name)
+                    <option value="{{ $name }}"></option>
                 @endforeach
             </datalist>
 {{--            <select--}}
-{{--                wire:model="form.petTypeId"--}}
+{{--                wire:model="form.petType"--}}
 {{--                id="pet-type"--}}
 {{--                required--}}
 {{--            >--}}
@@ -90,7 +90,7 @@
 {{--                    <option value="{{ $id }}">{{ __('ui.contact_form.pet.type.'.$slug) }}</option>--}}
 {{--                @endforeach--}}
 {{--            </select>--}}
-            @error('form.petTypeId')
+            @error('form.petType')
             <span class="error text-red-600">{{ $message }}</span>
             @enderror
         </div>

@@ -46,10 +46,6 @@ return [
             'type' => [
                 'label' => 'Typ',
                 'prompt' => 'Select or type',
-                'cat' => 'Katze',
-                'dog' => 'Hund',
-                'rabbit' => 'Kaninchen',
-                'ferret' => 'Frettchen',
             ],
             'sex' => [
                 'label' => 'Geschlecht',

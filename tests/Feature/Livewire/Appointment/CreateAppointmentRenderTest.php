@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Livewire\CreateAppointment;
+namespace Tests\Feature\Livewire\Appointment;
 
 use App\Livewire\Forms\CreateAppointment;
 
@@ -68,9 +68,9 @@ class CreateAppointmentRenderTest extends TestCase
     public function test_pet_type_field_is_required()
     {
         Livewire::test(CreateAppointment::class)
-            ->set('form.petTypeId', '')
+            ->set('form.petType', '')
             ->call('save')
-            ->assertHasErrors(['form.petTypeId' => ['required']]);
+            ->assertHasErrors(['form.petType' => ['required']]);
     }
 
     public function test_category_id_field_is_required()

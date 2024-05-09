@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Livewire\CreateMessage;
+namespace Tests\Feature\Livewire\Message;
 
 use App\Livewire\Forms\CreateMessage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
