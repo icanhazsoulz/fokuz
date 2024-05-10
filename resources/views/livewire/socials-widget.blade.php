@@ -1,4 +1,4 @@
-<div class="absolute top-0 -right-10">
+<div class="absolute top-0 right-0">
     <ul>
         @foreach($socials as $social)
             <li class="p-3">
