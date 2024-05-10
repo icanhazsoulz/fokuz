@@ -12,7 +12,6 @@ return [
     ],
     'cart' => [
         'checkout' => 'Zur Kasse',
-        'price' => 'Preis',
         'qty' => 'Anzahl',
         'total' => 'Gesamt',
         'cart' => 'Warenkorb',
@@ -30,6 +29,7 @@ return [
         'downloads' => 'Downloads',
         'image' => 'Bild',
         'dob' => 'Geburtsdatum',
+        'price' => 'Preis',
     ],
     'faq' => [
         'default_label' => 'Mehr sehen',

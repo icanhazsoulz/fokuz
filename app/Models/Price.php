@@ -9,5 +9,16 @@ class Price extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'body', 'image', 'status'];
+    protected $fillable = [
+        'title',
+        'subtitle',
+        'text',
+        'price',
+        'fixed',
+        'conditions',
+        'image',
+        'status'
+    ];
+
+    public $timestamps = false;
 }

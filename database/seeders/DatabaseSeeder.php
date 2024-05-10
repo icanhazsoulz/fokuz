@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             ClientSourceSeeder::class,
             GallerySeeder::class,
             PageSeeder::class,
+            PriceSeeder::class,
             RoleSeeder::class,
             SocialSeeder::class,
             TypeSeeder::class,

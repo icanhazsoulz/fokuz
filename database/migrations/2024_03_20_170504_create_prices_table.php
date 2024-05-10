@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('body')->nullable();
+            $table->string('subtitle');
+            $table->text('text')->nullable();
+            $table->integer('price')->nullable();
+            $table->boolean('fixed')->default(1);
+            $table->json('conditions')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('status')->default(0);
-            $table->timestamps();
+            $table->boolean('status')->default(1);
         });
     }
 

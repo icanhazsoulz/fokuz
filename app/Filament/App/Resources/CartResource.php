@@ -38,7 +38,7 @@ class CartResource extends Resource
                 TextColumn::make('qty')
                     ->label(__('filament_ui.cart.qty')),
                 TextColumn::make('price')
-                    ->label(__('filament_ui.cart.price'))
+                    ->label(__('filament_ui.general.price'))
                     ->money('EUR', divideBy: 100)
                 ,
                 TextColumn::make('total')

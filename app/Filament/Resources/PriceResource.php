@@ -29,12 +29,16 @@ class PriceResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title')
-                    ->required()
-                    ->columnSpanFull(),
-                RichEditor::make('body')
-                    ->columnSpanFull(),
-                FileUpload::make('image')
-                    ->columnSpanFull(),
+                    ->required(),
+                TextInput::make('subtitle')
+                    ->required(),
+                RichEditor::make('text'),
+                FileUpload::make('image'),
+                // Repeater for Conditions
+                TextInput::make('price')
+                    ->label(__('filament_ui.general.price'))
+                    ->numeric(),
+                Checkbox::make('fixed'),
                 Checkbox::make('status')
                     ->label('Published'),
             ]);
@@ -45,21 +49,23 @@ class PriceResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('title')
-                    ->wrap(),
-                Tables\Columns\TextColumn::make('body')
-                    ->html()
-                    ->words(50)
-                    ->wrap(),
+                Tables\Columns\TextColumn::make('title'),
+//                Tables\Columns\TextColumn::make('text')
+//                    ->html()
+//                    ->words(50)
+//                    ->wrap(),
+                Tables\Columns\TextColumn::make('price')
+                    ->label(__('filament_ui.general.price')),
+                Tables\Columns\CheckboxColumn::make('fixed'),
                 Tables\Columns\CheckboxColumn::make('status')
                     ->label('Published'),
             ])
-            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
