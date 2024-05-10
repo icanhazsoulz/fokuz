@@ -1,5 +1,5 @@
 @php
-    $classes = 'h-dvh pt-24';
+    $classes = 'h-dvh pt-32';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>

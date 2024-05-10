@@ -28,9 +28,9 @@
 @endphp
 <div class="fixed top-0 left-0 right-0 z-20">
     <div class="container mx-auto px-4 max-w-7xl flex justify-between items-center">
-        <div class="logo p-6">
-            <a class="navbar-brand" href="{{ route('home') }}">
-                <svg class="w-44 h-24 text-white hover:text-btn-bg-hover">
+        <div class="logo pt-3">
+            <a class="navbar-brand text-white hover:text-[#f4eab4]" href="{{ route('home') }}">
+                <svg class="w-44 h-24">
                 <use
                     class="transition-all duration-200"
                     href="./assets/icons/icons-sprite.svg#logo"
