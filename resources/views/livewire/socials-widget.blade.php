@@ -1,14 +1,14 @@
 <div class="absolute top-0 right-0">
-    <ul>
+    <ul class="flex flex-col items-center gap-6">
         @foreach($socials as $social)
-            <li class="p-3">
+            <li>
                 <a
                     title="{{ $social->title }}"
                     href="{{ $social->url }}"
-                    target="_blank"
+                    target="_blank" class="group block text-white hover:text-yellow p-3 "
                 >
                     <svg
-                        class="w-5 h-5 text-font-color-2 hover:text-font-disabled-input"
+                        class="w-5 h-5"
                     >
                         <use
                             class="transition-all duration-200"
