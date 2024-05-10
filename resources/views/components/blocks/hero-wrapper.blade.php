@@ -1,5 +1,5 @@
 @php
-    $classes = 'h-dvh pt-32';
+    $classes = 'h-dvh pt-32 pb-80';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
@@ -15,10 +15,10 @@
     </div>
     @if(request()->is('/'))
         <div class="container mx-auto">
-            <h1>
+            <h1 class="text-4xl">
                 Mit jeder Photobestellung spenden Sie <br />
                 <span
-                    class="inline-block bg-font-color-2 font-bold rounded mt-2 px-2 -ml-2"
+                    class="inline-block bg-white font-bold rounded mt-2 px-2 -ml-2"
                 >für Tiere in Not</span
                 >
             </h1>
