@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Event;
 use App\Models\Gallery;
 use App\Models\Page;
 use App\Models\Post;
@@ -16,6 +17,7 @@ class Pages extends Component
     public string $title;
     public string $subtitle;
     public Collection $prices;
+    public Collection $events;
 
     public ?Gallery $slider;
     public Collection $featuredPosts;
@@ -31,6 +33,7 @@ class Pages extends Component
 //        dd($this->slider);
 
         $this->prices = Price::query()->where('status', 1)->get();
+        $this->events = Event::query()->get();
     }
 
     public function render(): \Illuminate\Contracts\View\View

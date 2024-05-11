@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             ClientSourceSeeder::class,
+            EventSeeder::class,
             GallerySeeder::class,
             PageSeeder::class,
             PriceSeeder::class,

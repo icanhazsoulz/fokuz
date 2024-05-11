@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PromotionResource\Pages;
-use App\Filament\Resources\PromotionResource\RelationManagers;
+use App\Filament\Resources\EventResource\Pages;
+use App\Models\Event;
 use App\Models\Promotion;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PromotionResource extends Resource
+class EventResource extends Resource
 {
-    protected static ?string $model = Promotion::class;
+    protected static ?string $model = Event::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-megaphone';
 
@@ -23,16 +23,17 @@ class PromotionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('header')
+                Forms\Components\TextInput::make('title')
                     ->required()
-                    ->maxLength(125),
-                Forms\Components\TextInput::make('subheader')
-                    ->maxLength(125),
-                Forms\Components\Textarea::make('text')
+                    ->maxLength(125)
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('subtitle')
+                    ->maxLength(125)
+                    ->columnSpanFull(),
+                Forms\Components\RichEditor::make('text')
                     ->maxLength(65535)
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('filename')
-                    ->maxLength(125),
+                Forms\Components\FileUpload::make('image'),
             ]);
     }
 
@@ -40,11 +41,12 @@ class PromotionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('header')
+                Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('subheader')
+                Tables\Columns\TextColumn::make('subtitle')
+                    ->wrap()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('filename')
+                Tables\Columns\ImageColumn::make('image')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -73,7 +75,7 @@ class PromotionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManagePromotions::route('/'),
+            'index' => Pages\ManageEvents::route('/'),
         ];
     }
 }
