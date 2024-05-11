@@ -27,16 +27,19 @@ class PageSeeder extends Seeder
         ]);
 
         DB::table('pages')->insert([
+            'slug' => 'story',
             'title' => 'Ich über mich',
             'subtitle' => 'Ich liebe meine Arbeit',
         ]);
 
         DB::table('pages')->insert([
+            'slug' => 'testimonials',
             'title' => 'Man über mich',
             'subtitle' => 'Ich liebe meine Arbeit',
         ]);
 
         DB::table('pages')->insert([
+            'slug' => 'partners',
             'title' => 'Partner',
             'subtitle' => 'Ich liebe meine Arbeit',
         ]);
@@ -49,16 +52,19 @@ class PageSeeder extends Seeder
         ]);
 
         DB::table('pages')->insert([
+            'slug' => 'prices',
             'title' => 'Was kostet',
             'subtitle' => 'Ich liebe meine Arbeit',
         ]);
 
         DB::table('pages')->insert([
+            'slug' => 'faq',
             'title' => 'Was tun',
             'subtitle' => 'Ich liebe meine Arbeit',
         ]);
 
         DB::table('pages')->insert([
+            'slug' => 'events',
             'title' => 'Mittun',
             'subtitle' => 'Ich liebe meine Arbeit',
         ]);
@@ -69,9 +75,9 @@ class PageSeeder extends Seeder
             'subtitle' => 'Spielerisch, lebendig, unerwartet',
         ]);
 
-        DB::table('pages')->insert([
-            'title' => 'Theater machen',
-            'subtitle' => 'Wir sind die Besten',
-        ]);
+//        DB::table('pages')->insert([
+//            'title' => 'Theater machen',
+//            'subtitle' => 'Wir sind die Besten',
+//        ]);
     }
 }

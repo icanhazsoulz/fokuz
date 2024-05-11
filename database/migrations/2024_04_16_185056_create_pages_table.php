@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->unique()->nullable();
+            $table->string('slug')->unique();
             $table->string('title');
             $table->string('subtitle')->nullable();
             $table->foreignId('gallery_id')->nullable()->constrained('galleries')->nullOnDelete();
