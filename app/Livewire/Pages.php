@@ -14,8 +14,8 @@ use Livewire\Component;
 class Pages extends Component
 {
     public string $slug;
-    public string $title;
-    public string $subtitle;
+    public ?string $title;
+    public ?string $subtitle;
     public Collection $prices;
     public Collection $events;
 
