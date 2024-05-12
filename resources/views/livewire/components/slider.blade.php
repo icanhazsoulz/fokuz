@@ -1,5 +1,5 @@
 <div class="relative">
-    <div class="absolute hero-rectangles-bg left-0 right-0 top-0 bottom-0"></div>
+    <div class=""></div>
     <div class="relative">
 {{--    TODO: all slider images    --}}
         @if(count($slider->getMedia()))
