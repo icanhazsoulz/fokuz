@@ -27,7 +27,7 @@
 //    dd($menu[1]['nested']);
 @endphp
 <div>
-    <div class="container mx-auto px-4 max-w-7xl flex justify-between items-center">
+    <div class="container mx-auto px-4 flex justify-between items-center">
         <div class="logo pt-3">
             <a class="navbar-brand text-white hover:text-[#f4eab4]" href="{{ route('home') }}">
                 <svg class="w-44 h-24">
