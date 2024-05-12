@@ -34,6 +34,20 @@ export default {
                 "gray-light": "#C4C0C7",
                 "gray-dark": "#645C6A",
             },
+            backgroundImage: {
+                hero: "url('../assets/images/home-page/start-screen-bg.png')",
+
+                call: "url(../assets/icons/call-me.svg)",
+                shootingList: "url(../assets/images/home-page/about/shooting-bg1.png)",
+                success: "url(../assets/images/home-page/success/success-cell-bg.png)",
+                help: "url(../assets/images/home-page/help/help-bg.png)",
+                memory: "linear-gradient(#71d154 460px, #fff 460px);",
+                "about-parthner": "linear-gradient(#e1392c 460px, #fff 460px);",
+                memoryList: "url(../assets/images/home-page/memory/memory-bg.png)",
+                aboutBg: "url(../assets/images/about-page/about-bg.png)",
+                successBg: "url(../assets/images/success-page/success-hero-bg.jpg)",
+                thetreBg: "url(../assets/images/theatre-page/theatre-hero-bg.jpg)",
+            },
         },
     },
 
