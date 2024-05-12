@@ -36,7 +36,7 @@ class PriceSeeder extends Seeder
             'text' => 'Natürliche Momente, unvergesslich festgehalten Ob im grünen Gras oder während des Lieblingsspiels – ich fange die Essenz deines Tieres in seiner gewohnten Umgebung ein. Authentisch und lebendig.',
             'price' => 115,
 //            'conditions' => '',
-            'image' => 'meine-studio.png',
+            'image' => 'momente.png',
         ]);
 
         \DB::table('prices')->insert([
@@ -46,7 +46,7 @@ class PriceSeeder extends Seeder
             'price' => 110,
             'fixed' => 0,
 //            'conditions' => '',
-            'image' => 'meine-studio.png',
+            'image' => 'reportage.png',
         ]);
     }
 }
