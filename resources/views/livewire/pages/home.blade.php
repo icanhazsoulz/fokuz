@@ -7,5 +7,7 @@
 
     <x-blocks.rounded-design-section></x-blocks.rounded-design-section>
 
+    <x-blocks.design-list-section></x-blocks.design-list-section>
+
     <x-blocks.tabs />
 </div>

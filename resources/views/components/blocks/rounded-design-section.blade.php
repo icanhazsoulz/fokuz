@@ -1,9 +1,8 @@
 @php
-    $classes = 'mb-28 bg-red pb-80 relative';
+    $classes = 'bg-red relative';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="mb-28__subsection">
         <div class="container max-w-[1160px] px-0 mx-auto">
             <div class="bg-white rounded-tr-2xl rounded-tl-2xl pt-24 relative -top-8 px-14 pb-24">
                 <div
@@ -11,12 +10,10 @@
                 >
                     <div>
                         <div class="mb-16">
-                            <h2
-                                class="font-serif text-8xl tracking-tighter mb-4 text-white"
-                            >
+                            <x-section-title class="text-white">
                                 Da bin ich
-                            </h2>
-                            <div class="mb-28__subtitle">ich liebe meine Arbeit</div>
+                            </x-section-title>
+                            <div class="mb-28">ich liebe meine Arbeit</div>
                         </div>
                         <div class="max-w-[420px]">
                             <p class="text__p">
@@ -51,5 +48,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>
