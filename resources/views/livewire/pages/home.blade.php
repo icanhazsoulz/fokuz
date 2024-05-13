@@ -5,5 +5,7 @@
         @endif
     </x-blocks.hero-wrapper>
 
+    <x-blocks.rounded-design-section></x-blocks.rounded-design-section>
+
     <x-blocks.tabs />
 </div>
