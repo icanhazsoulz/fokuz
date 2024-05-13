@@ -1,5 +1,5 @@
 <div>
-    <x-blocks.hero-wrapper class="bg-green pb-80">
+    <x-blocks.hero-wrapper class="bg-green">
         @if($slider)
             <livewire:components.slider :slider="$slider" />
         @endif

@@ -1,11 +1,12 @@
 @php
-    $classes = 'min-h-dvh pt-32 pb-40';
+    $classes = 'min-h-dvh pt-32 pb-40 relative';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
+    <x-widgets.call />
     <div class="container mx-auto relative h-4/6 ">
         <livewire:socials-widget />
-        <x-widgets.call />
+
         {{ $slot }}
         @if(request()->is('/'))
             <x-button-primary class="absolute bottom-44 left-12  z-30">
@@ -20,7 +21,7 @@
                 </div>
             </div>
 
-            <h1 class="max-w-[713px] mx-auto mt-14 relative -left-10 text-4xl">
+            <h1 class="w-fit mx-auto mt-14 relative -left-10 font-serif text-4xl">
                 Mit jeder Photobestellung spenden Sie <br />
                 <span
                     class="inline-block bg-white font-bold rounded mt-2 px-2 -ml-2"
