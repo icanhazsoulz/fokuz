@@ -5,9 +5,9 @@
         @endif
     </x-blocks.hero-wrapper>
 
-    <x-blocks.rounded-design-section></x-blocks.rounded-design-section>
+    <x-blocks.overflow-design-section></x-blocks.overflow-design-section>
 
-    <x-blocks.design-list-section></x-blocks.design-list-section>
+    <x-blocks.photoshooting-categories></x-blocks.photoshooting-categories>
 
     <x-blocks.tabs />
 </div>

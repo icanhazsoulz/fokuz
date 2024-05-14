@@ -9,13 +9,12 @@
         'category' => isset($post->post_category) ? $post->post_category->category : null,
     ];
 @endphp
-<div class="flex flex-col p-4 shadow-xl rounded-2xl">
-    <div class="mb-4 mx-auto">
-        <img src="assets/images/{{ $post['image'] }}" alt="{{ $post['title'] }}" width="320" height="320">
+<div>
+    <div class="mb-6 aspect-[3/2]">
+        <img src="assets/images/{{ $post['image'] }}" alt="{{ $post['title'] }}" width="320">
     </div>
-    <div class="flex flex-col justify-between">
-        <div>
-            <div class="flex justify-between mb-4">
+    <div>
+        <div class="flex justify-between mb-4">
                 @if($post['category'])
                     <span>{{ $post['category'] }}</span>
                 @endif
@@ -25,9 +24,8 @@
                 @endif
 
             </div>
-            <div class="mb-4">{{ $post['title'] }}</div>
-            <p>{{ $post['text'] }}</p>
-        </div>
-        <a href="{{ $post['slug'] }}">Mehr sehen</a>
+        <h3 class="font-serif mb-6 h-20 text-4xl">{{ $post['title'] }}</h3>
+        <p>{{ $post['text'] }}</p>
+        <a class="font-serif text-gray-400 hover:text-gray-300 transition-all duration-200 text-4xl block  absolute bottom-4 left-4" href="{{ $post['slug'] }}">Mehr sehen</a>
     </div>
 </div>

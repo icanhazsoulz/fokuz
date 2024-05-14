@@ -1,5 +1,5 @@
 @php
-    $classes = 'h-dvh pt-24';
+    $classes = 'min-h-dvh pb-20 bg-red';
     $posts = [
         'studio' => [
             'image' => 'studio.png',
@@ -23,16 +23,19 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container mx-auto">
-        <x-header class="text-primary-focused">Was kostet</x-header>
-        <x-subheader class="text-primary-focused">Wunderbar, brillant, günstig</x-subheader>
+    <div class="container mx-auto pt-24 relative before:content-[''] before:w-full before:h-[900px] before:bg-white before:absolute before:left-0 before-r-0 before:top-0 before:rounded-bl-2xl before:rounded-br-2xl">
+        <div class="max-w-[90%] mx-auto mb-16">
+            <x-header class="text-primary-focused relative z-10">Was kostet</x-header>
+            <x-subheader class="text-primary-focused relative z-10">Wunderbar, brillant, günstig</x-subheader>
 
-        <ul class="grid grid-cols-3 gap-8">
-            @foreach($posts as $post)
-                <li>
-                    <x-post-card :post="(object) $post" />
-                </li>
-            @endforeach
-        </ul>
+            <ul class="flex gap-9 justify-center  mt-24 mx-auto relative before:content-[''] before:absolute before:-top-14 before:-left-32 before:-right-32 before:h-36 before:bg-shootingList before:bg-cover before:z-0 after:content-[''] after:absolute after:block after:h-80 after:top-20 after:-right-32 after:-left-32 after:bg-yellow after:z-0 after:rounded-lg;
+            ">
+                @foreach($posts as $post)
+                    <li class="max-w-[320px] bg-white px-4 pt-4 pb-20 shadow-2xl rounded-xl relative z-10">
+                        <x-post-card :post="(object) $post" />
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 </section>
