@@ -11,6 +11,8 @@
 
     <x-blocks.photoshooting-categories></x-blocks.photoshooting-categories>
 
+    <x-blocks.success></x-blocks.success>
+
     <x-blocks.overflow-slider class="bg-primary"></x-blocks.overflow-slider>
 
     <x-blocks.tabs />
