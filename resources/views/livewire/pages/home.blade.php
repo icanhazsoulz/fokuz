@@ -5,9 +5,13 @@
         @endif
     </x-blocks.hero-wrapper>
 
-    <x-blocks.overflow-design-section></x-blocks.overflow-design-section>
+    {{--<x-blocks.home-about />--}}
+
+    <x-blocks.overflow-section class="bg-red"></x-blocks.overflow-section>
 
     <x-blocks.photoshooting-categories></x-blocks.photoshooting-categories>
+
+    <x-blocks.overflow-slider class="bg-primary"></x-blocks.overflow-slider>
 
     <x-blocks.tabs />
 </div>

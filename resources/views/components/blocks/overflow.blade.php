@@ -1,10 +1,8 @@
 @php
-    $classes = 'bg-red relative';
+    $classes = "bg-white rounded-tr-2xl pt-16 px-14 pb-24 relative ";
 @endphp
 
-<section {{ $attributes->merge(['class' => $classes]) }}>
-        <div class="container max-w-[1160px] px-0 mx-auto">
-            <div class="bg-white rounded-tr-2xl pt-16 px-14 pb-24 relative before:content-[''] before:w-full before:h-16 before:bg-white before:absolute before:left-0 before-r-0 before:-top-8 before:rounded-tl-2xl before:rounded-tr-2xl">
+            <div {{ $attributes->merge(['class' => $classes]) }}>
                 <div
                     class="bg-red text-white rounded-2xl flex flex-row-reverse justify-center gap-14 pt-12 px-8 pb-28 relative"
                 >
@@ -45,5 +43,4 @@
                     <x-widgets.see-more-btn />
                 </div>
             </div>
-        </div>
-</section>
+

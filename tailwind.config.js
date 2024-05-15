@@ -36,7 +36,7 @@ export default {
             },
             backgroundImage: {
                 hero: "url('../assets/images/home-page/start-screen-bg.png')",
-                shootingList: "url(/assets/images/home-page/about/shooting-bg1.png)",
+                shootingList: "url(../assets/images/home-page/about/shooting-bg1.png)",
                 success: "url(../assets/images/home-page/success/success-cell-bg.png)",
                 help: "url(../assets/images/home-page/help/help-bg.png)",
                 memory: "linear-gradient(#71d154 460px, #fff 460px);",
