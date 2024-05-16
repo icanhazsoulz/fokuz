@@ -13,7 +13,7 @@
 
     <x-blocks.success></x-blocks.success>
 
-    <x-blocks.overflow-slider class="bg-primary"></x-blocks.overflow-slider>
+    <x-blocks.overflow-slider class="bg-primary pb-20"></x-blocks.overflow-slider>
 
     <x-blocks.tabs />
 </div>
