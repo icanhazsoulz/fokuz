@@ -40,7 +40,7 @@
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <div class="container max-w-[1160px] px-0 mx-auto">
-        <div class="bg-white rounded-tr-2xl pt-16 px-14 pb-24 relative">
+        <div class="bg-white pt-16 px-14 pb-24 relative">
 
             @foreach($slides as $slide)
             <div
