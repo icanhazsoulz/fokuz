@@ -9,7 +9,7 @@
     ];
 @endphp
 
-<div class="bg-white rounded-2xl shadow-2xl px-10 py-10 mx-auto mt-auto mb-20 w-[537px]"
+<div class="bg-white rounded-2xl shadow-2xl px-10 py-10 mx-auto mt-auto mb-20 max-w-[537px]"
 >
     <h3 class="text-4xl font-text-title mb-3">{{ $card['title'] }}</h3>
     <img

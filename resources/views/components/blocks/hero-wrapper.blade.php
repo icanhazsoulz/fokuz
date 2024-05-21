@@ -1,5 +1,7 @@
 @php
     $classes = 'min-h-dvh pt-32 pb-40 relative';
+
+    $sliderImages = ['hero-screen-1.jpg', 'hero-screen-2.jpg', 'hero-screen-3.jpg', 'hero-screen-4.jpg', 'hero-screen-5.jpg']
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
@@ -17,6 +19,18 @@
                 <div class="rounded relative before:content-[''] before:absolute before:block before:w-1/3 before:aspect-square before:-top-10 before:-right-16 before:z-0 before:bg-[#EDDEBA] before:rounded after:content-[''] after:absolute after:block after:w-2/3 after:h-1/2 after:aspect-square after:-bottom-10 after:-left-10 after:bg-white after:z-10 after:rounded max-w-[713px]">
                     <div class="relative z-20">
                         <img src="./assets/images/home-page/hero-screen.jpg" alt="black cat">
+                        <x-slider-navigation class="text-white right-0 bottom-12 "></x-slider-navigation>
+                        {{--<div class="w-40 absolute translate-x-full translate-y-full z-10 text-white right-0 bottom-12">
+                            <div class="flex justify-around mb-4">
+                                <x-slider-btn class="border-white"></x-slider-btn>
+                                <x-slider-btn class="border-white rotate-180"></x-slider-btn>
+                            </div>
+                            <div class="flex justify-between gap-5" x-data="$sliderImages">
+                                <template x-for="img in $sliderImages">
+                                    <x-slider-bullet></x-slider-bullet>
+                                </template>
+                            </div>
+                        </div>--}}
                     </div>
                 </div>
             </div>

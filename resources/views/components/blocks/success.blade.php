@@ -84,7 +84,7 @@
                         alt="a woman with two dogs"
                     />
                 </div>
-                <div class="w-64 ml-auto">
+                <div class="w-1/3 ml-auto">
                     <img
                         class="w-full"
                         src="./assets/images/home-page/success/success3-s2.jpg"
@@ -120,4 +120,5 @@
             </div>
         </div>
     </div>
+    <img src="./assets/images/home-page/success/success-cell-bg.png" alt="green points" class="w-[44%] absolute bottom-0 left-1/4">
 </section>

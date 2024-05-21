@@ -23,7 +23,7 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container mx-auto pt-24 relative before:content-[''] before:w-full before:h-[900px] before:bg-white before:absolute before:left-0 before-r-0 before:top-0 before:rounded-bl-2xl before:rounded-br-2xl">
+    <div class="container mx-auto pt-10 relative before:content-[''] before:w-full before:h-[900px] before:bg-white before:absolute before:left-0 before-r-0 before:top-0 before:rounded-bl-2xl before:rounded-br-2xl">
         <div class="max-w-[90%] mx-auto mb-16">
             <x-header class="text-primary-focused relative z-10">Was kostet</x-header>
             <x-subheader class="text-primary-focused relative z-10">Wunderbar, brillant, günstig</x-subheader>

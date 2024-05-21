@@ -38,43 +38,47 @@
 
 @endphp
 
-<section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container max-w-[1160px] px-0 mx-auto">
-        <div class="bg-white pt-16 px-14 pb-24 relative rounded-bl-2xl relative rounded-br-2xl">
+<div class="w-screen overflow-hidden">
+    <div class="flex">
+        @foreach($slides as $slide)
+        <section class="min-w-full grow bg-primary">
+            <div class="container max-w-[1160px] px-0 mx-auto">
+                <div class="bg-white pt-20 px-14 pb-24 relative rounded-bl-2xl relative rounded-br-2xl">
 
-            @foreach($slides as $slide)
-            <div
-                class="bg-primary text-white pt-16 rounded-2xl relative"
-            >
-                <x-header class="text-white text-center tracking-tighter">Man über mich</x-header>
-                <div class="flex flex-row-reverse justify-center gap-14 pt-10 px-8 pb-28">
-                    <div>
-                        <div class="mb-8">
-                            <x-section-header>
-                                <x-comment class="text-2xl"> {{$slide['author']}} </x-comment>
-                                <x-date> {{ $slide['date'] }} </x-date>
-                            </x-section-header>
-                        </div>
-                        <div class="max-w-[450px] mb-10">
-                            {{ $slide['text'] }}
-                        </div>
-
-                        <a href='{{ $slide["link"] }}' class="font-serif text-3xl text-gray-400 font-bold tracking-widest">{{ $slide['link-text'] }}</a>
-
-                    </div>
                     <div
-                        class="rounded overflow-hidden min-w-[400px] h-fit self-end relative -left-8"
+                        class="bg-primary text-white pt-16 rounded-2xl relative"
                     >
-                        <img
-                            src="./assets/images/home-page/reviews-slider/{{$slide['image']}}"
-                            alt="Da bin ich"
-                            class="w-full h-auto object-fill"
-                        />
-                    </div>
+                        <x-header class="text-white text-center tracking-tighter">Man über mich</x-header>
+                        <div class="flex flex-row-reverse justify-center gap-14 pt-10 px-8 pb-28">
+                            <div>
+                                <div class="mb-8">
+                                    <x-section-header>
+                                        <x-comment class="text-2xl"> {{$slide['author']}} </x-comment>
+                                        <x-date> {{ $slide['date'] }} </x-date>
+                                    </x-section-header>
+                                </div>
+                                <div class="max-w-[450px] mb-10">
+                                    {{ $slide['text'] }}
+                                </div>
+
+                                <a href='{{ $slide["link"] }}' class="font-serif text-3xl text-gray-400 font-bold tracking-widest">{{ $slide['link-text'] }}</a>
+
+                            </div>
+                            <div
+                                class="rounded overflow-hidden min-w-[400px] h-fit self-end relative -left-8"
+                            >
+                                <img
+                                    src="./assets/images/home-page/reviews-slider/{{$slide['image']}}"
+                                    alt="Da bin ich"
+                                    class="w-full h-auto object-fill"
+                                />
+                            </div>
+                        </div>
+                            <x-widgets.see-more-btn />
+                        </div>
                 </div>
-                    <x-widgets.see-more-btn />
-                </div>
-            @endforeach
-        </div>
+            </div>
+        </section>
+        @endforeach
     </div>
-</section>
+</div>
