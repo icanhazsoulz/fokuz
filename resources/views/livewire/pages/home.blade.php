@@ -15,5 +15,9 @@
 
     <x-blocks.overflow-slider></x-blocks.overflow-slider>
 
+    <x-discount-100></x-discount-100>
+
+    <x-discount-50></x-discount-50>
+
     <x-blocks.tabs />
 </div>
