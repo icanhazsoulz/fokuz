@@ -1,41 +1,52 @@
 @php
-    $classes = 'min-h-dvh pb-20 relative before:content-[""] before:absolute before:z-10 before:top-0 before:left-0 before:right-0 before:w-full before:h-[500px] before:bg-green';
-    $posts = [
-        'studio' => [
-            'image' => 'studio.png',
-            'title' => 'Studio',
+    $classes = 'w-screen mb-28 pt-12 relative pb-10 before:content-[""] before:absolute before:z-10 before:top-0 before:left-0 before:right-0 before:w-full before:h-[500px] before:bg-green';
+    $memories = [
+        '1' => [
+            'image' => '/home-page/memory/memory-list/memory1.jpg',
+            'title' => 'Ein ungewöhnlicher Spaziergang: Wenn...',
+            'category'=> 'Handlungen',
+           // 'created_at'=> '2024/03/28',
             'slug' => 'prices#studio',
-            'excerpt' => 'Mein Fotostudio ist wie ein zauberhaftes Theater, in dem jeder seine Rolle spielen! Ihre Tiere sind die Hauptdarsteller, Sie sind die Zuschauer, oder vielleicht ist Ihnen eine Nebenrolle zugedacht. Und ich bin der Regisseur dieses Theaters. Es spielt keine Rolle, wer von uns die Handlung entworfen hat, welche Rollen wir spielen oder welches Requisit auf der Bühne steht, denn jede unserer Aufführungen verdient es, für immer in Erinnerung zu bleiben.'
+            'excerpt' => 'Beobachte eine ungewöhnliche Familie aus drei Hunden auf einem
+                  Frühlingsspaziergang: eine elegante Mama-Spaniel, einen
+                  Papa-Mops mit Fliege und ...'
         ],
-        'momente' => [
-            'image' => 'momente.png',
-            'title' => 'Momente',
+        '2' => [
+            'image' => '/home-page/memory/memory-list/memory2.jpg',
+            'title' => 'Fußballleidenschaft auf vier Pfoten:...',
+            'category' => 'Kulissen',
+            //'created_at' => '2022/07/05',
             'slug' => 'prices#momente',
-            'excerpt' => 'Jeder Moment in m Leben unserer Lieblingstiere birgt eine einzigartige Geschichte. Ich fotografiere Tiere dort, wo sie ganz sie selbst sind – in ihrer natürlichen Umgebung. Mit einem feinen Gespür für den richtigen Moment und einem Auge für das Detail, fange ich die Einzigartigkeit und die Persönlichkeit jedes Tieres ein. Ob überraschendes Spiel im Garten oder ausgelassene Freude beim Spaziergang, ich bin bereit, eure Geschichten überallhin zu folgen.'
+            'excerpt' => ' auchen Sie ein in ein unvergessliches Fotoshooting, bei dem
+                  ein Hund und sein Herrchen zu echten Fußballfans werden!'
         ],
-        'reportage' => [
-            'image' => 'reportage.png',
-            'title' => 'Reportage',
+        '3' => [
+            'image' => '/home-page/memory/memory-list/memory3.jpg',
+            'title' => 'Kaninchen liebesgeschichte',
+            'category'=> 'Handlungen',
+            //'created_at'=> '21/03/2024',
             'slug' => 'prices#reportage',
-            'excerpt' => 'Jedes Event ist voll einzigartiger Momente – von Aufregung bis zu Überraschungen. Meine Mission ist es sondern die Geschichte Ihres Events zu erzählen - die Atmosphäre, die Emotionen und die vielen kleinen Details einzufangen, die zusammenkommen, um Ihre Veranstaltung unvergesslich zu machen. Mit einem aufmerksamen Blick für die besonderen Interaktionen zwischen Tieren und Menschen schaffe ich eine lebendige, emotionale Erzählung Ihres besonderen Tages.'
+            'excerpt' => 'Liebesgeschichte von zwei kleinen HerzchenGenau wie der
+                  Dichter es beschreibt'
         ],
     ];
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container mx-auto pt-10 relative before:content-[''] before:w-full before:h-[900px] before:bg-white before:absolute before:left-0 before-r-0 before:top-0 before:rounded-bl-2xl before:rounded-br-2xl">
-        <div class="max-w-[90%] mx-auto mb-16">
+    <div class="container container max-w-[1160px] mx-auto relative">
+        <div class="mb-16">
             <x-header class="text-primary-focused relative z-10">Memoiren</x-header>
             <x-subheader class="text-primary-focused relative z-10">Aktueliste, wichtigste, atemberaubende</x-subheader>
-
-            <ul class="flex gap-9 justify-center  mt-24 mx-auto relative before:content-[''] before:absolute before:-top-14 before:-left-32 before:-right-32 before:h-36 before:bg-shootingList before:bg-cover before:z-0 after:content-[''] after:absolute after:block after:h-80 after:top-20 after:-right-32 after:-left-32 after:bg-yellow after:z-0 after:rounded-lg;
-            ">
-                @foreach($posts as $post)
-                    <li class="max-w-[320px] bg-white px-4 pt-4 pb-20 shadow-2xl rounded-xl relative z-10">
-                        <x-post-card :post="(object) $post" />
-                    </li>
-                @endforeach
-            </ul>
+            <div class="max-w-[1040px] mx-auto relative before:content-[''] before:absolute before:-top-14 before:-left-32 before:-right-32 before:h-36 before:bg-memoryList  before:bg-cover before:z-10 after:content-[''] after:absolute after:block after:h-80 after:top-20 after:-right-32 after:-left-32 after:bg-yellow after:z-10 after:rounded-lg">
+                <ul class="flex gap-9 overflow-hidden  mt-24 mx-auto relative ;
+                ">
+                    @foreach($memories as $memory)
+                        <li class="max-w-[320px] bg-white px-4 pt-4 pb-20 shadow-2xl rounded-xl relative z-20">
+                            <x-post-card :post="(object) $memory" />
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </div>
 </section>

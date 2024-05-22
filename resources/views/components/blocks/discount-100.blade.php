@@ -1,5 +1,5 @@
 @php
-    $classes = 'flex justify-between pt-24';
+    $classes = 'w-screen flex justify-between pt-24';
 @endphp
 
 

@@ -5,7 +5,7 @@
     $card = [
         'title' => $card->title,
         'image' => $card->image,
-        'alt' => $card->alt
+        'alt' => $card->alt,
     ];
 @endphp
 
@@ -13,7 +13,7 @@
 >
     <h3 class="text-4xl font-text-title mb-3">{{ $card['title'] }}</h3>
     <img
-        src="./assets/images/home-page/success/{{ $card['image'] }}"
+        src="{{ $card['image'] }}"
         alt="{{ $card['alt'] }}"
         class="w-full"
     />

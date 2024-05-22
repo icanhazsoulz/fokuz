@@ -2,20 +2,26 @@
     $classes = 'min-h-dvh pb-20 bg-red';
     $posts = [
         'studio' => [
-            'image' => 'studio.png',
+            'image' => '/home-page/photoshooting-list/studio.png',
             'title' => 'Studio',
+            'comment' => '',
+            'data' => '',
             'slug' => 'prices#studio',
             'excerpt' => 'Mein Fotostudio ist wie ein zauberhaftes Theater, in dem jeder seine Rolle spielen! Ihre Tiere sind die Hauptdarsteller, Sie sind die Zuschauer, oder vielleicht ist Ihnen eine Nebenrolle zugedacht. Und ich bin der Regisseur dieses Theaters. Es spielt keine Rolle, wer von uns die Handlung entworfen hat, welche Rollen wir spielen oder welches Requisit auf der Bühne steht, denn jede unserer Aufführungen verdient es, für immer in Erinnerung zu bleiben.'
         ],
         'momente' => [
-            'image' => 'momente.png',
+            'image' => '/home-page/photoshooting-list/momente.png',
             'title' => 'Momente',
+            'comment' => '',
+            'data' => '',
             'slug' => 'prices#momente',
             'excerpt' => 'Jeder Moment in m Leben unserer Lieblingstiere birgt eine einzigartige Geschichte. Ich fotografiere Tiere dort, wo sie ganz sie selbst sind – in ihrer natürlichen Umgebung. Mit einem feinen Gespür für den richtigen Moment und einem Auge für das Detail, fange ich die Einzigartigkeit und die Persönlichkeit jedes Tieres ein. Ob überraschendes Spiel im Garten oder ausgelassene Freude beim Spaziergang, ich bin bereit, eure Geschichten überallhin zu folgen.'
         ],
         'reportage' => [
-            'image' => 'reportage.png',
+            'image' => '/home-page/photoshooting-list/reportage.png',
             'title' => 'Reportage',
+            'comment' => '',
+            'data' => '',
             'slug' => 'prices#reportage',
             'excerpt' => 'Jedes Event ist voll einzigartiger Momente – von Aufregung bis zu Überraschungen. Meine Mission ist es sondern die Geschichte Ihres Events zu erzählen - die Atmosphäre, die Emotionen und die vielen kleinen Details einzufangen, die zusammenkommen, um Ihre Veranstaltung unvergesslich zu machen. Mit einem aufmerksamen Blick für die besonderen Interaktionen zwischen Tieren und Menschen schaffe ich eine lebendige, emotionale Erzählung Ihres besonderen Tages.'
         ],

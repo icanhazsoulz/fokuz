@@ -23,7 +23,7 @@
                     <x-date>{{ date_format($post['created_at'], 'd.m.Y') }}</x-date>
                 @endif
         </x-section-header>
-        <h3 class="font-serif mb-6 h-20 text-4xl">{{ $post['title'] }}</h3>
+        <h3 class="font-serif mb-6 h-20 text-2xl">{{ $post['title'] }}</h3>
         <p>{{ $post['text'] }}</p>
         <a class="font-serif text-gray-400 hover:text-gray-300 transition-all duration-200 text-4xl block  absolute bottom-4 left-4" href="{{ $post['slug'] }}">Mehr sehen</a>
     </div>

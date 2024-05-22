@@ -1,5 +1,5 @@
 @php
-    $classes = 'flex flex-col pt-24';
+    $classes = 'w-screen flex flex-col pt-24';
 @endphp
 
 

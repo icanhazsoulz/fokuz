@@ -4,17 +4,17 @@
     $cards = [
         "0" => [
             "title" => "Theater machen",
-            "image" => "success-card-1.jpg",
+            "image" => "./assets/images/home-page/success/success-card-1.jpg",
             "alt" => "a man and a dog with germany flags"
         ],
         "1" => [
             "title" => "Lebhafte",
-            "image" => "success-card-2.jpg",
+            "image" => "./assets/images/home-page/success/success-card-2.jpg",
             "alt" => "running dog with a stick"
         ],
         "2" => [
             "title" => "Erwischt",
-            "image" => "success-card-3.jpg",
+            "image" => "./assets/images/home-page/success/success-card-3.jpg",
             "alt" => "black and white rabbit"
         ]
 ];
