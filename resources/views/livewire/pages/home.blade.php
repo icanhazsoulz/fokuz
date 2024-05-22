@@ -19,7 +19,9 @@
 
     <x-blocks.shelter-help></x-blocks.shelter-help>
 
-    <x-blocks.discount-50></x-blocks.discount-50>
+    <x-blocks.discount-50 class="mb-24"></x-blocks.discount-50>
+
+    <x-blocks.memories></x-blocks.memories>
 
     <x-blocks.tabs />
 </div>
