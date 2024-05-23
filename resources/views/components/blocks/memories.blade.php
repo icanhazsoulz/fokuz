@@ -37,11 +37,11 @@
         <div class="mb-16">
             <x-header class="text-primary-focused relative z-10">Memoiren</x-header>
             <x-subheader class="text-primary-focused relative z-10">Aktueliste, wichtigste, atemberaubende</x-subheader>
-            <div class="max-w-[1040px] mx-auto relative before:content-[''] before:absolute before:-top-14 before:-left-32 before:-right-32 before:h-36 before:bg-memoryList  before:bg-cover before:z-10 after:content-[''] after:absolute after:block after:h-80 after:top-20 after:-right-32 after:-left-32 after:bg-yellow after:z-10 after:rounded-lg">
-                <ul class="flex gap-9 overflow-hidden  mt-24 mx-auto relative ;
+            <div class="max-w-[1080px] mx-auto relative before:content-[''] before:absolute before:-top-14 before:-left-32 before:-right-32 before:h-36 before:bg-memoryList  before:bg-cover before:z-10 after:content-[''] after:absolute after:block after:h-80 after:top-20 after:-right-32 after:-left-32 after:bg-yellow after:z-10 after:rounded-lg">
+                <ul class="flex gap-9 overflow-hidden px-5 pb-10  mt-24 mx-auto relative ;
                 ">
                     @foreach($memories as $memory)
-                        <li class="max-w-[320px] bg-white px-4 pt-4 pb-20 shadow-2xl rounded-xl relative z-20">
+                        <li class="max-w-[320px] bg-white px-4 pt-4 pb-20 shadow-xl rounded-xl relative z-20">
                             <x-post-card :post="(object) $memory" />
                         </li>
                     @endforeach
