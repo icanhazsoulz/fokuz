@@ -8,4 +8,6 @@
     <x-blocks.overflow-slider></x-blocks.overflow-slider>
 
     <x-blocks.about-partners></x-blocks.about-partners>
+
+    <x-blocks.awards></x-blocks.awards>
 </div>
