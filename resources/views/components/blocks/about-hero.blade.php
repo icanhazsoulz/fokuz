@@ -17,12 +17,12 @@
                 <x-subheader class="text-white">Ich verwandle Ihre Tiere in echte Superstars!</x-subheader>
             </div>
             <div class="pt-10 flex justify-center items-center relative">
-                {{--<img src="../assets/images/home-page/start-screen-bg.png" alt="white points" class="absolute left-0 top-0">--}}
-                <div class="rounded relative before:content-[''] before:absolute before:block before:w-1/3 before:aspect-square before:-top-10 before:-right-16 before:z-0 before:bg-[#EDDEBA] before:rounded after:content-[''] after:absolute after:block after:w-2/3 after:h-1/2 after:aspect-square after:-bottom-10 after:-left-10 after:bg-white after:z-10 after:rounded max-w-[713px]">
-                    <div class="relative z-20">
+                <x-squared-block class="before:w-[90%] before:left-1/2 before:h-1/3 after:aspect-square after:top-[16%] after:-left-[60%]">
+                    <div class="relative z-20 rounded overflow-hidden">
                         <img src="./assets/images/about-page/about-hero.jpg" alt="Yulia Kuznetcova">
                     </div>
-                </div>
+                </x-squared-block>
+                {{--</div>--}}
             </div>
         {{--@endif--}}
     </div>
