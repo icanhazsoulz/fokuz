@@ -3,5 +3,9 @@
 
     <x-blocks.about-overflow-section class="bg-yellow"></x-blocks.about-overflow-section>
 
-    <x-blocks.photoshooting-categories class="mb-16" />
+    <x-blocks.about-myself class="bg-yellow" ></x-blocks.about-myself>
+
+    <x-blocks.overflow-slider></x-blocks.overflow-slider>
+
+    <x-blocks.about-partners></x-blocks.about-partners>
 </div>

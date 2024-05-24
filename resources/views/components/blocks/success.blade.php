@@ -23,7 +23,7 @@
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <div class="px-0 mx-auto">
         <div
-            class="grid grid-cols-2 auto-rows-auto gap-10 relative after:content-[''] after:w-[500px] after:aspect-square after:bg-success after:absolute after:bottom-0 after:left-1/3 after:z-0"
+            class="grid grid-cols-2 auto-rows-auto gap-10 relative after:content-[''] after:w-[700px] after:aspect-square after:bg-green-points-square after:bg-no-repeat after:bg-cover after:absolute after:bottom-0 after:left-1/3 after:z-0"
         >
             <div class="pt-20 relative before:content-[''] before:absolute before:-z-10 before:top-0 before:w-full before:bg-yellow before:h-2/3">
                 {{--<div class="bg-yellow pt-16 pb-96 px-5 relative h-[640px]">--}}
@@ -120,5 +120,4 @@
             </div>
         </div>
     </div>
-    <img src="./assets/images/home-page/success/success-cell-bg.png" alt="green points" class="w-[44%] absolute bottom-0 left-1/4">
 </section>
