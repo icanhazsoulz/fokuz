@@ -10,4 +10,6 @@
     <x-blocks.about-partners></x-blocks.about-partners>
 
     <x-blocks.awards></x-blocks.awards>
+
+
 </div>

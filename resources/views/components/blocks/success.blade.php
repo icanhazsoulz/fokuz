@@ -5,17 +5,20 @@
         "0" => [
             "title" => "Theater machen",
             "image" => "./assets/images/home-page/success/success-card-1.jpg",
-            "alt" => "a man and a dog with germany flags"
+            "alt" => "a man and a dog with germany flags",
+            "description" => ""
         ],
         "1" => [
             "title" => "Lebhafte",
             "image" => "./assets/images/home-page/success/success-card-2.jpg",
-            "alt" => "running dog with a stick"
+            "alt" => "running dog with a stick",
+            "description" => ""
         ],
         "2" => [
             "title" => "Erwischt",
             "image" => "./assets/images/home-page/success/success-card-3.jpg",
-            "alt" => "black and white rabbit"
+            "alt" => "black and white rabbit",
+            "description" => ""
         ]
 ];
 @endphp

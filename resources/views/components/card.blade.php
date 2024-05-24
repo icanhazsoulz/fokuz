@@ -6,6 +6,7 @@
         'title' => $card->title,
         'image' => $card->image,
         'alt' => $card->alt,
+        'description' => $card->description
     ];
 @endphp
 
@@ -17,5 +18,7 @@
         alt="{{ $card['alt'] }}"
         class="w-full"
     />
+    <p class="italic">{{ $card['description'] }}</p>
+
 </div>
 
