@@ -1,26 +1,43 @@
 @php
-    $classes = 'min-h-dvh pt-32 pb-40';
+    $classes = 'min-h-dvh pt-32 pb-40 relative';
+
+    $sliderImages = ['hero-screen-1.jpg', 'hero-screen-2.jpg', 'hero-screen-3.jpg', 'hero-screen-4.jpg', 'hero-screen-5.jpg']
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
+    <x-widgets.call />
     <div class="container mx-auto relative h-4/6 ">
         <livewire:socials-widget />
-        <x-widgets.call />
+
         {{ $slot }}
         @if(request()->is('/'))
             <x-button-primary class="absolute bottom-44 left-12  z-30">
                 Frag mich mal
             </x-button-primary>
-            <div class="pt-10 flex justify-center items-center bg-hero relative">
-                <img src="../assets/images/home-page/start-screen-bg.png" alt="white points" class="absolute left-0 top-0">
-                <div class="rounded relative before:content-[''] before:absolute before:block before:w-1/3 before:aspect-square before:-top-10 before:-right-16 before:z-0 before:bg-[#EDDEBA] before:rounded after:content-[''] after:absolute after:block after:w-2/3 after:h-1/2 after:aspect-square after:-bottom-10 after:-left-10 after:bg-white after:z-10 after:rounded max-w-[713px]">
+            <div class="pt-10 flex justify-center items-center bg-white-points-square bg-no-repeat relative">
+                {{--<img src="../assets/images/home-page/start-screen-bg.png" alt="white points" class="absolute left-0 top-0">--}}
+                {{--<div class="rounded relative before:content-[''] before:absolute before:block before:w-1/3 before:aspect-square before:-top-10 before:-right-16 before:z-0 before:bg-[#EDDEBA] before:rounded after:content-[''] after:absolute after:block after:w-2/3 after:h-1/2 after:aspect-square after:-bottom-10 after:-left-10 after:bg-white after:z-10 after:rounded max-w-[713px]">--}}
+                <x-squared-block class="before:w-1/3 before:aspect-square before:-top-10 before:-right-16 after:w-2/3 after:h-1/2 after:-bottom-10 after:-left-10">
                     <div class="relative z-20">
                         <img src="./assets/images/home-page/hero-screen.jpg" alt="black cat">
+                        <x-slider-navigation class="text-white right-0 bottom-12 "></x-slider-navigation>
+                        {{--<div class="w-40 absolute translate-x-full translate-y-full z-10 text-white right-0 bottom-12">
+                            <div class="flex justify-around mb-4">
+                                <x-slider-btn class="border-white"></x-slider-btn>
+                                <x-slider-btn class="border-white rotate-180"></x-slider-btn>
+                            </div>
+                            <div class="flex justify-between gap-5" x-data="$sliderImages">
+                                <template x-for="img in $sliderImages">
+                                    <x-slider-bullet></x-slider-bullet>
+                                </template>
+                            </div>
+                        </div>--}}
                     </div>
-                </div>
+                </x-squared-block>
+                {{--</div>--}}
             </div>
 
-            <h1 class="max-w-[713px] mx-auto mt-14 relative -left-10 text-4xl">
+            <h1 class="w-fit mx-auto mt-14 relative -left-10 font-serif text-4xl">
                 Mit jeder Photobestellung spenden Sie <br />
                 <span
                     class="inline-block bg-white font-bold rounded mt-2 px-2 -ml-2"
