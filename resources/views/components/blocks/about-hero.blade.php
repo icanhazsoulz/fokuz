@@ -4,7 +4,7 @@
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <x-widgets.call />
-    <div class="container mx-auto bg-no-repeat bg-[left_1.5rem_top] relative">
+    <div class="container mx-auto max-w-[1160px] relative">
         <livewire:socials-widget />
 
 {{--{{ $slot }}--}}
