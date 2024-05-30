@@ -16,6 +16,8 @@
                     <div class="max-w-[420px]">
                         <p>
                             Willkommen in der Welt, in der Ihr Liebling zum Star wird!
+                        </p>
+                        <p>
                             Ich bin Julia - eine Fotografin und Hundefachfrau mit
                             Erfahrung in der Erstellung fröhlicher und bunter
                             Fotoshootings mit Ihren Haustieren. In meiner Arbeit ist

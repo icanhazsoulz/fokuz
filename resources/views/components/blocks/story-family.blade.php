@@ -14,14 +14,14 @@
                 <img class="mx-auto block" src="./assets/images/story-page/family/1.jpg" alt="" />
             </div>
             <div>
-                <p class="mb-12">
+                <x-paragraph>
                     Tiere waren seit meiner Kindheit meine Begleiter. Meine Eltern
                     waren Reitlehrer, und meine Mutter war auch Hundetrainerin. Ich
                     wuchs in einem Haus auf, in dem Hunde, Katzen, Schildkröten,
                     Meerschweinchen und andere Haustiere als Familienmitglieder
                     angesehen wurden.
-                </p>
-                <p>
+                </x-paragraph>
+                <x-paragraph>
                     Meine ersten lebhaften Erinnerungen sind mit einem Schäferhund
                     namens Grey verbunden. Er kam in unsere Familie, bevor ich
                     geboren wurde, und wurde meine erste Babysitterin. Als Schülerin
@@ -31,7 +31,7 @@
                     Das Leben mit Tieren lehrte mich Verantwortung, selbstlose
                     Fürsorge und das Verständnis für ihren einzigartigen Charakter
                     und die Bedürfnisse jedes Einzelnen.
-                </p>
+                </x-paragraph>
             </div>
             <div
                 class="relative pl-96 before:content-[''] before:block before:w-64 before:h-[470px] before:bg-yellow before:absolute before:top-12 before:left-0 after:content-[''] after:block after:absolute after:w-36 after:h-60 after:bg-[#EDDEBA] after:top-0 after:left-36"
@@ -47,7 +47,7 @@
             </div>
             <div class="relative col-span-2">
                 <div class="bg-green p-11 mt-24 mx-14 rounded-3xl italic">
-                    <p class="max-w-xl">
+                    <x-paragraph class="max-w-xl">
                         Ich wuchs heran, vieles änderte sich in meinem Leben. Aber
                         Tiere waren immer noch bei mir. Am Tag meiner Hochzeit
                         schenkte mir meine Mutter einen Schäferhundwelpen namens Kora,
@@ -56,7 +56,7 @@
                         Erstgeborenes, sie lehrte uns, die richtigen Entscheidungen
                         für uns drei zu finden. Mit ihr machten wir unsere ersten
                         Schritte in Reisen mit einem Hund.
-                    </p>
+                    </x-paragraph>
                 </div>
                 <div class="absolute bottom-20 right-0">
                     <img src="./assets/images/story-page/family/4.jpg" alt="" />
@@ -66,7 +66,7 @@
                 <img class="ml-auto" src="./assets/images/story-page/family/5.jpg" alt="" />
             </div>
             <div class="my-auto">
-                <p>
+                <x-paragraph>
                     Nach Kora hatten wir Metrix - einen geborenen Reisenden, der
                     buchstäblich auf Rädern aufwuchs, und zwar in einem sowjetischen
                     Jeep Niva. Mit ihm zogen wir von Russland nach Deutschland um,
@@ -76,7 +76,7 @@
                     Lehrer der Tierfotografie. Er war geduldig und wusste, wie man
                     die richtige Pose selbst wählt. Ich musste nur auf den richtigen
                     Moment warten und die Kameraeinstellungen schnell ändern.
-                </p>
+                </x-paragraph>
             </div>
 
             <div class="ml-auto">
@@ -92,22 +92,22 @@
                 <img src="./assets/images/story-page/family/8.jpg" alt="" />
             </div>
             <div class="my-auto">
-                <p>
+                <x-paragraph>
                     Heute ist unser pelziges Familienmitglied der Schäferhund
                     Harvey. Trotz seines achtjährigen Alters ist er im Herzen ein
                     ungestümer Welpe, der immer in Bewegung ist und uns dazu bringt,
                     uns zu bewegen. Und natürlich ist er auch ein Reisender - er hat
                     mehr als ein Dutzend Länder besucht und verschiedene
                     Transportmittel ausprobiert, vom Boot bis zum Wohnmobil.
-                </p>
+                </x-paragraph>
             </div>
             <div class="relative col-span-2 pt-24">
                 <div class="bg-green p-11 rounded-3xl mx-14">
-                    <p class="max-w-md italic">
+                    <x-paragraph class="max-w-md italic">
                         Und genau Harvey hat mich eines Tages dazu inspiriert, im
                         Studio zu fotografieren, und dann von gewöhnlichen Porträts zu
                         kreativen überzugehen.
-                    </p>
+                    </x-paragraph>
                 </div>
                 <div class="pl-14 absolute right-24 bottom-16">
                     <button

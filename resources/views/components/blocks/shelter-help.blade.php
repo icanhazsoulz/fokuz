@@ -9,15 +9,17 @@
         <div class="flex flex-row-reverse justify-center gap-14 pt-10 px-8 pb-12">
             <div class="relative">
                 <div class="max-w-[450px] mb-10">
-                    <p class="mt-6">Ich finde es wichtig, mein Herz und meine Fähigkeiten für
+                    <x-paragraph>Ich finde es wichtig, mein Herz und meine Fähigkeiten für
                         einen guten Zweck einzusetzen. Deshalb verbringe ich auch Zeit
                         als Freiwilliger in Tierheimen – fotografiere die Schützlinge,
                         spiele mit den Katzen, gehe mit den Hunden spazieren und
-                        reinige die Käfige.</p>
-                    <p class="mt-6">Einen Teil der Einnahmen spende ich ebenfalls an die
+                        reinige die Käfige.
+                    </x-paragraph>
+                    <x-paragraph>Einen Teil der Einnahmen spende ich ebenfalls an die
                         Tierheime. Meine Kunden entscheiden selbst, welchem Tierheim
                         das Geld zugutekommt. Gemeinsam leisten wir einen Beitrag zur
-                        Unterstützung bedürftiger Tiere.</p>
+                        Unterstützung bedürftiger Tiere.
+                    </x-paragraph>
                 </div>
                 <x-widgets.see-more-btn />
             </div>
