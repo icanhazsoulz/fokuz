@@ -11,7 +11,7 @@
                 <div>
                     <div class="mb-16">
                         <x-header class="text-white tracking-tighter">Da bin ich</x-header>
-                        <x-subheader class="text-white">ich liebe meine Arbeit</x-subheader>
+                        <x-subheader class="text-white">Ich verwandle Ihre Tiere in echte Superstars!</x-subheader>
                     </div>
                     <div class="max-w-[420px]">
                         <p>

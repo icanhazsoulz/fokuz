@@ -31,7 +31,7 @@
             <div class="pt-20 relative before:content-[''] before:absolute before:-z-10 before:top-0 before:w-full before:bg-yellow before:h-2/3">
                 {{--<div class="bg-yellow pt-16 pb-96 px-5 relative h-[640px]">--}}
                     <div class="mb-16 w-fit mx-auto">
-                        <x-header>Erflog</x-header>
+                        <x-header>Erfolg</x-header>
                         <x-subheader>Beste Momente</x-subheader>
                     </div>
                 {{--</div>--}}
@@ -51,9 +51,12 @@
                 class="success__cell relative z-10 pt-28 pb-14 pl-14 pr-36 flex flex-col"
             >
                 <div class="mb-16 max-w-[400px]">
-                    Spaziergänge mit dem Schwanz in Parks und auf dem Land. Für
-                    sozial Aktive. Für die Modischsten. Für Welpen und zum
-                    Wohlfühlen. Werbung. Partys und Sportveranstaltungen
+                    Hier finden Sie eine Welt voller Emotionen, die in Momenten des
+                    Theaterspiels, der Lebensfreude und unerwarteten Momenten
+                    festgehalten werden. Jedes Bild erzählt seine eigene Geschichte,
+                    die mit dem Objektiv meiner Kamera aufgenommen wurde, und
+                    spiegelt die einzigartige Persönlichkeit und Schönheit unserer
+                    Begleittiere wider.
                 </div>
                 <div class="w-40 ml-auto mb-10">
                     <img
