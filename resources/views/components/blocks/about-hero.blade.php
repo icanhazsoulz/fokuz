@@ -17,7 +17,7 @@
                 <x-subheader class="text-white">Ich verwandle Ihre Tiere in echte Superstars!</x-subheader>
             </div>
             <div class="pt-10 flex justify-center items-center relative">
-                <x-squared-block class="before:w-[90%] before:left-1/2 before:h-1/3 after:aspect-square after:top-[16%] after:-left-[60%]">
+                <x-squared-block class="before:w-[90%] before:left-1/2 before:h-1/3 before:bg-white after:aspect-square after:top-[16%] after:-left-[60%] after:bg-[#eddeba]">
                     <div class="relative z-20 rounded overflow-hidden">
                         <img src="./assets/images/about-page/about-hero.jpg" alt="Yulia Kuznetcova">
                     </div>
