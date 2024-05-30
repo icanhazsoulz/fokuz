@@ -1,5 +1,5 @@
-<div class="absolute top-0 right-0 z-20">
-    <ul class="flex flex-col items-center gap-6">
+<div class="absolute -top-6 right-0 z-20">
+    <ul class="flex flex-col items-center gap-5">
         @foreach($socials as $social)
             <li>
                 <a

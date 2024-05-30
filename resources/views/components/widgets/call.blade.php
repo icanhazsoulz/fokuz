@@ -1,6 +1,10 @@
+@php
+    $classes = 'call flex gap-2 absolute z-50 right-5 no-underline text-font-color-1 group';
+@endphp
+
 <a
     href="https://wa.me/4915773999273"
-    class="call flex gap-2 absolute z-50 bottom-20 right-5 no-underline text-font-color-1 group"
+    {{ $attributes->merge(['class' => $classes]) }}
 >
     <div
         class="text-xs bg-white p-3 rounded shadow-2xl transition-all duration-200 group-hover:scale-105"

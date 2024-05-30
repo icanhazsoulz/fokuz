@@ -3,7 +3,7 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <x-widgets.call />
+    <x-widgets.call class="bottom-20"></x-widgets.call>
     <div class="container mx-auto max-w-[1160px] relative">
         <livewire:socials-widget />
 
@@ -17,7 +17,7 @@
                 <x-subheader class="text-white">Ich verwandle Ihre Tiere in echte Superstars!</x-subheader>
             </div>
             <div class="pt-10 flex justify-center items-center relative">
-                <x-squared-block class="before:w-[90%] before:left-1/2 before:h-1/3 before:bg-white after:aspect-square after:top-[16%] after:-left-[60%] after:bg-[#eddeba]">
+                <x-squared-block class="before:w-[90%] before:left-1/2 before:h-1/3 before:bg-white after:aspect-square after:top-[16%] after:-left-[60%] after:bg-[#EDDEBA]">
                     <div class="relative z-20 rounded overflow-hidden">
                         <img src="./assets/images/about-page/about-hero.jpg" alt="Yulia Kuznetcova">
                     </div>
