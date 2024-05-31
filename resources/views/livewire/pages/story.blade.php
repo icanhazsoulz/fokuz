@@ -5,6 +5,8 @@
 
     <x-blocks.story-team></x-blocks.story-team>
 
+    <x-blocks.story-philosophy></x-blocks.story-philosophy>
+
     <x-blocks.subscribe></x-blocks.subscribe>
 
 </div>

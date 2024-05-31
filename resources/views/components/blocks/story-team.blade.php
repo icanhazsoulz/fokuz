@@ -1,5 +1,5 @@
 @php
-    $classes = 'mb-28';
+    $classes = 'mb-10';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
@@ -19,7 +19,7 @@
             </x-paragraph>
         </div>
         <x-points-block
-            class="mb-28 before:bg-red-points after:bg-green after:h-[480px]"
+            class="mb-20 before:bg-red-points after:bg-green after:h-[490px]"
         >
             <div class="overflow-hidden rounded">
                 <img
@@ -31,9 +31,9 @@
         </x-points-block>
 
         <div
-            class="container rounded-tr-2xl rounded-tl-2xl bg-white max-w-[1160px] py-24 px-24 relative z-10"
+            class="rounded-tr-2xl rounded-tl-2xl bg-white max-w-[1160px] pt-16 pb-24 px-24 relative z-10"
         >
-            <x-header-small>Teil des Teams</x-header-small>
+            <x-header-small class="mb-16">Teil des Teams</x-header-small>
             <x-team-list></x-team-list>
         </div>
     </div>
