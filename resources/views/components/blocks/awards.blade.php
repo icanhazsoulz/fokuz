@@ -1,5 +1,5 @@
 @php
-    $classes = 'mb-28 dark:bg-slate-800 dark:text-white relative before:content-[""] before:absolute before:top-0 before:left-0 before:w-full before:h-1/2 before:bg-yellow before:z-0 pt-20';
+    $classes = 'mb-20 dark:bg-slate-800 dark:text-white relative before:content-[""] before:absolute before:top-0 before:left-0 before:w-full before:h-1/2 before:bg-yellow before:z-0 pt-20';
 
      $cards = [
         "0" => [
