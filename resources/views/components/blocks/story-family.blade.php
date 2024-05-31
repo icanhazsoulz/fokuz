@@ -4,11 +4,11 @@
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <div class="container max-w-[1160px] mx-auto">
-        <h2
-            class="mb-16 color-primary-focused  font-serif text-4xl"
+        <x-header-small
+            class="mb-16"
         >
             Ein Leben voller Pfoten: Die Geschichte meiner tierischen Familie
-        </h2>
+        </x-header-small>
         <div class="grid grid-cols-2 grid-flow-row gap-16">
             <div class="ml-auto">
                 <img class="mx-auto block" src="./assets/images/story-page/family/1.jpg" alt="" />

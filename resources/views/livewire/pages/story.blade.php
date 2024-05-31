@@ -3,5 +3,8 @@
 
     <x-blocks.story-family></x-blocks.story-family>
 
+    <x-blocks.story-team></x-blocks.story-team>
+
     <x-blocks.subscribe></x-blocks.subscribe>
+
 </div>

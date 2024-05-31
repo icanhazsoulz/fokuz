@@ -17,12 +17,12 @@
             <div>
                 <div class="grid  grid-cols-2 gap-x-20 gap-y-10">
                     <img src="./assets/images/story-page/about-hero.jpg" alt="Iuliia Kuznetcova" class="max-w-400px row-span-2 row-start-1"/>
-                    <h2
-                        class="max-w-[420px] color-primary-focused  font-serif text-4xl  row-start-1 col-start-2"
+                    <x-header-small
+                        class="max-w-[420px]  row-start-1 col-start-2"
                     >
                         Hallo! Ich bin Iuliia, kreative Tierfotografin und
                         Hundefachfrau aus NRW, aus Werdohl.
-                    </h2>
+                    </x-header-small>
                     <x-paragraph class="max-w-[420px] row-start-2 col-start-2">
                         Seit über zehn Jahren lebe ich in Deutschland und
                         fotografiere seit 2018 Tiere. Mein Leben in der Welt der

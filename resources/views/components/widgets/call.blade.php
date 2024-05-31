@@ -1,5 +1,5 @@
 @php
-    $classes = 'call flex gap-2 absolute z-50 right-5 no-underline text-font-color-1 group';
+    $classes = 'flex gap-2 absolute z-50 right-5 no-underline text-font-color-1 group';
 @endphp
 
 <a

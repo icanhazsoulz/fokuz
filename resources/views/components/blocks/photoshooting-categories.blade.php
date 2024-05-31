@@ -34,14 +34,15 @@
             <x-header class="text-primary-focused relative z-10">Was kostet</x-header>
             <x-subheader class="text-primary-focused relative z-10">Wunderbar, brillant, günstig</x-subheader>
 
-            <ul class="flex gap-9 justify-center  mt-24 mx-auto relative before:content-[''] before:absolute before:-top-14 before:-left-32 before:-right-32 before:h-36 before:bg-green-points before:bg-cover before:z-0 after:content-[''] after:absolute after:block after:h-80 after:top-20 after:-right-32 after:-left-32 after:bg-yellow after:z-0 after:rounded-lg;
-            ">
-                @foreach($posts as $post)
-                    <li class="max-w-[320px] bg-white px-4 pt-4 pb-20 shadow-2xl rounded-xl relative z-10">
-                        <x-post-card :post="(object) $post" />
-                    </li>
-                @endforeach
-            </ul>
+            <x-points-block class="before:bg-green-points after:bg-yellow">
+                <ul class="flex gap-9 justify-center relative z-20">
+                    @foreach($posts as $post)
+                        <li class="max-w-[320px] bg-white px-4 pt-4 pb-20 shadow-2xl rounded-xl relative z-10">
+                            <x-post-card :post="(object) $post" />
+                        </li>
+                    @endforeach
+                </ul>
+            </x-points-block>
         </div>
     </div>
 </section>

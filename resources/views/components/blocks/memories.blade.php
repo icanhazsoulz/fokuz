@@ -37,7 +37,7 @@
         <div class="mb-16">
             <x-header class="text-primary-focused relative z-10">Memoiren</x-header>
             <x-subheader class="text-primary-focused relative z-10">Aktueliste, wichtigste, atemberaubende</x-subheader>
-            <div class="max-w-[1080px] mx-auto relative before:content-[''] before:absolute before:-top-14 before:-left-32 before:-right-32 before:h-36 before:bg-white-points  before:bg-cover before:z-10 after:content-[''] after:absolute after:block after:h-80 after:top-20 after:-right-32 after:-left-32 after:bg-yellow after:z-10 after:rounded-lg">
+            <x-points-block class="max-w-[1080px] before:bg-white-points after:bg-yellow">
                 <ul class="flex gap-9 overflow-hidden px-5 pb-10  mt-24 mx-auto relative ;
                 ">
                     @foreach($memories as $memory)
@@ -46,7 +46,7 @@
                         </li>
                     @endforeach
                 </ul>
-            </div>
+            </x-points-block>
         </div>
     </div>
 </section>
