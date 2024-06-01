@@ -78,6 +78,11 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
+    <div
+        class="absolute bottom-0 right-0 w-[400px] pb-24 after:content-[''] after:w-64 after:h-24 after:absolute after:left-0 after:bg-green"
+    >
+        <img src="./assets/images/story-page/philosophy.jpg" alt="" />
+    </div>
     <div class="container max-w-[1160px] mx-auto">
         <x-header-small>Die 7 Pfoten meiner Fotophilosophie</x-header-small>
         <ul class="flex gap-9 flex-wrap">
@@ -215,6 +220,6 @@
     <div
         class="absolute bottom-0 right-0 w-[400px] pb-24 after:content-[''] after:w-64 after:h-24 after:absolute after:left-0 after:bg-brand-2"
     >
-        <img src="./assets/images/about-me-page/philosophy.jpg" alt="" />
+        <img src="./assets/images/story-page/philosophy.jpg" alt="" />
     </div>
 </section>
