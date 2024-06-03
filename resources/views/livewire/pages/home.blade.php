@@ -17,7 +17,7 @@
 
     <x-blocks.discount-50 class="mb-24"></x-blocks.discount-50>
 
-    <x-blocks.memories></x-blocks.memories>
+    <x-blocks.featured-posts :posts="$featuredPosts" />
 
     <x-blocks.tabs />
 </div>

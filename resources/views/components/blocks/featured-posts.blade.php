@@ -1,18 +1,23 @@
 @php
-    $classes = 'h-dvh pt-24';
+    $classes = 'w-screen mb-28 pt-12 relative pb-10 before:content-[""] before:absolute before:z-10 before:top-0 before:left-0 before:right-0 before:w-full before:h-[500px] before:bg-green';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <x.container>
-        <x-header class="text-primary-focused">Memoiren</x-header>
-        <x-subheader class="text-primary-focused">Aktuellste, wichtigste, atemberaubende</x-subheader>
-
-        <ul class="grid grid-cols-3 gap-8">
-            @foreach($posts as $post)
-                <li>
-                    <x-post-card :post="$post" />
-                </li>
-            @endforeach
-        </ul>
-    </x.container>
+    <x-container>
+        <div class="mb-16">
+            <x-header class="relative z-10">Memoiren</x-header>
+            <x-subheader class="relative z-10">Aktueliste, wichtigste, atemberaubende</x-subheader>
+            <x-points-block class="max-w-[1080px] before:bg-white-points after:bg-yellow">
+                <ul class="flex gap-9 overflow-hidden px-5 pb-10  mt-24 mx-auto relative">
+                    @foreach($posts as $post)
+                        <li class="flex max-w-[320px]">
+                            <x-card-layout class="px-4 pt-4 pb-20">
+                                <x-post-card :post="$post" />
+                            </x-card-layout>
+                        </li>
+                    @endforeach
+                </ul>
+            </x-points-block>
+        </div>
+    </x-container>
 </section>
