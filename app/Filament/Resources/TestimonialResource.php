@@ -8,6 +8,7 @@ use App\Models\Testimonial;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -49,18 +50,22 @@ class TestimonialResource extends Resource
                         TextInput::make('email')
                             ->required()
                             ->email()
-                    ])
-                    ->columnSpanFull()
+                    ]),
+                TextInput::make('author')
                     ->required(),
-                Textarea::make('text')
+                RichEditor::make('text')
                     ->required()
                     ->maxLength(65535)
-                    ->rows(5)
                     ->columnSpanFull(),
-                FileUpload::make('avatar')
+                FileUpload::make('image')
+                    ->required()
                     ->columnSpanFull(),
+                TextInput::make('handle'),
+                TextInput::make('url'),
                 Checkbox::make('status')
                     ->label('Published')
+                    ->default(true),
+                Checkbox::make('featured'),
             ]);
     }
 
@@ -68,14 +73,17 @@ class TestimonialResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('avatar'),
+                ImageColumn::make('image'),
+                TextColumn::make('user.name'),
                 TextColumn::make('author')
                     ->searchable(),
                 TextColumn::make('text')
                     ->words(10)
-                    ->wrap(),
+                    ->wrap()
+                    ->html(),
                 CheckboxColumn::make('status')
                     ->label('Published'),
+                CheckboxColumn::make('featured'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -86,8 +94,7 @@ class TestimonialResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
-                    ->modalWidth('xl'),
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

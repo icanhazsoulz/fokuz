@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('text');
             $table->string('handle')->nullable();
             $table->string('url')->nullable();
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(1);
             $table->boolean('featured')->default(0);
             $table->timestamps();
 
