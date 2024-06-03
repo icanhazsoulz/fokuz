@@ -5,7 +5,7 @@
 
     <x-blocks.overflow-section class="bg-red"></x-blocks.overflow-section>
 
-    <x-blocks.photoshooting-categories></x-blocks.photoshooting-categories>
+    <x-blocks.photoshooting-categories />
 
     <x-blocks.success></x-blocks.success>
 
