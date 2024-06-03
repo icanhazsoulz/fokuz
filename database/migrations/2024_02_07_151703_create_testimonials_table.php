@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('image')->nullable();
             $table->string('author')->nullable();
-            $table->date('date')->nullable();
+//            $table->date('date')->nullable();
             $table->text('text');
             $table->string('handle')->nullable();
             $table->string('url')->nullable();

@@ -5,7 +5,7 @@
 
     <x-blocks.about-myself class="bg-yellow" ></x-blocks.about-myself>
 
-    <x-blocks.overflow-slider></x-blocks.overflow-slider>
+    <x-blocks.overflow-slider :testimonials="$featuredTestimonials" />
 
     <x-blocks.about-partners></x-blocks.about-partners>
 

@@ -4,24 +4,18 @@
         '1' => [
             'image' => '/about-page/parthner-list/1.jpg',
             'title' => 'Hundezentrum Lapki',
-            'comment' => '',
-            'data' => '',
             'slug' => '',
             'excerpt' => ''
         ],
         '2' => [
             'image' => '/about-page/parthner-list/2.jpg',
             'title' => 'Hundeatelier Pet Patterns',
-            'comment' => '',
-            'data' => '',
             'slug' => '',
             'excerpt' => ''
         ],
         '3' => [
             'image' => '/about-page/parthner-list/3.jpg',
             'title' => 'Fotograf Iuliia Kuznetcova',
-            'comment' => '',
-            'data' => '',
             'slug' => '',
             'excerpt' => ''
         ],

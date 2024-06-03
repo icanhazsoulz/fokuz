@@ -10,7 +10,7 @@ class Testimonial extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['author', 'text', 'avatar'];
+    protected $fillable = ['user_id', 'image', 'author', 'date', 'text', 'handle', 'url', 'status', 'featured'];
 
     public function user(): BelongsTo
     {

@@ -4,8 +4,6 @@
         '1' => [
             'image' => '/about-page/about-list/1.jpg',
             'title' => 'Mein team',
-            'comment' => '',
-            'data' => '',
             'slug' => 'prices#studio',
             'excerpt' => 'Harvey gibt mir die Themen vor, in meinem Kopf entstehen
                     Ideen, mein Mann hilft, die notwendigen Requisiten
@@ -16,8 +14,6 @@
         'momente' => [
             'image' => '/about-page/about-list/2.jpg',
             'title' => 'Die 7 Pfoten meiner Foto philosophie',
-            'comment' => '',
-            'data' => '',
             'slug' => 'prices#momente',
             'excerpt' => 'Respekt vor der Individualität Anpassung und Komfort Ruhige
                     und sichere Umgebung Gewohnte Gegenstände Geduld und
@@ -26,8 +22,6 @@
         'reportage' => [
             'image' => '/about-page/about-list/3.jpg',
             'title' => 'Mein Fotostudio',
-            'comment' => '',
-            'data' => '',
             'slug' => 'prices#reportage',
             'excerpt' => 'Um all die tollen Momente festzuhalten, bildliche
                     Erinnerungen von meinen geliebten Tieren zu schaffen, die
