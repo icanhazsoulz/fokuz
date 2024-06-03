@@ -17,10 +17,7 @@ class TestimonialFactory extends Factory
     public function definition(): array
     {
         return [
-            'author' => fake()->firstName . ' ' . fake()->lastName,
-            'text' => fake()->text(200),
-            'avatar' => fake()->imageUrl,
-            'status' => rand(0, 1),
+            //
         ];
     }
 }

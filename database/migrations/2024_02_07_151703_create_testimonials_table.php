@@ -14,10 +14,14 @@ return new class extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('image')->nullable();
             $table->string('author')->nullable();
+            $table->date('date')->nullable();
             $table->text('text');
-            $table->string('avatar')->nullable();
+            $table->string('handle')->nullable();
+            $table->string('url')->nullable();
             $table->boolean('status')->default(0);
+            $table->boolean('featured')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
