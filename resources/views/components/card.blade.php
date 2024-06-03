@@ -1,5 +1,5 @@
 @php
-    /*$classes = 'bg-white rounded-2xl shadow-2xl px-10 py-10 mx-auto w-[537px]';*/
+    /*$classes = "bg-white rounded-2xl shadow-2xl px-10 py-10 mx-auto w-[537px]";*/
 
     $card = (object) $card;
     $card = [
@@ -9,10 +9,9 @@
         'description' => $card->description
     ];
 @endphp
-
-<div class="bg-white rounded-2xl shadow-2xl px-10 py-10 mx-auto mt-auto mb-20 max-w-[537px]"
->
-    <h3 class="text-4xl font-text-title mb-3">{{ $card['title'] }}</h3>
+{{--{{ $attributes->merge(['class' => $classes]) }} --}}
+<x-card-layout>
+    <x-card-title class="max-w-72">{{ $card['title'] }}</x-card-title>
     <img
         src="{{ $card['image'] }}"
         alt="{{ $card['alt'] }}"
@@ -20,5 +19,5 @@
     />
     <p class="italic">{{ $card['description'] }}</p>
 
-</div>
+</x-card-layout>
 

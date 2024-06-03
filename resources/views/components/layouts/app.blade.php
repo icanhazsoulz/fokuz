@@ -16,7 +16,7 @@
         @livewireStyles
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <header class="fixed top-0 left-0 right-0 z-50 bg-green">
+        <header class="fixed top-0 left-0 right-0 z-50">
             @if (Route::has('login'))
                 <livewire:layouts.navigation />
             @endif

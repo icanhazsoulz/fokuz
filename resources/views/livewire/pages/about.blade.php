@@ -11,5 +11,5 @@
 
     <x-blocks.awards></x-blocks.awards>
 
-
+    <x-blocks.subscribe></x-blocks.subscribe>
 </div>

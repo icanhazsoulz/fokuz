@@ -1,6 +1,6 @@
-<div>
+<div class="mx-auto">
     <section>
-        <div class="container mx-auto">
+        <div class="mx-auto">
             <x-header class="text-primary-focused">{{ $title }}</x-header>
             <x-subheader class="text-primary-focused">{{ $subtitle }}</x-subheader>
         </div>

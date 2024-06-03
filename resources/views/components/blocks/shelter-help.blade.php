@@ -3,14 +3,23 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container max-w-[1160px] px-0 mx-auto">
+    <x-container class="px-0">
         <x-header class="tracking-tighter">Tierheimhilfe</x-header>
         <x-subheader>Offenherzig, innig, grobzugig</x-subheader>
         <div class="flex flex-row-reverse justify-center gap-14 pt-10 px-8 pb-12">
             <div class="relative">
                 <div class="max-w-[450px] mb-10">
-                    <p class="mt-6">Gute Fotos und Videos verwandeln einen Bewohner eines Tierheims tatsächlich von einem „unsichtbaren“ in einen vielversprechenden „heiratsfähigen“ Kandidaten</p>
-                    <p class="mt-6">Schließlich beginnt mit Fotos die Bekanntschaft mit dem zukünftigen Besitzer und oft die Liebe vom ersten Bild an.</p>
+                    <x-paragraph>Ich finde es wichtig, mein Herz und meine Fähigkeiten für
+                        einen guten Zweck einzusetzen. Deshalb verbringe ich auch Zeit
+                        als Freiwilliger in Tierheimen – fotografiere die Schützlinge,
+                        spiele mit den Katzen, gehe mit den Hunden spazieren und
+                        reinige die Käfige.
+                    </x-paragraph>
+                    <x-paragraph>Einen Teil der Einnahmen spende ich ebenfalls an die
+                        Tierheime. Meine Kunden entscheiden selbst, welchem Tierheim
+                        das Geld zugutekommt. Gemeinsam leisten wir einen Beitrag zur
+                        Unterstützung bedürftiger Tiere.
+                    </x-paragraph>
                 </div>
                 <x-widgets.see-more-btn />
             </div>
@@ -24,5 +33,5 @@
                />
            </div>
         </div>
-    </div>
+    </x-container>
 </section>

@@ -42,7 +42,7 @@
     <div class="flex">
         @foreach($slides as $slide)
         <section class="min-w-full grow bg-primary">
-            <div class="container max-w-[1160px] px-0 mx-auto">
+            <x-container class="px-0">
                 <div class="bg-white pt-20 px-14 pb-24 relative rounded-bl-2xl relative rounded-br-2xl">
 
                     <div
@@ -77,7 +77,7 @@
                             <x-widgets.see-more-btn />
                         </div>
                 </div>
-            </div>
+            </x-container>
         </section>
         @endforeach
     </div>

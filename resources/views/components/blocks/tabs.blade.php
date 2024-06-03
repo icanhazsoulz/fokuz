@@ -1,5 +1,5 @@
 <section>
-    <div class="container mx-auto">
+    <x-container>
         <x-header class="text-primary-focused">Kontaktformular</x-header>
         <x-subheader class="text-primary-focused">Fotoshooting oder Gutschein anfragen</x-subheader>
         <div class="grid grid-cols-3 gap-10">
@@ -37,5 +37,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 </section>
