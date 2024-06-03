@@ -29,19 +29,21 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container max-w-[1160px] mx-auto pt-20 relative before:content-[''] before:w-full before:h-[800px] before:bg-white before:absolute before:left-0 before:right-0 before-r-0 before:top-0 before:rounded-bl-2xl before:rounded-br-2xl">
+    <x-container class="pt-20 before:content-[''] before:w-full before:h-[800px] before:bg-white before:absolute before:left-0 before:right-0 before-r-0 before:top-0 before:rounded-bl-2xl before:rounded-br-2xl">
         <div class="max-w-[90%] mx-auto mb-16">
             <x-header class="text-white relative z-10">Partner</x-header>
             <x-subheader class="text-white relative z-10">das Neueste und Relevanteste</x-subheader>
             <x-points-block class="before:bg-white-points  after:bg-green">
                 <ul class="flex gap-9 justify-center">
                     @foreach($posts as $post)
-                        <li class="max-w-[320px] bg-white px-4 pt-4 pb-28 shadow-2xl rounded-xl relative z-20">
-                            <x-post-card :post="(object) $post" />
+                        <li class="flex max-w-[320px] relative z-20">
+                            <x-card-layout class="px-4 pt-4 pb-28">
+                                <x-post-card :post="(object) $post" />
+                            </x-card-layout>
                         </li>
                     @endforeach
                 </ul>
             </x-points-block>
         </div>
-    </div>
+    </x-container>
 </section>

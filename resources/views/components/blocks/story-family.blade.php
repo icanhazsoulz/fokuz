@@ -3,7 +3,7 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container max-w-[1160px] mx-auto">
+    <x-container>
         <x-header-small
             class="mb-16"
         >
@@ -131,5 +131,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 </section>

@@ -24,19 +24,21 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container mx-auto">
+    <x-container>
         <div class="mb-10 relative">
             <x-header>Awards</x-header>
             <x-subheader>das Neueste und Relevanteste</x-subheader>
         </div>
-        <div class="-mt-24 success__grid grid grid-cols-2 auto-rows-auto gap-10 relative z-10">
-
-            @foreach($cards as $card)
-                {{--<li class="max-w-[320px] bg-white px-4 pt-4 pb-20 shadow-2xl rounded-xl relative z-10">
-                    <x-post-card :post="(object) $post" />
-                </li>--}}
-                <x-card :card="(object) $card" />
-            @endforeach
+        <div class="grid grid-cols-2 auto-rows-auto gap-10 relative z-10">
+            <div class="max-w-1/3 min-w-[300px] relative left-14">
+                <x-card :card="(object) $cards['0']" />
+            </div>
+            <div class="max-w-[400px] min-w-[300px] mr-0 ml-auto relative -top-28">
+                <x-card :card="(object) $cards['1']"/>
+            </div>
+            <div>
+                <x-card :card="(object) $cards['2']" />
+            </div>
             <div>
                 <ul class="max-w-[450px] mx-auto list-disc">
                     <li>Dog Photographer of the year 2019 Category Rescued dogs</li>
@@ -53,5 +55,5 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </x-container>
 </section>

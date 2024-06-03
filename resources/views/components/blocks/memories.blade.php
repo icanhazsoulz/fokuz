@@ -33,7 +33,7 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container container max-w-[1160px] mx-auto relative">
+    <x-container>
         <div class="mb-16">
             <x-header class="text-primary-focused relative z-10">Memoiren</x-header>
             <x-subheader class="text-primary-focused relative z-10">Aktueliste, wichtigste, atemberaubende</x-subheader>
@@ -41,12 +41,14 @@
                 <ul class="flex gap-9 overflow-hidden px-5 pb-10  mt-24 mx-auto relative ;
                 ">
                     @foreach($memories as $memory)
-                        <li class="max-w-[320px] bg-white px-4 pt-4 pb-20 shadow-xl rounded-xl relative z-20">
-                            <x-post-card :post="(object) $memory" />
+                        <li class="flex max-w-[320px]">
+                            <x-card-layout class="px-4 pt-4 pb-20">
+                                <x-post-card :post="(object) $memory" />
+                            </x-card-layout>
                         </li>
                     @endforeach
                 </ul>
             </x-points-block>
         </div>
-    </div>
+    </x-container>
 </section>

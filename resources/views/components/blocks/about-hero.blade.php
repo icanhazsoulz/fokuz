@@ -4,7 +4,7 @@
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <x-widgets.call class="bottom-20"></x-widgets.call>
-    <div class="container mx-auto max-w-[1160px] relative">
+    <x-container class="container mx-auto max-w-[1160px] relative">
         <livewire:socials-widget />
 
 {{--{{ $slot }}--}}
@@ -25,5 +25,5 @@
                 {{--</div>--}}
             </div>
         {{--@endif--}}
-    </div>
+    </x-container>
 </section>

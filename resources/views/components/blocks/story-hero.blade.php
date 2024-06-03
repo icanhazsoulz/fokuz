@@ -6,7 +6,7 @@
 <section {{ $attributes->merge(['class' => $classes]) }}
 >
     <x-widgets.call class="bottom-[400px]"></x-widgets.call>
-    <div class="container max-w-[1160px] mx-auto relative z-10">
+    <x-container class="z-10">
         <livewire:socials-widget class="bottom-48"></livewire:socials-widget>
 
         <div class="mb-20">
@@ -44,6 +44,6 @@
             </div>
         </div>
 
-    </div>
+    </x-container>
 
 </section>

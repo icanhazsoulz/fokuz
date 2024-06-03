@@ -3,7 +3,7 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container mx-auto">
+    <x.container>
         <x-header class="text-primary-focused">Memoiren</x-header>
         <x-subheader class="text-primary-focused">Aktuellste, wichtigste, atemberaubende</x-subheader>
 
@@ -14,5 +14,5 @@
                 </li>
             @endforeach
         </ul>
-    </div>
+    </x.container>
 </section>

@@ -3,7 +3,7 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <div class="container mx-auto max-w-[1160px] px-0">
+    <x-container class="px-0">
         <div class="mb-16 px-5">
             <x-header-small class="mb-4">
                 Mein Team
@@ -36,5 +36,5 @@
             <x-header-small class="mb-16">Teil des Teams</x-header-small>
             <x-team-list></x-team-list>
         </div>
-    </div>
+    </x-container>
 </section>
