@@ -84,7 +84,7 @@
         <img src="./assets/images/story-page/philosophy.jpg" alt="" />
     </div>
     <x-container>
-        <x-header-small>Die 7 Pfoten meiner Fotophilosophie</x-header-small>
+        <x-header-medium>Die 7 Pfoten meiner Fotophilosophie</x-header-medium>
         <ul class="flex gap-9 flex-wrap">
             @foreach($ideas as $idea)
                 <li class="w-64">

@@ -31,8 +31,8 @@
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <x-container class="pt-10 before:content-[''] before:w-full before:h-[900px] before:bg-white before:absolute before:left-0 before-r-0 before:top-0 before:rounded-bl-2xl before:rounded-br-2xl">
         <div class="max-w-[90%] mx-auto mb-16">
-            <x-header class="text-primary-focused relative z-10">Was kostet</x-header>
-            <x-subheader class="text-primary-focused relative z-10">Wunderbar, brillant, günstig</x-subheader>
+            <x-header class="relative z-10">Was kostet</x-header>
+            <x-subheader class="relative z-10">Wunderbar, brillant, günstig</x-subheader>
 
             <x-points-block class="before:bg-green-points after:bg-yellow">
                 <ul class="flex gap-9 justify-center relative z-20">

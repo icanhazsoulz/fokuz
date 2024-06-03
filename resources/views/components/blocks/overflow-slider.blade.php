@@ -52,10 +52,10 @@
                         <div class="flex flex-row-reverse justify-center gap-14 pt-10 px-8 pb-28">
                             <div>
                                 <div class="mb-8">
-                                    <x-section-header>
+                                    <x-header-medium>
                                         <x-comment class="text-2xl"> {{$slide['author']}} </x-comment>
                                         <x-date> {{ $slide['date'] }} </x-date>
-                                    </x-section-header>
+                                    </x-header-medium>
                                 </div>
                                 <div class="max-w-[450px] mb-10">
                                     {{ $slide['text'] }}

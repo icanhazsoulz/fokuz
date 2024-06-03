@@ -5,9 +5,9 @@
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <x-container class="px-0">
         <div class="mb-16 px-5">
-            <x-header-small class="mb-4">
+            <x-header-medium class="mb-4">
                 Mein Team
-            </x-header-small>
+            </x-header-medium>
             <x-paragraph>
                 Harvey gibt mir die Themen vor, in meinem Kopf entstehen Ideen,
                 mein Mann hilft, die notwendigen Requisiten vorzubereiten. Wenn
@@ -33,7 +33,7 @@
         <div
             class="rounded-tr-2xl rounded-tl-2xl bg-white max-w-[1160px] pt-16 pb-24 px-24 relative z-10"
         >
-            <x-header-small class="mb-16">Teil des Teams</x-header-small>
+            <x-header-medium>Teil des Teams</x-header-medium>
             <x-team-list></x-team-list>
         </div>
     </x-container>

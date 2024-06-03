@@ -1,7 +1,7 @@
 @php
-    $classes = 'color-primary-focused  font-serif font-medium text-4xl mb-16';
+    $classes = 'text-primary-focused font-serif font-medium text-2xl mb-4';
 @endphp
 
-<h2 {{ $attributes->merge(['class' => $classes]) }}>
+<h3 {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
-</h2>
+</h3>

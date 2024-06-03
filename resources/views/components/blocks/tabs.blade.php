@@ -1,7 +1,7 @@
 <section>
     <x-container>
-        <x-header class="text-primary-focused">Kontaktformular</x-header>
-        <x-subheader class="text-primary-focused">Fotoshooting oder Gutschein anfragen</x-subheader>
+        <x-header>Kontaktformular</x-header>
+        <x-subheader>Fotoshooting oder Gutschein anfragen</x-subheader>
         <div class="grid grid-cols-3 gap-10">
             <div class="col-span-2 w-11/12 flex flex-col justify-center">
                 <x-paragraph class="text-primary-focused">

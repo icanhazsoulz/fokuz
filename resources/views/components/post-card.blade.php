@@ -14,16 +14,18 @@
         <img src="assets/images/{{ $post['image'] }}" alt="{{ $post['title'] }}" width="320">
     </div>
     <div class="flex flex-col">
-        <x-section-header>
-                @if($post['category'])
-                    <comment>{{ $post['category'] }}</comment>
-                @endif
+        @if($post['category'] or $post['created_at'])
+            <div class="flex justify-between">
+                    @if($post['category'])
+                        <x-subheader>{{ $post['category'] }}</x-subheader>
+                    @endif
 
-                @if($post['created_at'])
-                    <x-date>{{ date_format($post['created_at'], 'd.m.Y') }}</x-date>
-                @endif
-        </x-section-header>
-        <h3 class="font-serif mb-10 text-2xl">{{ $post['title'] }}</h3>
+                    @if($post['created_at'])
+                        <p>{{ date_format($post['created_at'], 'd.m.Y') }}</p>
+                    @endif
+            </div>
+        @endif
+        <x-header-small class="font-medium">{{ $post['title'] }}</x-header-small>
         <p>{{ $post['text'] }}</p>
         <a class="font-serif text-gray-400 hover:text-gray-300 transition-all duration-200 text-4xl block  absolute bottom-4 left-4" href="{{ $post['slug'] }}">Mehr sehen</a>
     </div>

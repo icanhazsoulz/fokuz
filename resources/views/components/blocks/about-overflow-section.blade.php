@@ -9,12 +9,12 @@
                 class="bg-yellow rounded-2xl flex flex-row-reverse justify-center gap-14 pt-20 px-8 pb-20 relative"
             >
                 <div>
-                    <x-header-small
+                    <x-header-medium
                         class="max-w-[700px]"
                     >
                         Hallo! Ich bin Iuliia, kreative Tierfotografin und
                         Hundefachfrau aus NRW, aus Werdohl.
-                    </x-header-small>
+                    </x-header-medium>
                     <div class="flex justify-between gap-20">
                         <x-paragraph class="max-w-[420px]">
                             Seit über zehn Jahren lebe ich in Deutschland und

@@ -1,5 +1,5 @@
 @php
-    $classes = 'text-primary-focused font-serif font-medium text-8xl mb-8';
+    $classes = 'text-primary-focused font-serif font-normal text-4xl mb-16';
 @endphp
 
 <h2 {{ $attributes->merge(['class' => $classes]) }}>

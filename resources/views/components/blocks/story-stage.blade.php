@@ -13,10 +13,10 @@
                 class="relative rounded-2xl pt-24 pb-20 text-white px-8 bg-red pb-[480px]"
             >
                 <div class="mb-16 px-5">
-                    <x-header-small
+                    <x-header-medium
                     >
                         Meine Bühne
-                    </x-header-small>
+                    </x-header-medium>
                 </div>
                 <div class="columns-2 mb-16">
                     <p>
