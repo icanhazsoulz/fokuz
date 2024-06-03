@@ -15,10 +15,8 @@ use App\Models\Photoshooting;
 use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\Shelter;
-use App\Models\Testimonial;
 use App\Models\Type;
 use App\Models\User;
-use Database\Factories\TestimonialFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
@@ -44,6 +42,7 @@ class DatabaseSeeder extends Seeder
             PriceSeeder::class,
             RoleSeeder::class,
             SocialSeeder::class,
+            TestimonialSeeder::class,
             TypeSeeder::class,
         ]);
 
@@ -100,16 +99,7 @@ class DatabaseSeeder extends Seeder
             ]);
             $message->save();
 
-            $testimonial = new Testimonial([
-                'user_id' => $client->id,
-                'author' => $client->name,
-                'text' => fake()->text(200),
-                'avatar' => fake()->url,
-            ]);
-            $testimonial->save();
         }
-
-        Testimonial::factory(7)->create();
 
         PostCategory::factory(5)->create();
 

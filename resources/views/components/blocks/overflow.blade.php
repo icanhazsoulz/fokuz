@@ -40,7 +40,7 @@
                         />
                     </div>
 
-                    <x-widgets.see-more-btn />
+                    <x-link href="#">Mehr sehen</x-link>
                 </div>
             </div>
 

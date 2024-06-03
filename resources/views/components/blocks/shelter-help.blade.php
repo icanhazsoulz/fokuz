@@ -21,7 +21,7 @@
                         Unterstützung bedürftiger Tiere.
                     </x-paragraph>
                 </div>
-                <x-widgets.see-more-btn />
+                <x-link href="#">Mehr sehen</x-link>
             </div>
            <div
                class="rounded overflow-hidden min-w-[400px] h-fit self-end relative -left-8"

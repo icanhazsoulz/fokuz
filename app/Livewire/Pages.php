@@ -7,6 +7,7 @@ use App\Models\Gallery;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Price;
+use App\Models\Testimonial;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\View;
 use Livewire\Component;
@@ -21,6 +22,7 @@ class Pages extends Component
 
     public ?Gallery $slider;
     public Collection $featuredPosts;
+    public Collection $featuredTestimonials;
 
     public function mount($page = '')
     {
@@ -30,6 +32,7 @@ class Pages extends Component
 
         $this->slider = $this->setSlider();
         $this->featuredPosts = Post::where('featured', 1)->get();
+        $this->featuredTestimonials = Testimonial::where('featured', 1)->get();
 //        dd($this->slider);
 
         $this->prices = Price::query()->where('status', 1)->get();

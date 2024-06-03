@@ -9,7 +9,7 @@
 
     <x-blocks.success></x-blocks.success>
 
-    <x-blocks.overflow-slider></x-blocks.overflow-slider>
+    <x-blocks.overflow-slider :testimonials="$featuredTestimonials" />
 
     <x-blocks.discount-100></x-blocks.discount-100>
 
