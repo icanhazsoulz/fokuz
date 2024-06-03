@@ -27,6 +27,6 @@
         @endif
         <x-header-small class="font-medium">{{ $post['title'] }}</x-header-small>
         <p>{{ $post['text'] }}</p>
-        <a class="font-serif text-gray-400 hover:text-gray-300 transition-all duration-200 text-4xl block  absolute bottom-4 left-4" href="{{ $post['slug'] }}">Mehr sehen</a>
+        <x-link href="{{ $post['slug'] }}">Mehr sehen</x-link>
     </div>
 </div>
