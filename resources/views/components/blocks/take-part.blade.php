@@ -3,26 +3,26 @@
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
-    <x-container class="px-0">
+    <x-container class="px-0 relative">
         <div class="mb-16">
             <x-header class="tracking-tighter">Mittun</x-header>
             <x-subheader>Seelen verbinden</x-subheader>
         </div>
 
             <div
-                class="flex flex-row-reverse justify-[left] gap-14  pb-28 relative"
+                class="w-fit flex flex-row-reverse justify-[left] gap-14 relative"
             >
-                <div>
+                <div class="pb-44 relative">
 
-                    <div class="max-w-[420px] px-4">
+                    <div class="max-w-[520px] px-4">
                         <x-header-small>Jährliche Frühlingsfest</x-header-small>
                         <x-paragraph class="italic">
                             Willkommen zu unserem jährlichen Frühlingsfest!
                         </x-paragraph>
                         <x-paragraph class="italic">
-                            <span>Datum: 20.04.24</span>
-                            <span>Zeit: 15:00</span>
-                            <span>UhrOrt: Johannes Flintrop Str. 68a (Innenhof), 40822 Mettmann</span>
+                            <span class="block">Datum: 20.04.24</span>
+                            <span class="block">Zeit: 15:00</span>
+                            <span class="block">UhrOrt: Johannes Flintrop Str. 68a (Innenhof), 40822 Mettmann</span>
                         </x-paragraph>
 
                         <x-paragraph>
@@ -32,6 +32,7 @@
                             Unser professioneller Fotografin @fokuz.photo , die von einem Modefotografen ausgebildet wurde, macht bereits seit über 5 Jahren eindrucksvolle Bilder mit Tieren. Sie weiß, wie sie die Individualität...
                         </x-paragraph>
                     </div>
+                    <x-link href="#" class="absolute left-4 bottom-6">Mehr sehen</x-link>
                 </div>
                 <div
                     class="relative rounded overflow-hidden min-w-[400px] h-fit"
@@ -42,8 +43,7 @@
                         class="w-full h-auto object-fill"
                     />
                 </div>
-
-                <x-link href="#" class="absolute left-1/2 bottom-6">Mehr sehen</x-link>
             </div>
+        <x-slider-navigation class="text-primary-focused left-0 bottom-0"></x-slider-navigation>
     </x-container>
 </section>
