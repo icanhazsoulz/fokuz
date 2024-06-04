@@ -17,7 +17,7 @@
         <span class="error text-red-600">{{ $message }}</span>
         @enderror
     </div>
-    <div class="mb-6 flex items-center gap-10">
+    <div class="mb-6 flex gap-10">
         <x-input-checkbox>
             {!! __('ui.contact_form.acceptance') !!}
         </x-input-checkbox>

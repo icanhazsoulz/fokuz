@@ -9,8 +9,8 @@
                 class="bg-red rounded-2xl flex flex-row-reverse justify-center gap-14 pt-20 px-8 pb-20 relative"
             >
                 <div>
-                    <x-header-medium class="text-white"
-                        class="max-w-[700px]"
+                    <x-header-medium
+                        class="max-w-[700px] text-white"
                     >
                         Dein Fellfreund im Rampenlicht: Jeder Moment zählt
                     </x-header-medium>
