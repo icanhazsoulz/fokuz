@@ -1,0 +1,14 @@
+@php
+    $classes = 'min-h-dvh pt-32 pb-40 bg-yellow relative';
+@endphp
+
+<section {{ $attributes->merge(['class' => $classes]) }}>
+    <x-widgets.call class="bottom-20"></x-widgets.call>
+    <x-container class=" ">
+        <livewire:socials-widget></livewire:socials-widget>
+        <div class="mb-16">
+            <x-header>Was kostet</x-header>
+            <x-subheader>ich liebe meine Arbeit</x-subheader>
+        </div>
+    </x-container>
+</section>
