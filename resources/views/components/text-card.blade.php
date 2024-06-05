@@ -8,7 +8,6 @@
         'date' => $item->date,
         'location' => $item->location,
         'text' => $item->text,
-        'color' => $item->color,
     ];
 @endphp
 
@@ -28,9 +27,7 @@
 
             <div>
                 @foreach($item['text'] as $paragraph)
-                    <li>
-                        <x-paragraph>{{ $paragraph }}</x-paragraph>
-                    </li>
+                    <x-paragraph>{{ $paragraph }}</x-paragraph>
                 @endforeach
             </div>
         </div>
@@ -39,7 +36,7 @@
         class="relative rounded overflow-hidden min-w-[400px] h-fit"
     >
         <img
-            src="./assets/images/{{ $item['color'] }}"
+            src="./assets/images/{{ $item['image'] }}"
             alt="dogs running on the lane"
             class="w-full h-auto object-fill"
         />

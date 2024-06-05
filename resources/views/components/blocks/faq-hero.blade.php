@@ -1,5 +1,5 @@
 @php
-    $classes = 'min-h-dvh pt-32 pb-40 bg-yellow relative';
+    $classes = 'min-h-dvh pt-32 pb-72 bg-yellow relative';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
