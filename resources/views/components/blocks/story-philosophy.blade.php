@@ -107,9 +107,4 @@
             @endforeach--}}
         </ul>
     </x-container>
-    <div
-        class="absolute bottom-0 right-0 w-[400px] pb-24 after:content-[''] after:w-64 after:h-24 after:absolute after:left-0 after:bg-brand-2"
-    >
-        <img src="./assets/images/story-page/philosophy.jpg" alt="" />
-    </div>
 </section>
