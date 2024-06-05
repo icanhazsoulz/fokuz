@@ -3,6 +3,8 @@
 
     <x-blocks.faq-description />
 
+    <x-blocks.faq-questions />
+
     <x-blocks.take-part />
 
     <x-blocks.subscribe />
