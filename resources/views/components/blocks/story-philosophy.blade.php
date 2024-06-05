@@ -1,7 +1,7 @@
 @php
     $classes = 'relative pb-14 mb-32';
 
-    $ideas = [
+    $items = [
         '1' => [
             'svg' => 'aperture',
             'title' => 'Respekt vor der Individualität',
@@ -86,7 +86,12 @@
     <x-container>
         <x-header-medium>Die 7 Pfoten meiner Fotophilosophie</x-header-medium>
         <ul class="flex gap-9 flex-wrap">
-            @foreach($ideas as $idea)
+            @foreach($items as $item)
+                <li>
+                    <x-items-list :item="$item" />
+                </li>
+            @endforeach
+            {{--@foreach($items as $item)
                 <li class="w-64">
                     <svg class="w-12 h-12 mb-4 {{ $idea['color'] }}">
                         <use
@@ -99,7 +104,7 @@
                         {{ $idea['text'] }}
                     </div>
                 </li>
-            @endforeach
+            @endforeach--}}
         </ul>
     </x-container>
     <div

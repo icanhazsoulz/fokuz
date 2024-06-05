@@ -8,7 +8,7 @@
     </section>--}}
     {{--<x-blocks.price-prices-section></x-blocks.price-prices-section>--}}
 
-    <section class="-mt-28 mb-28 relative">
+    <section class="-mt-[430px] mb-28 relative">
         <x-container class="max-w-[1270px]">
             @foreach($prices as $price)
                 <div class="mb-10">

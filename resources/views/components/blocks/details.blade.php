@@ -1,7 +1,7 @@
 @php
     $classes = 'relative pb-14 mb-32';
 
-    $details = [
+    $items = [
         '1' => [
             'svg' => 'settings',
             'title' => 'Persönliche Vorbereitung',
@@ -62,15 +62,18 @@
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <div
-        class="absolute bottom-0 right-0 w-[400px] pb-24 after:content-[''] after:w-64 after:h-24 after:absolute after:left-0 after:bg-green"
+        class="absolute -bottom-20 right-0 w-[400px] pb-24 after:content-[''] after:w-64 after:h-32 after:absolute after:block after:-left-12 after:bottom-12 after:bg-green"
     >
-        <img src="./assets/images/story-page/philosophy.jpg" alt="" />
+        <img src="./assets/images/prices-page/details.jpg" alt="" class="min-w-full relative z-10"/>
     </div>
     <x-container>
         <x-header-medium>&#42;7 "immer bei mir"</x-header-medium>
         <ul class="flex gap-x-9 gap-y-20 flex-wrap">
-            @foreach($details as $detail)
-                <li class="w-64">
+            @foreach($items as $item)
+                <li>
+                    <x-items-list :item="$item" />
+                </li>
+                {{--<li class="w-64">
                     <svg class="w-12 h-12 mb-4 {{ $detail['color'] }}">
                         <use
                             class="transition-all duration-200"
@@ -81,13 +84,8 @@
                     <div>
                         {{ $detail['text'] }}
                     </div>
-                </li>
+                </li>--}}
             @endforeach
         </ul>
     </x-container>
-    <div
-        class="absolute bottom-0 right-0 w-[400px] pb-24 after:content-[''] after:w-64 after:h-24 after:absolute after:left-0 after:bg-brand-2"
-    >
-        <img src="./assets/images/details-page/details.jpg" alt="" />
-    </div>
 </section>
