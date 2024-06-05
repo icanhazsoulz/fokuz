@@ -1,5 +1,5 @@
 <div>
-    <x-blocks.price-hero></x-blocks.price-hero>
+    <x-blocks.price-hero />
     {{--<section>
         <div class="mx-auto">
             <x-header>{{ $title }}</x-header>
@@ -31,6 +31,8 @@
             @endforeach
         </x-container>
     </section>
+
+    <x-blocks.details />
 
     <x-blocks.featured-posts :posts="$featuredPosts" class="!mb-10" />
 
