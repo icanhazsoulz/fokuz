@@ -1,5 +1,5 @@
 @php
-    $classes = 'text-font-color-2 pt-32 pb-48 relative';
+    $classes = 'pt-32 pb-48 relative';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
