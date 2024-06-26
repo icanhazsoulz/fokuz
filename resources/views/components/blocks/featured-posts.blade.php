@@ -12,7 +12,7 @@
                     @foreach($posts as $post)
                         <li class="flex max-w-[320px]">
                             <x-card-layout class="px-4 pt-4 pb-20">
-                                <x-post-card :post="$post" />
+                                <x-post-card :post="$post" :isPosts="$isPosts" />
                             </x-card-layout>
                         </li>
                     @endforeach
