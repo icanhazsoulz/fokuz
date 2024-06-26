@@ -25,7 +25,13 @@
                 @endif
             </div>
         @endif
-        <x-header-medium>{{ $post['title'] }}</x-header-medium>
+
+        @if(isset($isPosts) && $isPosts)
+            <x-header-small>{{ $post['title'] }}</x-header-small>
+        @else
+            <x-header-medium>{{ $post['title'] }}</x-header-medium>
+        @endif
+
         <p>{{ $post['text'] }}</p>
         <x-link href="{{ $post['slug'] }}">Mehr sehen</x-link>
     </div>
