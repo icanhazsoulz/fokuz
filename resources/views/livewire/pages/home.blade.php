@@ -11,11 +11,11 @@
 
     <x-blocks.overflow-slider :testimonials="$featuredTestimonials" />
 
-    <x-blocks.discount-100></x-blocks.discount-100>
+    <x-blocks.discount-100 />
 
-    <x-blocks.shelter-help></x-blocks.shelter-help>
+    <x-blocks.shelter-help />
 
-    <x-blocks.discount-50 class="mb-24"></x-blocks.discount-50>
+    <x-blocks.discount-50 class="mb-24" />
 
     <x-blocks.featured-posts :posts="$featuredPosts" />
 
