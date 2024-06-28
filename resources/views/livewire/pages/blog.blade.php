@@ -5,5 +5,10 @@
                 <x-post-preview :post="$post" />
             @endforeach
         </div>
+
+{{--        TODO: Make secondary or inverted button     --}}
+        <div class="text-center">
+            <x-button-primary>Weitere Artikel</x-button-primary>
+        </div>
     </x-container>
 </section>

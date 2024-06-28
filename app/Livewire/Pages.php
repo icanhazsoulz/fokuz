@@ -33,7 +33,7 @@ class Pages extends Component
         $this->subtitle = \DB::table('pages')->where('slug', $this->slug)->value('subtitle');
 
         $this->slider = $this->setSlider();
-        $this->posts = Post::all();
+        $this->posts = Post::all()->take(4);
         $this->featuredPosts = Post::where('featured', 1)->get();
         $this->featuredTestimonials = Testimonial::where('featured', 1)->get();
 //        dd($this->slider);
