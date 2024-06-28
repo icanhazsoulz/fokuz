@@ -79,5 +79,11 @@ class PageSeeder extends Seeder
 //            'title' => 'Theater machen',
 //            'subtitle' => 'Wir sind die Besten',
 //        ]);
+
+        DB::table('pages')->insert([
+            'slug' => 'blog',
+            'title' => 'Memoiren',
+            'subtitle' => 'Offenherzig, innig, großzügig',
+        ]);
     }
 }
