@@ -23,6 +23,7 @@ class Pages extends Component
     public ?Gallery $slider;
     public Collection $featuredPosts;
     public Collection $featuredTestimonials;
+    public ?string $heroBackgroundColor = null;
 
     public function mount($page = '')
     {
@@ -37,6 +38,11 @@ class Pages extends Component
 
         $this->prices = Price::query()->where('status', 1)->get();
         $this->events = Event::query()->get();
+
+        $filamentPage = \DB::table('pages')->where('slug', $this->slug)->first();
+        if ($filamentPage) {
+            $this->heroBackgroundColor = $filamentPage->hero_background_color;
+        }
     }
 
     public function render(): \Illuminate\Contracts\View\View

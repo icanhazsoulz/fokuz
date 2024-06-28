@@ -1,5 +1,5 @@
 <div>
-    <x-blocks.about-hero class="bg-red"></x-blocks.about-hero>
+    <x-blocks.about-hero class="bg-{{ $heroBackgroundColor }}"></x-blocks.about-hero>
 
     <x-blocks.about-overflow-section class="bg-yellow"></x-blocks.about-overflow-section>
 

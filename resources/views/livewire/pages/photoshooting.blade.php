@@ -6,7 +6,7 @@
     </x-blocks.hero-wrapper>
 </div>--}}
 <div>
-    <x-blocks.photoshooting-hero></x-blocks.photoshooting-hero>
+    <x-blocks.photoshooting-hero class="bg-{{ $heroBackgroundColor }}"></x-blocks.photoshooting-hero>
 
     <x-blocks.photoshooting-overflow></x-blocks.photoshooting-overflow>
 
