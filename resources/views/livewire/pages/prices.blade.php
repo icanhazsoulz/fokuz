@@ -1,5 +1,5 @@
 <div>
-    <x-blocks.price-hero />
+    <x-blocks.price-hero class="bg-{{ $heroBackgroundColor }}"/>
     {{--<section>
         <div class="mx-auto">
             <x-header>{{ $title }}</x-header>

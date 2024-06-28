@@ -1,5 +1,5 @@
 <div>
-    <x-blocks.hero-wrapper class="bg-green" />
+    <x-blocks.hero-wrapper class="bg-{{ $heroBackgroundColor }}"> </x-blocks.hero-wrapper>
 
     {{--<x-blocks.home-about />--}}
 

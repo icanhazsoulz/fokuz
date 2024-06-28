@@ -1,5 +1,9 @@
 <div>
-    <x-blocks.about-hero class="bg-red"></x-blocks.about-hero>
+<<<<<<< Updated upstream
+    <x-blocks.about-hero class="bg-{{ $heroBackgroundColor }}"></x-blocks.about-hero>
+=======
+    <x-blocks.hero-slider class="bg-red" :title="$title" :subtitle="$subtitle" />
+>>>>>>> Stashed changes
 
     <x-blocks.about-overflow-section class="bg-yellow"></x-blocks.about-overflow-section>
 
