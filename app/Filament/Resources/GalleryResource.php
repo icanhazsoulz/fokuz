@@ -48,13 +48,15 @@ class GalleryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')
-                    ->label(__('filament_ui.general.name')),
-                Tables\Columns\SpatieMediaLibraryImageColumn::make('photos')
+                Tables\Columns\TextColumn::make('slug')
+                    ->label(__('ID')),
+                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('images')
                     ->stacked()
                     ->circular()
                     ->limit(10)
-                    ->limitedRemainingText(),
+                    ->limitedRemainingText()
+                    ,
                 Tables\Columns\CheckboxColumn::make('status')
                     ->label(__('filament_ui.general.published'))
             ])

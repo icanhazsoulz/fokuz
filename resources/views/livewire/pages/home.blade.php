@@ -1,5 +1,10 @@
 <div>
-    <x-blocks.hero-wrapper class="bg-{{ $heroBackgroundColor }}"> </x-blocks.hero-wrapper>
+    <x-blocks.hero-slider
+        class="bg-{{ $heroBackgroundColor }}"
+        :title="$title"
+        :subtitle="$subtitle"
+        :slider="$slider"
+    />
 
     {{--<x-blocks.home-about />--}}
 
