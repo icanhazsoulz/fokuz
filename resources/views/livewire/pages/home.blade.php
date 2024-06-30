@@ -1,8 +1,6 @@
 <div>
-    <x-blocks.hero-slider
+    <x-blocks.hero-wrapper
         class="bg-{{ $heroBackgroundColor }}"
-        :title="$title"
-        :subtitle="$subtitle"
         :slider="$slider"
     />
 
