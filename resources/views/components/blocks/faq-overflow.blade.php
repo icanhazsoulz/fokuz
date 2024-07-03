@@ -9,7 +9,7 @@
                 class="bg-green rounded-2xl flex flex-row justify-center gap-14 pt-12 px-8 pb-28 relative"
             >
                 <div>
-                    <div class="mb-16">
+                    <div>
                         <x-header class="tracking-tighter">Was tun</x-header>
                         <x-subheader>Häufige Fragen und Antworten</x-subheader>
                     </div>

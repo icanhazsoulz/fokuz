@@ -66,3 +66,21 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Launch containers using docker compose
+./vendor/bin/sail up -d
+
+Stop containers
+./vendor/bin/sail down
+
+Command for control of the containers are working
+docker ps
+
+Take changes from dev
+git pull dev
+
+Looks for changes
+npm run dev
+
+Update data base (after pull)
+./vendor/bin/sail artisan migrate:fresh --seed
