@@ -58,8 +58,17 @@ class PageResource extends Resource
                                     ->required(),
                             ])
                             ->columns(2)
-                    ])->columnSpanFull()
-                ,
+                    ])->columnSpanFull(),
+                Forms\Components\Select::make('hero_background_color')
+                    ->label('Hero Background Color')
+                    ->options([
+                        'red' => 'Red',
+                        'green' => 'Green',
+                        'yellow' => 'Yellow',
+                        'purple' => 'Purple',
+                    ])
+                    ->nullable()
+                    ->default(null),
             ]);
     }
 

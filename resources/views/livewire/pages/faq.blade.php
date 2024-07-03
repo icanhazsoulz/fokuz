@@ -1,5 +1,5 @@
 <div>
-    <x-blocks.faq-hero />
+    <x-blocks.faq-hero class="bg-{{ $heroBackgroundColor }}"/>
 
     <x-blocks.faq-description />
 

@@ -29,7 +29,7 @@ class PetTableTest extends \Tests\TestCase
     public function test_verified_client_cannot_view_admin_pets_page()
     {
         $this->actingAs($this->create_client())
-            ->get('/admin/faqs')
+            ->get('/admin/pets')
             ->assertStatus(403);
     }
 
@@ -133,7 +133,7 @@ class PetTableTest extends \Tests\TestCase
             ]);
     }
 
-    public function test_can_load_existing_faq_data_for_editing()
+    public function test_can_load_existing_pet_data_for_editing()
     {
         //
     }

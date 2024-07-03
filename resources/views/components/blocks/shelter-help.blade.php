@@ -5,7 +5,7 @@
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <x-container class="px-0">
         <x-header class="tracking-tighter">Tierheimhilfe</x-header>
-        <x-subheader>Offenherzig, innig, grobzugig</x-subheader>
+        <x-subheader>Offenherzig, innig, großzügig</x-subheader>
         <div class="flex flex-row-reverse justify-center gap-14 pt-10 px-8 pb-12">
             <div class="relative">
                 <div class="max-w-[450px] mb-10">

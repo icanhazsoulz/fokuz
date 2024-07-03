@@ -37,7 +37,6 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ClientSourceSeeder::class,
             EventSeeder::class,
-            GallerySeeder::class,
             PageSeeder::class,
             PriceSeeder::class,
             RoleSeeder::class,
@@ -46,7 +45,7 @@ class DatabaseSeeder extends Seeder
             TypeSeeder::class,
         ]);
 
-        $this->call([AdminSeeder::class]);
+        $this->call([AdminSeeder::class, GallerySeeder::class]);
 
         Shelter::factory(8)->create();
 

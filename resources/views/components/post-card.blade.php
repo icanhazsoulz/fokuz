@@ -16,17 +16,23 @@
     <div class="flex flex-col">
         @if($post['category'] or $post['created_at'])
             <div class="flex justify-between">
-                    @if($post['category'])
-                        <x-subheader>{{ $post['category'] }}</x-subheader>
-                    @endif
+                @if($post['category'])
+                    <x-subheader>{{ $post['category'] }}</x-subheader>
+                @endif
 
-                    @if($post['created_at'])
-                        <p>{{ date_format($post['created_at'], 'd.m.Y') }}</p>
-                    @endif
+                @if($post['created_at'])
+                    <p>{{ date_format($post['created_at'], 'd.m.Y') }}</p>
+                @endif
             </div>
         @endif
-        <x-header-small class="font-medium">{{ $post['title'] }}</x-header-small>
+
+        @if(isset($isPosts) && $isPosts)
+            <x-header-small>{{ $post['title'] }}</x-header-small>
+        @else
+            <x-header-medium>{{ $post['title'] }}</x-header-medium>
+        @endif
+
         <p>{{ $post['text'] }}</p>
-        <a class="font-serif text-gray-400 hover:text-gray-300 transition-all duration-200 text-4xl block  absolute bottom-4 left-4" href="{{ $post['slug'] }}">Mehr sehen</a>
+        <x-link href="{{ $post['slug'] }}">Mehr sehen</x-link>
     </div>
 </div>

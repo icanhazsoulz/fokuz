@@ -1,5 +1,5 @@
 <div>
-    <x-blocks.portfolio-hero></x-blocks.portfolio-hero>
+    <x-blocks.portfolio-hero class="bg-{{ $heroBackgroundColor }}"></x-blocks.portfolio-hero>
 
     <x-blocks.portfolio-overflow></x-blocks.portfolio-overflow>
 

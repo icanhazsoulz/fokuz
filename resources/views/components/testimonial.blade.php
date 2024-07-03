@@ -17,7 +17,7 @@
                 @endif
             </div>
             <div class="max-w-[450px] mb-10">
-                {{ $testimonial['text'] }}
+                {!! $testimonial['text'] !!}
             </div>
             <x-link href="{{ $testimonial['url'] }}">{{ $testimonial['handle'] }}</x-link>
         </div>

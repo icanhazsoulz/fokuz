@@ -16,14 +16,14 @@ class PageSeeder extends Seeder
         DB::table('pages')->insert([
             'slug' => 'home',
             'title' => 'Home',
-            'gallery_id' => 1,
+            'hero_background_color' => 'green',
         ]);
 
         DB::table('pages')->insert([
             'slug' => 'about',
             'title' => 'Da bin ich',
             'subtitle' => 'Ich verwandle Ihre Tiere in echte Superstars!',
-            'gallery_id' => 2,
+            'hero_background_color' => 'red',
         ]);
 
         DB::table('pages')->insert([
@@ -48,7 +48,7 @@ class PageSeeder extends Seeder
             'slug' => 'photoshooting',
             'title' => 'Kann sein',
             'subtitle' => 'Bilderwelten: Lebendig, Echt, Einzigartig',
-            'gallery_id' => 3,
+            'hero_background_color' => 'yellow',
         ]);
 
         DB::table('pages')->insert([
@@ -79,5 +79,11 @@ class PageSeeder extends Seeder
 //            'title' => 'Theater machen',
 //            'subtitle' => 'Wir sind die Besten',
 //        ]);
+
+        DB::table('pages')->insert([
+            'slug' => 'blog',
+            'title' => 'Memoiren',
+            'subtitle' => 'Offenherzig, innig, großzügig',
+        ]);
     }
 }
