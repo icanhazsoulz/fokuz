@@ -35,7 +35,7 @@
                 <ul class="flex gap-9 justify-center relative z-20">
                     @foreach($posts as $post)
                         <li class="flex max-w-[320px]">
-                            <x-card-layout class="px-4 pt-4 pb-20">
+                            <x-card-layout class="px-4 pt-4 pb-40">
                                 <x-post-card :post="(object) $post" />
                             </x-card-layout>
                         </li>

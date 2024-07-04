@@ -6,7 +6,7 @@
         'created_at' => isset($post->created_at) ? $post->created_at : null,
         'text' => $post->excerpt,
         'slug' => $post->slug,
-        'category' => isset($post->post_category) ? $post->post_category->category : null,
+        'category' => isset($post->post_category) ? $post->post_category->category : null
     ];
 @endphp
 <div>
@@ -33,6 +33,7 @@
         @endif
 
         <p>{{ $post['text'] }}</p>
-        <x-link href="{{ $post['slug'] }}">Mehr sehen</x-link>
+        {{--<x-link href="{{ $post['slug'] }}">Mehr sehen</x-link>--}}
+        <x-button-primary class="absolute bottom-10">Lass fragen</x-button-primary>
     </div>
 </div>
