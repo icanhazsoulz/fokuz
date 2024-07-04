@@ -170,5 +170,9 @@
             <path d="M35.5 23.6666V38.4583" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
             <rect x="34.021" y="45.8541" width="2.95833" height="2.95833" fill="currentColor"/>
         </symbol>
+
+        <symbol viewBox="0 0 34 55" fill="none" id="page-link">
+            <path d="M6 6L27.5 27.5L6 49" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+        </symbol>
     </defs>
 </svg>

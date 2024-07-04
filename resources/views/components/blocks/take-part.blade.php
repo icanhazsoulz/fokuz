@@ -20,8 +20,11 @@
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <x-container class="px-0 relative">
         <div class="mb-16">
-            <x-header class="tracking-tighter">Mittun</x-header>
-            <x-subheader>Seelen verbinden</x-subheader>
+            <x-header class="tracking-tighter">
+                <span>Mittun</span>
+                <x-page-link />
+            </x-header>
+            {{-- <x-subheader>Seelen verbinden</x-subheader> --}}
         </div>
         @foreach($items as $item)
             <x-text-card :item="$item" />

@@ -9,7 +9,7 @@
 
     <x-blocks.story-stage></x-blocks.story-stage>
 
-    <x-blocks.awards class="mb-16"></x-blocks.awards>
+    {{-- <x-blocks.awards class="mb-16"></x-blocks.awards> --}}
 
     <x-blocks.subscribe></x-blocks.subscribe>
 

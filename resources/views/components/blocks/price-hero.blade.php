@@ -7,8 +7,11 @@
     <x-container class=" ">
         <livewire:socials-widget></livewire:socials-widget>
         <div class="mb-16">
-            <x-header>Was kostet</x-header>
-            <x-subheader>ich liebe meine Arbeit</x-subheader>
+            <x-header>
+                <span>Was kostet</span>
+                <x-page-link />
+            </x-header>
+            {{-- <x-subheader>ich liebe meine Arbeit</x-subheader> --}}
         </div>
     </x-container>
 </section>

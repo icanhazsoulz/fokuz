@@ -14,7 +14,7 @@
 
     <x-blocks.about-partners />
 
-    <x-blocks.awards />
+    {{-- <x-blocks.awards /> --}}
 
     <x-blocks.subscribe />
 </div>

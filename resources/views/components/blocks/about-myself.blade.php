@@ -34,8 +34,11 @@
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <x-container class="pt-10 before:content-[''] before:w-full before:h-[800px] before:bg-white before:absolute before:left-0 before:right-0 before-r-0 before:top-0 before:rounded-bl-2xl before:rounded-br-2xl">
         <div class="max-w-[90%] mx-auto mb-16">
-            <x-header class="relative z-10">Ich über mich</x-header>
-            <x-subheader class="relative z-10">Wir sind die Besten</x-subheader>
+            <x-header class="relative z-10">
+                <span>Ich über mich</span>
+                <x-page-link />
+            </x-header>
+            {{-- <x-subheader class="relative z-10">Wir sind die Besten</x-subheader> --}}
 
             <x-points-block class="before:bg-red-points after:bg-green">
                 <ul class="flex gap-9 justify-center relative z-20">

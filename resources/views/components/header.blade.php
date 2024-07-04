@@ -1,5 +1,5 @@
 @php
-    $classes = 'text-primary-focused font-serif font-medium text-8xl mb-8';
+    $classes = 'w-fit flex items-end text-primary-focused font-serif font-medium text-8xl mb-8 relative';
 @endphp
 
 <h2 {{ $attributes->merge(['class' => $classes]) }}>

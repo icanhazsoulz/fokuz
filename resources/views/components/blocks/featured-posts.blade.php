@@ -5,8 +5,11 @@
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <x-container>
         <div class="mb-16">
-            <x-header class="relative z-10">Memoiren</x-header>
-            <x-subheader class="relative z-10">Aktueliste, wichtigste, atemberaubende</x-subheader>
+            <x-header class="relative z-10">
+                <span>Memoiren</span>
+                <x-page-link />
+            </x-header>
+            {{-- <x-subheader class="relative z-10">Aktueliste, wichtigste, atemberaubende</x-subheader> --}}
             <x-points-block class="max-w-[1080px] before:bg-white-points after:bg-yellow">
                 <ul class="flex gap-9 overflow-hidden px-5 pb-10  mt-24 mx-auto relative">
                     @foreach($posts as $post)

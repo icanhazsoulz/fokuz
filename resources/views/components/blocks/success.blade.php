@@ -30,8 +30,11 @@
         >
             <div class="pt-20 relative before:content-[''] before:absolute before:-z-10 before:top-0 before:w-full before:bg-yellow before:h-2/3">
                 <div class="mb-16 w-fit mx-auto">
-                    <x-header>Erfolg</x-header>
-                    <x-subheader>Beste Momente</x-subheader>
+                    <x-header>
+                        <span>Erfolg</span>
+                        <x-page-link />
+                    </x-header>
+                    {{-- <x-subheader>Beste Momente</x-subheader> --}}
                 </div>
 
                 <x-card :card="$cards[0]" class="absolute bottom-0 left-1/2 -translate-x-[50%]"/>

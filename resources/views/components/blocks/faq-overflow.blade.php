@@ -10,8 +10,11 @@
             >
                 <div>
                     <div>
-                        <x-header class="tracking-tighter">Was tun</x-header>
-                        <x-subheader>Häufige Fragen und Antworten</x-subheader>
+                        <x-header class="tracking-tighter relative">
+                            <span>Was tun</span>
+                            <x-page-link />
+                        </x-header>
+                        {{-- <x-subheader>Häufige Fragen und Antworten</x-subheader> --}}
                     </div>
                     <div class="max-w-[420px]">
                         <x-paragraph>
