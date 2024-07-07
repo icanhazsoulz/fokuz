@@ -43,10 +43,11 @@
             </div>
 
             <h1 class="w-fit mx-auto mt-14 relative -left-10 font-serif text-4xl">
-                Mit jeder Photobestellung spenden Sie <br />
+                {{-- Mit jeder Photobestellung spenden Sie --}}
+                Dein Haustier verdient seinen eigenen <br />
                 <span
                     class="inline-block bg-white font-bold rounded mt-2 px-2 -ml-2"
-                >für Tiere in Not</span
+                >{{-- für Tiere in Not --}} Walk of Fame</span
                 >
             </h1>
         @endif

@@ -9,11 +9,11 @@
                 Mein Team
             </x-header-medium>
             <x-paragraph>
-                Harvey gibt mir die Themen vor, in meinem Kopf entstehen Ideen,
+                Harvy gibt mir die Themen vor, in meinem Kopf entstehen Ideen,
                 mein Mann hilft, die notwendigen Requisiten vorzubereiten. Wenn
                 laut dem Szenario im Bild ein Mensch zusammen mit einem Tier sein
                 soll, hilft mir ein Mannequin namens Josephine, Komposition und
-                Licht zu bearbeiten. Und Harvey selbst arbeitet im Studio wie ein
+                Licht zu bearbeiten. Und Harvy selbst arbeitet im Studio wie ein
                 professionelles Model. Zusammen sind wir ein wunderbares Team, das
                 ich Ihnen jetzt vorstellen werde.
             </x-paragraph>

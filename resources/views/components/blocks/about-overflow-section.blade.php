@@ -12,7 +12,7 @@
                     <x-header-medium
                         class="max-w-[700px]"
                     >
-                        Hallo! Ich bin Iuliia, kreative Tierfotografin und
+                        Hallo! Ich bin Julia , kreative Tierfotografin und
                         Hundefachfrau aus NRW, aus Werdohl.
                     </x-header-medium>
                     <div class="flex justify-between gap-20">

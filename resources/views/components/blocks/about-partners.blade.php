@@ -15,7 +15,7 @@
         ],
         '3' => [
             'image' => '/about-page/parthner-list/3.jpg',
-            'title' => 'Fotograf Iuliia Kuznetcova',
+            'title' => 'Fotograf Julia  Kuznetcova',
             'slug' => '',
             'excerpt' => ''
         ],

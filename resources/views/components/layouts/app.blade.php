@@ -58,7 +58,7 @@
                         <h4 class="font-bold">{{ __('ui.menu.contact') }}</h4>
                         <ul>
                             {{-- TODO: add icons to the place, mail, phone links --}}
-                            <li>Fotografin Iuliia Kuznetcova</li>
+                            <li>Fotografin Julia  Kuznetcova</li>
                             <li>
                                 <a href="https://maps.app.goo.gl/ioiMN4GpXTrTkVmp7">
                                     Ruppenhahn 40, 58791 Werdohl

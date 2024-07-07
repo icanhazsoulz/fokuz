@@ -94,7 +94,7 @@
             <div class="my-auto">
                 <x-paragraph>
                     Heute ist unser pelziges Familienmitglied der Schäferhund
-                    Harvey. Trotz seines achtjährigen Alters ist er im Herzen ein
+                    Harvy. Trotz seines achtjährigen Alters ist er im Herzen ein
                     ungestümer Welpe, der immer in Bewegung ist und uns dazu bringt,
                     uns zu bewegen. Und natürlich ist er auch ein Reisender - er hat
                     mehr als ein Dutzend Länder besucht und verschiedene
@@ -104,7 +104,7 @@
             <div class="relative col-span-2 pt-24">
                 <div class="bg-green p-11 rounded-3xl mx-14">
                     <x-paragraph class="max-w-md italic">
-                        Und genau Harvey hat mich eines Tages dazu inspiriert, im
+                        Und genau Harvy hat mich eines Tages dazu inspiriert, im
                         Studio zu fotografieren, und dann von gewöhnlichen Porträts zu
                         kreativen überzugehen.
                     </x-paragraph>

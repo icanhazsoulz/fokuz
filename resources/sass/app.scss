@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 label.required:after {
-    content:"*";
+    content:"";
 }
 
 .tab {

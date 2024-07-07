@@ -1,14 +1,18 @@
 @php
-    $classes = 'w-screen pt-24';
+    $classes = 'w-screen pt-24 relative before:content-[""] before:absolute before:top-56 before:left-0 before:w-[36%] before:aspect-square before:bg-yellow-points-square before:bg-cover';
 @endphp
 
 <section {{ $attributes->merge(['class' => $classes]) }}>
     <x-container class="px-0">
-        <x-header class="tracking-tighter">Tierheimhilfe</x-header>
-        <x-subheader>Offenherzig, innig, großzügig</x-subheader>
+        <x-header class="tracking-tighter">
+            <span>Tierheimhilfe</span>
+            <x-page-link />
+        </x-header>
+
+        {{-- <x-subheader>Offenherzig, innig, großzügig</x-subheader> --}}
         <div class="flex flex-row-reverse justify-center gap-14 pt-10 px-8 pb-12">
             <div class="relative">
-                <div class="max-w-[450px] mb-10">
+                <div class="max-w-[436px] mb-10">
                     <x-paragraph>Ich finde es wichtig, mein Herz und meine Fähigkeiten für
                         einen guten Zweck einzusetzen. Deshalb verbringe ich auch Zeit
                         als Freiwilliger in Tierheimen – fotografiere die Schützlinge,

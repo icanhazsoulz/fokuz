@@ -6,7 +6,8 @@
         'created_at' => isset($post->created_at) ? $post->created_at : null,
         'text' => $post->excerpt,
         'slug' => $post->slug,
-        'category' => isset($post->post_category) ? $post->post_category->category : null
+        'category' => isset($post->post_category) ? $post->post_category->category : null,
+        'price' => isset($post->post_price) ? $post->post_price->price : null
     ];
 @endphp
 <div>
@@ -33,7 +34,12 @@
         @endif
 
         <p>{{ $post['text'] }}</p>
-        {{--<x-link href="{{ $post['slug'] }}">Mehr sehen</x-link>--}}
-        <x-button-primary class="absolute bottom-10">Lass fragen</x-button-primary>
+
+        @if ($post['price'])
+            <x-price>{{ $post['price'] }}</x-price>
+            <x-button-primary class="absolute bottom-10">Jetzt buchen</x-button-primary>
+        @else
+            <x-link href="{{ $post['slug'] }}" class="absolute bottom-10">Mehr sehen</x-link>
+        @endif
     </div>
 </div>

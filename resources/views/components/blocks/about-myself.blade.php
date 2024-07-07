@@ -5,7 +5,7 @@
             'image' => '/about-page/about-list/1.jpg',
             'title' => 'Mein team',
             'slug' => 'prices#studio',
-            'excerpt' => 'Harvey gibt mir die Themen vor, in meinem Kopf entstehen
+            'excerpt' => 'Harvy gibt mir die Themen vor, in meinem Kopf entstehen
                     Ideen, mein Mann hilft, die notwendigen Requisiten
                     vorzubereiten. Wenn laut dem Szenario im Bild ein Mensch
                     zusammen mit einem Tier sein soll, hilft mir ein Mannequin

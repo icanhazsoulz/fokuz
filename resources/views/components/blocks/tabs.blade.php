@@ -4,10 +4,7 @@
             <span>Kontaktformular</span>
             <x-page-link />
         </x-header>
-        {{-- <x-subheader>
-            <span>Fotoshooting oder Gutschein anfragen</span>
-            <x-page-link />
-        </ x-subheader> --}}
+
         <div class="grid grid-cols-3 gap-10">
             <div class="col-span-2 w-11/12 flex flex-col justify-center">
                 <x-paragraph class="text-primary-focused">

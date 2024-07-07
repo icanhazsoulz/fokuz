@@ -2,10 +2,10 @@
     $classes = 'flex gap-9 justify-center max-w-[1040px] mx-auto relative';
     $members = [
         '1' => [
-            'image' => '/story-page/team-list/iuliia.jpg',
-            'alt' => 'Iuliia',
+            'image' => '/story-page/team-list/julia.jpg',
+            'alt' => 'Julia ',
             'descriptions' => [
-                'Ich' =>'Iuliia',
+                'Ich' =>'Julia ',
                 'Nähen oder Klempern' => 'Nähen',
                 'Eiskunstlauf oder Boxen' => 'Eiskunstlauf',
                 'Reisen oder Disco' => 'Reisen',

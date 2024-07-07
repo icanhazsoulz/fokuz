@@ -10,7 +10,8 @@
                 <x-page-link />
             </x-header>
             {{-- <x-subheader class="relative z-10">Aktueliste, wichtigste, atemberaubende</x-subheader> --}}
-            <x-points-block class="max-w-[1080px] before:bg-white-points after:bg-yellow">
+            <x-points-block class="max-w-[1080px] before:bg-white-points after:bg-yellow relative">
+                <x-slider-btn class="text-white border-white absolute top-52 -left-12 z-20"></x-slider-btn>
                 <ul class="flex gap-9 overflow-hidden px-5 pb-10  mt-24 mx-auto relative">
                     @foreach($posts as $post)
                         <li class="flex max-w-[320px]">
@@ -20,6 +21,7 @@
                         </li>
                     @endforeach
                 </ul>
+                <x-slider-btn class="rotate-180 text-white border-white absolute top-52 -right-10 z-20"></x-slider-btn>
             </x-points-block>
         </div>
     </x-container>
