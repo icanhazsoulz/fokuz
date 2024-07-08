@@ -1,6 +1,6 @@
 <div class="p-16">
-    <div class="flex mb-8">
-        <div class="rounded overflow-hidden min-w-[400px] h-fit relative -left-16">
+    <div class="max-h-[400px] flex mb-8">
+        <div class="rounded overflow-hidden max-w-[560px] min-w-[400px] h-fit relative -left-16">
             <img
                 src="./assets/images/{{$testimonial['image']}}"
                 alt="{{ $testimonial['author'] }}"
@@ -16,7 +16,7 @@
                     <p>{{ date_format($testimonial['created_at'], 'd.m.Y') }}</p>
                 @endif
             </div>
-            <div class="max-w-[450px] mb-10">
+            <div class="max-w-[450px] mb-10 text-ellipsis">
                 {!! $testimonial['text'] !!}
             </div>
             <x-link href="{{ $testimonial['url'] }}">{{ $testimonial['handle'] }}</x-link>
@@ -24,6 +24,5 @@
     </div>
     <div class="flex justify-between">
         <x-link href="#">Mehr sehen</x-link>
-        <div>Slider buttons HERE</div>
     </div>
 </div>
